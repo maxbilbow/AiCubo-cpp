@@ -123,9 +123,9 @@ Matrix4 Camera::modelViewMatrix() {
     
     Matrix4 m = this->getNode()->getTransform()->worldMatrix();
 //    m.m30 = m.m31 = m.m32 = 0;
-    cout << m << endl;
+//    cout << m << endl;
     m = RMXMatrix4Negate(m);
-    cout << m << endl;
+//    cout << m << endl;
 //    m.negate();
 //    return m;
 //    m =

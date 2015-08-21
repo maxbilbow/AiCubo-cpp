@@ -151,12 +151,12 @@ void GameController::repeatedKeys(GLFWwindow * window) {
         player->getTransform()->move(Left, -1.0f);
     }
     
-    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-        player->getTransform()->move(Up,-1.0f);
-    }
-    
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
         player->getTransform()->move(Up, 1.0f);
+    }
+    
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+        player->getTransform()->move(Up,-1.0f);
     }
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         player->BroadcastMessage("jump");
@@ -171,11 +171,11 @@ void GameController::repeatedKeys(GLFWwindow * window) {
     }
     
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
-        player->getTransform()->move(Pitch,1.0f);
+        player->getTransform()->move(Pitch,-1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-        player->getTransform()->move(Pitch, -1.0f);
+        player->getTransform()->move(Pitch, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {

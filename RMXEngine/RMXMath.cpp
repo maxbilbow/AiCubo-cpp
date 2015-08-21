@@ -23,16 +23,16 @@ Matrix4 RMXMatrix4Negate(Matrix4 m) {
 }
 
 Vector3 RMXMatrix3MakeEuler(Matrix4 m) {
-//    return GLKVector3Make (atan2f(-m.m20, m.m00),
-//                           asinf ( m.m10),
-//                           atan2f(-m.m12, m.m11)
-//                           );
-    m.m30 = m.m31 = m.m32 = 0;
-    return GLKVector3Make (
-                   atan2f(-m.m12, m.m11),
-                   atan2f(-m.m20, m.m00),
-                   asinf ( m.m10)
+    return GLKVector3Make (atan2f(-m.m20, m.m00),
+                           asinf ( m.m10),
+                           atan2f(-m.m12, m.m11)
                            );
+//    m.m30 = m.m31 = m.m32 = 0;
+//    return GLKVector3Make (
+//                   atan2f(-m.m12, m.m11),
+//                   atan2f(-m.m20, m.m00),
+//                   asinf ( m.m10)
+//                           );
 }
 
 Matrix4 operator*(Matrix4 lhs,  Matrix4 rhs) {

@@ -67,7 +67,7 @@ float Transform::mass() {
  */
 Matrix4 Transform::worldMatrix() {
     Transform * parent = this->parent();
-    if (parent !=   null && parent->parent() !=   null) {
+    if (parent != null && parent->parent() != null) {
         return GLKMatrix4Multiply(this->_localMatrix, parent->worldMatrix());
     } else {
         return this->_localMatrix;
@@ -160,7 +160,7 @@ bool Transform::translate(Move direction, float scale) {
     Vector3 v;
     switch (direction) {
         case Forward:
-//            scale *= 1;
+            scale *= 1;
             v = this->forward();
             break;
         case Up:
@@ -168,7 +168,7 @@ bool Transform::translate(Move direction, float scale) {
             v = this->up();
             break;
         case Left:
-//            scale *= 1;
+            scale *= 1;
             v = this->left();
             break;
         case X:
@@ -201,11 +201,11 @@ bool Transform::rotate(Move direction, float scale) {
             v = this->left();
             break;
         case Yaw:
-            //			scale *= -1;
+//            scale *= -1;
             v = this->up();
             break;
         case Roll:
-            //			scale *= -1;
+//            scale *= -1;
             v = this->forward();
             break;
         default:
@@ -217,9 +217,7 @@ bool Transform::rotate(Move direction, float scale) {
 
 void Transform::rotate(float radians, Vector3 v) {
     Matrix4 rMatrix = GLKMatrix4MakeRotation(radians, v.x, v.y, v.z);
-    
     this->_localMatrix = GLKMatrix4Multiply(_localMatrix, rMatrix);
-    
 }
 
 
@@ -229,23 +227,26 @@ void Transform::translate(Vector4 v) {
 
 
 Vector3 Transform::left() {
-    return GLKVector3Make(_localMatrix.m00,
-                          _localMatrix.m01,
-                          _localMatrix.m02
+    Matrix4 m = this->worldMatrix();
+    return GLKVector3Make(m.m00,
+                          m.m01,
+                          m.m02
                           );
 }
 
 Vector3 Transform::up() {
-    return GLKVector3Make(_localMatrix.m10,
-                          _localMatrix.m11,
-                          _localMatrix.m12
+    Matrix4 m = this->worldMatrix();
+    return GLKVector3Make(m.m10,
+                          m.m11,
+                          m.m12
                           );
 }
 
 Vector3 Transform::forward() {
-    return GLKVector3Make(_localMatrix.m20,
-                          _localMatrix.m21,
-                          _localMatrix.m22
+    Matrix4 m = this->worldMatrix();
+    return GLKVector3Make(m.m20,
+                          m.m21,
+                          m.m22
                           );
 }
 
