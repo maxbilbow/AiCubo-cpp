@@ -39,7 +39,7 @@ namespace rmx {
     public:
         void SendMessage(std::string message, void * args = null, SendMessageOptions options = DoesNotRequireReceiver) override {
             
-            this->getNode()->getTransform()->move(Y,10);
+            this->getNode()->getTransform()->move(Up,10);
             std::cout << this->getNode()->getTransform()->localMatrix();
         }
     };

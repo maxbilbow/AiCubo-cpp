@@ -136,27 +136,27 @@ void GameController::repeatedKeys(GLFWwindow * window) {
     GameNode * player = this->view->pointOfView();//GameNode::getCurrent();
     
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        player->getTransform()->move(Forward, 1.0f);
+        player->getTransform()->move(Z, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        player->getTransform()->move(Forward,-1.0f);
+        player->getTransform()->move(Z,-1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        player->getTransform()->move(Left, 1.0f);
+        player->getTransform()->move(X, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        player->getTransform()->move(Left, -1.0f);
+        player->getTransform()->move(X, -1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-        player->getTransform()->move(Up, 1.0f);
+        player->getTransform()->move(Y, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-        player->getTransform()->move(Up,-1.0f);
+        player->getTransform()->move(Y,-1.0f);
     }
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         player->BroadcastMessage("jump");

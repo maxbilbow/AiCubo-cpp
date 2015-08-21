@@ -227,7 +227,7 @@ void Transform::translate(Vector4 v) {
 
 
 Vector3 Transform::left() {
-    Matrix4 m = this->worldMatrix();
+    Matrix4 m = this->localMatrix();
     return GLKVector3Make(m.m00,
                           m.m01,
                           m.m02
@@ -235,7 +235,7 @@ Vector3 Transform::left() {
 }
 
 Vector3 Transform::up() {
-    Matrix4 m = this->worldMatrix();
+    Matrix4 m = this->localMatrix();
     return GLKVector3Make(m.m10,
                           m.m11,
                           m.m12
@@ -243,7 +243,7 @@ Vector3 Transform::up() {
 }
 
 Vector3 Transform::forward() {
-    Matrix4 m = this->worldMatrix();
+    Matrix4 m = this->localMatrix();
     return GLKVector3Make(m.m20,
                           m.m21,
                           m.m22
@@ -258,8 +258,7 @@ Vector3 Transform::localEulerAngles() {
 }
 
 Quaternion Transform::rotation() {
-    this->TODO();
-    return GLKQuaternionMakeWithMatrix4(_localMatrix);
+    return GLKQuaternionMakeWithMatrix4(this->worldMatrix());
 }
 
 Quaternion Transform::localRotation() {
@@ -267,18 +266,10 @@ Quaternion Transform::localRotation() {
 }
 
 Vector3 Transform::eulerAngles() {
-    Transform * parent = this->parent();
-    return parent != null ? localEulerAngles() + parent->eulerAngles() : this->localEulerAngles();
+//    Transform * parent = this->parent();
+    return RMXMatrix3MakeEuler(this->worldMatrix());//parent != null ? localEulerAngles() + parent->eulerAngles() : this->localEulerAngles();
 }
 
-
-//Vector3 Transform::localEulerAngles() {
-//    Matrix4 m = this->worldMatrix();
-//    _eulerAngles.x = atan2f( m.m22, m.m23);
-//    _eulerAngles.y = atan2f(-m.m21, Math.sqrt(m.m22 * m.m22 + m.m23 * m.m23));
-//    _eulerAngles.z = atan2f( m.m11, m.m01);
-//    return _eulerAngles;
-//}
 
 
 Matrix4 Transform::localMatrix() {
