@@ -43,7 +43,7 @@ void GameController::initpov() {
     GameNode * n = GameNode::getCurrent();
     n->setPhysicsBody(new PhysicsBody());
     cout << n->physicsBody() << endl;
-    n->physicsBody()->setMass(0.5f);
+    n->physicsBody()->setMass(1.0f);
 
     n->setGeometry(Geometry::Cube());
     n->getTransform()->setScale(2.0f, 0.02f, 2.0f);
@@ -187,10 +187,10 @@ void GameController::repeatedKeys(GLFWwindow * window) {
     }
     
 //    cout << player->getTransform()->localMatrix();
-    cout << "             Euler: " << player->getTransform()->eulerAngles() << endl;
-    cout << "       Local Euler: " << player->getTransform()->localEulerAngles() << endl;
-    cout << "          Position: " << player->getTransform()->position() << endl;
-    cout << endl;
+//    cout << "             Euler: " << player->getTransform()->eulerAngles() << endl;
+//    cout << "       Local Euler: " << player->getTransform()->localEulerAngles() << endl;
+//    cout << "          Position: " << player->getTransform()->position() << endl;
+//    cout << endl;
 }
 
 

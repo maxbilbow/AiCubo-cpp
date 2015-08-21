@@ -56,36 +56,59 @@ void Geometry::addVertex(float x, float y, float z)  {
     
 }
 
-void Geometry::pushMatrix(GameNode * node, Matrix4 baseModelView) {
-    
 
+void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
+    Matrix4 model = node->getTransform()->worldMatrix();
+//    EulerAngles baseA = RMXMatrix3MakeEuler(base);
+    EulerAngles modelA = RMXMatrix3MakeEuler(model);
+//    baseA.scale(1 / click.rmx.RMX.PI_OVER_180);
+//    modelA.scale(1 / click.rmx.RMX.PI_OVER_180);
     
     glPushMatrix();
     
-    Matrix4 modelMatrix = GLKMatrix4Multiply(
-                                             node->getTransform()->worldMatrix(),
-                                             baseModelView
-                                             );
-    glMultMatrixf(modelMatrix.m);
+    glTranslatef(
+                 model.m30 + base.m30,
+                 model.m31 + base.m31,
+                 model.m32 + base.m32
+                 );
+    
+
+    glRotatef(modelA.x, 1,0,0);
+    glRotatef(modelA.y, 0,1,0);
+    glRotatef(modelA.z, 0,0,1);
+    
+}
+//
+//void Geometry::pushMatrix(GameNode * node, Matrix4 baseModelView) {
+//    
+//
+//    
+//    glPushMatrix();
+//    
+//    Matrix4 modelMatrix = GLKMatrix4Multiply(
+//                                             node->getTransform()->worldMatrix(),
+//                                             baseModelView
+//                                             );
+////    glMultMatrixf(modelMatrix.m);
 //    glTranslatef(
 //                 modelMatrix.m30,
 //                 modelMatrix.m31,
 //                 modelMatrix.m32
 //                 );
 //    
-//    Vector3 m_translation = node->getTransform()->getTransform()->position();
-//    glTranslatef(
-//                 m_translation.z,
-//                 m_translation.y,
-//                 m_translation.z
-//                 );
-//    Vector3 euler = node->getTransform()->eulerAngles() - RMXMatrix3MakeEuler(baseModelView);
-//    glRotatef(euler.x, 1,0,0);
-//    glRotatef(euler.y, 0,1,0);
-//    glRotatef(euler.z, 0,0,1);
-    
-    
-}
+////    Vector3 m_translation = node->getTransform()->getTransform()->position();
+////    glTranslatef(
+////                 m_translation.z,
+////                 m_translation.y,
+////                 m_translation.z
+////                 );
+////    Vector3 euler = node->getTransform()->eulerAngles() - RMXMatrix3MakeEuler(baseModelView);
+////    glRotatef(euler.x, 1,0,0);
+////    glRotatef(euler.y, 0,1,0);
+////    glRotatef(euler.z, 0,0,1);
+//    
+//    
+//}
 
 
 //	private void enableTexture() {

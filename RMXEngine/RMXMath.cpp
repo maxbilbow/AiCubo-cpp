@@ -17,9 +17,8 @@ Vector3 RMXMatrix4Position(Matrix4 m) {
 }
 
 Matrix4 RMXMatrix4Negate(Matrix4 m) {
-    m.m30 *= -1;
-    m.m31 *= -1;
-    m.m32 *= -1;
+    for(int i=0; i<16;++i)
+        m.m[i] *= -1;
     return m;
 }
 
@@ -34,9 +33,18 @@ Vector3 RMXMatrix3MakeEuler(Matrix4 m) {
                    atan2f(-m.m20, m.m00),
                    asinf ( m.m10)
                            );
-
-
 }
+
+Matrix4 operator*(Matrix4 lhs,  Matrix4 rhs) {
+    return GLKMatrix4Multiply(lhs, rhs);
+}
+
+Matrix4 operator*(Matrix4 lhs,  float rhs) {
+    
+    return GLKMatrix4Multiply(lhs, GLKMatrix4MakeScale(rhs, rhs, rhs));
+}
+
+
 Vector3 operator+(Vector3 lhs,  Vector3 rhs) {
     return GLKVector3Add(lhs, rhs);
 }
