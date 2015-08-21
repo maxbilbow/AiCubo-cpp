@@ -44,8 +44,9 @@ void GameController::initpov() {
     n->setPhysicsBody(new PhysicsBody());
     cout << n->physicsBody() << endl;
     n->physicsBody()->setMass(0.5f);
-//    n->addBehaviour(new SpriteBehaviour());
-    n->getTransform()->setScale(2.0f, 0.1f, 2.0f);
+
+    n->setGeometry(Geometry::Cube());
+    n->getTransform()->setScale(2.0f, 0.02f, 2.0f);
     Scene::getCurrent()->rootNode()->addChild(n);
 }
 
@@ -239,11 +240,12 @@ double xpos ,ypos;
 bool restart = true;
 
 void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
-    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;;
+    
     GameController * gc = getInstance();
     
     if (!gc->cursorLocked)
         return;
+    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;
     if (restart) {
         xpos = x;
         ypos = y;

@@ -160,7 +160,7 @@ bool Transform::translate(Move direction, float scale) {
     Vector3 v;
     switch (direction) {
         case Forward:
-            scale *= -1;
+//            scale *= 1;
             v = this->forward();
             break;
         case Up:
@@ -168,7 +168,7 @@ bool Transform::translate(Move direction, float scale) {
             v = this->up();
             break;
         case Left:
-            scale *= -1;
+//            scale *= 1;
             v = this->left();
             break;
         case X:
@@ -186,7 +186,7 @@ bool Transform::translate(Move direction, float scale) {
         default:
             return false;
     }
-    _localMatrix = GLKMatrix4TranslateWithVector3(_localMatrix, v * scale);
+    _localMatrix = GLKMatrix4TranslateWithVector3(_localMatrix, v * scale * 0.4);
 //    this->translate(v * scale);
     return true;
 }
@@ -212,34 +212,15 @@ bool Transform::rotate(Move direction, float scale) {
             return false;
     }
     this->rotate(scale * PI_OVER_180,v);
-    //				v.x * scale,
-    //				v.y * scale,
-    //				v.z * scale
-    //				);
     return true;
 }
 
 void Transform::rotate(float radians, Vector3 v) {
-    this->_localMatrix = GLKMatrix4RotateWithVector3(_localMatrix, radians, v);
+    Matrix4 rMatrix = GLKMatrix4MakeRotation(radians, v.x, v.y, v.z);
+    
+    this->_localMatrix = GLKMatrix4Multiply(_localMatrix, rMatrix);
     
 }
-
-//void Transform::rotate(float radians, float x, float y, float z) {
-//    
-//    this->_localMatrix = GLKMatrix4RotateWithVector3(_localMatrix, radians, x,y,z);
-
-//    Matrix4 rMatrix = new Matrix4();
-//    rMatrix.setIdentity();
-//    rMatrix.setRotation(new AxisAngle4f(x,y,z,radians * 0.2f ));//*  RMX.PI_OVER_180));
-//    //		_rMatrix.transpose();
-//    
-//    //		_quaternion.set(new AxisAngle4f(v.x,v.y,v.z,degrees * 0.1f));
-//    Vector3 p = this.position();
-//    this.mul(rMatrix);
-//    this.setPosition(p);
-    
-//}
-
 
 
 void Transform::translate(Vector4 v) {
@@ -272,10 +253,7 @@ Vector3 Transform::forward() {
 
 
 Vector3 Transform::localEulerAngles() {
-    return GLKVector3Make (atan2f(-_localMatrix.m20, _localMatrix.m00),
-                           asinf ( _localMatrix.m10),
-                           atan2f(-_localMatrix.m12, _localMatrix.m11)
-                           );
+    return RMXMatrix3MakeEuler(this->_localMatrix);
 }
 
 Quaternion Transform::rotation() {
@@ -288,8 +266,8 @@ Quaternion Transform::localRotation() {
 }
 
 Vector3 Transform::eulerAngles() {
-    //		_rotation.set(this.worldMatrix());
-    return localEulerAngles();
+    Transform * parent = this->parent();
+    return parent != null ? localEulerAngles() + parent->eulerAngles() : this->localEulerAngles();
 }
 
 

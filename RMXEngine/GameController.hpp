@@ -28,7 +28,7 @@ namespace rmx {
         
         static int keys[600];
         
-        bool cursorLocked;
+        bool cursorLocked = false;
     public:
         static GameController * getInstance();
         void lockCursor(bool lock);

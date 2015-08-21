@@ -17,6 +17,8 @@
 #define PI_OVER_180 (PI/180)
 
 Vector3 RMXMatrix4Position(Matrix4 m);
+Matrix4 RMXMatrix4Negate(Matrix4 m);
+Vector3 RMXMatrix3MakeEuler(Matrix4 m);
 Vector3 operator+(Vector3 lhs,  Vector3 rhs);
 Vector3 operator-(Vector3 lhs,  Vector3 rhs);
 Vector3 operator*(Vector3 lhs,  Vector3 rhs);

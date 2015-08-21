@@ -10,11 +10,25 @@
 //#import "RMXMath.hpp"
 //#import <GLKit/GLKVector3.h>
 #include "Includes.h"
+#include <math.h>
 using namespace std;
 Vector3 RMXMatrix4Position(Matrix4 m) {
     return GLKVector3Make(m.m30, m.m31, m.m32);
 }
 
+Matrix4 RMXMatrix4Negate(Matrix4 m) {
+    m.m30 *= -1;
+    m.m31 *= -1;
+    m.m32 *= -1;
+    return m;
+}
+
+Vector3 RMXMatrix3MakeEuler(Matrix4 m) {
+    return GLKVector3Make (atan2f(-m.m20, m.m00),
+                           asinf ( m.m10),
+                           atan2f(-m.m12, m.m11)
+                           );
+}
 Vector3 operator+(Vector3 lhs,  Vector3 rhs) {
     return GLKVector3Add(lhs, rhs);
 }

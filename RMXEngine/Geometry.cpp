@@ -56,31 +56,33 @@ void Geometry::addVertex(float x, float y, float z)  {
     
 }
 
-void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
+void Geometry::pushMatrix(GameNode * node, Matrix4 baseModelView) {
     
     EulerAngles modelA = node->getTransform()->eulerAngles() / PI_OVER_180;
     
     glPushMatrix();
     
-    
-    //		 glMultMatrixf(_modelView.buffer())
-    Vector3 translation = RMXMatrix4Position(base);
-    
+    Matrix4 modelMatrix = GLKMatrix4Multiply(
+                                             node->getTransform()->worldMatrix(),
+                                             baseModelView
+                                             );
+    //		 glMultMatrixf(_modelView.buffer())    
     glTranslatef(
-                 translation.z,
-                 translation.y,
-                 translation.z
+                 modelMatrix.m30,
+                 modelMatrix.m31,
+                 modelMatrix.m32
                  );
     
-    Vector3 m_translation = node->getTransform()->getTransform()->position();
-    glTranslatef(
-                 m_translation.z,
-                 m_translation.y,
-                 m_translation.z
-                 );
-    glRotatef(modelA.x, 1,0,0);
-    glRotatef(modelA.y, 0,1,0);
-    glRotatef(modelA.z, 0,0,1);
+//    Vector3 m_translation = node->getTransform()->getTransform()->position();
+//    glTranslatef(
+//                 m_translation.z,
+//                 m_translation.y,
+//                 m_translation.z
+//                 );
+    Vector3 euler = RMXMatrix3MakeEuler(modelMatrix);
+    glRotatef(euler.x, 1,0,0);
+    glRotatef(euler.y, 0,1,0);
+    glRotatef(euler.z, 0,0,1);
     
     
 }
@@ -201,7 +203,7 @@ protected:
 
 };
 
-Geometry * Geometry::_cube =   null;
+Geometry * Geometry::_cube = null;
 Geometry * Geometry::Cube() {
     if (_cube ==   null)
         _cube = new ACube();

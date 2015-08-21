@@ -444,7 +444,6 @@
 		5076A84E1B84F1C5008A07AF /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		5076A8511B84F246008A07AF /* glfw-3.1.1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "glfw-3.1.1.zip"; sourceTree = "<group>"; };
 		508726AC1B8294E600E631BE /* test2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test2.cpp; sourceTree = "<group>"; };
-		508726AD1B8294E600E631BE /* test2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test2.h; sourceTree = "<group>"; };
 		509BC17D1B68A389007172B6 /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedList.cpp; path = RMXKit/LinkedList.cpp; sourceTree = SOURCE_ROOT; };
 		509BC1891B68BBBE007172B6 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = RMXKit/Dictionary.cpp; sourceTree = SOURCE_ROOT; };
 		50C43C461B679E6500AD2FAC /* RMXKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -452,11 +451,9 @@
 		50C43C501B679E6500AD2FAC /* RMXKit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RMXKit.cpp; sourceTree = "<group>"; };
 		50C43C521B679E6500AD2FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C43C5C1B679E9200AD2FAC /* AiCubo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AiCubo; sourceTree = BUILT_PRODUCTS_DIR; };
-		50C43C5E1B679E9200AD2FAC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../AiCubo/main.cpp; sourceTree = "<group>"; };
+		50C43C5E1B679E9200AD2FAC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NotificationCenter.cpp; sourceTree = "<group>"; };
 		50C811351B87446F0001FBFE /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
-		50D026731B69633800895093 /* OpenGLView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLView.cpp; path = ../OpenGLView.cpp; sourceTree = "<group>"; };
-		50D026741B69633800895093 /* OpenGLView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OpenGLView.hpp; path = ../OpenGLView.hpp; sourceTree = "<group>"; };
 		6C9EB10C1B710D87003F6156 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		6C9EB1121B710DEA003F6156 /* ASingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASingleton.h; sourceTree = "<group>"; };
 		6C9EB1141B710DEA003F6156 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
@@ -503,9 +500,9 @@
 				5044D92D1B874664003B4AE2 /* Shapes.hpp */,
 				5044D92E1B874664003B4AE2 /* Tools.cpp */,
 				5044D92F1B874664003B4AE2 /* Tools.hpp */,
-				50D026731B69633800895093 /* OpenGLView.cpp */,
 			);
 			name = old;
+			path = AiCubo/OSX;
 			sourceTree = "<group>";
 		};
 		503A239D1B6A3014008F89F6 /* cpp */ = {
@@ -806,6 +803,7 @@
 				5044D91C1B874593003B4AE2 /* Transform.hpp */,
 			);
 			name = engine;
+			path = ../RMXKit;
 			sourceTree = "<group>";
 		};
 		50C43C3D1B679E6500AD2FAC = {
@@ -814,6 +812,7 @@
 				50C811351B87446F0001FBFE /* GLFW.xcodeproj */,
 				50C43C4B1B679E6500AD2FAC /* RMXKit */,
 				50C43C5D1B679E9200AD2FAC /* AiCubo */,
+				503A23971B6A2910008F89F6 /* old */,
 				50C43C481B679E6500AD2FAC /* Frameworks */,
 				50C43C471B679E6500AD2FAC /* Products */,
 			);
@@ -847,10 +846,7 @@
 		50C43C4B1B679E6500AD2FAC /* RMXKit */ = {
 			isa = PBXGroup;
 			children = (
-				508726BC1B8359D900E631BE /* engine */,
-				50C43C5E1B679E9200AD2FAC /* main.cpp */,
 				508726AC1B8294E600E631BE /* test2.cpp */,
-				508726AD1B8294E600E631BE /* test2.h */,
 				6C9EB1111B710DEA003F6156 /* Headers */,
 				503A239D1B6A3014008F89F6 /* cpp */,
 				50C43C521B679E6500AD2FAC /* Info.plist */,
@@ -861,7 +857,8 @@
 		50C43C5D1B679E9200AD2FAC /* AiCubo */ = {
 			isa = PBXGroup;
 			children = (
-				50D026771B69653300895093 /* headers */,
+				50C43C5E1B679E9200AD2FAC /* main.cpp */,
+				508726BC1B8359D900E631BE /* engine */,
 			);
 			path = AiCubo;
 			sourceTree = "<group>";
@@ -899,16 +896,6 @@
 				50C8118F1B8744700001FBFE /* windows.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		50D026771B69653300895093 /* headers */ = {
-			isa = PBXGroup;
-			children = (
-				503A23971B6A2910008F89F6 /* old */,
-				50D026741B69633800895093 /* OpenGLView.hpp */,
-			);
-			name = headers;
-			path = OSX;
 			sourceTree = "<group>";
 		};
 		6C9EB1111B710DEA003F6156 /* Headers */ = {
