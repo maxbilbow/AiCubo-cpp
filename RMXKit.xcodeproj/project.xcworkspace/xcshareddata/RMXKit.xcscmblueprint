@@ -1,20 +1,20 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9B5C915E67A2341F288F69ADE09AA64D219E260C",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E95F966F21B543BEC9A00E2B8E8E307A59F9BB7F",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "F91D28A7E95E8F0399C74826E40B332B63E48E1C" : 0,
+    "E95F966F21B543BEC9A00E2B8E8E307A59F9BB7F" : 0,
     "9B5C915E67A2341F288F69ADE09AA64D219E260C" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5C92D609-6143-4B2F-ADAB-D609775CD62C",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "F91D28A7E95E8F0399C74826E40B332B63E48E1C" : "RMXKit\/cpp\/glfw\/",
+    "E95F966F21B543BEC9A00E2B8E8E307A59F9BB7F" : "AiCubo-cpp\/",
     "9B5C915E67A2341F288F69ADE09AA64D219E260C" : "RMXKit\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "RMXKit",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "cpp\/RMXKit.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RMXKit.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/maxbilbow\/RMXKit.git",
@@ -22,9 +22,9 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9B5C915E67A2341F288F69ADE09AA64D219E260C"
     },
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/glfw\/glfw.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/maxbilbow\/AiCubo-cpp.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F91D28A7E95E8F0399C74826E40B332B63E48E1C"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E95F966F21B543BEC9A00E2B8E8E307A59F9BB7F"
     }
   ]
 }
