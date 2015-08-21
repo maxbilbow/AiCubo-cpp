@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>AiCubo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>AiCuboBridge.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>RMXKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>50C43C451B679E6500AD2FAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50C43C5B1B679E9200AD2FAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50D026401B695D8200895093</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50D026521B695D8200895093</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50D0265D1B695D8200895093</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

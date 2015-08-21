@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9B5C915E67A2341F288F69ADE09AA64D219E260C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F91D28A7E95E8F0399C74826E40B332B63E48E1C" : 0,
+    "9B5C915E67A2341F288F69ADE09AA64D219E260C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5C92D609-6143-4B2F-ADAB-D609775CD62C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F91D28A7E95E8F0399C74826E40B332B63E48E1C" : "RMXKit\/cpp\/glfw\/",
+    "9B5C915E67A2341F288F69ADE09AA64D219E260C" : "RMXKit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RMXKit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "cpp\/RMXKit.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/maxbilbow\/RMXKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9B5C915E67A2341F288F69ADE09AA64D219E260C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/glfw\/glfw.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F91D28A7E95E8F0399C74826E40B332B63E48E1C"
+    }
+  ]
+}
