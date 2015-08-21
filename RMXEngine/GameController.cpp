@@ -186,7 +186,11 @@ void GameController::repeatedKeys(GLFWwindow * window) {
         player->getTransform()->move(Roll,-1.0f);
     }
     
-    cout << player->getTransform()->localMatrix();
+//    cout << player->getTransform()->localMatrix();
+    cout << "             Euler: " << player->getTransform()->eulerAngles() << endl;
+    cout << "       Local Euler: " << player->getTransform()->localEulerAngles() << endl;
+    cout << "          Position: " << player->getTransform()->position() << endl;
+    cout << endl;
 }
 
 

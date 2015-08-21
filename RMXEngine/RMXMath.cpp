@@ -24,10 +24,18 @@ Matrix4 RMXMatrix4Negate(Matrix4 m) {
 }
 
 Vector3 RMXMatrix3MakeEuler(Matrix4 m) {
-    return GLKVector3Make (atan2f(-m.m20, m.m00),
-                           asinf ( m.m10),
-                           atan2f(-m.m12, m.m11)
+//    return GLKVector3Make (atan2f(-m.m20, m.m00),
+//                           asinf ( m.m10),
+//                           atan2f(-m.m12, m.m11)
+//                           );
+    m.m30 = m.m31 = m.m32 = 0;
+    return GLKVector3Make (
+                   atan2f(-m.m12, m.m11),
+                   atan2f(-m.m20, m.m00),
+                   asinf ( m.m10)
                            );
+
+
 }
 Vector3 operator+(Vector3 lhs,  Vector3 rhs) {
     return GLKVector3Add(lhs, rhs);
@@ -110,7 +118,11 @@ std::ostream& operator<<(std::ostream& in,  Matrix4 m) {
     s += S(m.m00) + ", " + m.m01 + ", " + m.m02 + ", " + m.m03 + "\n";
     s += S(m.m10) + ", " + m.m11 + ", " + m.m12 + ", " + m.m13 + "\n";
     s += S(m.m20) + ", " + m.m21 + ", " + m.m22 + ", " + m.m23 + "\n";
-    s += S(m.m30) + ", " + m.m31 + ", " + m.m32 + ", " + m.m33 + "\n";
+    s += S(m.m30) + ", " + m.m31 + ", " + m.m32 + ", " + m.m33;
     return in << s;
+}
+
+std::ostream& operator<<(std::ostream& in,  Vector3 v) {
+    return in << v.x << ", " << v.y << ", " << v.z;
 }
 

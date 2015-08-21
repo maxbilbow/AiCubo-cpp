@@ -58,7 +58,7 @@ void Geometry::addVertex(float x, float y, float z)  {
 
 void Geometry::pushMatrix(GameNode * node, Matrix4 baseModelView) {
     
-    EulerAngles modelA = node->getTransform()->eulerAngles() / PI_OVER_180;
+
     
     glPushMatrix();
     
@@ -66,23 +66,23 @@ void Geometry::pushMatrix(GameNode * node, Matrix4 baseModelView) {
                                              node->getTransform()->worldMatrix(),
                                              baseModelView
                                              );
-    //		 glMultMatrixf(_modelView.buffer())    
-    glTranslatef(
-                 modelMatrix.m30,
-                 modelMatrix.m31,
-                 modelMatrix.m32
-                 );
-    
+    glMultMatrixf(modelMatrix.m);
+//    glTranslatef(
+//                 modelMatrix.m30,
+//                 modelMatrix.m31,
+//                 modelMatrix.m32
+//                 );
+//    
 //    Vector3 m_translation = node->getTransform()->getTransform()->position();
 //    glTranslatef(
 //                 m_translation.z,
 //                 m_translation.y,
 //                 m_translation.z
 //                 );
-    Vector3 euler = RMXMatrix3MakeEuler(modelMatrix);
-    glRotatef(euler.x, 1,0,0);
-    glRotatef(euler.y, 0,1,0);
-    glRotatef(euler.z, 0,0,1);
+//    Vector3 euler = node->getTransform()->eulerAngles() - RMXMatrix3MakeEuler(baseModelView);
+//    glRotatef(euler.x, 1,0,0);
+//    glRotatef(euler.y, 0,1,0);
+//    glRotatef(euler.z, 0,0,1);
     
     
 }
