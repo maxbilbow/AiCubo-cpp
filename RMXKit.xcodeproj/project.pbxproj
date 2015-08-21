@@ -10,7 +10,6 @@
 		5008469A1B85EB2E003D2470 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500846991B85EB2E003D2470 /* Cocoa.framework */; };
 		5008469C1B85EB35003D2470 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008469B1B85EB35003D2470 /* CoreVideo.framework */; };
 		5008469E1B85EB4F003D2470 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008469D1B85EB4F003D2470 /* IOKit.framework */; };
-		503A23961B6A1F56008F89F6 /* Tools.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 503A23931B6A1F56008F89F6 /* Tools.hpp */; };
 		503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
 		503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
 		503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */; };
@@ -27,7 +26,6 @@
 		5044D9261B874593003B4AE2 /* RMXMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9171B874593003B4AE2 /* RMXMath.cpp */; };
 		5044D9271B874593003B4AE2 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9191B874593003B4AE2 /* Scene.cpp */; };
 		5044D9281B874593003B4AE2 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D91B1B874593003B4AE2 /* Transform.cpp */; };
-		504ECB071B6B61F100DE1DE8 /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504ECB051B6B61F100DE1DE8 /* Behaviour.cpp */; };
 		5076A84F1B84F1C5008A07AF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84D1B84F1C5008A07AF /* GLKit.framework */; };
 		5076A8501B84F1C5008A07AF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84E1B84F1C5008A07AF /* OpenGL.framework */; };
 		508726AE1B8294E600E631BE /* test2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726AC1B8294E600E631BE /* test2.cpp */; };
@@ -41,7 +39,6 @@
 		6C9EB10E1B710D87003F6156 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EB10C1B710D87003F6156 /* Object.cpp */; };
 		6C9EB10F1B710D87003F6156 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EB10C1B710D87003F6156 /* Object.cpp */; };
 		6C9EB11D1B710DEA003F6156 /* ASingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9EB1121B710DEA003F6156 /* ASingleton.h */; };
-		6C9EB11E1B710DEA003F6156 /* Behaviour.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9EB1131B710DEA003F6156 /* Behaviour.h */; };
 		6C9EB11F1B710DEA003F6156 /* Dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9EB1141B710DEA003F6156 /* Dictionary.h */; };
 		6C9EB1201B710DEA003F6156 /* EventListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9EB1151B710DEA003F6156 /* EventListener.h */; };
 		6C9EB1211B710DEA003F6156 /* LinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9EB1161B710DEA003F6156 /* LinkedList.h */; };
@@ -274,15 +271,6 @@
 		500846991B85EB2E003D2470 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5008469B1B85EB35003D2470 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5008469D1B85EB4F003D2470 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		503A237E1B69FF26008F89F6 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
-		503A237F1B69FF26008F89F6 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
-		503A23811B6A00C3008F89F6 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		503A23821B6A0167008F89F6 /* GLFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLFacade.cpp; sourceTree = "<group>"; };
-		503A23841B6A01A2008F89F6 /* GLFacade.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLFacade.hpp; sourceTree = "<group>"; };
-		503A23851B6A024C008F89F6 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
-		503A23861B6A024C008F89F6 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
-		503A23921B6A1F56008F89F6 /* Tools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tools.cpp; sourceTree = "<group>"; };
-		503A23931B6A1F56008F89F6 /* Tools.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tools.hpp; sourceTree = "<group>"; };
 		503A23C61B6A69BF008F89F6 /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventListener.cpp; sourceTree = "<group>"; };
 		5044D9021B874593003B4AE2 /* Behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Behaviour.cpp; path = RMXEngine/Behaviour.cpp; sourceTree = SOURCE_ROOT; };
 		5044D9031B874593003B4AE2 /* Behaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Behaviour.hpp; path = RMXEngine/Behaviour.hpp; sourceTree = SOURCE_ROOT; };
@@ -311,7 +299,13 @@
 		5044D91A1B874593003B4AE2 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Scene.hpp; path = RMXEngine/Scene.hpp; sourceTree = SOURCE_ROOT; };
 		5044D91B1B874593003B4AE2 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = RMXEngine/Transform.cpp; sourceTree = SOURCE_ROOT; };
 		5044D91C1B874593003B4AE2 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = RMXEngine/Transform.hpp; sourceTree = SOURCE_ROOT; };
-		504ECB051B6B61F100DE1DE8 /* Behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Behaviour.cpp; sourceTree = "<group>"; };
+		5044D9291B874664003B4AE2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = AiCubo/tools/Constants.h; sourceTree = SOURCE_ROOT; };
+		5044D92A1B874664003B4AE2 /* GLFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLFacade.cpp; path = AiCubo/tools/GLFacade.cpp; sourceTree = SOURCE_ROOT; };
+		5044D92B1B874664003B4AE2 /* GLFacade.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLFacade.hpp; path = AiCubo/tools/GLFacade.hpp; sourceTree = SOURCE_ROOT; };
+		5044D92C1B874664003B4AE2 /* Shapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shapes.cpp; path = AiCubo/tools/Shapes.cpp; sourceTree = SOURCE_ROOT; };
+		5044D92D1B874664003B4AE2 /* Shapes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Shapes.hpp; path = AiCubo/tools/Shapes.hpp; sourceTree = SOURCE_ROOT; };
+		5044D92E1B874664003B4AE2 /* Tools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tools.cpp; path = AiCubo/tools/Tools.cpp; sourceTree = SOURCE_ROOT; };
+		5044D92F1B874664003B4AE2 /* Tools.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Tools.hpp; path = AiCubo/tools/Tools.hpp; sourceTree = SOURCE_ROOT; };
 		5076A7B91B84EFBA008A07AF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		5076A7BB1B84EFBA008A07AF /* amd64-mingw32msvc.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = "amd64-mingw32msvc.cmake"; sourceTree = "<group>"; };
 		5076A7BC1B84EFBA008A07AF /* i586-mingw32msvc.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = "i586-mingw32msvc.cmake"; sourceTree = "<group>"; };
@@ -463,15 +457,8 @@
 		50C811351B87446F0001FBFE /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
 		50D026731B69633800895093 /* OpenGLView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLView.cpp; path = ../OpenGLView.cpp; sourceTree = "<group>"; };
 		50D026741B69633800895093 /* OpenGLView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OpenGLView.hpp; path = ../OpenGLView.hpp; sourceTree = "<group>"; };
-		50D0267A1B69653300895093 /* Shapes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shapes.hpp; sourceTree = "<group>"; };
-		50D0267B1B69653300895093 /* Shapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shapes.cpp; sourceTree = "<group>"; };
-		50D0267C1B69653300895093 /* DesktopInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DesktopInput.hpp; sourceTree = "<group>"; };
-		50D0267D1B69653300895093 /* DesktopInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DesktopInput.cpp; sourceTree = "<group>"; };
-		50D0267E1B69653300895093 /* MouseInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MouseInput.hpp; sourceTree = "<group>"; };
-		50D0267F1B69653300895093 /* MouseInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseInput.cpp; sourceTree = "<group>"; };
 		6C9EB10C1B710D87003F6156 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		6C9EB1121B710DEA003F6156 /* ASingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASingleton.h; sourceTree = "<group>"; };
-		6C9EB1131B710DEA003F6156 /* Behaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Behaviour.h; sourceTree = "<group>"; };
 		6C9EB1141B710DEA003F6156 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
 		6C9EB1151B710DEA003F6156 /* EventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListener.h; sourceTree = "<group>"; };
 		6C9EB1161B710DEA003F6156 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
@@ -506,19 +493,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		503A23971B6A2910008F89F6 /* cpp */ = {
+		503A23971B6A2910008F89F6 /* old */ = {
 			isa = PBXGroup;
 			children = (
+				5044D9291B874664003B4AE2 /* Constants.h */,
+				5044D92A1B874664003B4AE2 /* GLFacade.cpp */,
+				5044D92B1B874664003B4AE2 /* GLFacade.hpp */,
+				5044D92C1B874664003B4AE2 /* Shapes.cpp */,
+				5044D92D1B874664003B4AE2 /* Shapes.hpp */,
+				5044D92E1B874664003B4AE2 /* Tools.cpp */,
+				5044D92F1B874664003B4AE2 /* Tools.hpp */,
 				50D026731B69633800895093 /* OpenGLView.cpp */,
-				503A23821B6A0167008F89F6 /* GLFacade.cpp */,
-				503A23851B6A024C008F89F6 /* Camera.cpp */,
-				503A23921B6A1F56008F89F6 /* Tools.cpp */,
-				50D0267B1B69653300895093 /* Shapes.cpp */,
-				50D0267D1B69653300895093 /* DesktopInput.cpp */,
-				50D0267F1B69653300895093 /* MouseInput.cpp */,
-				503A237E1B69FF26008F89F6 /* Window.cpp */,
 			);
-			name = cpp;
+			name = old;
 			sourceTree = "<group>";
 		};
 		503A239D1B6A3014008F89F6 /* cpp */ = {
@@ -530,7 +517,6 @@
 				50C43C501B679E6500AD2FAC /* RMXKit.cpp */,
 				50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */,
 				503A23C61B6A69BF008F89F6 /* EventListener.cpp */,
-				504ECB051B6B61F100DE1DE8 /* Behaviour.cpp */,
 			);
 			name = cpp;
 			sourceTree = "<group>";
@@ -918,16 +904,8 @@
 		50D026771B69653300895093 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				503A23971B6A2910008F89F6 /* cpp */,
-				503A23841B6A01A2008F89F6 /* GLFacade.hpp */,
-				503A23861B6A024C008F89F6 /* Camera.hpp */,
-				503A23931B6A1F56008F89F6 /* Tools.hpp */,
+				503A23971B6A2910008F89F6 /* old */,
 				50D026741B69633800895093 /* OpenGLView.hpp */,
-				50D0267A1B69653300895093 /* Shapes.hpp */,
-				50D0267C1B69653300895093 /* DesktopInput.hpp */,
-				50D0267E1B69653300895093 /* MouseInput.hpp */,
-				503A237F1B69FF26008F89F6 /* Window.hpp */,
-				503A23811B6A00C3008F89F6 /* Constants.h */,
 			);
 			name = headers;
 			path = OSX;
@@ -937,7 +915,6 @@
 			isa = PBXGroup;
 			children = (
 				6C9EB1121B710DEA003F6156 /* ASingleton.h */,
-				6C9EB1131B710DEA003F6156 /* Behaviour.h */,
 				6C9EB1141B710DEA003F6156 /* Dictionary.h */,
 				6C9EB1151B710DEA003F6156 /* EventListener.h */,
 				6C9EB1161B710DEA003F6156 /* LinkedList.h */,
@@ -965,9 +942,7 @@
 				6C9EB11D1B710DEA003F6156 /* ASingleton.h in Headers */,
 				6C9EB1201B710DEA003F6156 /* EventListener.h in Headers */,
 				6C9EB1241B710DEA003F6156 /* Object.h in Headers */,
-				6C9EB11E1B710DEA003F6156 /* Behaviour.h in Headers */,
 				6C9EB1261B710DEA003F6156 /* RMXKitPriv.hpp in Headers */,
-				503A23961B6A1F56008F89F6 /* Tools.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,7 +1260,6 @@
 				5044D91E1B874593003B4AE2 /* Camera.cpp in Sources */,
 				5044D91F1B874593003B4AE2 /* GameController.cpp in Sources */,
 				5044D9241B874593003B4AE2 /* PhysicsBody.cpp in Sources */,
-				504ECB071B6B61F100DE1DE8 /* Behaviour.cpp in Sources */,
 				503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */,
 				5044D9251B874593003B4AE2 /* PhysicsWorld.cpp in Sources */,
 				6C0DA6661B70EB4500A4325E /* main.cpp in Sources */,
