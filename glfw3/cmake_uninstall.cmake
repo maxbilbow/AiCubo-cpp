@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/Users/Max/Gits/RMXKit/cpp/glfw3/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"/Users/Max/Gits/RMXKit/cpp/glfw3/install_manifest.txt\"")
+if (NOT EXISTS "/Users/rattle/Gits/AiCubo-cpp/glfw3/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"/Users/rattle/Gits/AiCubo-cpp/glfw3/install_manifest.txt\"")
 endif()
 
-file(READ "/Users/Max/Gits/RMXKit/cpp/glfw3/install_manifest.txt" files)
+file(READ "/Users/rattle/Gits/AiCubo-cpp/glfw3/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

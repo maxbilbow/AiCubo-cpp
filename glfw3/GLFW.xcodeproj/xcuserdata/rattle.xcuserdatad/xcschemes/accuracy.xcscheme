@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7522A9B039FF44E1A5762C9B"
+               BlueprintIdentifier = "FA12CF52D3DB452CA8C0D340"
                BuildableName = "accuracy.app"
                BlueprintName = "accuracy"
-               ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+               ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7522A9B039FF44E1A5762C9B"
+            BlueprintIdentifier = "FA12CF52D3DB452CA8C0D340"
             BuildableName = "accuracy.app"
             BlueprintName = "accuracy"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7522A9B039FF44E1A5762C9B"
+            BlueprintIdentifier = "FA12CF52D3DB452CA8C0D340"
             BuildableName = "accuracy.app"
             BlueprintName = "accuracy"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7522A9B039FF44E1A5762C9B"
+            BlueprintIdentifier = "FA12CF52D3DB452CA8C0D340"
             BuildableName = "accuracy.app"
             BlueprintName = "accuracy"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

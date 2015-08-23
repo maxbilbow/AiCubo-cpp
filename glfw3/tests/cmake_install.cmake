@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Max/Gits/RMXKit/cpp/glfw/tests
+# Install script for directory: /Users/rattle/Gits/AiCubo-cpp/glfw/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -29,8 +29,10 @@
 		5076A84F1B84F1C5008A07AF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84D1B84F1C5008A07AF /* GLKit.framework */; };
 		5076A8501B84F1C5008A07AF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84E1B84F1C5008A07AF /* OpenGL.framework */; };
 		508726AE1B8294E600E631BE /* test2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726AC1B8294E600E631BE /* test2.cpp */; };
-		50C811921B87447F0001FBFE /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C811591B8744700001FBFE /* libglfw3.a */; };
-		6C0DA6661B70EB4500A4325E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
+		6C0A6BCB1B8781F20046AB98 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C0A6B941B8781CC0046AB98 /* libglfw3.a */; };
+		6C0A6BD01B8783490046AB98 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C0A6B941B8781CC0046AB98 /* libglfw3.a */; };
+		6C0A6BE41B8788E90046AB98 /* simple.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C0A6BD71B8787630046AB98 /* simple.c */; };
+		6C0A6BE71B8790010046AB98 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
 		6C0DA6671B70EB9B00A4325E /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
 		6C0DA6681B70EB9B00A4325E /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
 		6C0DA66A1B70EB9B00A4325E /* RMXKit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C501B679E6500AD2FAC /* RMXKit.cpp */; };
@@ -50,207 +52,214 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		50C811581B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6B931B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 996AC33FC54B4C819772D8C6;
+			remoteGlobalIDString = 9FA11350B14547FD80AC7C2F;
 			remoteInfo = glfw;
 		};
-		50C8115A1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6B951B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 6178F54F8FA34FBFA3BB38DF;
+			remoteGlobalIDString = 06D0C2D5B9FE42F89C08C945;
 			remoteInfo = Boing;
 		};
-		50C8115C1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6B971B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 5F1C0B02C4664C1F86A951DA;
+			remoteGlobalIDString = 7393A49E88804CC9BF7FE194;
 			remoteInfo = Gears;
 		};
-		50C8115E1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6B991B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = B5AA1D814DB641EF8F89D95E;
+			remoteGlobalIDString = FE5B317742614BBFB62BE28B;
 			remoteInfo = Heightmap;
 		};
-		50C811601B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6B9B1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 0F75809C91344D9F8173BE44;
+			remoteGlobalIDString = D6C72F86FFCB4872B5528CFC;
 			remoteInfo = Particles;
 		};
-		50C811621B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6B9D1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D540C05B477A4FE69E6DBD65;
+			remoteGlobalIDString = FE3BB8A6E9C94E97AFD23765;
 			remoteInfo = Simple;
 		};
-		50C811641B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6B9F1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1C6E12B6D57245DE86A834D3;
+			remoteGlobalIDString = 361C8FDC40464F618B26119F;
 			remoteInfo = SplitView;
 		};
-		50C811661B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BA11B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 84125CCF158842A7A378DCAA;
+			remoteGlobalIDString = 55CA4497B3F44C64AFE86D3F;
 			remoteInfo = Wave;
 		};
-		50C811681B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BA31B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 6CD1DE2CD69C4AF8864360D9;
+			remoteGlobalIDString = 0DE6898DA7A6408E9DC1D324;
 			remoteInfo = accuracy;
 		};
-		50C8116A1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BA51B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 079E23018A6941CFB654D803;
+			remoteGlobalIDString = 9CBDB97214304CCF9B3E6FE2;
 			remoteInfo = clipboard;
 		};
-		50C8116C1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BA71B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = C4E08048EC5649428B373C18;
+			remoteGlobalIDString = F8F684F9ABFE47A395F9678D;
 			remoteInfo = cursor;
 		};
-		50C8116E1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BA91B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = DD6B86A015CB43F98445A054;
+			remoteGlobalIDString = 6879093B8A3B4A9196027F19;
 			remoteInfo = cursoranim;
 		};
-		50C811701B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BAB1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BE76A0EE3CB04932A6C4C59C;
+			remoteGlobalIDString = 1246B53D337A4060BAC6AB9D;
 			remoteInfo = defaults;
 		};
-		50C811721B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BAD1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = CFBDDB2FBF5041FFB5F962DA;
+			remoteGlobalIDString = 99BECD3B0C4D4D9282F82BF3;
 			remoteInfo = empty;
 		};
-		50C811741B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BAF1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 2D3E4797E0AD45B3A4D5C0A3;
+			remoteGlobalIDString = 4447C4B69C9640E38F72DB77;
 			remoteInfo = events;
 		};
-		50C811761B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BB11B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9BCFC6CBAE474439BAD8B544;
+			remoteGlobalIDString = FA0A22B4A6964A8E8275E05C;
 			remoteInfo = fsaa;
 		};
-		50C811781B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BB31B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 57F32E65185D44E690D20CE4;
+			remoteGlobalIDString = 64887EF84DD54121BECA1278;
 			remoteInfo = gamma;
 		};
-		50C8117A1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BB51B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 771D162A24E7451389447165;
+			remoteGlobalIDString = 8E5A4E6C676A42928EE64470;
 			remoteInfo = glfwinfo;
 		};
-		50C8117C1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BB71B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8B4C71EB9CC24230A848E71E;
+			remoteGlobalIDString = 4728581C1BAF4B0A934B82ED;
 			remoteInfo = iconify;
 		};
-		50C8117E1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BB91B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = AFC9ADC27F7143579BC9A2BD;
+			remoteGlobalIDString = 0D0420B18A0943B79FE28C46;
 			remoteInfo = joysticks;
 		};
-		50C811801B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BBB1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = A44E6E919B254E3198665451;
+			remoteGlobalIDString = B9A8EB08D9AE4576A73AC739;
 			remoteInfo = monitors;
 		};
-		50C811821B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BBD1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = CA23E4DC2592404BBC807781;
+			remoteGlobalIDString = 465199B61EBB43E9901119FA;
 			remoteInfo = peter;
 		};
-		50C811841B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BBF1B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9C6DF259E2B945ACA38F291D;
+			remoteGlobalIDString = 2FA82A0AB43D4EF1A5C7427E;
 			remoteInfo = reopen;
 		};
-		50C811861B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BC11B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = A79EF03780534CE19DAAE789;
+			remoteGlobalIDString = 5B7433481A484F9FA8361FB7;
 			remoteInfo = sharing;
 		};
-		50C811881B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BC31B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 82B0764A1CE24413A39CAD15;
+			remoteGlobalIDString = C570D9B2E87942958E46FC47;
 			remoteInfo = tearing;
 		};
-		50C8118A1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BC51B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9C2817C8FB66452296C09D23;
+			remoteGlobalIDString = ECFFD8AC473741D69F0D9A44;
 			remoteInfo = threads;
 		};
-		50C8118C1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BC71B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 30FAC0D390C447AAB7E02A4F;
+			remoteGlobalIDString = D6EC1BD60F594BAEAFE55EDF;
 			remoteInfo = title;
 		};
-		50C8118E1B8744700001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BC91B8781CC0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BB3AAEF3867742C0A996A621;
+			remoteGlobalIDString = 27BA980BA3B94646A1F5F977;
 			remoteInfo = windows;
 		};
-		50C811901B8744790001FBFE /* PBXContainerItemProxy */ = {
+		6C0A6BCC1B8781FE0046AB98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 50B02DD8DBC64912945DF1E2;
+			remoteGlobalIDString = 1FC08ADC3CF544A9AA545181;
+			remoteInfo = glfw;
+		};
+		6C0A6BCE1B8783450046AB98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FC08ADC3CF544A9AA545181;
 			remoteInfo = glfw;
 		};
 /* End PBXContainerItemProxy section */
@@ -453,7 +462,15 @@
 		50C43C5C1B679E9200AD2FAC /* AiCubo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AiCubo; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C43C5E1B679E9200AD2FAC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NotificationCenter.cpp; sourceTree = "<group>"; };
-		50C811351B87446F0001FBFE /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
+		6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
+		6C0A6BD21B8787630046AB98 /* boing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = boing.c; sourceTree = "<group>"; };
+		6C0A6BD31B8787630046AB98 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		6C0A6BD41B8787630046AB98 /* gears.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gears.c; sourceTree = "<group>"; };
+		6C0A6BD51B8787630046AB98 /* heightmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = heightmap.c; sourceTree = "<group>"; };
+		6C0A6BD61B8787630046AB98 /* particles.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = particles.c; sourceTree = "<group>"; };
+		6C0A6BD71B8787630046AB98 /* simple.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = simple.c; sourceTree = "<group>"; };
+		6C0A6BD81B8787630046AB98 /* splitview.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = splitview.c; sourceTree = "<group>"; };
+		6C0A6BD91B8787630046AB98 /* wave.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wave.c; sourceTree = "<group>"; };
 		6C9EB10C1B710D87003F6156 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		6C9EB1121B710DEA003F6156 /* ASingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASingleton.h; sourceTree = "<group>"; };
 		6C9EB1141B710DEA003F6156 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
@@ -471,6 +488,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C0A6BCB1B8781F20046AB98 /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +496,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50C811921B87447F0001FBFE /* libglfw3.a in Frameworks */,
+				6C0A6BD01B8783490046AB98 /* libglfw3.a in Frameworks */,
 				5008469E1B85EB4F003D2470 /* IOKit.framework in Frameworks */,
 				5008469C1B85EB35003D2470 /* CoreVideo.framework in Frameworks */,
 				5008469A1B85EB2E003D2470 /* Cocoa.framework in Frameworks */,
@@ -809,7 +827,7 @@
 		50C43C3D1B679E6500AD2FAC = {
 			isa = PBXGroup;
 			children = (
-				50C811351B87446F0001FBFE /* GLFW.xcodeproj */,
+				6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */,
 				50C43C4B1B679E6500AD2FAC /* RMXKit */,
 				50C43C5D1B679E9200AD2FAC /* AiCubo */,
 				503A23971B6A2910008F89F6 /* old */,
@@ -857,45 +875,61 @@
 		50C43C5D1B679E9200AD2FAC /* AiCubo */ = {
 			isa = PBXGroup;
 			children = (
+				6C0A6BD11B8787630046AB98 /* examples */,
 				50C43C5E1B679E9200AD2FAC /* main.cpp */,
 				508726BC1B8359D900E631BE /* engine */,
 			);
 			path = AiCubo;
 			sourceTree = "<group>";
 		};
-		50C811361B87446F0001FBFE /* Products */ = {
+		6C0A6B711B8781CC0046AB98 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				50C811591B8744700001FBFE /* libglfw3.a */,
-				50C8115B1B8744700001FBFE /* Boing.app */,
-				50C8115D1B8744700001FBFE /* Gears.app */,
-				50C8115F1B8744700001FBFE /* Heightmap.app */,
-				50C811611B8744700001FBFE /* Particles.app */,
-				50C811631B8744700001FBFE /* Simple.app */,
-				50C811651B8744700001FBFE /* SplitView.app */,
-				50C811671B8744700001FBFE /* Wave.app */,
-				50C811691B8744700001FBFE /* accuracy.app */,
-				50C8116B1B8744700001FBFE /* clipboard */,
-				50C8116D1B8744700001FBFE /* cursor */,
-				50C8116F1B8744700001FBFE /* cursoranim.app */,
-				50C811711B8744700001FBFE /* defaults */,
-				50C811731B8744700001FBFE /* empty.app */,
-				50C811751B8744700001FBFE /* events */,
-				50C811771B8744700001FBFE /* fsaa */,
-				50C811791B8744700001FBFE /* gamma */,
-				50C8117B1B8744700001FBFE /* glfwinfo */,
-				50C8117D1B8744700001FBFE /* iconify */,
-				50C8117F1B8744700001FBFE /* joysticks */,
-				50C811811B8744700001FBFE /* monitors */,
-				50C811831B8744700001FBFE /* peter */,
-				50C811851B8744700001FBFE /* reopen */,
-				50C811871B8744700001FBFE /* sharing.app */,
-				50C811891B8744700001FBFE /* tearing.app */,
-				50C8118B1B8744700001FBFE /* threads.app */,
-				50C8118D1B8744700001FBFE /* title.app */,
-				50C8118F1B8744700001FBFE /* windows.app */,
+				6C0A6B941B8781CC0046AB98 /* libglfw3.a */,
+				6C0A6B961B8781CC0046AB98 /* Boing */,
+				6C0A6B981B8781CC0046AB98 /* Gears */,
+				6C0A6B9A1B8781CC0046AB98 /* Heightmap */,
+				6C0A6B9C1B8781CC0046AB98 /* Particles */,
+				6C0A6B9E1B8781CC0046AB98 /* Simple */,
+				6C0A6BA01B8781CC0046AB98 /* SplitView */,
+				6C0A6BA21B8781CC0046AB98 /* Wave */,
+				6C0A6BA41B8781CC0046AB98 /* accuracy */,
+				6C0A6BA61B8781CC0046AB98 /* clipboard */,
+				6C0A6BA81B8781CC0046AB98 /* cursor */,
+				6C0A6BAA1B8781CC0046AB98 /* cursoranim */,
+				6C0A6BAC1B8781CC0046AB98 /* defaults */,
+				6C0A6BAE1B8781CC0046AB98 /* empty */,
+				6C0A6BB01B8781CC0046AB98 /* events */,
+				6C0A6BB21B8781CC0046AB98 /* fsaa */,
+				6C0A6BB41B8781CC0046AB98 /* gamma */,
+				6C0A6BB61B8781CC0046AB98 /* glfwinfo */,
+				6C0A6BB81B8781CC0046AB98 /* iconify */,
+				6C0A6BBA1B8781CC0046AB98 /* joysticks */,
+				6C0A6BBC1B8781CC0046AB98 /* monitors */,
+				6C0A6BBE1B8781CC0046AB98 /* peter */,
+				6C0A6BC01B8781CC0046AB98 /* reopen */,
+				6C0A6BC21B8781CC0046AB98 /* sharing */,
+				6C0A6BC41B8781CC0046AB98 /* tearing */,
+				6C0A6BC61B8781CC0046AB98 /* threads */,
+				6C0A6BC81B8781CC0046AB98 /* title */,
+				6C0A6BCA1B8781CC0046AB98 /* windows */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6C0A6BD11B8787630046AB98 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				6C0A6BD21B8787630046AB98 /* boing.c */,
+				6C0A6BD31B8787630046AB98 /* CMakeLists.txt */,
+				6C0A6BD41B8787630046AB98 /* gears.c */,
+				6C0A6BD51B8787630046AB98 /* heightmap.c */,
+				6C0A6BD61B8787630046AB98 /* particles.c */,
+				6C0A6BD71B8787630046AB98 /* simple.c */,
+				6C0A6BD81B8787630046AB98 /* splitview.c */,
+				6C0A6BD91B8787630046AB98 /* wave.c */,
+			);
+			path = examples;
 			sourceTree = "<group>";
 		};
 		6C9EB1111B710DEA003F6156 /* Headers */ = {
@@ -947,6 +981,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6C0A6BCD1B8781FE0046AB98 /* PBXTargetDependency */,
 			);
 			name = RMXKit;
 			productName = RMXKit;
@@ -964,7 +999,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				50C811911B8744790001FBFE /* PBXTargetDependency */,
+				6C0A6BCF1B8783450046AB98 /* PBXTargetDependency */,
 			);
 			name = AiCubo;
 			productName = AiCubo;
@@ -1005,8 +1040,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 50C811361B87446F0001FBFE /* Products */;
-					ProjectRef = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+					ProductGroup = 6C0A6B711B8781CC0046AB98 /* Products */;
+					ProjectRef = 6C0A6B701B8781CC0046AB98 /* GLFW.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1018,200 +1053,215 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		50C811591B8744700001FBFE /* libglfw3.a */ = {
+		6C0A6B941B8781CC0046AB98 /* libglfw3.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libglfw3.a;
-			remoteRef = 50C811581B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6B931B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8115B1B8744700001FBFE /* Boing.app */ = {
+		6C0A6B961B8781CC0046AB98 /* Boing */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = Boing;
 			path = Boing.app;
-			remoteRef = 50C8115A1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6B951B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8115D1B8744700001FBFE /* Gears.app */ = {
+		6C0A6B981B8781CC0046AB98 /* Gears */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = Gears;
 			path = Gears.app;
-			remoteRef = 50C8115C1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6B971B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8115F1B8744700001FBFE /* Heightmap.app */ = {
+		6C0A6B9A1B8781CC0046AB98 /* Heightmap */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = Heightmap;
 			path = Heightmap.app;
-			remoteRef = 50C8115E1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6B991B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811611B8744700001FBFE /* Particles.app */ = {
+		6C0A6B9C1B8781CC0046AB98 /* Particles */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = Particles;
 			path = Particles.app;
-			remoteRef = 50C811601B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6B9B1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811631B8744700001FBFE /* Simple.app */ = {
+		6C0A6B9E1B8781CC0046AB98 /* Simple */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = Simple;
 			path = Simple.app;
-			remoteRef = 50C811621B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6B9D1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811651B8744700001FBFE /* SplitView.app */ = {
+		6C0A6BA01B8781CC0046AB98 /* SplitView */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = SplitView;
 			path = SplitView.app;
-			remoteRef = 50C811641B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6B9F1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811671B8744700001FBFE /* Wave.app */ = {
+		6C0A6BA21B8781CC0046AB98 /* Wave */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = Wave;
 			path = Wave.app;
-			remoteRef = 50C811661B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BA11B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811691B8744700001FBFE /* accuracy.app */ = {
+		6C0A6BA41B8781CC0046AB98 /* accuracy */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = accuracy;
 			path = accuracy.app;
-			remoteRef = 50C811681B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BA31B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8116B1B8744700001FBFE /* clipboard */ = {
+		6C0A6BA61B8781CC0046AB98 /* clipboard */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = clipboard;
-			remoteRef = 50C8116A1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BA51B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8116D1B8744700001FBFE /* cursor */ = {
+		6C0A6BA81B8781CC0046AB98 /* cursor */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = cursor;
-			remoteRef = 50C8116C1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BA71B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8116F1B8744700001FBFE /* cursoranim.app */ = {
+		6C0A6BAA1B8781CC0046AB98 /* cursoranim */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = cursoranim;
 			path = cursoranim.app;
-			remoteRef = 50C8116E1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BA91B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811711B8744700001FBFE /* defaults */ = {
+		6C0A6BAC1B8781CC0046AB98 /* defaults */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = defaults;
-			remoteRef = 50C811701B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BAB1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811731B8744700001FBFE /* empty.app */ = {
+		6C0A6BAE1B8781CC0046AB98 /* empty */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = empty;
 			path = empty.app;
-			remoteRef = 50C811721B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BAD1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811751B8744700001FBFE /* events */ = {
+		6C0A6BB01B8781CC0046AB98 /* events */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = events;
-			remoteRef = 50C811741B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BAF1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811771B8744700001FBFE /* fsaa */ = {
+		6C0A6BB21B8781CC0046AB98 /* fsaa */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = fsaa;
-			remoteRef = 50C811761B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BB11B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811791B8744700001FBFE /* gamma */ = {
+		6C0A6BB41B8781CC0046AB98 /* gamma */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = gamma;
-			remoteRef = 50C811781B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BB31B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8117B1B8744700001FBFE /* glfwinfo */ = {
+		6C0A6BB61B8781CC0046AB98 /* glfwinfo */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = glfwinfo;
-			remoteRef = 50C8117A1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BB51B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8117D1B8744700001FBFE /* iconify */ = {
+		6C0A6BB81B8781CC0046AB98 /* iconify */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = iconify;
-			remoteRef = 50C8117C1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BB71B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8117F1B8744700001FBFE /* joysticks */ = {
+		6C0A6BBA1B8781CC0046AB98 /* joysticks */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = joysticks;
-			remoteRef = 50C8117E1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BB91B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811811B8744700001FBFE /* monitors */ = {
+		6C0A6BBC1B8781CC0046AB98 /* monitors */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = monitors;
-			remoteRef = 50C811801B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BBB1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811831B8744700001FBFE /* peter */ = {
+		6C0A6BBE1B8781CC0046AB98 /* peter */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = peter;
-			remoteRef = 50C811821B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BBD1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811851B8744700001FBFE /* reopen */ = {
+		6C0A6BC01B8781CC0046AB98 /* reopen */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = reopen;
-			remoteRef = 50C811841B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BBF1B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811871B8744700001FBFE /* sharing.app */ = {
+		6C0A6BC21B8781CC0046AB98 /* sharing */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = sharing;
 			path = sharing.app;
-			remoteRef = 50C811861B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BC11B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C811891B8744700001FBFE /* tearing.app */ = {
+		6C0A6BC41B8781CC0046AB98 /* tearing */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = tearing;
 			path = tearing.app;
-			remoteRef = 50C811881B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BC31B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8118B1B8744700001FBFE /* threads.app */ = {
+		6C0A6BC61B8781CC0046AB98 /* threads */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = threads;
 			path = threads.app;
-			remoteRef = 50C8118A1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BC51B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8118D1B8744700001FBFE /* title.app */ = {
+		6C0A6BC81B8781CC0046AB98 /* title */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = title;
 			path = title.app;
-			remoteRef = 50C8118C1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BC71B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50C8118F1B8744700001FBFE /* windows.app */ = {
+		6C0A6BCA1B8781CC0046AB98 /* windows */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
+			fileType = "compiled.mach-o.executable";
+			name = windows;
 			path = windows.app;
-			remoteRef = 50C8118E1B8744700001FBFE /* PBXContainerItemProxy */;
+			remoteRef = 6C0A6BC91B8781CC0046AB98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1241,6 +1291,7 @@
 				5044D9211B874593003B4AE2 /* GameView.cpp in Sources */,
 				6C9EB10F1B710D87003F6156 /* Object.cpp in Sources */,
 				5044D91D1B874593003B4AE2 /* Behaviour.cpp in Sources */,
+				6C0A6BE41B8788E90046AB98 /* simple.c in Sources */,
 				5044D9271B874593003B4AE2 /* Scene.cpp in Sources */,
 				5044D9221B874593003B4AE2 /* Geometry.cpp in Sources */,
 				5044D9281B874593003B4AE2 /* Transform.cpp in Sources */,
@@ -1249,9 +1300,9 @@
 				5044D9241B874593003B4AE2 /* PhysicsBody.cpp in Sources */,
 				503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */,
 				5044D9251B874593003B4AE2 /* PhysicsWorld.cpp in Sources */,
-				6C0DA6661B70EB4500A4325E /* main.cpp in Sources */,
 				503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */,
 				5044D9261B874593003B4AE2 /* RMXMath.cpp in Sources */,
+				6C0A6BE71B8790010046AB98 /* main.cpp in Sources */,
 				5044D9201B874593003B4AE2 /* GameNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1259,10 +1310,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		50C811911B8744790001FBFE /* PBXTargetDependency */ = {
+		6C0A6BCD1B8781FE0046AB98 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = glfw;
-			targetProxy = 50C811901B8744790001FBFE /* PBXContainerItemProxy */;
+			targetProxy = 6C0A6BCC1B8781FE0046AB98 /* PBXContainerItemProxy */;
+		};
+		6C0A6BCF1B8783450046AB98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = glfw;
+			targetProxy = 6C0A6BCE1B8783450046AB98 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1302,6 +1358,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/glfw/include",
+					"$(SRCROOT)/glfw/deps",
+					opt/local/include,
+					usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					opt/local/lib,
+					usr/local/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1338,6 +1404,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/glfw/include",
+					"$(SRCROOT)/glfw/deps",
+					opt/local/include,
+					usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					opt/local/lib,
+					usr/local/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -1352,7 +1428,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/glfw/deps",
+					"$(SRCROOT)/glfw/include",
+					opt/local/include,
+					usr/local/include,
+				);
 				INFOPLIST_FILE = RMXKit/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					usr/local/lib,
+					opt/local/lib,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.RMXKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1367,7 +1453,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/glfw/deps",
+					"$(SRCROOT)/glfw/include",
+					opt/local/include,
+					usr/local/include,
+				);
 				INFOPLIST_FILE = RMXKit/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					usr/local/lib,
+					opt/local/lib,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.RMXKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

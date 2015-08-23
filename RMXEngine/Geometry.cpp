@@ -31,36 +31,38 @@ void Floor::drawWithScale(float x, float y, float z) {
 //private ByteBuffer _elements;
 //private ShortBuffer _indexData;
 //private int _e = 0;
-Geometry::Geometry(int size) {
-    _vertexData = new int[sizeof(int) * size];
-    _indexData = new int[sizeof(int) * size / 3];
+Geometry::Geometry(int numberOfVertices) {
+    _vertexData = new Vertex[sizeof(Vertex) * numberOfVertices];
+    _indexData = new GLuint[sizeof(Vertex) * numberOfVertices / 3];
+    _numberOfVertices = numberOfVertices;
+//    this->vertexMode = true;
 }
 
-int * Geometry::vertexData() {
+Geometry::Geometry() {
+//    this->vertexMode = false;
+}
+
+Vertex * Geometry::vertexData() {
     return _vertexData;
 }
 
-int * Geometry::indexData() {
+GLuint * Geometry::indexData() {
     return _indexData;
 }
-void Geometry::addVertex(Vector3 v) {
-    this->addVertex(v.x, v.y, v.z);
+void Geometry::addVertex(float x, float y, float z, float r, float g, float b) {
+    this->addVertex(Vertex(x,y,z,r,b,g));
 }
-
-void Geometry::addVertex(float x, float y, float z)  {
-    if (_count >= _size)
+void Geometry::addVertex(Vertex v)  {
+    if (_count >= _numberOfVertices)
         throw new invalid_argument("ERROR: TOO MANY VERTICES");
-    _vertexData[_count++] = x;
-    _vertexData[_count++] = y;
-    _vertexData[_count++] = z;
-    
+    _vertexData[_count++] = v;
 }
 
 
 void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
     Matrix4 model = node->getTransform()->worldMatrix() * base;
 
-//    EulerAngles modelA = RMXMatrix3MakeEuler(model);
+    EulerAngles modelA = RMXMatrix3MakeEuler(model);
 //    modelA /= PI_OVER_180;
     
     glPushMatrix();
@@ -73,36 +75,35 @@ void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
                  );
     
 
-//    glRotatef(modelA.x, 1,0,0);
-//    glRotatef(modelA.y, 0,1,0);
-//    glRotatef(modelA.z, 0,0,1);
+    glRotatef(modelA.x, 1,0,0);
+    glRotatef(modelA.y, 0,1,0);
+    glRotatef(modelA.z, 0,0,1);
+
     
 }
 
 
-//	private void enableTexture() {
-//		 glEnable(GL_TEXTURE_2D); //Enable texture
-////         glBindTexture(GL_TEXTURE_2D,text2D);//Binding texture
-//	}
 
 void Geometry::popMatrix() {
     //		 glDisable(GL_TEXTURE_2D);//TODO perhaps?
     
     glPopMatrix();
 }
-void Geometry::render(GameNode * node, Matrix4 rootTransform) {
-    if (vertexMode) {
-        cout << "WARNING: Vertex Mode enabled but may not be fully implemented yet." << endl;
-        return;
-    }
-    //		 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //		         glLoadIdentity();
-    
+
+
+void Geometry::render(GameNode * node, Matrix4 rootTransform)
+{
     this->pushMatrix(node, rootTransform);
     float X = node->getTransform()->scale().x;
     float Y = node->getTransform()->scale().y;
     float Z = node->getTransform()->scale().z;
-    drawWithScale(X, Y, Z);
+    if (VERTEX_MODE) {
+        glVertexPointer(3, GL_FLOAT, sizeof(Vertex), _vertexData);
+        glColorPointer(3, GL_FLOAT, sizeof(Vertex), &_vertexData[0].r); // Pointer to the first color
+        glPointSize(2.0);
+        glDrawElements(GL_QUADS, _numberOfVertices * sizeof(Vertex), GL_UNSIGNED_INT, _indexData);
+    } else
+        this->drawWithScale(X, Y, Z);
     
     this->popMatrix();
 }
@@ -117,48 +118,14 @@ void _render() {
 
 
 
-    /*Bugger.logAndPrint("Cube with " + 6*3*4 + " elements", true);
-     _cube = new Geometry(6 * 3 * 4);
-     _cube.addVertex( 1.0f, 1.0f,-1.0f);
-     _cube.addVertex(-1.0f, 1.0f,-1.0f);
-     _cube.addVertex(-1.0f, 1.0f, 1.0f);
-     _cube.addVertex( 1.0f, 1.0f, 1.0f);
-     //            glColor3f(1.0f,0.5f,0.0f);
-     _cube.addVertex( 1.0f,-1.0f, 1.0f);
-     _cube.addVertex(-1.0f,-1.0f, 1.0f);
-     _cube.addVertex(-1.0f,-1.0f,-1.0f);
-     _cube.addVertex( 1.0f,-1.0f,-1.0f);
-     //            glColor3f(1.0f,0.0f,0.0f);
-     _cube.addVertex( 1.0f, 1.0f, 1.0f);
-     _cube.addVertex(-1.0f, 1.0f, 1.0f);
-     _cube.addVertex(-1.0f,-1.0f, 1.0f);
-     _cube.addVertex( 1.0f,-1.0f, 1.0f);
-     //            glColor3f(1.0f,1.0f,0.0f);
-     _cube.addVertex( 1.0f,-1.0f,-1.0f);
-     _cube.addVertex(-1.0f,-1.0f,-1.0f);
-     _cube.addVertex(-1.0f, 1.0f,-1.0f);
-     _cube.addVertex( 1.0f, 1.0f,-1.0f);
-     //            glColor3f(0.0f,0.0f,1.0f);
-     _cube.addVertex(-1.0f, 1.0f, 1.0f);
-     _cube.addVertex(-1.0f, 1.0f,-1.0f);
-     _cube.addVertex(-1.0f,-1.0f,-1.0f);
-     _cube.addVertex(-1.0f,-1.0f, 1.0f);
-     //            glColor3f(1.0f,0.0f,1.0f);
-     _cube.addVertex( 1.0f, 1.0f,-1.0f);
-     _cube.addVertex( 1.0f, 1.0f, 1.0f);
-     _cube.addVertex( 1.0f,-1.0f, 1.0f);
-     _cube.addVertex( 1.0f,-1.0f,-1.0f);
-     _cube.prepare();
-     }*/
-//    return _cube;
-//}
 
-class ACube : public Geometry {
-
+class ACube : public Geometry
+{
 public:
     ACube():Geometry(6*3*4){}
 protected:
-    void drawWithScale(float X, float Y, float Z)override {
+    void drawWithScale(float X, float Y, float Z)override
+    {
         glBegin(GL_QUADS);
         glColor3f(1.0f,1.0f,0.0f);
         glVertex3f( X, Y,-Z);
@@ -195,10 +162,49 @@ protected:
 
 };
 
+
+Geometry * MakeVertexCube()
+{
+    Geometry _cube = ACube();//Geometry(6 * 3 * 4);
+    _cube.addVertex( 1.0f, 1.0f,-1.0f, 1.0f,0.5f,0.0f);
+    _cube.addVertex(-1.0f, 1.0f,-1.0f, 1.0f,0.5f,0.0f);
+    _cube.addVertex(-1.0f, 1.0f, 1.0f, 1.0f,0.5f,0.0f);
+    _cube.addVertex( 1.0f, 1.0f, 1.0f, 1.0f,0.5f,0.0f);
+    
+    _cube.addVertex( 1.0f,-1.0f, 1.0f, 1.0f,0.0f,0.0f);
+    _cube.addVertex(-1.0f,-1.0f, 1.0f, 1.0f,0.0f,0.0f);
+    _cube.addVertex(-1.0f,-1.0f,-1.0f, 1.0f,0.0f,0.0f);
+    _cube.addVertex( 1.0f,-1.0f,-1.0f, 1.0f,0.0f,0.0f);
+    
+    _cube.addVertex( 1.0f, 1.0f, 1.0f, 1.0f,0.0f,0.0f);
+    _cube.addVertex(-1.0f, 1.0f, 1.0f, 1.0f,0.0f,0.0f);
+    _cube.addVertex(-1.0f,-1.0f, 1.0f, 1.0f,0.0f,0.0f);
+    _cube.addVertex( 1.0f,-1.0f, 1.0f, 1.0f,0.0f,0.0f);
+    
+    _cube.addVertex( 1.0f,-1.0f,-1.0f, 1.0f,1.0f,0.0f);
+    _cube.addVertex(-1.0f,-1.0f,-1.0f, 1.0f,1.0f,0.0f);
+    _cube.addVertex(-1.0f, 1.0f,-1.0f, 1.0f,1.0f,0.0f);
+    _cube.addVertex( 1.0f, 1.0f,-1.0f, 1.0f,1.0f,0.0f);
+    
+    _cube.addVertex(-1.0f, 1.0f, 1.0f, 0.0f,0.0f,1.0f);
+    _cube.addVertex(-1.0f, 1.0f,-1.0f, 0.0f,0.0f,1.0f);
+    _cube.addVertex(-1.0f,-1.0f,-1.0f, 0.0f,0.0f,1.0f);
+    _cube.addVertex(-1.0f,-1.0f, 1.0f, 0.0f,0.0f,1.0f);
+    
+    _cube.addVertex( 1.0f, 1.0f,-1.0f, 1.0f,0.0f,1.0f);
+    _cube.addVertex( 1.0f, 1.0f, 1.0f, 1.0f,0.0f,1.0f);
+    _cube.addVertex( 1.0f,-1.0f, 1.0f, 1.0f,0.0f,1.0f);
+    _cube.addVertex( 1.0f,-1.0f,-1.0f, 1.0f,0.0f,1.0f);
+    
+    Geometry * g = &_cube;
+    return g;
+    
+}
+
 Geometry * Geometry::_cube = null;
 Geometry * Geometry::Cube() {
     if (_cube ==   null)
-        _cube = new ACube();
+        _cube = MakeVertexCube();//new ACube();
     return _cube;
 }
 

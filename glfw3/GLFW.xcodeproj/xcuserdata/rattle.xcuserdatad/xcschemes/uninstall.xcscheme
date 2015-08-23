@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "16F18F47244C4D51BC8EF823"
+               BlueprintIdentifier = "1487280EB78A40C8BBFEE1C6"
                BuildableName = "uninstall"
                BlueprintName = "uninstall"
-               ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+               ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "16F18F47244C4D51BC8EF823"
+            BlueprintIdentifier = "1487280EB78A40C8BBFEE1C6"
             BuildableName = "uninstall"
             BlueprintName = "uninstall"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "16F18F47244C4D51BC8EF823"
+            BlueprintIdentifier = "1487280EB78A40C8BBFEE1C6"
             BuildableName = "uninstall"
             BlueprintName = "uninstall"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

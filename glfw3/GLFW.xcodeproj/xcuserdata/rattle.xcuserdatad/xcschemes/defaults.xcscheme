@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05DE5A51FE6E42719EFDD4E0"
+               BlueprintIdentifier = "EF5D544D6AE94594A5B4B6E5"
                BuildableName = "defaults"
                BlueprintName = "defaults"
-               ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+               ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05DE5A51FE6E42719EFDD4E0"
+            BlueprintIdentifier = "EF5D544D6AE94594A5B4B6E5"
             BuildableName = "defaults"
             BlueprintName = "defaults"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05DE5A51FE6E42719EFDD4E0"
+            BlueprintIdentifier = "EF5D544D6AE94594A5B4B6E5"
             BuildableName = "defaults"
             BlueprintName = "defaults"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05DE5A51FE6E42719EFDD4E0"
+            BlueprintIdentifier = "EF5D544D6AE94594A5B4B6E5"
             BuildableName = "defaults"
             BlueprintName = "defaults"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

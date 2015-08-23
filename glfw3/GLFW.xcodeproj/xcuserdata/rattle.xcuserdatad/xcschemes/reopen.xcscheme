@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB2B21EE18DC4A4189D3DB0F"
+               BlueprintIdentifier = "4237E88B8B0D4DB78E79FF1A"
                BuildableName = "reopen"
                BlueprintName = "reopen"
-               ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+               ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB2B21EE18DC4A4189D3DB0F"
+            BlueprintIdentifier = "4237E88B8B0D4DB78E79FF1A"
             BuildableName = "reopen"
             BlueprintName = "reopen"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB2B21EE18DC4A4189D3DB0F"
+            BlueprintIdentifier = "4237E88B8B0D4DB78E79FF1A"
             BuildableName = "reopen"
             BlueprintName = "reopen"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB2B21EE18DC4A4189D3DB0F"
+            BlueprintIdentifier = "4237E88B8B0D4DB78E79FF1A"
             BuildableName = "reopen"
             BlueprintName = "reopen"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

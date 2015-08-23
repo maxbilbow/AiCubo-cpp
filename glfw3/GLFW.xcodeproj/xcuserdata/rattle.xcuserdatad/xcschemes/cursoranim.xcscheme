@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F38DA55959494185AD1EF5F1"
+               BlueprintIdentifier = "E59CC6B740D5419E8A015DD2"
                BuildableName = "cursoranim.app"
                BlueprintName = "cursoranim"
-               ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+               ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F38DA55959494185AD1EF5F1"
+            BlueprintIdentifier = "E59CC6B740D5419E8A015DD2"
             BuildableName = "cursoranim.app"
             BlueprintName = "cursoranim"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F38DA55959494185AD1EF5F1"
+            BlueprintIdentifier = "E59CC6B740D5419E8A015DD2"
             BuildableName = "cursoranim.app"
             BlueprintName = "cursoranim"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F38DA55959494185AD1EF5F1"
+            BlueprintIdentifier = "E59CC6B740D5419E8A015DD2"
             BuildableName = "cursoranim.app"
             BlueprintName = "cursoranim"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50B02DD8DBC64912945DF1E2"
+               BlueprintIdentifier = "1FC08ADC3CF544A9AA545181"
                BuildableName = "libglfw3.a"
                BlueprintName = "glfw"
-               ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+               ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "50B02DD8DBC64912945DF1E2"
+            BlueprintIdentifier = "1FC08ADC3CF544A9AA545181"
             BuildableName = "libglfw3.a"
             BlueprintName = "glfw"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "50B02DD8DBC64912945DF1E2"
+            BlueprintIdentifier = "1FC08ADC3CF544A9AA545181"
             BuildableName = "libglfw3.a"
             BlueprintName = "glfw"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

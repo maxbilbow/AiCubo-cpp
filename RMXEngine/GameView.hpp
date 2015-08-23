@@ -29,7 +29,7 @@ namespace rmx {
 class GameView : public Object {
     GameNode * _pointOfView = null;
 
-    int _height = 400, _width = 400;
+    int _height = 720, _width = 1280;
     
     void errorCallback(int i,const char* c);
     // We need to strongly reference callback instances.

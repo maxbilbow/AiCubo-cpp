@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA1CB50DAECE46D9BFA6CF7E"
+               BlueprintIdentifier = "237054F70D50411EA36021FD"
                BuildableName = "joysticks"
                BlueprintName = "joysticks"
-               ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+               ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FA1CB50DAECE46D9BFA6CF7E"
+            BlueprintIdentifier = "237054F70D50411EA36021FD"
             BuildableName = "joysticks"
             BlueprintName = "joysticks"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FA1CB50DAECE46D9BFA6CF7E"
+            BlueprintIdentifier = "237054F70D50411EA36021FD"
             BuildableName = "joysticks"
             BlueprintName = "joysticks"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FA1CB50DAECE46D9BFA6CF7E"
+            BlueprintIdentifier = "237054F70D50411EA36021FD"
             BuildableName = "joysticks"
             BlueprintName = "joysticks"
-            ReferencedContainer = "container:../../../../../rattle/Gits/RMXKit/cpp/glfw3/GLFW.xcodeproj">
+            ReferencedContainer = "container:../glfw3/GLFW.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -16,6 +16,8 @@
 #define PI 3.14159265359f
 #define PI_OVER_180 (PI/180)
 
+
+
 Vector3 RMXMatrix4Position(Matrix4 m);
 Matrix4 RMXMatrix4Negate(Matrix4 m);
 Vector3 RMXMatrix3MakeEuler(Matrix4 m);

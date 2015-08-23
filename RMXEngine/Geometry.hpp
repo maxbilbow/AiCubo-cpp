@@ -13,34 +13,56 @@
 
 #endif /* Geometry_hpp */
 
+static const BOOL VERTEX_MODE = FALSE;
+struct Vertex
+{
+    Vertex() {
+        x=y=z=r=g=b=0;
+    }
+    Vertex(float x, float y, float z, float r, float g, float b) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->r = r;
+        this->g = g;
+        this->b = b;
+    }
+    
+    GLfloat x, y, z;
+    GLfloat r, g, b;
+};
 
 namespace rmx {
  
     class Geometry{
         static Geometry * _cube;
-        int * _vertexData = null, * _indexData = null;
-        int _size = 0, _count = 0;
-        BOOL vertexMode = FALSE;
+        Vertex * _vertexData = null;
+        GLuint * _indexData = null;
+        int _numberOfVertices = 0, _count = 0;
+        
         void pushMatrix(GameNode *, Matrix4);
         void popMatrix();
     protected:
-        virtual void drawWithScale(float x, float y, float z) {
-             throw std::invalid_argument("drawWithScale(float x, float y, float z) must be overriden");
+        virtual void drawWithScale(float x, float y, float z)
+        {
+            throw std::invalid_argument("drawWithScale(float x, float y, float z) must be overriden");
         }
     public:
         bool isVertexMode();
         void setVertexMode(bool vertexMode);
         void render(GameNode * GameNode, Matrix4 root);
         
+        Geometry();
+        Geometry(int numberOfVertices);
         static Geometry * Cube();
         
-        int * vertexData();
-        int * indexData();
+        Vertex * vertexData();
+        GLuint * indexData();
         
-        Geometry(int size);
-        void addVertex(Vector3 v);
+       
+        void addVertex(Vertex v);
         
-        void addVertex(float x, float y, float z);
+        void addVertex(float x, float y, float z, float r, float g, float b);
         void prepare();
         
         

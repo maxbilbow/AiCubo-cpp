@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/Max/Gits/RMXKit/cpp/glfw3/CMakeFiles/3.3.1/CompilerIdC/CMakeCCompilerId.c
+  /Users/rattle/Gits/AiCubo-cpp/glfw3/CMakeFiles/3.3.1/CompilerIdC/CMakeCCompilerId.c

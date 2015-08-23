@@ -13,7 +13,7 @@
 #include <math.h>
 
 #define GLFW_INCLUDE_GLU
-#include <GLFW/glfw3.h>
+#include "glfw3.h"
 
 #ifndef M_PI
  #define M_PI 3.1415926535897932384626433832795
@@ -33,7 +33,6 @@ double cursorY;
 
 struct Vertex
 {
-    
     GLfloat x, y, z;
     GLfloat r, g, b;
 };
