@@ -10,6 +10,7 @@
 		5008469A1B85EB2E003D2470 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500846991B85EB2E003D2470 /* Cocoa.framework */; };
 		5008469C1B85EB35003D2470 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008469B1B85EB35003D2470 /* CoreVideo.framework */; };
 		5008469E1B85EB4F003D2470 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008469D1B85EB4F003D2470 /* IOKit.framework */; };
+		5026F9C51B8B7AAC00237AD7 /* EntityGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026F9C31B8B7AAC00237AD7 /* EntityGenerator.cpp */; };
 		503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
 		503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
 		503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */; };
@@ -271,6 +272,8 @@
 		500846991B85EB2E003D2470 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5008469B1B85EB35003D2470 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5008469D1B85EB4F003D2470 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		5026F9C31B8B7AAC00237AD7 /* EntityGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EntityGenerator.cpp; path = RMXEngine/EntityGenerator.cpp; sourceTree = SOURCE_ROOT; };
+		5026F9C41B8B7AAC00237AD7 /* EntityGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EntityGenerator.hpp; path = RMXEngine/EntityGenerator.hpp; sourceTree = SOURCE_ROOT; };
 		503A23C61B6A69BF008F89F6 /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventListener.cpp; sourceTree = "<group>"; };
 		5044D9021B874593003B4AE2 /* Behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Behaviour.cpp; path = RMXEngine/Behaviour.cpp; sourceTree = SOURCE_ROOT; };
 		5044D9031B874593003B4AE2 /* Behaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Behaviour.hpp; path = RMXEngine/Behaviour.hpp; sourceTree = SOURCE_ROOT; };
@@ -801,6 +804,8 @@
 				5044D91A1B874593003B4AE2 /* Scene.hpp */,
 				5044D91B1B874593003B4AE2 /* Transform.cpp */,
 				5044D91C1B874593003B4AE2 /* Transform.hpp */,
+				5026F9C31B8B7AAC00237AD7 /* EntityGenerator.cpp */,
+				5026F9C41B8B7AAC00237AD7 /* EntityGenerator.hpp */,
 			);
 			name = engine;
 			path = ../RMXKit;
@@ -1251,6 +1256,7 @@
 				5044D9251B874593003B4AE2 /* PhysicsWorld.cpp in Sources */,
 				6C0DA6661B70EB4500A4325E /* main.cpp in Sources */,
 				503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */,
+				5026F9C51B8B7AAC00237AD7 /* EntityGenerator.cpp in Sources */,
 				5044D9261B874593003B4AE2 /* RMXMath.cpp in Sources */,
 				5044D9201B874593003B4AE2 /* GameNode.cpp in Sources */,
 			);

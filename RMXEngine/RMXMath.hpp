@@ -18,6 +18,7 @@
 
 Vector3 RMXMatrix4Position(Matrix4 m);
 Matrix4 RMXMatrix4Negate(Matrix4 m);
+Matrix4 RMXMatrix4NegatePosition(Matrix4 m) ;
 Vector3 RMXMatrix3MakeEuler(Matrix4 m);
 Matrix4 operator*(Matrix4 lhs,  Matrix4 rhs);
 Matrix4 operator*(Matrix4 lhs,  float rhs);
@@ -47,3 +48,5 @@ std::string operator+(std::string lhs, float rhs);
 std::string operator+(float lhs, std::string rhs);
 
 std::string& operator+=(std::string& lhs, float rhs);
+
+double rBounds(int min, int max);

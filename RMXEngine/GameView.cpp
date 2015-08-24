@@ -31,30 +31,30 @@ using namespace rmx;
 using namespace std;
 
 GameView::GameView(){
-    this->setPointOfView(GameNode::newCameraNode());
+//    this->setPointOfView(GameNode::newCameraNode());
 }
 
 void GameView::initGL() {
     
-    // Setup an error callback. The default implementation
-    // will print the error message in System.err.
-//    glfwSetErrorCallback(_errorCallback);
+   
     
+#ifdef GLFW_h
     // Initialize GLFW. Most GLFW functions will not work before doing this.
     if ( glfwInit() != GL_TRUE )
         throw new invalid_argument("Unable to initialize GLFW");
     
-    // Configure our window
     glfwDefaultWindowHints(); // optional, the current window hints are already the default
     glfwWindowHint(GLFW_VISIBLE, GL_FALSE); // the window will stay hidden after creation
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE); // the window will be resizable
-    
-    
-    
-    // Create the window
     _window = glfwCreateWindow(_width, _height, "Hello World!", null, null);
     if ( _window == null )
         throw new invalid_argument("Failed to create the GLFW window");
+
+    
+   
+    // Create the window
+    
+  
     
     // Setup a key callback. It will be called every time a key is pressed, repeated or released.
     glfwSetKeyCallback(_window, GameController::keyCallback);
@@ -78,6 +78,18 @@ void GameView::initGL() {
     glfwShowWindow(_window);
     
     //        more();
+    
+#else
+    _window =  glutCreateWindow("Hello");
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    
+    glViewport(
+               (1280 - _width) / 2,
+               (720 - _height) / 2,
+               _width, _height);
+    
+    
+#endif
 }
 
 void GameView::enterGameLoop() {
@@ -88,9 +100,12 @@ void GameView::enterGameLoop() {
     // creates the ContextCapabilities instance and makes the OpenGL
     // bindings available for use.
 //    GLFWwindow * window =
+#ifdef GLFW_h
     glfwMakeContextCurrent(_window);
-    
-    
+#else
+//    CGLSetCurrentContext(_window);
+    CGLGetCurrentContext();
+#endif
     // >> glEnableVertexAttribArray enables the generic vertex attribute array specified by index.
     // >> glDisableVertexAttribArray disables the generic vertex attribute array specified by
     // >> index. By default, all client-side capabilities are disabled, including all generic
@@ -167,6 +182,7 @@ void GameView::enterGameLoop() {
         // Poll for window events. The key callback above will only be
         // invoked during this call.
         glfwPollEvents();
+        
         NotificationCenter::eventDidOccur(END_OF_GAMELOOP);
         
     }
@@ -175,10 +191,8 @@ void GameView::enterGameLoop() {
 
 
 bool GameView::setPointOfView(GameNode * pointOfView) {
-    if (!pointOfView->hasCamera()) {
+    if (!pointOfView->hasCamera()) 
         throw new invalid_argument("PointOfView musy have a camera != null");//pointOfView->setCamera(new Camera());//
-    } else if (_pointOfView == pointOfView)
-        return false;
     this->_pointOfView = pointOfView;
     return true;
 }
@@ -223,7 +237,7 @@ void GameView::setHeight(int height) {
 }
 
 GameNode * GameView::pointOfView() {
-    if (_pointOfView != null || this->setPointOfView(GameNode::getCurrent()))
+    if (_pointOfView != null )//|| this->setPointOfView(GameNode::getCurrent()))
         return _pointOfView;
     throw invalid_argument("ERROR: Could Not Set _pointOfView");
     return   null;

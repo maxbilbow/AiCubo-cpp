@@ -83,7 +83,7 @@ namespace rmx {
         };
         
     private:
-        Iterator * iterator;
+        Iterator * iterator = new Iterator(this);
     public:
         LinkedList();
         ~LinkedList();

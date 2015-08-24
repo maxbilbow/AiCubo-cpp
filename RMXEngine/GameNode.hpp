@@ -20,11 +20,12 @@ namespace rmx {
     
     class GameNode : public Object { //, public _Node {
    
-        
+    protected:
+        GameNode * parent = null;
     private:
         static GameNode * _current;
         
-        GameNode * parent = null;
+        
         
         Transform * _transform = null;
         
@@ -74,7 +75,7 @@ namespace rmx {
         
         GameNodeList * getChildren();
         
-        void addChild(GameNode * child);
+        virtual void addChild(GameNode * child);
         bool removeChildNode(GameNode * node);
         
         GameNode * getChildWithName(std::string name);
@@ -87,7 +88,7 @@ namespace rmx {
         bool hasCamera();
         void setCamera(Camera * camera);
         
-        static GameNode * newCameraNode();
+//        static GameNode * newCameraNode();
         
         
         Geometry * geometry();
@@ -122,5 +123,7 @@ namespace rmx {
         
         static void test();
     };
+    
+    
 
 }

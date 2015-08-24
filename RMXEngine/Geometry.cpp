@@ -58,25 +58,29 @@ void Geometry::addVertex(float x, float y, float z)  {
 
 
 void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
-    Matrix4 model = node->getTransform()->worldMatrix() * base;
+    Matrix4 model = node->getTransform()->worldMatrix();
+    
+///
 
-//    EulerAngles modelA = RMXMatrix3MakeEuler(model);
-//    modelA /= PI_OVER_180;
+    
+    EulerAngles modelA = GLKVector3MultiplyScalar(
+                                                  node->getTransform()->localEulerAngles(),
+                                                  1// / PI_OVER_180
+                                                  );
+    
     
     glPushMatrix();
-
-//    glMultMatrixf(model.m);
+    
     glTranslatef(
                  model.m30 + base.m30,
                  model.m31 + base.m31,
                  model.m32 + base.m32
                  );
     
-
-//    glRotatef(modelA.x, 1,0,0);
-//    glRotatef(modelA.y, 0,1,0);
-//    glRotatef(modelA.z, 0,0,1);
-    
+    glRotatef(modelA.x, 1,0,0);
+    glRotatef(modelA.y, 0,1,0);
+    glRotatef(modelA.z, 0,0,1);
+        
 }
 
 
@@ -161,31 +165,37 @@ protected:
     void drawWithScale(float X, float Y, float Z)override {
         glBegin(GL_QUADS);
         glColor3f(1.0f,1.0f,0.0f);
+        glNormal3f(0,1,0);
         glVertex3f( X, Y,-Z);
         glVertex3f(-X, Y,-Z);
         glVertex3f(-X, Y, Z);
         glVertex3f( X, Y, Z);
         glColor3f(1.0f,0.5f,0.0f);
+        glNormal3f(0,-1,0);
         glVertex3f( X,-Y, Z);
         glVertex3f(-X,-Y, Z);
         glVertex3f(-X,-Y,-Z);
         glVertex3f( X,-Y,-Z);
         glColor3f(1.0f,0.0f,0.0f);
+        glNormal3f(0,0,1);
         glVertex3f( X, Y, Z);
         glVertex3f(-X, Y, Z);
         glVertex3f(-X,-Y, Z);
         glVertex3f( X,-Y, Z);
         glColor3f(1.0f,1.0f,0.0f);
+        glNormal3f(0,0,-1);
         glVertex3f( X,-Y,-Z);
         glVertex3f(-X,-Y,-Z);
         glVertex3f(-X, Y,-Z);
         glVertex3f( X, Y,-Z);
         glColor3f(0.0f,0.0f,1.0f);
+        glNormal3f(-1,0,0);
         glVertex3f(-X, Y, Z);
         glVertex3f(-X, Y,-Z);
         glVertex3f(-X,-Y,-Z);
         glVertex3f(-X,-Y, Z);
         glColor3f(1.0f,0.0f,1.0f);
+        glNormal3f(1,0,0);
         glVertex3f( X, Y,-Z);
         glVertex3f( X, Y, Z);
         glVertex3f( X,-Y, Z);

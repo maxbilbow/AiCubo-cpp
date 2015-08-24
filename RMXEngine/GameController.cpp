@@ -20,7 +20,7 @@
 #import "GameView.hpp"
 #import "Geometry.hpp"
 #import "GameController.hpp"
-
+#import "EntityGenerator.hpp"
 using namespace std;
 using namespace rmx;
 
@@ -41,13 +41,21 @@ GameController * GameController::getInstance() {
 
 void GameController::initpov() {
     GameNode * n = GameNode::getCurrent();
+    n->addBehaviour(new SpriteBehaviour());
     n->setPhysicsBody(new PhysicsBody());
+    n->physicsBody()->setMass(1);
     cout << n->physicsBody() << endl;
-    n->physicsBody()->setMass(1.0f);
 
-    n->setGeometry(Geometry::Cube());
-    n->getTransform()->setScale(2.0f, 0.02f, 2.0f);
-    Scene::getCurrent()->rootNode()->addChild(n);
+
+//    n->setGeometry(Geometry::Cube());
+    n->getTransform()->setScale(2.0f, 2.0f, 2.0f);
+    n->addToCurrentScene();
+    
+    GameNode * head = new GameNode("Camera");//GameNode::newCameraNode();// new GameNode("Head");
+    head->setCamera(new Camera());
+    n->addChild(head);
+    view->setPointOfView(head);
+//    GameNode::setCurrent(n);
 }
 
 class BehaviourA : public Behaviour {
@@ -76,6 +84,18 @@ public:
     
 };
 
+class EG : public EntityGenerator {
+public:
+    GameNode * makeEntity() override {
+        GameNode * head = GameNode::makeCube(0.2f, false, new BehaviourB());
+        
+        GameNode * body = GameNode::makeCube(0.5f, true, new BehaviourC());
+//        body->getTransform()->setPosition(-10.0f,0.0f,10.0f);
+        body->addChild(head);
+        head->getTransform()->setPosition(0.0f,1.0f,0.0f);
+        return body;
+    }
+};
 void GameController::setup() {
     Scene * scene = Scene::getCurrent();
     initpov();
@@ -84,18 +104,18 @@ void GameController::setup() {
     cube->getTransform()->setPosition(0.0f,0.0f,5.0f);
         
         
-    GameNode * cube2 = GameNode::makeCube(0.2f, true, new BehaviourB());
-        
-    GameNode * cube3 = GameNode::makeCube(0.5f, true, new BehaviourC());
-    cube3->getTransform()->setPosition(-10.0f,0.0f,10.0f);
-    cube3->addChild(cube2);
-    cube2->getTransform()->setPosition(0.0f,1.0f,0.0f);
+    
         
     GameNode * floor = new GameNode("Floor");
     floor->getTransform()->setPosition(0,0,0);
     scene->rootNode()->addChild(floor);
         
     floor->setGeometry(new Floor());
+    
+    
+    EG eg = EG();
+    
+    eg.makeShapesAndAddToScene(scene, 50);
     
 }
 
@@ -133,30 +153,30 @@ void GameController::updateAfterScene(GLFWwindow * window) {
 }
 
 void GameController::repeatedKeys(GLFWwindow * window) {
-    GameNode * player = this->view->pointOfView();//GameNode::getCurrent();
+    GameNode * player = GameNode::getCurrent();//GameNode::getCurrent();
     
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        player->getTransform()->move(Z, 1.0f);
+        player->getTransform()->move(Forward, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        player->getTransform()->move(Z,-1.0f);
+        player->getTransform()->move(Forward,-1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        player->getTransform()->move(X, 1.0f);
+        player->getTransform()->move(Left, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        player->getTransform()->move(X, -1.0f);
+        player->getTransform()->move(Left, -1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-        player->getTransform()->move(Y, 1.0f);
+        player->getTransform()->move(Up, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-        player->getTransform()->move(Y,-1.0f);
+        player->getTransform()->move(Up,-1.0f);
     }
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         player->BroadcastMessage("jump");
@@ -249,7 +269,7 @@ void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
     
     if (!gc->cursorLocked)
         return;
-    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;
+//    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;
     if (restart) {
         xpos = x;
         ypos = y;
@@ -261,9 +281,11 @@ void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
         dx *= 0.1; dy *= 0.1;
         xpos = x;
         ypos = y;
-        Transform * t = gc->view->pointOfView()->getTransform();
-        t->move(Pitch, dy);
-        t->move(Yaw,   dx);
+//        GameNode * pov =
+        Transform * body = GameNode::getCurrent()->getTransform();
+        Transform * head = gc->view->pointOfView()->getTransform();
+        head->rotate(Pitch, dy);
+        body->rotate(Yaw,   dx);
     }
     
     

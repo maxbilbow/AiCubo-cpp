@@ -23,7 +23,7 @@
 using namespace rmx;
 using namespace std;
     
-GameNode * GameNode::_current = GameNode::newCameraNode();
+GameNode * GameNode::_current;// = GameNode::newCameraNode();
 
 GameNode::GameNode() {
     this->setName("GameNode");
@@ -54,7 +54,7 @@ Transform * GameNode::getTransform() {
 
 GameNode * GameNode::getCurrent() {
         if (_current == null)
-            _current = newCameraNode();
+            _current = new GameNode("Player");
         return _current;
 }
     
@@ -83,6 +83,7 @@ GameNodeList * GameNode::getChildren() {
     
 void GameNode::addChild(GameNode * child) {
     if (!this->children.contains(child)) {
+        cout << "Adding child: " << child->Name() << " to " << this->Name() << endl;
         this->children.append(child);
         child->setParent(this);
     }
@@ -96,6 +97,7 @@ GameNode * GameNode::getChildWithName(string name) {
     GameNodeList::Iterator * i = this->children.getIterator();
     while (i->hasNext()) {
         GameNode * n = i->next();
+        cout << n->Name() << endl;
         if (n->Name() == name)
             return n;
     }
@@ -127,17 +129,12 @@ void GameNode::setCamera(Camera * camera) {
     this->_hasCamera = TRUE;
 }
     
-GameNode * GameNode::newCameraNode() {
-    GameNode * cameraNode = new GameNode("CameraNode");
-    cameraNode->setCamera(new Camera());
-    if (_current == null)
-        _current = cameraNode;
-    cameraNode->addBehaviour(new SpriteBehaviour());
-    cameraNode->setPhysicsBody(new PhysicsBody());
-    cameraNode->physicsBody()->setMass(1);
-    return cameraNode;
-}
-    
+//GameNode * GameNode::newCameraNode() {
+//    GameNode * cameraNode = new GameNode("CameraNode");
+//    cameraNode->setCamera(new Camera());
+//    return cameraNode;
+//}
+
 Geometry * GameNode::geometry() {
     return this->_geometry;// (Geometry) this.getComponent(Geometry.class);
 }
@@ -218,10 +215,13 @@ GameNode * GameNode::getParent() {
 }
     
 void GameNode::setParent(GameNode * parent) {
-    if (this->parent !=   null && parent != this->parent) {
+    if (this->parent != null && parent != this->parent) {
         this->parent->removeChildNode(this);
-        this->parent = parent;
     }
+//    if (typeid(parent) == typeid(RootNode))
+//        this->parent = null;
+//    else
+     this->parent = parent;
 }
 
 ///TODO
@@ -236,13 +236,13 @@ void GameNode::BroadcastMessage(std::string message, void * args, SendMessageOpt
 }
     
 GameNode * GameNode::makeCube(float s,bool body, Behaviour * b) {
-    GameNode * n = new GameNode("Cube");
+    GameNode * n = new GameNode("Cube"+to_string(random()));
     n->setGeometry(Geometry::Cube());
         if (body)
             n->setPhysicsBody(new PhysicsBody());
         n->getTransform()->setScale(s, s, s);
         n->addBehaviour(b);
-        n->addToCurrentScene();
+//        n->addToCurrentScene();
         return n;
     }
     
@@ -258,20 +258,4 @@ void GameNode::setTransform(Transform *transform) {
         this->_transform = transform;
 }
 
-void GameNode::test() {
-    Object * o = new Object();
-    o->setName("Parent");
-    GameNode * o2 = GameNode::newCameraNode();
-    
-    try {
-        o->SendMessage("getCamera",  null);
-        
-        o2->SendMessage("getCamera",  null);
-        o->SendMessage("getCamera",new string("Hello 1"));
-        o2->SendMessage("getCamera",new string("Hello Node"));
-    } catch (exception e) {
-        // TODO Auto-generated catch block
-        cout << typeid(GameNode).name() << " " << "ERROR: " << e.what() << endl;
-    }
-    o2->updateLogic();
-}
+

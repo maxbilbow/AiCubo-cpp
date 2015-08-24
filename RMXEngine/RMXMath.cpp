@@ -17,10 +17,17 @@ Vector3 RMXMatrix4Position(Matrix4 m) {
 }
 
 Matrix4 RMXMatrix4Negate(Matrix4 m) {
-    for(int i=0; i<16;++i)
+    for(int i=0; i<15;++i)
         m.m[i] *= -1;
     return m;
 }
+
+Matrix4 RMXMatrix4NegatePosition(Matrix4 m) {
+    for(int i=12; i<15;++i)
+        m.m[i] *= -1;
+    return m;
+}
+
 
 Vector3 RMXMatrix3MakeEuler(Matrix4 m) {
     return GLKVector3Make (atan2f(-m.m20, m.m00),
@@ -132,5 +139,11 @@ std::ostream& operator<<(std::ostream& in,  Matrix4 m) {
 
 std::ostream& operator<<(std::ostream& in,  Vector3 v) {
     return in << v.x << ", " << v.y << ", " << v.z;
+}
+
+
+double rBounds(int min, int max) {
+    
+    return random() % (max - min) + min;
 }
 

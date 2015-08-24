@@ -17,11 +17,11 @@ namespace rmx {
     class RenderDelegate {
     public:
         
-        virtual void updateBeforeScene(GLFWwindow * window){
+        virtual void updateBeforeScene(GLWindow * window){
             throw std::invalid_argument("updateBeforeScene must be overriden");
         };
         
-        virtual void updateAfterScene(GLFWwindow * window){};
+        virtual void updateAfterScene(GLWindow * window){};
         
     };
 }

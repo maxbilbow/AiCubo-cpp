@@ -31,6 +31,11 @@
 
 
 namespace rmx {
+    
+//    class RootNode : public GameNode {
+//    public:
+//        RootNode():GameNode("rootNode"){}
+//    };
 
     class Scene : public Object, public Unfinised {
         static Scene * _current;

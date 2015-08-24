@@ -32,9 +32,23 @@ typedef int BOOL;
 //#import <CoreVideo/CoreVideo.h>
 //#import <IOKit/IOKitLib.h>
 //#import <Cocoa/Cocoa.h>
-#include "glfw3.h"
+//
 #include <vector>
 #include <list>
+
+#define GLFW_h
+#ifdef GLFW_h
+#include "glfw3.h"
+typedef GLFWwindow GLWindow;
+#else
+#include <OpenGL/OpenGL.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/gl3.h>
+#include <OpenGL/gluContext.h>
+#include <GLUT/GLUT.h>
+#include <GLKit/GLKit.h>
+typedef long GLWindow;
+#endif
 
 namespace rmx {
     class Transform;

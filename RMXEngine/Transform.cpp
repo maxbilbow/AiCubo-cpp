@@ -33,7 +33,7 @@ Transform::Transform(GameNode * node) {
     _axis = GLKMatrix4Identity;
     _localMatrix = GLKMatrix4Identity;
     _scale = GLKVector3Make(1,1,1);
-    this->setName("Transform");
+    this->setName("Transform::"+node->Name());
 }
 
 Vector3 Transform::scale() {
@@ -54,9 +54,9 @@ void Transform::setScale(float x, float y, float z) {
  */
 float Transform::mass() {
     float mass = this->getNode()->physicsBody() != null ? this->getNode()->physicsBody()->getMass() : 0.0f;
-    GameNodeList::Iterator i = getNode()->getChildren();
-    while (i.hasNext())
-        mass += i.next()->getTransform()->mass();
+    GameNodeList::Iterator * i = this->getNode()->getChildren()->getIterator();
+    while (i->hasNext())
+        mass += i->next()->getTransform()->mass();
     return mass;
 }
 
@@ -68,7 +68,7 @@ float Transform::mass() {
 Matrix4 Transform::worldMatrix() {
     Transform * parent = this->parent();
     if (parent != null && parent->parent() != null) {
-        return GLKMatrix4Multiply(this->_localMatrix, parent->worldMatrix());
+        return GLKMatrix4Multiply(this->_localMatrix,parent->worldMatrix());
     } else {
         return this->_localMatrix;
     }
@@ -76,7 +76,7 @@ Matrix4 Transform::worldMatrix() {
 
 Transform * Transform::parent() {
     GameNode * parentNode = this->getNode()->getParent();
-    return parentNode !=   null ? parentNode->getParent()->getTransform() :   null;
+    return parentNode != null ? parentNode->getTransform() : null;
 }
 
 Vector3 Transform::localPosition() {
@@ -148,19 +148,19 @@ bool Transform::move(Move name, float scale, string message) {
 ////    _localMatrix.m31 += y;
 ////    _localMatrix.m32 += z;
 //}
-//
-//void Transform::translate(Vector3 v) {
+
+void Transform::translate(Vector3 v) {
 //    _localMatrix = GLKMatrix4TranslateWithVector3(_localMatrix, v);
-////    _localMatrix.m30 += v.x;
-////    _localMatrix.m31 += v.y;
-////    _localMatrix.m32 += v.z;
-//}
+    _localMatrix.m30 += v.x;
+    _localMatrix.m31 += v.y;
+    _localMatrix.m32 += v.z;
+}
 
 bool Transform::translate(Move direction, float scale) {
     Vector3 v;
     switch (direction) {
         case Forward:
-            scale *= 1;
+//            scale *= -1;
             v = this->forward();
             break;
         case Up:
@@ -168,7 +168,7 @@ bool Transform::translate(Move direction, float scale) {
             v = this->up();
             break;
         case Left:
-            scale *= 1;
+//            scale *= -1;
             v = this->left();
             break;
         case X:
@@ -186,7 +186,8 @@ bool Transform::translate(Move direction, float scale) {
         default:
             return false;
     }
-    _localMatrix = GLKMatrix4TranslateWithVector3(_localMatrix, v * scale * 0.4);
+//    _localMatrix =
+    this->translate(v * scale * 0.4);
 //    this->translate(v * scale);
     return true;
 }
@@ -215,9 +216,21 @@ bool Transform::rotate(Move direction, float scale) {
     return true;
 }
 
+
+
 void Transform::rotate(float radians, Vector3 v) {
+    
+    
+    
     Matrix4 rMatrix = GLKMatrix4MakeRotation(radians, v.x, v.y, v.z);
-    this->_localMatrix = GLKMatrix4Multiply(_localMatrix, rMatrix);
+//    cout << this->localPosition() << endl;
+    Vector3 pos = RMXMatrix4Position(_localMatrix);
+//    _localMatrix.m30 = _localMatrix.m31 = _localMatrix.m32 = 0;
+    this->_localMatrix = GLKMatrix4Multiply(GLKMatrix4Transpose(_localMatrix), rMatrix);
+//    _localMatrix.m30 = pos.x;
+//    _localMatrix.m31 = pos.y;
+//    _localMatrix.m32 = pos.z;
+//    cout << this->localPosition() << endl;
 }
 
 

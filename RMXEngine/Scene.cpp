@@ -50,8 +50,9 @@ void Scene::renderScene(Camera * camera) {
 
 
 void Scene::updateSceneLogic() {
-    this->_physicsWorld->updatePhysics(this->_rootNode);
     this->_rootNode->updateLogic();
+    this->_physicsWorld->updatePhysics(this->_rootNode);
+    
 }
 
 GameNode * Scene::rootNode() {
