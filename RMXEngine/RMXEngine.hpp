@@ -27,14 +27,19 @@
 
 
 #import "NodeComponent.hpp"
+#import "CollisionBody.hpp"
+#import "BoundingBox.hpp"
+#import "BoundingSphere.hpp"
 #import "Geometry.hpp"
 #import "Transform.hpp"
 #import "PhysicsBody.hpp"
 #import "PhysicsWorld.hpp"
 #import "Behaviour.hpp"
+#import "Delegates.hpp"
 #import "Scene.hpp"
 #import "GameView.hpp"
 #import "Camera.hpp"
+#import "EntityGenerator.hpp"
 #import "GameController.hpp"
 #import "GameNode.hpp"
 

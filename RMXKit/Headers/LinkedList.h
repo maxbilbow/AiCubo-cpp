@@ -103,6 +103,10 @@ namespace rmx {
         //    ///Removes and returns the mathcing node
         //    Node * removeNode(Node * node);
         
+        Value * removeFirst() {
+            return this->removeValueAtIndex(0);
+        }
+        
         ///removes and returns value at index
         Value * removeValueAtIndex(int index);
         

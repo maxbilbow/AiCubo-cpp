@@ -12,11 +12,12 @@
 #import "NodeComponent.hpp"
 #import "Transform.hpp"
 #import "Geometry.hpp"
-
+#import "CollisionBody.hpp"
 #import "Scene.hpp"
 #import "Camera.hpp"
 #import "PhysicsBody.hpp"
 #import "Behaviour.hpp"
+
 #import "GameNode.hpp"
 
 
@@ -167,6 +168,7 @@ void GameNode::setPhysicsBody(PhysicsBody * body) {
     this->_physicsBody = body;
     body->setNode(this);
     this->_hasPhysicsBody = TRUE;
+    
 }
     
 void GameNode::updateLogic() {
@@ -187,15 +189,20 @@ void GameNode::updateLogic() {
         }
 //    }
 //    if (!isBEmpty) {
-        bi->begin();
-        while (bi->hasNext()) {
-            Behaviour * b = bi->next();
-            if (b->isEnabled())
-                b->lateUpdate();
-        }
-//    }
+    
 }
 
+void GameNode::updateAfterPhysics() {
+    GameNodeBehaviours::Iterator * bi = this->behaviours->getIterator();
+    bi->begin();
+    while (bi->hasNext()) {
+        Behaviour * b = bi->next();
+        if (b->isEnabled())
+            b->lateUpdate();
+    }
+    //    }
+    _transform->updateLastPosition();
+}
 void GameNode::draw(Matrix4 rootTransform) {
     if (this->_hasGeometry) {
         this->_geometry->render(this, rootTransform);
@@ -239,7 +246,7 @@ GameNode * GameNode::makeCube(float s,bool body, Behaviour * b) {
     GameNode * n = new GameNode("Cube"+to_string(random()));
     n->setGeometry(Geometry::Cube());
         if (body)
-            n->setPhysicsBody(new PhysicsBody());
+            n->setPhysicsBody(PhysicsBody::newDynamicBody());
         n->getTransform()->setScale(s, s, s);
         n->addBehaviour(b);
 //        n->addToCurrentScene();
@@ -256,6 +263,13 @@ void GameNode::setTransform(Transform *transform) {
         cout << "WARNING: Transform can only be set once! " << this << endl;
     else
         this->_transform = transform;
+}
+
+CollisionBody * GameNode::collisionBody() {
+    if (_hasPhysicsBody)
+        return _physicsBody->collisionBody();
+    else
+        return null;
 }
 
 

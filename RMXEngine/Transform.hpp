@@ -22,13 +22,13 @@ namespace rmx{
         Jump
     };
    
-    class Transform : public NodeComponent, public Unfinised {
+    class Transform : public NodeComponent {
 //        Matrix4 _worldMatrix;
         Matrix4 _axis;
         Matrix4 _localMatrix;
 //        Quaternion _quaternion;
 //        Vector3 _eulerAngles;
-        Vector3 _scale;
+        Vector3 _scale, _lastPosition;
         
         ///Exists to thwart defauly constructor.
         Transform();
@@ -75,6 +75,7 @@ namespace rmx{
         bool translate(Move direction, float scale);
         bool rotate(Move direction, float scale);
         void rotate(float radians,Vector3 v);
+        void rotate(float radians, float x, float y, float z);
         
         Quaternion rotation();
         
@@ -89,7 +90,18 @@ namespace rmx{
         
         
         GameNode * setNode(GameNode * node) override;
-    
+        
+        float radius();
+        float getWidth();
+        float getHeight();
+        float getLength();
+        void updateLastPosition();
+        Vector3 lastPosition();
+        
+        Transform * rootTransform();
+        void stepBack(std::string);
+        
+        PhysicsBody * physicsBody();
     };
 
 }

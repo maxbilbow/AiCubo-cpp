@@ -35,13 +35,6 @@ namespace rmx {
         virtual void update(){}
         virtual void lateUpdate(){}
     };
-    class SpriteBehaviour : public Behaviour {
-    public:
-        void SendMessage(std::string message, void * args = null, SendMessageOptions options = DoesNotRequireReceiver) override {
-            
-            this->getNode()->getTransform()->move(Up,10);
-            std::cout << this->getNode()->getTransform()->localMatrix();
-        }
-    };
+    
     
 }

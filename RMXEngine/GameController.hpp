@@ -18,18 +18,24 @@ namespace rmx {
     typedef bool KeyStates;
 
     class GameController : public Object,  public RenderDelegate  {
+    protected:
+    
         GameView * view;
         static GameController * _singleton;
         
         void initpov();
-        void setup();
+   
+        virtual void setup(){
+            this->initpov();
+        }
 
-        GameController();
+        
         
         static int keys[600];
         
         bool cursorLocked = false;
     public:
+        GameController();
         static GameController * getInstance();
         void lockCursor(bool lock);
         bool isCursorLocked();
@@ -47,6 +53,7 @@ namespace rmx {
         void updateBeforeScene(GLFWwindow * window) override;
         void updateAfterScene(GLFWwindow * window) override;
         
+        static void windowSizeCallback(GLFWwindow * window, int width, int height);
     };
 
 }

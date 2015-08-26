@@ -72,23 +72,10 @@ void Camera::makePerspective(GameView * view) {
     fH = tan( fovY / 360 * PI ) * nearZ;
     fW = fH * aspect;
     
-//    GLKMatrix4MakeFrustum(-fW, fW, -fH, fH, nearZ, farZ );
-    
     glFrustum( -fW, fW, -fH, fH, nearZ, farZ );
     
     
-    
-//    Transform * t = this->getNode()->getTransform();
-//        Vector3 eye = t->position();
-//        Vector3 up = t->up();
-//        Vector3 center = t->position() + t->forward();
-//    
-//    Matrix4 m = GLKMatrix4Multiply(t->worldMatrix(), GLKMatrix4MakeLookAt(
-//                                eye.x, eye.y, eye.z,
-//                                center.x, center.y, center.z,
-//                                up.x, up.y, up.z
-//                                )
-//                              );
+
     
     Matrix4 m = this->getNode()->getTransform()->worldMatrix();
     
@@ -111,7 +98,7 @@ Matrix4 Camera::modelViewMatrix() {
     
     Matrix4 m = this->getNode()->getTransform()->worldMatrix();
 
-    cout << GameNode::getCurrent()->Name() <<GameNode::getCurrent()->getTransform()->worldMatrix() << endl;
+//    cout << GameNode::getCurrent()->Name() <<GameNode::getCurrent()->getTransform()->worldMatrix() << endl;
     return RMXMatrix4Negate(m);
 }
 

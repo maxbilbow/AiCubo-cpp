@@ -96,6 +96,28 @@ Vector3 operator/(Vector3 lhs,  float rhs) {
     return GLKVector3DivideScalar(lhs, rhs);
 }
 
+bool operator==(Vector3 lhs,  Vector3 rhs) {
+    for (int i=0;i<16;++i)
+        if (lhs.v[i] != rhs.v[i]) {
+            //            cout << lhs.m[i] << " != " << rhs.m[i] << ", diff: " << (lhs.m[i] - rhs.m[i]) << endl;
+            return false;
+        }
+    return true;
+}
+
+bool operator!=(Vector3 lhs,  Vector3 rhs) {
+    for (int i=0;i<16;++i)
+        if (lhs.v[i] != rhs.v[i]) {
+            //            cout << lhs.m[i] << " != " << rhs.m[i] << ", diff: " << (lhs.m[i] - rhs.m[i]) << endl;
+            return true;
+        }
+    return false;
+}
+
+bool isZero(Vector3 v){
+    return v.x == 0 && v.y == 0 && v.z == 0;
+}
+
 void operator+=(Vector3& lhs,  Vector3 rhs){
     lhs.x += rhs.x;
     lhs.y += rhs.y;

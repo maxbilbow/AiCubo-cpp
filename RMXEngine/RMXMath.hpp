@@ -35,7 +35,9 @@ Vector3 operator/(Vector3 lhs,  Vector3 rhs);
 
 Vector3 operator*(Vector3 lhs,  float rhs);
 Vector3 operator/(Vector3 lhs,  float rhs);
-
+bool isZero(Vector3 v);
+bool operator==(Vector3 lhs,  Vector3 rhs);
+bool operator!=(Vector3 lhs,  Vector3 rhs);
 
 void operator+=(Vector3& lhs,  Vector3 rhs);
 void operator-=(Vector3& lhs,  Vector3 rhs);

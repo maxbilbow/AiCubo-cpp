@@ -30,6 +30,12 @@
 		5076A84F1B84F1C5008A07AF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84D1B84F1C5008A07AF /* GLKit.framework */; };
 		5076A8501B84F1C5008A07AF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84E1B84F1C5008A07AF /* OpenGL.framework */; };
 		508726AE1B8294E600E631BE /* test2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726AC1B8294E600E631BE /* test2.cpp */; };
+		50C1CABD1B8DD49F00B7B2B4 /* CollisionBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CABB1B8DD49F00B7B2B4 /* CollisionBody.cpp */; };
+		50C1CADF1B8DD4AB00B7B2B4 /* CollisionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CADD1B8DD4AB00B7B2B4 /* CollisionEvent.cpp */; };
+		50C1CAE21B8DD4B600B7B2B4 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE01B8DD4B600B7B2B4 /* BoundingBox.cpp */; };
+		50C1CAE51B8DD4C000B7B2B4 /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE31B8DD4C000B7B2B4 /* BoundingSphere.cpp */; };
+		50C1CAE81B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE61B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp */; };
+		50C1CAEB1B8E0B4500B7B2B4 /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE91B8E0B4500B7B2B4 /* AiCubo.cpp */; };
 		50C811921B87447F0001FBFE /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C811591B8744700001FBFE /* libglfw3.a */; };
 		6C0DA6661B70EB4500A4325E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
 		6C0DA6671B70EB9B00A4325E /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
@@ -449,6 +455,18 @@
 		508726AC1B8294E600E631BE /* test2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test2.cpp; sourceTree = "<group>"; };
 		509BC17D1B68A389007172B6 /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedList.cpp; path = RMXKit/LinkedList.cpp; sourceTree = SOURCE_ROOT; };
 		509BC1891B68BBBE007172B6 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = RMXKit/Dictionary.cpp; sourceTree = SOURCE_ROOT; };
+		50C1CABB1B8DD49F00B7B2B4 /* CollisionBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBody.cpp; path = RMXEngine/CollisionBody.cpp; sourceTree = SOURCE_ROOT; };
+		50C1CABC1B8DD49F00B7B2B4 /* CollisionBody.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CollisionBody.hpp; path = RMXEngine/CollisionBody.hpp; sourceTree = SOURCE_ROOT; };
+		50C1CADD1B8DD4AB00B7B2B4 /* CollisionEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionEvent.cpp; path = RMXEngine/CollisionEvent.cpp; sourceTree = SOURCE_ROOT; };
+		50C1CADE1B8DD4AB00B7B2B4 /* CollisionEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CollisionEvent.hpp; path = RMXEngine/CollisionEvent.hpp; sourceTree = SOURCE_ROOT; };
+		50C1CAE01B8DD4B600B7B2B4 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = "<group>"; };
+		50C1CAE11B8DD4B600B7B2B4 /* BoundingBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundingBox.hpp; sourceTree = "<group>"; };
+		50C1CAE31B8DD4C000B7B2B4 /* BoundingSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingSphere.cpp; sourceTree = "<group>"; };
+		50C1CAE41B8DD4C000B7B2B4 /* BoundingSphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundingSphere.hpp; sourceTree = "<group>"; };
+		50C1CAE61B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpriteBehaviour.cpp; path = RMXEngine/SpriteBehaviour.cpp; sourceTree = SOURCE_ROOT; };
+		50C1CAE71B8DFEEA00B7B2B4 /* SpriteBehaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SpriteBehaviour.hpp; path = RMXEngine/SpriteBehaviour.hpp; sourceTree = SOURCE_ROOT; };
+		50C1CAE91B8E0B4500B7B2B4 /* AiCubo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AiCubo.cpp; path = AiCubo/AiCubo.cpp; sourceTree = SOURCE_ROOT; };
+		50C1CAEA1B8E0B4500B7B2B4 /* AiCubo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AiCubo.hpp; path = AiCubo/AiCubo.hpp; sourceTree = SOURCE_ROOT; };
 		50C43C461B679E6500AD2FAC /* RMXKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C43C491B679E6500AD2FAC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		50C43C501B679E6500AD2FAC /* RMXKit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RMXKit.cpp; sourceTree = "<group>"; };
@@ -785,6 +803,8 @@
 				5044D9071B874593003B4AE2 /* GameController.cpp */,
 				5044D9081B874593003B4AE2 /* GameController.hpp */,
 				5044D9091B874593003B4AE2 /* GameNode.cpp */,
+				50C1CAE61B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp */,
+				50C1CAE71B8DFEEA00B7B2B4 /* SpriteBehaviour.hpp */,
 				5044D90A1B874593003B4AE2 /* GameNode.hpp */,
 				5044D90B1B874593003B4AE2 /* GameView.cpp */,
 				5044D90C1B874593003B4AE2 /* GameView.hpp */,
@@ -806,6 +826,14 @@
 				5044D91C1B874593003B4AE2 /* Transform.hpp */,
 				5026F9C31B8B7AAC00237AD7 /* EntityGenerator.cpp */,
 				5026F9C41B8B7AAC00237AD7 /* EntityGenerator.hpp */,
+				50C1CABB1B8DD49F00B7B2B4 /* CollisionBody.cpp */,
+				50C1CABC1B8DD49F00B7B2B4 /* CollisionBody.hpp */,
+				50C1CADD1B8DD4AB00B7B2B4 /* CollisionEvent.cpp */,
+				50C1CADE1B8DD4AB00B7B2B4 /* CollisionEvent.hpp */,
+				50C1CAE01B8DD4B600B7B2B4 /* BoundingBox.cpp */,
+				50C1CAE11B8DD4B600B7B2B4 /* BoundingBox.hpp */,
+				50C1CAE31B8DD4C000B7B2B4 /* BoundingSphere.cpp */,
+				50C1CAE41B8DD4C000B7B2B4 /* BoundingSphere.hpp */,
 			);
 			name = engine;
 			path = ../RMXKit;
@@ -862,6 +890,8 @@
 		50C43C5D1B679E9200AD2FAC /* AiCubo */ = {
 			isa = PBXGroup;
 			children = (
+				50C1CAE91B8E0B4500B7B2B4 /* AiCubo.cpp */,
+				50C1CAEA1B8E0B4500B7B2B4 /* AiCubo.hpp */,
 				50C43C5E1B679E9200AD2FAC /* main.cpp */,
 				508726BC1B8359D900E631BE /* engine */,
 			);
@@ -1245,15 +1275,21 @@
 				503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */,
 				5044D9211B874593003B4AE2 /* GameView.cpp in Sources */,
 				6C9EB10F1B710D87003F6156 /* Object.cpp in Sources */,
+				50C1CAE21B8DD4B600B7B2B4 /* BoundingBox.cpp in Sources */,
 				5044D91D1B874593003B4AE2 /* Behaviour.cpp in Sources */,
 				5044D9271B874593003B4AE2 /* Scene.cpp in Sources */,
+				50C1CADF1B8DD4AB00B7B2B4 /* CollisionEvent.cpp in Sources */,
 				5044D9221B874593003B4AE2 /* Geometry.cpp in Sources */,
+				50C1CABD1B8DD49F00B7B2B4 /* CollisionBody.cpp in Sources */,
 				5044D9281B874593003B4AE2 /* Transform.cpp in Sources */,
 				5044D91E1B874593003B4AE2 /* Camera.cpp in Sources */,
 				5044D91F1B874593003B4AE2 /* GameController.cpp in Sources */,
+				50C1CAEB1B8E0B4500B7B2B4 /* AiCubo.cpp in Sources */,
 				5044D9241B874593003B4AE2 /* PhysicsBody.cpp in Sources */,
 				503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */,
+				50C1CAE81B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp in Sources */,
 				5044D9251B874593003B4AE2 /* PhysicsWorld.cpp in Sources */,
+				50C1CAE51B8DD4C000B7B2B4 /* BoundingSphere.cpp in Sources */,
 				6C0DA6661B70EB4500A4325E /* main.cpp in Sources */,
 				503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */,
 				5026F9C51B8B7AAC00237AD7 /* EntityGenerator.cpp in Sources */,

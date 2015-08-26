@@ -16,21 +16,27 @@
 #import "Transform.hpp"
 #import "Behaviour.hpp"
 #import "PhysicsBody.hpp"
-//#import <GLFW/glfw3.h>
+
 #import "GameView.hpp"
 #import "Geometry.hpp"
+#import "glfw3.h"
 #import "GameController.hpp"
 #import "EntityGenerator.hpp"
+#import "SpriteBehaviour.hpp"
 using namespace std;
 using namespace rmx;
 
 GameController::GameController() {
+    if (_singleton != null)
+        throw invalid_argument("GameController already started");
+    else
+        _singleton = this;
     this->view = new GameView();
     this->view->setDelegate(this);
 //    this->setView(new GameView());
 }
 
-GameController * GameController::_singleton = new GameController();
+GameController * GameController::_singleton = null;// = new GameController();
 GameController * GameController::getInstance() {
     if(_singleton ==   null) {
         _singleton = new GameController();
@@ -42,13 +48,13 @@ GameController * GameController::getInstance() {
 void GameController::initpov() {
     GameNode * n = GameNode::getCurrent();
     n->addBehaviour(new SpriteBehaviour());
-    n->setPhysicsBody(new PhysicsBody());
-    n->physicsBody()->setMass(1);
+    n->setPhysicsBody(PhysicsBody::newDynamicBody());
+    n->physicsBody()->setMass(5);
     cout << n->physicsBody() << endl;
 
 
 //    n->setGeometry(Geometry::Cube());
-    n->getTransform()->setScale(2.0f, 2.0f, 2.0f);
+    n->getTransform()->setScale(2.0f, 3.0f, 2.0f);
     n->addToCurrentScene();
     
     GameNode * head = new GameNode("Camera");//GameNode::newCameraNode();// new GameNode("Head");
@@ -58,66 +64,6 @@ void GameController::initpov() {
 //    GameNode::setCurrent(n);
 }
 
-class BehaviourA : public Behaviour {
-public:
-    void update() override {
-        this->getNode()->getTransform()->move(Forward,0.1);
-    }
-};
-
-class BehaviourB : public Behaviour {
-public:
-    void update() override {
-        this->getNode()->getTransform()->move(Yaw,   0.1);
-        this->getNode()->getTransform()->move(Pitch, 0.1);
-        this->getNode()->getTransform()->move(Roll,  0.1);
-    }
-    
-};
-
-class BehaviourC : public Behaviour {
-public:
-    void update() override {
-        this->getNode()->getTransform()->move(Forward,0.5);
-        this->getNode()->getTransform()->move(Yaw,  0.1);
-    }
-    
-};
-
-class EG : public EntityGenerator {
-public:
-    GameNode * makeEntity() override {
-        GameNode * head = GameNode::makeCube(0.2f, false, new BehaviourB());
-        
-        GameNode * body = GameNode::makeCube(0.5f, true, new BehaviourC());
-//        body->getTransform()->setPosition(-10.0f,0.0f,10.0f);
-        body->addChild(head);
-        head->getTransform()->setPosition(0.0f,1.0f,0.0f);
-        return body;
-    }
-};
-void GameController::setup() {
-    Scene * scene = Scene::getCurrent();
-    initpov();
-    
-    GameNode * cube = GameNode::makeCube(0.5f, true, new BehaviourA());
-    cube->getTransform()->setPosition(0.0f,0.0f,5.0f);
-        
-        
-    
-        
-    GameNode * floor = new GameNode("Floor");
-    floor->getTransform()->setPosition(0,0,0);
-    scene->rootNode()->addChild(floor);
-        
-    floor->setGeometry(new Floor());
-    
-    
-    EG eg = EG();
-    
-    eg.makeShapesAndAddToScene(scene, 50);
-    
-}
 
 void GameController::run() {
         //
@@ -156,27 +102,27 @@ void GameController::repeatedKeys(GLFWwindow * window) {
     GameNode * player = GameNode::getCurrent();//GameNode::getCurrent();
     
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        player->getTransform()->move(Forward, 1.0f);
+        player->BroadcastMessage("forward", new float(1.0));
     }
     
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        player->getTransform()->move(Forward,-1.0f);
+        player->BroadcastMessage("forward", new float(-1.0));
     }
     
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        player->getTransform()->move(Left, 1.0f);
+        player->BroadcastMessage("left", new float(1.0));
     }
     
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        player->getTransform()->move(Left, -1.0f);
+        player->BroadcastMessage("left", new float(-1.0));
     }
     
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-        player->getTransform()->move(Up, 1.0f);
+        player->BroadcastMessage("up", new float(1.0));
     }
     
     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-        player->getTransform()->move(Up,-1.0f);
+        player->BroadcastMessage("up", new float(- 1.0));
     }
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         player->BroadcastMessage("jump");
@@ -289,4 +235,12 @@ void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
     }
     
     
+}
+
+void GameController::windowSizeCallback(GLFWwindow * window, int width, int height) {
+    GameController * gvc = getInstance();
+    gvc->view->setWidth(width);
+    gvc->view->setHeight(height);
+    
+    glfwSetWindowSize(window, width, height);
 }

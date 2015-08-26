@@ -34,6 +34,8 @@ GameView::GameView(){
 //    this->setPointOfView(GameNode::newCameraNode());
 }
 
+
+
 void GameView::initGL() {
     
    
@@ -58,6 +60,7 @@ void GameView::initGL() {
     
     // Setup a key callback. It will be called every time a key is pressed, repeated or released.
     glfwSetKeyCallback(_window, GameController::keyCallback);
+    glfwSetWindowSizeCallback(_window, GameController::windowSizeCallback);
     
     glfwSetCursorPosCallback(_window, GameController::cursorCallback);
     // Get the resolution of the primary monitor

@@ -45,13 +45,31 @@ void Scene::setAsCurrent() {
 
 void Scene::renderScene(Camera * camera) {
 //    this->_rootNode->draw(cam->modelViewMatrix());
-    this->_rootNode->draw(camera->modelViewMatrix());
+
+//    if (this->renderDelegate != null)
+//        this->renderDelegate.updateBeforeSceneRender(cam);
+
+    LinkedList<GameNode>::Iterator * i = _rootNode->getChildren()->getIterator();
+    while (i->hasNext()) {
+        i->next()->draw(camera->modelViewMatrix());
+    }
 }
 
 
 void Scene::updateSceneLogic() {
-    this->_rootNode->updateLogic();
+    LinkedList<GameNode>::Iterator * i = _rootNode->getChildren()->getIterator();
+    while (i->hasNext()) {
+        i->next()->updateLogic();
+    }
     this->_physicsWorld->updatePhysics(this->_rootNode);
+//    if (this->renderDelegate != null)
+//        this->renderDelegate->updateBeforeSceneLogic();
+    _physicsWorld->updatePhysics(this->_rootNode);
+    _physicsWorld->updateCollisionEvents(this->_rootNode);
+    i->begin();
+    while (i->hasNext()) {
+        i->next()->updateAfterPhysics();
+    }
     
 }
 

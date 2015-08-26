@@ -66,6 +66,10 @@ namespace rmx {
     class Cube;
     class RenderDelegate;
     class GameController;
+    class CollisionBody;
+    class CollisionEvent;
+    class BoundingBox;
+    class BoundingSphere;
     typedef Dictionary<std::string, NodeComponent> GameNodeComponents;
     typedef LinkedList<Behaviour> GameNodeBehaviours;
     typedef LinkedList<GameNode> GameNodeList;

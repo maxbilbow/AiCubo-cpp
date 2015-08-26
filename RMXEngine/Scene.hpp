@@ -37,7 +37,7 @@ namespace rmx {
 //        RootNode():GameNode("rootNode"){}
 //    };
 
-    class Scene : public Object, public Unfinised {
+    class Scene : public Object {
         static Scene * _current;
         GameNode * _rootNode =   null;
         PhysicsWorld * _physicsWorld = new PhysicsWorld();

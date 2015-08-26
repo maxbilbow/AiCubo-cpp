@@ -16,21 +16,9 @@
 //#import "ASingleton.h"
 //#import "Object.h"
 
-#import "Includes.h"
+#include "RMXEngine.hpp"
 
-#import "Scene.hpp"
-
-#import "GameNode.hpp"
-#import "Delegates.hpp"
-#import "PhysicsBody.hpp"
-#import "Transform.hpp"
-#import "Behaviour.hpp"
-#import "glfw3.h"
-#import "GameView.hpp"
-#import "Geometry.hpp"
-#import "GameController.hpp"
-
-
+#import "AiCubo.hpp"
 //#import "OpenGLView.h"
 
 using namespace std;
@@ -43,7 +31,7 @@ using namespace rmx;
 
 int main(int argc, char * argv[]) {
 
-    GameController::getInstance()->run();
+    AiCubo().run();
 //    runTest2();
 //    RMXLinkedListTest();
 //    RMXDictionaryTest();

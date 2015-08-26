@@ -52,7 +52,7 @@ namespace rmx {
         GameNode(std::string name);
         
         
-
+        CollisionBody * collisionBody();
         void setTransform(Transform * transform);
         
         Transform * getTransform();
@@ -103,6 +103,7 @@ namespace rmx {
         void setPhysicsBody(PhysicsBody * body);
         
         void updateLogic();
+        void updateAfterPhysics();
         
         void draw(Matrix4 rootTransform);
         

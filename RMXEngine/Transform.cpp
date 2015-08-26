@@ -33,6 +33,7 @@ Transform::Transform(GameNode * node) {
     _axis = GLKMatrix4Identity;
     _localMatrix = GLKMatrix4Identity;
     _scale = GLKVector3Make(1,1,1);
+    _lastPosition = GLKVector3Make(0, 0, 0);
     this->setName("Transform::"+node->Name());
 }
 
@@ -87,11 +88,12 @@ Vector3 Transform::localPosition() {
 }
 
 Vector3 Transform::position() {
-    Transform * parent = this->parent();
-    if (parent !=   null && parent->parent() !=   null) {
-        return this->localPosition() + parent->position();
-    }
-    return this->localPosition();
+    return RMXMatrix4Position(this->worldMatrix());
+//    Transform * parent = this->parent();
+//    if (parent !=   null && parent->parent() !=   null) {
+//        return this->localPosition() + parent->position();
+//    }
+//    return this->localPosition();
 }
 
 void Transform::setM(int i, float value) {
@@ -106,6 +108,7 @@ void Transform::setPosition(Vector3 position) {
     this->_localMatrix.m30 = position.x;
     this->_localMatrix.m31 = position.y;
     this->_localMatrix.m32 = position.z;
+   
 //    cout << _localMatrix;
 }
 
@@ -137,9 +140,7 @@ bool Transform::move(Move name, float scale, string message) {
    return (this->translate(name, scale)
            || this->rotate(name, scale));
 //        cout << "Successfully read message: " << name << ":" << message << endl;
-    
 
-    
 }
 
 //void Transform::translate(float x, float y, float z) {
@@ -160,7 +161,7 @@ bool Transform::translate(Move direction, float scale) {
     Vector3 v;
     switch (direction) {
         case Forward:
-            scale *= -1;
+//            scale *= -1;
             v = this->forward();
             break;
         case Up:
@@ -168,7 +169,7 @@ bool Transform::translate(Move direction, float scale) {
             v = this->up();
             break;
         case Left:
-            scale *= -1;
+//            scale *= -1;
             v = this->left();
             break;
         case X:
@@ -218,6 +219,9 @@ bool Transform::rotate(Move direction, float scale) {
 
 
 
+void Transform::rotate(float radians, float x, float y, float z) {
+    _localMatrix = GLKMatrix4Rotate(_localMatrix, radians, x,y,z);
+}
 void Transform::rotate(float radians, Vector3 v) {
     
 //    Vector3 p = RMXMatrix4Position(_localMatrix);
@@ -292,3 +296,61 @@ GameNode * Transform::setNode(GameNode * node) {
 //    return   null;
 }
 
+float Transform::getWidth() {
+    return scale().x * 2;
+}
+
+float Transform::radius() {
+    return (_scale.x + _scale.y + _scale.z) / 3;
+}
+
+float Transform::getHeight() {
+    // TODO Auto-generated method stub
+    return scale().y * 2;
+}
+
+float Transform::getLength() {
+    // TODO Auto-generated method stub
+    return scale().z * 2;
+}
+
+void Transform::updateLastPosition() {
+    _lastPosition = this->localPosition(); //this->position();
+}
+
+Vector3 Transform::lastPosition() {
+    return _lastPosition;
+}
+
+
+Transform * Transform::rootTransform() {
+    Transform * parent = this->parent();
+    if (parent != null && parent->parent() != null) {
+        return this->parent()->rootTransform();
+    } else {
+        return this;
+    }
+}
+
+void Transform::stepBack(string s) {
+    for (int i=0;i<s.length();++i)
+        switch (s[i]) {
+            case 'x':
+                _localMatrix.m30 = _lastPosition.x;
+                break;
+            case 'y':
+                _localMatrix.m31 = _lastPosition.y;
+                break;
+            case 'z':
+                _localMatrix.m32 = _lastPosition.z;
+                break;
+            default:
+                break;
+        }
+//    this->setPosition(_lastPosition);
+}
+
+
+PhysicsBody * Transform::physicsBody() {
+    return this->getNode()->physicsBody();
+}
