@@ -95,45 +95,23 @@ void Camera::makePerspective(GameView * view) {
    
    
     m.m30 = m.m31 = m.m32 = 0;
-//    cout << m << endl;
+
     
     bool isInvertable;
     m = GLKMatrix4Invert(m, &isInvertable);
     if (!isInvertable)
         throw invalid_argument("Matrix couldnt be inverted");
-//    cout << m << endl;
-    
-//   m = GLKMatrix4Transpose(m);
-    
-    glMultTransposeMatrixf(m.m);
-//    glMultMatrixf(m.m);
+
+    glMultMatrixf(m.m);
     
 
 }
 
 Matrix4 Camera::modelViewMatrix() {
-//    Transform * t = this->getNode()->getTransform();
-//    Vector3 eye = t->position();
-//    Vector3 up = t->up();
-//    Vector3 center = t->position() + t->forward();
-//    
-//    return GLKMatrix4Multiply(t->worldMatrix(), GLKMatrix4MakeLookAt(
-//                                eye.x, eye.y, eye.z,
-//                                center.x, center.y, center.z,
-//                                up.x, up.y, up.z
-//                                )
-//                              );
     
     Matrix4 m = this->getNode()->getTransform()->worldMatrix();
-//    Matrix4 l = this->getNode()->getTransform()->localMatrix();
-//    m.m30 = m.m31 = m.m32 = 0;
-    cout << getNode()->Name() << "\n" << m << endl;
 
-//    cout << m << endl;
-//    m.negate();
-//    return m;
-//    m =
+    cout << GameNode::getCurrent()->Name() <<GameNode::getCurrent()->getTransform()->worldMatrix() << endl;
     return RMXMatrix4Negate(m);
-    ///(m, new bool());//RMXMatrix4Negate(m);//GLKMatrix4Invert(m, new bool());
 }
 

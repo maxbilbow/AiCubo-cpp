@@ -42,6 +42,26 @@ Vector3 RMXMatrix3MakeEuler(Matrix4 m) {
 //                           );
 }
 
+Matrix4 RMXMatrix4RotateAboutPoint(Matrix4 m, float radians, Vector3 axis, Vector3 point) {
+    
+    Vector3 p = RMXMatrix4Position(m);
+    m.m30 = point.x;
+    m.m31 = point.y;
+    m.m32 = point.z;
+    m = GLKMatrix4RotateWithVector3(m, radians, axis);
+    m.m30 = p.x;
+    m.m31 = p.y;
+    m.m32 = p.z;
+    
+    return m;
+}
+
+Matrix4& RMXMatrix4SetPosition(Matrix4& m, Vector3 pos) {
+    m.m30 = pos.x; m.m31 = pos.y; m.m32 = pos.z;
+    return m;
+}
+
+
 Matrix4 operator*(Matrix4 lhs,  Matrix4 rhs) {
     return GLKMatrix4Multiply(lhs, rhs);
 }
@@ -139,6 +159,24 @@ std::ostream& operator<<(std::ostream& in,  Matrix4 m) {
 
 std::ostream& operator<<(std::ostream& in,  Vector3 v) {
     return in << v.x << ", " << v.y << ", " << v.z;
+}
+
+bool operator==(Matrix4 lhs,  Matrix4 rhs) {
+    for (int i=0;i<16;++i)
+        if (lhs.m[i] != rhs.m[i])
+            return false;
+    return true;
+}
+
+
+
+bool operator!=(Matrix4 lhs,  Matrix4 rhs) {
+    for (int i=0;i<16;++i)
+        if (lhs.m[i] != rhs.m[i]) {
+//            cout << lhs.m[i] << " != " << rhs.m[i] << ", diff: " << (lhs.m[i] - rhs.m[i]) << endl;
+            return true;
+        }
+    return false;
 }
 
 

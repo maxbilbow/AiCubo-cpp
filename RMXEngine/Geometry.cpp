@@ -63,10 +63,11 @@ void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
 ///
 
     
-    EulerAngles modelA = GLKVector3MultiplyScalar(
-                                                  node->getTransform()->localEulerAngles(),
-                                                  1// / PI_OVER_180
-                                                  );
+    EulerAngles modelA = node->getTransform()->localEulerAngles();
+//                                        GLKVector3MultiplyScalar(
+//                                                  node->getTransform()->localEulerAngles(),
+//                                                  1// / PI_OVER_180
+//                                                  );
     
     
     glPushMatrix();

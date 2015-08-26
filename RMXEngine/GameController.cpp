@@ -191,11 +191,11 @@ void GameController::repeatedKeys(GLFWwindow * window) {
     }
     
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
-        player->getTransform()->move(Pitch,-1.0f);
+        view->pointOfView()->getTransform()->move(Pitch,-1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-        player->getTransform()->move(Pitch, 1.0f);
+        view->pointOfView()->getTransform()->move(Pitch, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
@@ -284,7 +284,7 @@ void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
 //        GameNode * pov =
         Transform * body = GameNode::getCurrent()->getTransform();
         Transform * head = gc->view->pointOfView()->getTransform();
-        head->rotate(Pitch, dy);
+        head->rotate(Pitch, -dy);
         body->rotate(Yaw,   dx);
     }
     

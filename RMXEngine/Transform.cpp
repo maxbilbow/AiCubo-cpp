@@ -68,7 +68,7 @@ float Transform::mass() {
 Matrix4 Transform::worldMatrix() {
     Transform * parent = this->parent();
     if (parent != null && parent->parent() != null) {
-        return GLKMatrix4Multiply(this->_localMatrix,parent->worldMatrix());
+        return GLKMatrix4Multiply(parent->worldMatrix(),this->_localMatrix);
     } else {
         return this->_localMatrix;
     }
@@ -160,7 +160,7 @@ bool Transform::translate(Move direction, float scale) {
     Vector3 v;
     switch (direction) {
         case Forward:
-//            scale *= -1;
+            scale *= -1;
             v = this->forward();
             break;
         case Up:
@@ -168,7 +168,7 @@ bool Transform::translate(Move direction, float scale) {
             v = this->up();
             break;
         case Left:
-//            scale *= -1;
+            scale *= -1;
             v = this->left();
             break;
         case X:
@@ -202,7 +202,7 @@ bool Transform::rotate(Move direction, float scale) {
             v = this->left();
             break;
         case Yaw:
-//            scale *= -1;
+            scale *= -1;
             v = this->up();
             break;
         case Roll:
@@ -220,17 +220,11 @@ bool Transform::rotate(Move direction, float scale) {
 
 void Transform::rotate(float radians, Vector3 v) {
     
-    
-    
-    Matrix4 rMatrix = GLKMatrix4MakeRotation(radians, v.x, v.y, v.z);
-//    cout << this->localPosition() << endl;
-    Vector3 pos = RMXMatrix4Position(_localMatrix);
+//    Vector3 p = RMXMatrix4Position(_localMatrix);
 //    _localMatrix.m30 = _localMatrix.m31 = _localMatrix.m32 = 0;
-    this->_localMatrix = GLKMatrix4Multiply(GLKMatrix4Transpose(_localMatrix), rMatrix);
-//    _localMatrix.m30 = pos.x;
-//    _localMatrix.m31 = pos.y;
-//    _localMatrix.m32 = pos.z;
-//    cout << this->localPosition() << endl;
+    _localMatrix = GLKMatrix4RotateWithVector3(_localMatrix, radians, v);
+    
+//    RMXMatrix4SetPosition(_localMatrix, p);
 }
 
 
