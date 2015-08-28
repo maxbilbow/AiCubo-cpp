@@ -180,3 +180,12 @@ void PhysicsBody::setRestitution(float restitution) {
         this->restitution = restitution;
 }
 
+void PhysicsBody::setEffectedByGravity(bool effectedByGravity) {
+    this->effectedByGravity = effectedByGravity;
+}
+
+bool PhysicsBody::isEffectedByGravity() {
+    return this->effectedByGravity;
+}
+
+

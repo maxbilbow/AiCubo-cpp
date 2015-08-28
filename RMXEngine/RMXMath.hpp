@@ -16,6 +16,7 @@
 #define PI 3.14159265359f
 #define PI_OVER_180 (PI/180)
 
+static const Vector3 Vector3Zero = GLKVector3Make(0,0,0);
 Vector3 RMXMatrix4Position(Matrix4 m);
 Matrix4 RMXMatrix4Negate(Matrix4 m);
 Matrix4 RMXMatrix4NegatePosition(Matrix4 m) ;

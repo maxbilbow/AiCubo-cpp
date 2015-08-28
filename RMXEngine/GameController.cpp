@@ -167,6 +167,11 @@ void GameController::setView(GameView * view) {
 }
 
 int GameController::keys[600] = {0};
+
+GameNode * player() {
+    return GameNode::getCurrent();
+}
+
 void GameController::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
 //    cout << "  KEYS: " << key << ", " << scancode << ", " << action << ", " << mods << endl;
     GameController * gc = getInstance();
@@ -195,7 +200,13 @@ void GameController::keyCallback(GLFWwindow *window, int key, int scancode, int 
                     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
                     gc->lockCursor(true);
                 }
-                break;			 
+                break;
+            case GLFW_KEY_G:
+                if (mods == GLFW_MOD_SHIFT)
+                    player()->physicsBody()->setEffectedByGravity(false);
+                else
+                    player()->physicsBody()->setEffectedByGravity(true);
+                break;
         }
 }
 
@@ -232,6 +243,7 @@ void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
         Transform * head = gc->view->pointOfView()->getTransform();
         head->rotate(Pitch, -dy);
         body->rotate(Yaw,   dx);
+        
     }
     
     

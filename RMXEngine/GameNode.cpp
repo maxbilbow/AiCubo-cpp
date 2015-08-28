@@ -200,8 +200,11 @@ void GameNode::updateAfterPhysics() {
         if (b->isEnabled())
             b->lateUpdate();
     }
+    
+    
     //    }
     _transform->updateLastPosition();
+    _tick++;
 }
 void GameNode::draw(Matrix4 rootTransform) {
     if (this->_hasGeometry) {

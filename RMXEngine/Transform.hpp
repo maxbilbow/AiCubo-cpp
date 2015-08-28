@@ -102,6 +102,7 @@ namespace rmx{
         void stepBack(std::string);
         
         PhysicsBody * physicsBody();
+        CollisionBody * collisionBody();
     };
 
 }

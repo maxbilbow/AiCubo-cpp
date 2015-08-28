@@ -57,6 +57,7 @@ float getCurrentFramerate() {
 }
     
 void PhysicsWorld::applyGravityTo(GameNode * node) {
+    if (node->physicsBody()->isEffectedByGravity()) {
         Transform * t = node->getTransform();
         float ground = t->scale().y;
         float mass = node->getTransform()->mass();
@@ -67,6 +68,7 @@ void PhysicsWorld::applyGravityTo(GameNode * node) {
         //		m.translate(x, y, z);
         if (t->position().y < ground)
             t->setM(3 * 4 + 1, ground);
+    }
 }
 
 
@@ -160,8 +162,7 @@ void PhysicsWorld::checkForDynamicCollisions(LinkedList<CollisionBody> * dynamic
         this->checkForDynamicCollisions(dynamic);
     }
 }
-//Vector3 collisionDistance = new Vector3();
-//public static boolean UseBoundingBox = true;
+const static unsigned int secureKey = rand() % 100;
 bool PhysicsWorld::checkForCollision(CollisionBody * A, CollisionBody * B) {
     if (A == B)
         return false;
@@ -176,12 +177,13 @@ bool PhysicsWorld::checkForCollision(CollisionBody * A, CollisionBody * B) {
             return false;
     }
     
+    
     bool isHit = A->intersects(B);
     if (isHit) {
-        CollisionEvent * e = new CollisionEvent(A->getNode(),B->getNode());
+        CollisionEvent * e = new CollisionEvent(A->getNode(),B->getNode(),secureKey);
         if (collisionDelegate != null)
             collisionDelegate->handleCollision(A->getNode(), B->getNode(), e);
-        
+        e->processCollision(secureKey);
     } 
     return isHit;			
     

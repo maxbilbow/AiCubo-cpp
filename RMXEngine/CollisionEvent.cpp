@@ -25,147 +25,71 @@ using namespace rmx;
 using namespace std;
 
 
-CollisionEvent::CollisionEvent(GameNode * nodeA, GameNode * nodeB) {
-//    _log = "\nNew Collision Event: " + _nodeA->uniqueName() + " vs. " + _nodeB->uniqueName();
-    _nodeA = nodeA;
-    _nodeB = nodeB;
-    _hitPointA = GLKVector3Make(0,0,0);
-    _hitPointB = GLKVector3Make(0,0,0);
-    Transform * A = nodeA->getTransform();//.rootTransform();
-    Transform * B = nodeB->getTransform();//.rootTransform();
+CollisionEvent::CollisionEvent(GameNode * nodeA, GameNode * nodeB, unsigned int key) {
+    this->key = key;
+ 
+    this->nodeA = nodeA;
+    this->nodeB = nodeB;
+    this->hitPointA = Vector3Zero;
+    this->hitPointB = Vector3Zero;
+    this->planeDistance = this->getPlaneDistance();
     
-       
-    Vector3 posA = A->localPosition();
-    Vector3 posB = B->localPosition();
-//    _log += "\n        Pos A: " + to_string(posA.x) ;
-//    _log += "\n        Pos B: " + to_string(posB.x) ;
-    _AtoB = posB - posA;
-    _dist = GLKVector3Distance( A->localPosition() ,B->localPosition());
-    if (isnan(_dist)) {
-        cout << A->localPosition() << ", " << B->localPosition() << endl;
-        throw invalid_argument("NOT A NUMBER");
-    }
-    
-    this->seperateBodies(A,B);
-    
-    
-    this->processMomentum(A,B);
-
-    nodeA->BroadcastMessage("onCollision", this);
-    nodeB->BroadcastMessage("onCollision", this);
+    this->AtoB = GLKVector3Subtract(
+                                    nodeA->getTransform()->position(),
+                                    nodeB->getTransform()->position()
+                                    );
+    startingDistance = GLKVector3Distance(
+                                          nodeA->getTransform()->position(),
+                                          nodeB->getTransform()->position()
+                                          ); // A.localPosition().getDistanceTo(B.localPosition());
+   
+    nodeA->BroadcastMessage(ON_COLLISION_START,this);
+    nodeB->BroadcastMessage(ON_COLLISION_START,this);
 }
 
 void CollisionEvent::seperateBodies(Transform * A, Transform * B) {
+    
     //apply force relative to overlapping areas
     float min;
-    
-    
-    min = _nodeA->collisionBody()->boundingSphere()->radius() + _nodeB->collisionBody()->boundingSphere()->radius();
-    
-//    _log += "\n       A to B: " + _AtoB.x ;
-    
-    const float delta = min - _dist / 2;
-//    _log += "\n     Distance: " + _dist + " < " + min + ", delta == " + delta;
-    if (_dist > min || _dist < 0)
-        throw invalid_argument("Distance" + to_string(_dist) + " should be less than min: " + to_string(min) + "\n");
-        //			System.err.println("Distance" + dist + " should be less than min: " + min);
-        
-    Vector3 AtoB = _AtoB;// * -delta;//.normalize();
-//    AtoB = Aiscale(-delta);
-        if (isZero(AtoB)) {
-            AtoB.x = -min;//TODO: normalize again.
-        }
-    Vector3 posA = A->localPosition(); Vector3 posB = B->localPosition();
+    float dist = this->startingDistance;
 
-    BoundingBox * boxA = _nodeA->collisionBody()->boundingBox(); BoundingBox * boxB = _nodeB->collisionBody()->boundingBox();
-    float dx  = boxA->xMax() + posA.x - boxB->xMin() - posB.x;//Math.abs(AtoB.x);
-    float dy  = boxA->yMax() + posA.y - boxB->yMin() - posB.y;//Math.abs(AtoB.y);
-    float dz  = boxA->zMax() + posA.z - boxB->zMin() - posB.z;// Math.abs(AtoB.z);
-    float dx2 = boxB->xMax() + posB.x - boxA->xMin() - posA.x;//Math.abs(AtoB.x);
-    float dy2 = boxB->yMax() + posB.y - boxA->yMin() - posA.y;//Math.abs(AtoB.y);
-    float dz2 = boxB->zMax() + posB.z - boxA->zMin() - posA.z;// Math.abs(AtoB.z);
-    string axis = "x"; float diff = dx;
-    
-    if (dx2 < diff) {
-        axis = "x";
-        diff = dx2;
-    }
-    if (dy < diff) {
-        axis = "y";
-        diff = dy;
-    }
-    if (dy2 < diff) {
-        axis = "y";
-        diff = dy2;
-    }
-    if (dz < diff) {
-        axis = "z";
-        diff = dz;
-    }
-    if (dz2 < diff) {
-        axis = "z";
-        diff = dz2;
-    }
-    cout << axis << ": " << diff << endl;
-    
-//    if (dy < dx && dy < dz) {
-//        axis = "y";
-//        cout << dy << " vs " << dy2 << endl;
-//        diff = dy;
-//    }else if (dx < dy && dx < dz) {
-//        axis = "x";
-//        cout << dx << " vs " << dx2 << endl;
-//        diff = dx;
-//    }else {
-//        axis = "z";
-//        cout << dz << " vs " << dz2 << endl;
-//        diff = dz;
-//    }
-   
+    min = nodeA->collisionBody()->boundingSphere()->radius() + nodeB->collisionBody()->boundingSphere()->radius();
   
     
-    
-    CollisionBody * bodyA = A->physicsBody()->collisionBody();
-    CollisionBody * bodyB = B->physicsBody()->collisionBody();
-    newCollision = !bodyA->contacts->contains(bodyB);
+    const float delta = min - dist / 2;
 
     
+    AtoB = GLKVector3Normalize(AtoB) * -delta;
+//    AtoB.scale(-delta);
+//    if (AtoB.isZero()) {
+//        AtoB.set(-min,0,0);
+//    }
     
-    if (A->physicsBody()->type() == Dynamic && A->position() != A->rootTransform()->lastPosition())
-        A->getNode()->getTransform()->rootTransform()->stepBack(axis);
-    if (B->physicsBody()->type() == Dynamic && B->position() != B->rootTransform()->lastPosition())
-        B->getNode()->getTransform()->rootTransform()->stepBack(axis);
-    
-    if (bodyA->intersects(bodyB) ){
-//        if (newCollision) {
-//            bodyA->contacts->append(B);
-//            bodyB->contacts->append(A);
-//        }
-        float time = 0.167;// RMX.getCurrentFramerate();
-        float escapeForce = time;// GLKVector3Length(_AtoB);
-        Vector3 dir = //AtoB.getNormalized();
-        GLKVector3Make(
-                       axis == "x" ? 1 : 0,
-                       axis == "y" ? 1 : 0,
-                       axis == "z" ? 1 : 0
-                       );
-        A->physicsBody()->applyForce(escapeForce * A->mass(), dir, _hitPointA);//.translate(AtoB);
-        
-        //        _log += "\n Translating B: " + AtoB;
-        B->physicsBody()->applyForce(-escapeForce * B->mass(), dir, _hitPointB);//translate(AtoB);
+    float diff = this->planeDistance;
+    if (A->getNode()->tick() > 0) {
+        if (A->physicsBody()->type() == Dynamic)
+            A->rootTransform()->stepBack(axis);// -diff * sign);
+        else if (B->physicsBody()->type() == Dynamic)
+            B->rootTransform()->stepBack(axis);//diff * sign);
     }
     
+    if (A->collisionBody()->boundingBox()->intersects(B->collisionBody()->boundingBox()) ) {
     
+        float time = 0.17f;//RMX.getCurrentFramerate();
+        float escapeForce = time;// * AtoB.length();
+        Vector3 dir = //AtoB.getNormalized();
+        GLKVector3Make(axis == "x" ? 1 : 0, axis == "y" ? 1 : 0, axis == "z" ? 1 : 0);
+        
+								A->physicsBody()->applyForce(escapeForce * (A->mass() + diff), dir, hitPointA);//.translate(AtoB);
+        
+								B->physicsBody()->applyForce(-escapeForce * (B->mass() + diff), dir, hitPointB);//translate(AtoB);
+        
+        
+    }
 }
 
 
-void CollisionEvent::finishUp(CollisionBody * A, CollisionBody * B) {
-    
 
-    
-    //		if (A.position().getDistanceTo(B.position()) < min) {
-    
-}
 void CollisionEvent::processMomentum(Transform * A, Transform * B)  {
     
 //    _log += "\n\nCollision Momentum Report: " + nodeA.uniqueName() + " vs. " + nodeB.uniqueName();
@@ -180,12 +104,7 @@ void CollisionEvent::processMomentum(Transform * A, Transform * B)  {
     
     float m1 = A->mass();
     float m2 = B->mass();
-    
-    //		float res = (1 - A.node.physicsBody().getRestitution()) * (1 - B.node.physicsBody().getRestitution());
-    //		float resA = 1 - A.node.physicsBody().getRestitution();
-    //		float resB = 1 - B.node.physicsBody().getRestitution();
-    
-    
+   
     
     
     float lossA = 1 - A->physicsBody()->getRestitution();
@@ -201,15 +120,74 @@ void CollisionEvent::processMomentum(Transform * A, Transform * B)  {
     
     //Transfer of forces
     
-    A->physicsBody()->applyForce( forceOnA * lossA , direction, _hitPointA);
-    B->physicsBody()->applyForce( forceOnB * lossB , direction, _hitPointB);
-    
-    //Loss of energy
-    //				nodeA.physicsBody().applyForce(-m1 * lossA, direction, hitPointA);
-    //				nodeA.physicsBody().applyForce(-m2 * lossB, direction, hitPointA);
+    A->physicsBody()->applyForce( forceOnA * lossA , direction, hitPointA);
+    B->physicsBody()->applyForce( forceOnB * lossB , direction, hitPointB);
     
     
-    //		System.out.println(_log);
-    //System.out.println("Velocities: " +
-    //				"\n     "+ nodeA.uniqueName() + ": " + va + nodeB.uniqueName() + ": " + vb);
+}
+
+void CollisionEvent::processCollision(unsigned int key) {
+    if (key != this->key)
+        throw invalid_argument("CollisionEvent::processCollision(int key) cannot be called outside of the PhysicsWorld class");
+    if(this->prevented)
+        return;
+    
+    this->seperateBodies(nodeA->getTransform(), nodeB->getTransform());
+    this->processMomentum(nodeA->getTransform(), nodeB->getTransform());
+    
+    nodeA->BroadcastMessage(ON_COLLISION_END,this);
+    nodeB->BroadcastMessage(ON_COLLISION_END,this);
+}
+
+
+float CollisionEvent::getPlaneDistance() {
+    BoundingBox * boxA = nodeA->collisionBody()->boundingBox(); BoundingBox * boxB = nodeB->collisionBody()->boundingBox();
+    Vector3 posA = nodeA->getTransform()->localPosition(); Vector3 posB = nodeB->getTransform()->localPosition();
+    
+    
+    float dx = boxA->xMax() + posA.x - boxB->xMin() - posB.x; //left
+    float dx2 = boxB->xMax() + posB.x - boxA->xMin() - posA.x;//right
+    float dy = boxA->yMax() + posA.y - boxB->yMin() - posB.y; //top
+    float dy2 = boxB->yMax() + posB.y - boxA->yMin() - posA.y;//bottom
+    float dz = boxA->zMax() + posA.z - boxB->zMin() - posB.z; //front
+    float dz2 = boxB->zMax() + posB.z - boxA->zMin() - posA.z;//back
+    string axis = "x"; float diff = dx; float sign = 1;
+    
+    
+    if (dx2 < diff) {
+        diff = dx2;
+        axis = "x";
+        sign = -1;
+    }
+    if (dy < diff) {
+        diff = dy;
+        axis = "y";
+        sign = 1;
+    }
+    if (dy2 < diff) {
+        diff = dy2;
+        axis = "y";
+        sign = -1;
+    }
+    if (dz < diff) {
+        diff = dz;
+        axis = "z";
+        sign = 1;
+    }
+    if (dz2 < diff) {
+        diff = dz2;
+        axis = "z";
+        sign = -1;
+    }
+    this->axis = axis;
+    return diff * sign;
+}
+
+bool CollisionEvent::isPrevented() {
+    return this->prevented;
+}
+
+
+void CollisionEvent::preventCollision(bool prevent) {
+    this->prevented = prevent;
 }

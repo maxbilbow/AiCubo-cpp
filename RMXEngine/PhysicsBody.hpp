@@ -31,6 +31,7 @@ namespace rmx {
         CollisionBody * _collisionBody;
         PhysicsBodyType _type;
         GLKVector3 forces, torque, velocity, rotationalVelocity;
+        bool effectedByGravity = true;
     public:
         PhysicsBodyType type();
         void setType(PhysicsBodyType type);
@@ -55,6 +56,9 @@ namespace rmx {
         void setRestitution(float);
         
         void updatePhysics(PhysicsWorld *);
+        
+        void setEffectedByGravity(bool effected);
+        bool isEffectedByGravity();
         
         static PhysicsBody * newStaticBody();
         

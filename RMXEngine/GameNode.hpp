@@ -25,7 +25,7 @@ namespace rmx {
     private:
         static GameNode * _current;
         
-        
+        long _tick = 0;
         
         Transform * _transform = null;
         
@@ -51,7 +51,7 @@ namespace rmx {
         GameNode();
         GameNode(std::string name);
         
-        
+        long tick();
         CollisionBody * collisionBody();
         void setTransform(Transform * transform);
         

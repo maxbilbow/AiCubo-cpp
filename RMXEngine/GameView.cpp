@@ -35,6 +35,9 @@ GameView::GameView(){
 }
 
 
+long GameNode::tick() {
+    return _tick;
+}
 
 void GameView::initGL() {
     

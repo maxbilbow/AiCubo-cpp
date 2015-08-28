@@ -12,6 +12,8 @@
 #include "Includes.h"
 #include <math.h>
 using namespace std;
+
+
 Vector3 RMXMatrix4Position(Matrix4 m) {
     return GLKVector3Make(m.m30, m.m31, m.m32);
 }

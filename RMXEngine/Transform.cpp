@@ -9,7 +9,7 @@
 #import "GameNode.hpp"
 #import "NodeComponent.hpp"
 #import "PhysicsBody.hpp"
-
+#import "CollisionBody.hpp"
 #import "Transform.hpp"
 
 #import <math.h>
@@ -353,4 +353,8 @@ void Transform::stepBack(string s) {
 
 PhysicsBody * Transform::physicsBody() {
     return this->getNode()->physicsBody();
+}
+
+CollisionBody * Transform::collisionBody() {
+    return this->physicsBody()->collisionBody();
 }
