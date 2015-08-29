@@ -54,7 +54,7 @@ Transform * GameNode::getTransform() {
 }
 
 GameNode * GameNode::getCurrent() {
-        if (_current == null)
+        if (_current == nullptr)
             _current = new GameNode("Player");
         return _current;
 }
@@ -67,7 +67,7 @@ NodeComponent * GameNode::setComponent(NodeComponent * component)  {
 }
 
 void GameNode::addBehaviour(Behaviour * behaviour) {
-    if (behaviour != null && !this->behaviours->contains(behaviour)) {
+    if (behaviour != nullptr && !this->behaviours->contains(behaviour)) {
         this->behaviours->append(behaviour);
         behaviour->setNode(this);
     }
@@ -102,7 +102,7 @@ GameNode * GameNode::getChildWithName(string name) {
         if (n->Name() == name)
             return n;
     }
-    return    null;
+    return    nullptr;
 }
     
 
@@ -184,7 +184,7 @@ void GameNode::updateLogic() {
         GameNodeList::Iterator * ci = this->children.getIterator();
         while (ci->hasNext()) {
             GameNode * n = ci->next();
-            if (n != null)
+            if (n != nullptr)
                 n->updateLogic();
         }
 //    }
@@ -225,7 +225,7 @@ GameNode * GameNode::getParent() {
 }
     
 void GameNode::setParent(GameNode * parent) {
-    if (this->parent != null && parent != this->parent) {
+    if (this->parent != nullptr && parent != this->parent) {
         this->parent->removeChildNode(this);
     }
 //    if (typeid(parent) == typeid(RootNode))
@@ -246,7 +246,7 @@ void GameNode::BroadcastMessage(std::string message, void * args, SendMessageOpt
 }
     
 GameNode * GameNode::makeCube(float s,bool body, Behaviour * b) {
-    GameNode * n = new GameNode("Cube"+to_string(random()));
+    GameNode * n = new GameNode("Cube #"+to_string(random()%100));
     n->setGeometry(Geometry::Cube());
         if (body)
             n->setPhysicsBody(PhysicsBody::newDynamicBody());
@@ -261,7 +261,7 @@ void GameNode::addToCurrentScene() {
 }
 
 void GameNode::setTransform(Transform *transform) {
-    if (this->_transform !=   null)
+    if (this->_transform !=   nullptr)
 //        throw invalid_argument("Transform can only be set once! " + this->ToString());
         cout << "WARNING: Transform can only be set once! " << this << endl;
     else
@@ -272,7 +272,7 @@ CollisionBody * GameNode::collisionBody() {
     if (_hasPhysicsBody)
         return _physicsBody->collisionBody();
     else
-        return null;
+        return nullptr;
 }
 
 

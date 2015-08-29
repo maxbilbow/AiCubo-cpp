@@ -15,19 +15,29 @@
 #import "GameNode.hpp"
 #import "PhysicsWorld.hpp"
 #import "Scene.hpp"
+#import "Delegates.hpp"
+#import "GameView.hpp"
+#import "GameController.hpp"
 
 
 using namespace rmx;
 using namespace std;
 
-Scene * Scene::_current =   null;
+Scene * Scene::_current =   nullptr;
 
 Scene::Scene() {
     this->_rootNode = new GameNode("rootNode");
+    cout << "initializing scene" << endl;
+    if (_current == nullptr) {
+          cout << "Setting Scene::_current" << endl;
+        _current = this;
+    }
 }
+
+
 //	private static Scene current;
 Scene * Scene::getCurrent() {
-    if (Scene::_current ==   null)
+    if (Scene::_current ==   nullptr)
         _current = new Scene();
     return _current;
 }
@@ -75,4 +85,8 @@ void Scene::updateSceneLogic() {
 
 GameNode * Scene::rootNode() {
     return _rootNode;
+}
+
+GameNode * Scene::pointOfView() {
+    return GameController::getInstance()->getView()->pointOfView();
 }

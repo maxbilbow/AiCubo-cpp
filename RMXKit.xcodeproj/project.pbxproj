@@ -30,6 +30,11 @@
 		5076A84F1B84F1C5008A07AF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84D1B84F1C5008A07AF /* GLKit.framework */; };
 		5076A8501B84F1C5008A07AF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84E1B84F1C5008A07AF /* OpenGL.framework */; };
 		508726AE1B8294E600E631BE /* test2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726AC1B8294E600E631BE /* test2.cpp */; };
+		50B2A3B41B913E9D0041F112 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A3B31B913E9D0041F112 /* AppDelegate.swift */; };
+		50B2A3B61B913E9D0041F112 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A3B51B913E9D0041F112 /* GameViewController.swift */; };
+		50B2A3B81B913E9D0041F112 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A3B71B913E9D0041F112 /* Shaders.metal */; };
+		50B2A3BA1B913E9D0041F112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B2A3B91B913E9D0041F112 /* Assets.xcassets */; };
+		50B2A3BD1B913E9E0041F112 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B2A3BB1B913E9E0041F112 /* MainMenu.xib */; };
 		50C1CABD1B8DD49F00B7B2B4 /* CollisionBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CABB1B8DD49F00B7B2B4 /* CollisionBody.cpp */; };
 		50C1CADF1B8DD4AB00B7B2B4 /* CollisionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CADD1B8DD4AB00B7B2B4 /* CollisionEvent.cpp */; };
 		50C1CAE21B8DD4B600B7B2B4 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE01B8DD4B600B7B2B4 /* BoundingBox.cpp */; };
@@ -455,6 +460,13 @@
 		508726AC1B8294E600E631BE /* test2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test2.cpp; sourceTree = "<group>"; };
 		509BC17D1B68A389007172B6 /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedList.cpp; path = RMXKit/LinkedList.cpp; sourceTree = SOURCE_ROOT; };
 		509BC1891B68BBBE007172B6 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = RMXKit/Dictionary.cpp; sourceTree = SOURCE_ROOT; };
+		50B2A3B11B913E9D0041F112 /* AiMubo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiMubo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50B2A3B31B913E9D0041F112 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		50B2A3B51B913E9D0041F112 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		50B2A3B71B913E9D0041F112 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		50B2A3B91B913E9D0041F112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50B2A3BC1B913E9E0041F112 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		50B2A3BE1B913E9E0041F112 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C1CABB1B8DD49F00B7B2B4 /* CollisionBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBody.cpp; path = RMXEngine/CollisionBody.cpp; sourceTree = SOURCE_ROOT; };
 		50C1CABC1B8DD49F00B7B2B4 /* CollisionBody.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CollisionBody.hpp; path = RMXEngine/CollisionBody.hpp; sourceTree = SOURCE_ROOT; };
 		50C1CADD1B8DD4AB00B7B2B4 /* CollisionEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionEvent.cpp; path = RMXEngine/CollisionEvent.cpp; sourceTree = SOURCE_ROOT; };
@@ -488,6 +500,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		50B2A3AE1B913E9D0041F112 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50C43C431B679E6500AD2FAC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -839,6 +858,19 @@
 			path = ../RMXKit;
 			sourceTree = "<group>";
 		};
+		50B2A3B21B913E9D0041F112 /* AiMubo */ = {
+			isa = PBXGroup;
+			children = (
+				50B2A3B31B913E9D0041F112 /* AppDelegate.swift */,
+				50B2A3B51B913E9D0041F112 /* GameViewController.swift */,
+				50B2A3B71B913E9D0041F112 /* Shaders.metal */,
+				50B2A3B91B913E9D0041F112 /* Assets.xcassets */,
+				50B2A3BB1B913E9E0041F112 /* MainMenu.xib */,
+				50B2A3BE1B913E9E0041F112 /* Info.plist */,
+			);
+			path = AiMubo;
+			sourceTree = "<group>";
+		};
 		50C43C3D1B679E6500AD2FAC = {
 			isa = PBXGroup;
 			children = (
@@ -846,6 +878,7 @@
 				50C43C4B1B679E6500AD2FAC /* RMXKit */,
 				50C43C5D1B679E9200AD2FAC /* AiCubo */,
 				503A23971B6A2910008F89F6 /* old */,
+				50B2A3B21B913E9D0041F112 /* AiMubo */,
 				50C43C481B679E6500AD2FAC /* Frameworks */,
 				50C43C471B679E6500AD2FAC /* Products */,
 			);
@@ -856,6 +889,7 @@
 			children = (
 				50C43C461B679E6500AD2FAC /* RMXKit.bundle */,
 				50C43C5C1B679E9200AD2FAC /* AiCubo */,
+				50B2A3B11B913E9D0041F112 /* AiMubo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -971,6 +1005,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		50B2A3B01B913E9D0041F112 /* AiMubo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50B2A3E01B913E9E0041F112 /* Build configuration list for PBXNativeTarget "AiMubo" */;
+			buildPhases = (
+				50B2A3AD1B913E9D0041F112 /* Sources */,
+				50B2A3AE1B913E9D0041F112 /* Frameworks */,
+				50B2A3AF1B913E9D0041F112 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AiMubo;
+			productName = AiMubo;
+			productReference = 50B2A3B11B913E9D0041F112 /* AiMubo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		50C43C451B679E6500AD2FAC /* RMXKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50C43C551B679E6500AD2FAC /* Build configuration list for PBXNativeTarget "RMXKit" */;
@@ -1019,6 +1070,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Rattle Media Ltd";
 				TargetAttributes = {
+					50B2A3B01B913E9D0041F112 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					50C43C451B679E6500AD2FAC = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -1048,6 +1102,7 @@
 			targets = (
 				50C43C451B679E6500AD2FAC /* RMXKit */,
 				50C43C5B1B679E9200AD2FAC /* AiCubo */,
+				50B2A3B01B913E9D0041F112 /* AiMubo */,
 			);
 		};
 /* End PBXProject section */
@@ -1251,7 +1306,29 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXResourcesBuildPhase section */
+		50B2A3AF1B913E9D0041F112 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50B2A3BA1B913E9D0041F112 /* Assets.xcassets in Resources */,
+				50B2A3BD1B913E9E0041F112 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		50B2A3AD1B913E9D0041F112 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50B2A3B81B913E9D0041F112 /* Shaders.metal in Sources */,
+				50B2A3B61B913E9D0041F112 /* GameViewController.swift in Sources */,
+				50B2A3B41B913E9D0041F112 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50C43C421B679E6500AD2FAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1308,7 +1385,47 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		50B2A3BB1B913E9E0041F112 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50B2A3BC1B913E9E0041F112 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		50B2A3BF1B913E9E0041F112 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AiMubo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxbilbow.osx.AiMubo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		50B2A3C01B913E9E0041F112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AiMubo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxbilbow.osx.AiMubo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		50C43C531B679E6500AD2FAC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1431,6 +1548,10 @@
 					usr/local/lib,
 					opt/local/lib,
 				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-GLFW",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1451,6 +1572,10 @@
 					usr/local/lib,
 					opt/local/lib,
 				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-GLFW",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1459,6 +1584,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		50B2A3E01B913E9E0041F112 /* Build configuration list for PBXNativeTarget "AiMubo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50B2A3BF1B913E9E0041F112 /* Debug */,
+				50B2A3C01B913E9E0041F112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		50C43C411B679E6500AD2FAC /* Build configuration list for PBXProject "RMXKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

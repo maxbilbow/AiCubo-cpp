@@ -37,14 +37,14 @@ void AiCubo::setup() {
     LinkedList<GameNode>::Iterator * i = scene->rootNode()->getChildren()->getIterator();
     while(i->hasNext()) {
         GameNode * node = i->next();
-        if (node->getTransform() == null) {
+        if (node->getTransform() == nullptr) {
             cout << node << endl;
             throw invalid_argument("Transform cannot be NULL!");
         }
     }
     
 
-    GameNode * box = GameNode::makeCube(5, false, null);
+    GameNode * box = GameNode::makeCube(5, false, nullptr);
     box->setPhysicsBody(PhysicsBody::newStaticBody());
     box->getTransform()->setPosition(10, 5, 10);
     box->addToCurrentScene();

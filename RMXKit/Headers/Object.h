@@ -112,7 +112,7 @@ namespace rmx {
          *  The unique id of the instance as an unsigned int.
          *  @since 0.1
          */
-        unsigned int _id;
+        unsigned int _id = 0;
 
         
     protected:

@@ -16,7 +16,7 @@
 namespace rmx {
 class EntityGenerator {
 public:
-    virtual GameNode * makeEntity(){ return null;}
+    virtual GameNode * makeEntity(){ return nullptr;}
     int
     xMin, yMin, zMin,
     xMax, yMax, zMax;
@@ -28,7 +28,7 @@ public:
     void makeShapesAndAddToScene(Scene * scene, int quantity) {
         for (int i = 0; i<quantity; ++i) {
             GameNode * entity = this->makeEntity();
-            if (entity != null)
+            if (entity != nullptr)
                 scene->rootNode()->addChild(this->initPositionOf(entity));
         }
     }

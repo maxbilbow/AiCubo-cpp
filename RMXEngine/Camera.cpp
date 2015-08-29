@@ -65,6 +65,7 @@ Matrix4 Camera::projectionMatrix() {
     return this->_projectionMatrix;
 }
 void Camera::makePerspective(GameView * view) {
+#ifdef GLFW
     aspect = view->width() / view->height();
     double fW, fH;
     
@@ -91,6 +92,7 @@ void Camera::makePerspective(GameView * view) {
 
     glMultMatrixf(m.m);
     
+#endif
 
 }
 

@@ -39,7 +39,7 @@ namespace rmx {
 
     class Scene : public Object {
         static Scene * _current;
-        GameNode * _rootNode =   null;
+        GameNode * _rootNode =   nullptr;
         PhysicsWorld * _physicsWorld = new PhysicsWorld();
 
     public:
@@ -51,6 +51,8 @@ namespace rmx {
         void renderScene(Camera * camera);
         
         void setAsCurrent();
+        
+        GameNode * pointOfView();
     };
 
 }

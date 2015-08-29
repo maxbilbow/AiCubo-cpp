@@ -43,17 +43,17 @@ namespace rmx {
         
 //        bool * keys = new KeyStates[500];
         
-        void repeatedKeys(GLFWwindow * window);
+        void repeatedKeys(GLWindow * window);
         
         void setView(GameView * view);
         
-        static void keyCallback(GLFWwindow* w,int a,int b,int c,int d);
+        static void keyCallback(GLWindow* w,int a,int b,int c,int d);
         
-        static void cursorCallback(GLFWwindow*,double,double);
-        void updateBeforeScene(GLFWwindow * window) override;
-        void updateAfterScene(GLFWwindow * window) override;
-        
-        static void windowSizeCallback(GLFWwindow * window, int width, int height);
+        static void cursorCallback(GLWindow*,double,double);
+        void updateBeforeScene(GLWindow * window) override;
+        void updateAfterScene(GLWindow * window) override;
+        GameView * getView();
+        static void windowSizeCallback(GLWindow * window, int width, int height);
     };
 
 }

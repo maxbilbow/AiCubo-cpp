@@ -10,7 +10,9 @@
 #import "GameNode.hpp"
 #import "NodeComponent.hpp"
 #import "Transform.hpp"
+#ifdef GLFW
 #import "glfw3.h"
+#endif
 #import "Geometry.hpp"
 
 
@@ -18,6 +20,7 @@ using namespace rmx;
 using namespace std;
 
 void Floor::drawWithScale(float x, float y, float z) {
+#ifdef GLFW
     float inf = 99999;//Float.POSITIVE_INFINITY;
     glBegin(GL_POLYGON);
     glColor3f(0.8f,0.8f,0.8f);
@@ -26,6 +29,7 @@ void Floor::drawWithScale(float x, float y, float z) {
     glVertex3f(-inf, -y, inf);
     glVertex3f( inf, -y, inf);
     glEnd();
+#endif
 }
 
 //private ByteBuffer _elements;
@@ -57,18 +61,14 @@ void Geometry::addVertex(float x, float y, float z)  {
 }
 
 
-void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
+
+void Geometry::render(GameNode * node, Matrix4 base) {
+    
+#ifdef GLFW
+    
     Matrix4 model = node->getTransform()->worldMatrix();
     
-///
-
-    
     EulerAngles modelA = node->getTransform()->localEulerAngles();
-//                                        GLKVector3MultiplyScalar(
-//                                                  node->getTransform()->localEulerAngles(),
-//                                                  1// / PI_OVER_180
-//                                                  );
-    
     
     glPushMatrix();
     
@@ -81,35 +81,17 @@ void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
     glRotatef(modelA.x, 1,0,0);
     glRotatef(modelA.y, 0,1,0);
     glRotatef(modelA.z, 0,0,1);
-        
-}
 
-
-//	private void enableTexture() {
-//		 glEnable(GL_TEXTURE_2D); //Enable texture
-////         glBindTexture(GL_TEXTURE_2D,text2D);//Binding texture
-//	}
-
-void Geometry::popMatrix() {
-    //		 glDisable(GL_TEXTURE_2D);//TODO perhaps?
     
-    glPopMatrix();
-}
-void Geometry::render(GameNode * node, Matrix4 rootTransform) {
-    if (vertexMode) {
-        cout << "WARNING: Vertex Mode enabled but may not be fully implemented yet." << endl;
-        return;
-    }
-    //		 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //		         glLoadIdentity();
-    
-    this->pushMatrix(node, rootTransform);
+
     float X = node->getTransform()->scale().x;
     float Y = node->getTransform()->scale().y;
     float Z = node->getTransform()->scale().z;
     drawWithScale(X, Y, Z);
     
-    this->popMatrix();
+    
+    glPopMatrix();
+#endif
 }
 
 void _render() {
@@ -163,7 +145,9 @@ class ACube : public Geometry {
 public:
     ACube():Geometry(6*3*4){}
 protected:
+#ifdef GLFW
     void drawWithScale(float X, float Y, float Z)override {
+        
         glBegin(GL_QUADS);
         glColor3f(1.0f,1.0f,0.0f);
         glNormal3f(0,1,0);
@@ -203,12 +187,12 @@ protected:
         glVertex3f( X,-Y,-Z);
         glEnd();
     }
-
+#endif
 };
 
-Geometry * Geometry::_cube = null;
+Geometry * Geometry::_cube = nullptr;
 Geometry * Geometry::Cube() {
-    if (_cube ==   null)
+    if (_cube ==   nullptr)
         _cube = new ACube();
     return _cube;
 }

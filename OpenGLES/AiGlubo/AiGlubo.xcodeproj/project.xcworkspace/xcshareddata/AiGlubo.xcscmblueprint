@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E95F966F21B543BEC9A00E2B8E8E307A59F9BB7F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E95F966F21B543BEC9A00E2B8E8E307A59F9BB7F" : 0,
+    "9B5C915E67A2341F288F69ADE09AA64D219E260C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7E37ADFB-79EE-4266-9EF6-BD09F6C8BF9F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E95F966F21B543BEC9A00E2B8E8E307A59F9BB7F" : "AiCubo-cpp\/",
+    "9B5C915E67A2341F288F69ADE09AA64D219E260C" : "RMXKit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AiGlubo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "OpenGLES\/AiGlubo\/AiGlubo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/maxbilbow\/RMXKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9B5C915E67A2341F288F69ADE09AA64D219E260C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/maxbilbow\/AiCubo-cpp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E95F966F21B543BEC9A00E2B8E8E307A59F9BB7F"
+    }
+  ]
+}

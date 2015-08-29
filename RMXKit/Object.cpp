@@ -33,9 +33,11 @@ unsigned int Object::_count = 0;
 LinkedList<Object*> * _allObjects = new LinkedList<Object*>();
 
 Object::Object(std::string name){
+    
     this->_id = Object::_count++; //this->IncrementCount();
     this->name = !name.empty() ? name : "Unnamed Object";
 //    Object::_allObjects.append(this);
+    
 #if DEBUG_MALLOC
     std::cout << "~INITIALIZING Object: " << *this << std::endl;
 #endif

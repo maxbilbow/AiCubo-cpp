@@ -15,7 +15,7 @@
 //#import "Dictionary.h"
 //#import "ASingleton.h"
 //#import "Object.h"
-
+//#define GLFW
 #include "RMXEngine.hpp"
 
 #import "AiCubo.hpp"

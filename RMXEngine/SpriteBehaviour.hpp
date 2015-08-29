@@ -17,6 +17,6 @@
 namespace rmx {
     class SpriteBehaviour : public Behaviour {
     public:
-        void SendMessage(std::string message, void * args = null, SendMessageOptions options = DoesNotRequireReceiver) override;
+        void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) override;
     };
 }

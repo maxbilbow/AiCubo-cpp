@@ -18,9 +18,9 @@ namespace rmx {
  
     class Geometry{
         static Geometry * _cube;
-        int * _vertexData = null, * _indexData = null;
+        int * _vertexData = nullptr, * _indexData = nullptr;
         int _size = 0, _count = 0;
-        BOOL vertexMode = FALSE;
+        bool vertexMode = FALSE;
         void pushMatrix(GameNode *, Matrix4);
         void popMatrix();
     protected:

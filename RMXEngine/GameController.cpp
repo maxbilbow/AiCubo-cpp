@@ -19,7 +19,9 @@
 
 #import "GameView.hpp"
 #import "Geometry.hpp"
+#ifdef GLFW
 #import "glfw3.h"
+#endif
 #import "GameController.hpp"
 #import "EntityGenerator.hpp"
 #import "SpriteBehaviour.hpp"
@@ -27,7 +29,7 @@ using namespace std;
 using namespace rmx;
 
 GameController::GameController() {
-    if (_singleton != null)
+    if (_singleton != nullptr)
         throw invalid_argument("GameController already started");
     else
         _singleton = this;
@@ -36,9 +38,9 @@ GameController::GameController() {
 //    this->setView(new GameView());
 }
 
-GameController * GameController::_singleton = null;// = new GameController();
+GameController * GameController::_singleton = nullptr;// = new GameController();
 GameController * GameController::getInstance() {
-    if(_singleton ==   null) {
+    if(_singleton ==   nullptr) {
         _singleton = new GameController();
     }
     return _singleton;
@@ -66,41 +68,35 @@ void GameController::initpov() {
 
 
 void GameController::run() {
-        //
-        //       System.out.println("Hello LWJGL " + Sys.getVersion() + "!");
-//        try {
-    
+ 
             this->setup();
-//            SharedLibraryLoader::load();
-            
+#ifdef GLFW
             this->view->initGL();
             this->view->enterGameLoop();
             
-            // Release window and window callbacks
+
             glfwDestroyWindow(view->window());
-//            view->keyCallback().release();
-//        } catch (exception e){
-//            cout << typeid(this).name() << ": " << e.what() << endl;
-//        }
-    // Terminate GLFW and release the GLFWerrorfun
+
             glfwTerminate();
-//            view.errorCallback().release();
+#endif
+
     
 }
     
 
-void GameController::updateBeforeScene(GLFWwindow * window) {
+void GameController::updateBeforeScene(GLWindow * window) {
     this->repeatedKeys(window);
 }
 
 
-void GameController::updateAfterScene(GLFWwindow * window) {
+void GameController::updateAfterScene(GLWindow * window) {
     
 }
 
-void GameController::repeatedKeys(GLFWwindow * window) {
+void GameController::repeatedKeys(GLWindow * window) {
     GameNode * player = GameNode::getCurrent();//GameNode::getCurrent();
     
+    #ifdef GLFW
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         player->BroadcastMessage("forward", new float(1.0));
     }
@@ -151,7 +147,7 @@ void GameController::repeatedKeys(GLFWwindow * window) {
     if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
         player->getTransform()->move(Roll,-1.0f);
     }
-    
+#endif
 //    cout << player->getTransform()->localMatrix();
 //    cout << "             Euler: " << player->getTransform()->eulerAngles() << endl;
 //    cout << "       Local Euler: " << player->getTransform()->localEulerAngles() << endl;
@@ -172,7 +168,8 @@ GameNode * player() {
     return GameNode::getCurrent();
 }
 
-void GameController::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+void GameController::keyCallback(GLWindow *window, int key, int scancode, int action, int mods) {
+    #ifdef GLFW
 //    cout << "  KEYS: " << key << ", " << scancode << ", " << action << ", " << mods << endl;
     GameController * gc = getInstance();
     if (action == GLFW_PRESS) {
@@ -208,6 +205,7 @@ void GameController::keyCallback(GLFWwindow *window, int key, int scancode, int 
                     player()->physicsBody()->setEffectedByGravity(true);
                 break;
         }
+#endif
 }
 
 void GameController::lockCursor(bool lock) {
@@ -220,7 +218,7 @@ bool GameController::isCursorLocked() {
 double xpos ,ypos;
 bool restart = true;
 
-void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
+void GameController::cursorCallback(GLWindow * w, double x, double y) {
     
     GameController * gc = getInstance();
     
@@ -248,11 +246,15 @@ void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
     
     
 }
+GameView * GameController::getView() {
+    return this->view;
+}
 
-void GameController::windowSizeCallback(GLFWwindow * window, int width, int height) {
+void GameController::windowSizeCallback(GLWindow * window, int width, int height) {
     GameController * gvc = getInstance();
     gvc->view->setWidth(width);
     gvc->view->setHeight(height);
-    
+    #ifdef GLFW
     glfwSetWindowSize(window, width, height);
+#endif
 }

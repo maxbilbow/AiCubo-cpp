@@ -21,11 +21,11 @@ typedef GLKVector3 Vector3;
 typedef GLKVector4 Vector4;
 typedef GLKQuaternion Quaternion;
 typedef Vector3 EulerAngles;
-typedef int BOOL;
+//typedef int BOOL;
 #define TRUE 1
 #define FALSE 0
 //typedef nullptr null;
-#define null nullptr
+//#define null nullptr
 #import "RMXKit.h"
 #import "RMXMath.hpp"
 
@@ -33,20 +33,16 @@ typedef int BOOL;
 //#import <IOKit/IOKitLib.h>
 //#import <Cocoa/Cocoa.h>
 //
-#include <vector>
-#include <list>
+//#include <vector>
+//#include <list>
 
-#define GLFW_h
-#ifdef GLFW_h
+
+//#define GLFW
+#ifdef GLFW
 #include "glfw3.h"
 typedef GLFWwindow GLWindow;
 #else
-#include <OpenGL/OpenGL.h>
-#include <OpenGL/gl.h>
-#include <OpenGL/gl3.h>
-#include <OpenGL/gluContext.h>
-#include <GLUT/GLUT.h>
-#include <GLKit/GLKit.h>
+
 typedef long GLWindow;
 #endif
 

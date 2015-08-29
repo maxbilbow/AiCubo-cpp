@@ -27,7 +27,7 @@ namespace rmx {
     
 
 class GameView : public Object {
-    GameNode * _pointOfView = null;
+    GameNode * _pointOfView = nullptr;
 
     int _height = 400, _width = 400;
     
@@ -37,10 +37,10 @@ class GameView : public Object {
 
     
     // The window handle
-    GLFWwindow * _window =   null;
+    GLWindow * _window =   nullptr;
     
     
-    RenderDelegate * delegate =   null;
+    RenderDelegate * delegate =   nullptr;
     
 public:
     GameView();
@@ -59,7 +59,7 @@ public:
     
     
     
-    GLFWwindow * window();
+    GLWindow * window();
     
     
     

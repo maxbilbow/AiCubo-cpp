@@ -21,22 +21,22 @@ namespace rmx {
     class GameNode : public Object { //, public _Node {
    
     protected:
-        GameNode * parent = null;
+        GameNode * parent = nullptr;
     private:
         static GameNode * _current;
         
         long _tick = 0;
         
-        Transform * _transform = null;
+        Transform * _transform = nullptr;
         
-        BOOL _hasCamera = FALSE;
-        Camera * camera = null;
+        bool _hasCamera = FALSE;
+        Camera * camera = nullptr;
         
-        BOOL _hasPhysicsBody = FALSE;
-        PhysicsBody * _physicsBody = null;
+        bool _hasPhysicsBody = FALSE;
+        PhysicsBody * _physicsBody = nullptr;
         
-        BOOL _hasGeometry = FALSE;
-        Geometry * _geometry = null;
+        bool _hasGeometry = FALSE;
+        Geometry * _geometry = nullptr;
         
         GameNodeList children = GameNodeList();
         
@@ -119,8 +119,8 @@ namespace rmx {
         
         void addToCurrentScene();
 
-        void SendMessage(std::string message, void * args =   null, SendMessageOptions options = DoesNotRequireReceiver) override;
-        void BroadcastMessage(std::string message, void * args =   null, SendMessageOptions options = DoesNotRequireReceiver) override;
+        void SendMessage(std::string message, void * args =   nullptr, SendMessageOptions options = DoesNotRequireReceiver) override;
+        void BroadcastMessage(std::string message, void * args =   nullptr, SendMessageOptions options = DoesNotRequireReceiver) override;
         
         static void test();
     };

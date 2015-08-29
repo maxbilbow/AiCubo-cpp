@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>AiMubo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>35</integer>
+		</dict>
 		<key>RMXKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -22,6 +27,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>50B2A3B01B913E9D0041F112</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>50C43C451B679E6500AD2FAC</key>
 		<dict>
 			<key>primary</key>

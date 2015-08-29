@@ -181,7 +181,7 @@ bool PhysicsWorld::checkForCollision(CollisionBody * A, CollisionBody * B) {
     bool isHit = A->intersects(B);
     if (isHit) {
         CollisionEvent * e = new CollisionEvent(A->getNode(),B->getNode(),secureKey);
-        if (collisionDelegate != null)
+        if (collisionDelegate != nullptr)
             collisionDelegate->handleCollision(A->getNode(), B->getNode(), e);
         e->processCollision(secureKey);
     } 

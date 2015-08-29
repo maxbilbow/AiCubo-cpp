@@ -54,7 +54,7 @@ void Transform::setScale(float x, float y, float z) {
  * @return
  */
 float Transform::mass() {
-    float mass = this->getNode()->physicsBody() != null ? this->getNode()->physicsBody()->getMass() : 0.0f;
+    float mass = this->getNode()->physicsBody() != nullptr ? this->getNode()->physicsBody()->getMass() : 0.0f;
     GameNodeList::Iterator * i = this->getNode()->getChildren()->getIterator();
     while (i->hasNext())
         mass += i->next()->getTransform()->mass();
@@ -68,7 +68,7 @@ float Transform::mass() {
  */
 Matrix4 Transform::worldMatrix() {
     Transform * parent = this->parent();
-    if (parent != null && parent->parent() != null) {
+    if (parent != nullptr && parent->parent() != nullptr) {
         return GLKMatrix4Multiply(parent->worldMatrix(),this->_localMatrix);
     } else {
         return this->_localMatrix;
@@ -77,7 +77,7 @@ Matrix4 Transform::worldMatrix() {
 
 Transform * Transform::parent() {
     GameNode * parentNode = this->getNode()->getParent();
-    return parentNode != null ? parentNode->getTransform() : null;
+    return parentNode != nullptr ? parentNode->getTransform() : nullptr;
 }
 
 Vector3 Transform::localPosition() {
@@ -161,7 +161,7 @@ bool Transform::translate(Move direction, float scale) {
     Vector3 v;
     switch (direction) {
         case Forward:
-//            scale *= -1;
+            scale *= -1;
             v = this->forward();
             break;
         case Up:
@@ -325,7 +325,7 @@ Vector3 Transform::lastPosition() {
 
 Transform * Transform::rootTransform() {
     Transform * parent = this->parent();
-    if (parent != null && parent->parent() != null) {
+    if (parent != nullptr && parent->parent() != nullptr) {
         return this->parent()->rootTransform();
     } else {
         return this;
