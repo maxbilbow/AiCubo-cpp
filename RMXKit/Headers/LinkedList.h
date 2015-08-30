@@ -40,8 +40,8 @@ namespace rmx {
         class Iterator {
         protected:
             //            Node * _prev;
-            Node * currentNode;
-            List * linkedList;
+            Node * currentNode = nullptr;
+            List * linkedList = nullptr;
             int i = 0;
             
         public:
@@ -51,7 +51,7 @@ namespace rmx {
             }
             
             void begin() {
-                this->currentNode = this->linkedList->firstNode();
+                this->currentNode = this->linkedList->_head;// firstNode();
                 this->i = 0;
             
             }

@@ -20,8 +20,10 @@
 
 
 const unsigned int VERTS_CUBE = 0;
-extern const float cubeData[];
+extern  float cubeData[];
 extern const long cubeDataSize;
+extern float triandleData[];
+extern const long triandleDataSize;
 extern float * RMXVertsForShape(unsigned int);
 extern long RMXSizeOf(unsigned int);
 //void RMXLoadVertices();

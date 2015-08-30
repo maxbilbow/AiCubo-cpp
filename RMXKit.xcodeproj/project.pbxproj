@@ -42,6 +42,7 @@
 		50C1CAE81B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE61B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp */; };
 		50C1CAEB1B8E0B4500B7B2B4 /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE91B8E0B4500B7B2B4 /* AiCubo.cpp */; };
 		50C811921B87447F0001FBFE /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C811591B8744700001FBFE /* libglfw3.a */; };
+		50CFDE8F1B9399C3003EA656 /* VertexData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE8D1B9399C3003EA656 /* VertexData.cpp */; };
 		6C0DA6661B70EB4500A4325E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
 		6C0DA6671B70EB9B00A4325E /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
 		6C0DA6681B70EB9B00A4325E /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
@@ -487,6 +488,8 @@
 		50C43C5E1B679E9200AD2FAC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NotificationCenter.cpp; sourceTree = "<group>"; };
 		50C811351B87446F0001FBFE /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
+		50CFDE8D1B9399C3003EA656 /* VertexData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VertexData.cpp; path = OpenGLES/AiGlubo/Source/VertexData.cpp; sourceTree = SOURCE_ROOT; };
+		50CFDE8E1B9399C3003EA656 /* VertexData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VertexData.h; path = OpenGLES/AiGlubo/Source/VertexData.h; sourceTree = SOURCE_ROOT; };
 		6C9EB10C1B710D87003F6156 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		6C9EB1121B710DEA003F6156 /* ASingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASingleton.h; sourceTree = "<group>"; };
 		6C9EB1141B710DEA003F6156 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
@@ -814,6 +817,8 @@
 		508726BC1B8359D900E631BE /* engine */ = {
 			isa = PBXGroup;
 			children = (
+				50CFDE8D1B9399C3003EA656 /* VertexData.cpp */,
+				50CFDE8E1B9399C3003EA656 /* VertexData.h */,
 				5044D9021B874593003B4AE2 /* Behaviour.cpp */,
 				5044D9031B874593003B4AE2 /* Behaviour.hpp */,
 				5044D9041B874593003B4AE2 /* Camera.cpp */,
@@ -1368,6 +1373,7 @@
 				5044D9251B874593003B4AE2 /* PhysicsWorld.cpp in Sources */,
 				50C1CAE51B8DD4C000B7B2B4 /* BoundingSphere.cpp in Sources */,
 				6C0DA6661B70EB4500A4325E /* main.cpp in Sources */,
+				50CFDE8F1B9399C3003EA656 /* VertexData.cpp in Sources */,
 				503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */,
 				5026F9C51B8B7AAC00237AD7 /* EntityGenerator.cpp in Sources */,
 				5044D9261B874593003B4AE2 /* RMXMath.cpp in Sources */,

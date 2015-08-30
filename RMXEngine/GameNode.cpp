@@ -81,7 +81,10 @@ NodeComponent * GameNode::getComponent(string className) {
 GameNodeList * GameNode::getChildren() {
     return &this->children;
 }
-    
+
+GameNodeList::Iterator * GameNode::childIterator() {
+    return this->children.getIterator();
+}
 void GameNode::addChild(GameNode * child) {
     if (!this->children.contains(child)) {
         cout << "Adding child: " << child->Name() << " to " << this->Name() << endl;
@@ -146,6 +149,7 @@ bool GameNode::hasGeometry() {
 
 void GameNode::setGeometry(Geometry * geometry) {
     this->_geometry = geometry;
+    geometry->setNode(this);
     this->_hasGeometry = TRUE;
 }
     

@@ -22,7 +22,8 @@ namespace rmx {
         Camera();
 //        Camera(std::string name):NodeComponent(name){}
         void makePerspective(GameView * view);
-        Matrix4 modelViewMatrix();
+//        Matrix4 modelViewMatrix();
+        Matrix4 viewMatrix();
         Matrix4 baseModelViewMatrix();
         Matrix4 projectionMatrix();
         Matrix4 projectionMatrix(float aspect);

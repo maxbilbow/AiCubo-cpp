@@ -174,8 +174,8 @@ extension RMX {
         }
         
         private var origin: NSPoint{
-            let size = (GameViewController.current.gameView?.frame.size)!//.window!.frame
-            let point = (GameViewController.current.gameView?.window!.frame.origin)!
+            let size = GameViewController.instance.view.frame.size//.window!.frame
+            let point = GameViewController.instance.view.window!.frame.origin
             let x = point.x + size.width / 2
             let y = point.y + size.height / 2
             return NSPoint(x: x, y: y)
@@ -216,8 +216,8 @@ extension RMX {
         }
         
         ///Adapt the keyboard for different layouts
-        override func setKeyboard(type: KeyboardType = .UK) {
-            super.setKeyboard(type)
+        func setKeyboard(type: KeyboardType = .UK) {
+//            super.setKeyboard(type)
             switch type {
             case .French:
                 self.set(.MOVE_FORWARD, characters: "z")

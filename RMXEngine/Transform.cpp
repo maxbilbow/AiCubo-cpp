@@ -67,9 +67,13 @@ float Transform::mass() {
  * @return
  */
 Matrix4 Transform::worldMatrix() {
-    Transform * parent = this->parent();
-    if (parent != nullptr && parent->parent() != nullptr) {
-        return GLKMatrix4Multiply(parent->worldMatrix(),this->_localMatrix);
+    if (this->parent() != nullptr) {
+        Transform * parent = this->parent();
+        if (parent->parent() != nullptr) {
+            return GLKMatrix4Multiply(parent->worldMatrix(),this->_localMatrix);
+        } else {
+            return this->_localMatrix;
+        }
     } else {
         return this->_localMatrix;
     }

@@ -6,4 +6,6 @@
 
 #import <GLKit/GLKMatrix4.h>
 #import "VertexData.h"
+#import <Foundation/NSArray.h>
+#import "GeometryIterator.h"
 #import "CppBridge.h"

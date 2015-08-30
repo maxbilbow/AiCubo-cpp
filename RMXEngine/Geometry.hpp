@@ -16,10 +16,9 @@
 
 namespace rmx {
  
-    class Geometry{
+    class Geometry : public NodeComponent {
         static Geometry * _cube;
-        const float * vertexData;// = nullptr, * _indexData = nullptr;
-        const long * vertexCount;//
+        //
         int _size = 0, _count = 0;
         bool vertexMode = FALSE;
         void pushMatrix(GameNode *, Matrix4);
@@ -29,6 +28,8 @@ namespace rmx {
              throw std::invalid_argument("drawWithScale(float x, float y, float z) must be overriden");
         }
     public:
+        float * vertexData;// = nullptr, * _indexData = nullptr;
+        long vertexCount;
         bool isVertexMode();
         void setVertexMode(bool vertexMode);
         void render(GameNode * GameNode, Matrix4 root);
@@ -38,14 +39,14 @@ namespace rmx {
 //        int * vertexData();
 //        int * indexData();
         
-        Geometry(const float * vertexData, const long * count);
+        Geometry(float * vertexData, long count);
         void addVertex(Vector3 v);
         
         void addVertex(float x, float y, float z);
         void prepare();
         
         
-    
+        Matrix4 modelMatrix();
     };
     
     
@@ -55,7 +56,7 @@ namespace rmx {
     protected:
         void drawWithScale(float x, float y, float z) override;
     public:
-        Floor():Geometry(nullptr,nullptr){}
+        Floor():Geometry(nullptr,0){}
         
     };
 

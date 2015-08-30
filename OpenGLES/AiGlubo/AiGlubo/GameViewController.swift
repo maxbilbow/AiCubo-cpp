@@ -64,14 +64,10 @@ class GameViewController: GLKViewController {
         
         CppBridge.setupScene();
         self.setupGL()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onTap:"))
+
     }
     
-    func onTap(tap: UITapGestureRecognizer) {
-        print(tap)
-        CppBridge.sendMessage("forward:0.1");
-    }
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -108,6 +104,7 @@ class GameViewController: GLKViewController {
             CppBridge.vertsForShape(VERTS_CUBE), GLenum(GL_STATIC_DRAW))
         
         glEnableVertexAttribArray(GLuint(GLKVertexAttrib.Position.rawValue))
+
         glVertexAttribPointer(GLuint(GLKVertexAttrib.Position.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 24, BUFFER_OFFSET(0))
         glEnableVertexAttribArray(GLuint(GLKVertexAttrib.Normal.rawValue))
         glVertexAttribPointer(GLuint(GLKVertexAttrib.Normal.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 24, BUFFER_OFFSET(12))
@@ -131,60 +128,77 @@ class GameViewController: GLKViewController {
     
     // MARK: - GLKView and GLKViewController delegate methods
     
-    func update() {
+//    func update() {
+//        
+//    }
+    
+    func setPosition(shape: ShapeData, projectionMatrix: GLKMatrix4, es2: Bool) {
+        let modelViewMatrix = shape.modelViewMatrix// GLKMatrix4ScaleWithVector3(shape.modelViewMatrix, shape.scale)
+       
+        if es2 {
+            normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelViewMatrix), nil)
+            
+            modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix)
+        } else {
+            self.effect?.transform.projectionMatrix = projectionMatrix
+            self.effect?.transform.modelviewMatrix = modelViewMatrix
+        }
+    }
+    
+    func render(es2: Bool) {
+
+        if es2 {
+            // Render the object again with ES2
+            glUseProgram(program)
+            
+            withUnsafePointer(&modelViewProjectionMatrix, {
+                glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, UnsafePointer($0));
+            })
+            
+            withUnsafePointer(&normalMatrix, {
+                glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, UnsafePointer($0));
+            })
+            
+            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
+        } else {
+            self.effect?.prepareToDraw()
+            
+            glDrawArrays(GLenum(GL_TRIANGLES) , 0, 36)
+            
+        }
+    }
+    
+
+    override func glkView(view: GLKView, drawInRect rect: CGRect) {
         CppBridge.updateSceneLogic()
         RMXMobileInput.instance.update();
         
-        
-        let projectionMatrix = CppBridge.projectionMatrixWithAspect(Float(self.view.bounds.size.width / self.view.bounds.size.height))
-        
-        self.effect?.transform.projectionMatrix = projectionMatrix
-         let baseModelViewMatrix = CppBridge.modelViewMatrix()
-        
-//        self.effect?.transform.modelviewMatrix = CppBridge.baseModelViewMatrix()
-
-        // Compute the model view matrix for the object rendered with GLKit
-        var modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -1.5)
-        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, rotation, 1.0, 1.0, 1.0)
-        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix)
-        
-        self.effect?.transform.modelviewMatrix = modelViewMatrix
-        
-        // Compute the model view matrix for the object rendered with ES2
-        modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, 1.5)
-        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, rotation, 1.0, 1.0, 1.0)
-        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix)
-        
-        normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelViewMatrix), nil)
-        
-        modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix)
-        
-        rotation += Float(self.timeSinceLastUpdate * 0.5)
-    }
     
-    override func glkView(view: GLKView, drawInRect rect: CGRect) {
         glClearColor(0.65, 0.65, 0.65, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT) | GLbitfield(GL_DEPTH_BUFFER_BIT))
-        
         glBindVertexArrayOES(vertexArray)
         
-        // Render the object with GLKit
-//        self.effect?.prepareToDraw()
-//        
-//        glDrawArrays(GLenum(GL_TRIANGLES) , 0, 36)
         
-        // Render the object again with ES2
-        glUseProgram(program)
-        
-        withUnsafePointer(&modelViewProjectionMatrix, {
-            glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, UnsafePointer($0));
-        })
-        
-        withUnsafePointer(&normalMatrix, {
-            glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, UnsafePointer($0));
-        })
-        
-        glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
+        ///Setup camera
+        let projectionMatrix = CppBridge.projectionMatrixWithAspect(
+            Float(self.view.bounds.size.width / self.view.bounds.size.height))
+        self.effect?.transform.projectionMatrix = projectionMatrix
+        let eulerAngles = CppBridge.eulerAngles()
+        print(eulerAngles.print)
+      
+        ///Load Geometries
+        let geometries = CppBridge.geometries().shapeData;
+        var alt = true
+        for shape in geometries {
+            
+            setPosition(shape as! ShapeData, projectionMatrix: projectionMatrix, es2: alt)
+            
+            render(alt)
+            alt = !alt;
+            
+        }
+        rotation += Float(self.timeSinceLastUpdate * 0.5)
+       
     }
     
     // MARK: -  OpenGL ES 2 shader compilation

@@ -73,6 +73,11 @@ Matrix4 operator*(Matrix4 lhs,  Matrix4 rhs) {
     return GLKMatrix4Multiply(lhs, rhs);
 }
 
+
+Matrix4 operator*(Matrix4 lhs,  Vector3 rhs) {
+    return GLKMatrix4ScaleWithVector3(lhs, rhs);
+}
+
 Matrix4 operator*(Matrix4 lhs,  float rhs) {
     
     return GLKMatrix4Multiply(lhs, GLKMatrix4MakeScale(rhs, rhs, rhs));

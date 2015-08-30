@@ -58,7 +58,7 @@ extension RMX {
             } else  {
                 self.isPressed = true
                 if asString {
-                    return ActionProcessor.current.action(self.string, speed: self.speed.on, args: object ?? self.values)
+                    return ActionProcessor.current.action(self.action, speed: self.speed.on, args: object ?? self.values)
                 } else {
                     return ActionProcessor.current.action(self.action, speed: self.speed.on, args: object ?? self.values)
                 }
@@ -74,7 +74,7 @@ extension RMX {
             if self.isPressed {
                 self.isPressed = false
                 if asString {
-                    return ActionProcessor.current.action(self.string, speed: self.speed.off, args: self.values)
+                    return ActionProcessor.current.action(self.action, speed: self.speed.off, args: self.values)
                 } else {
                     return ActionProcessor.current.action(self.action, speed: self.speed.off, args: self.values)
                 }
@@ -97,7 +97,7 @@ extension RMX {
     //        NSLog(self.print)
             if self.isRepeating && self.isPressed {
                 if asString {
-                    ActionProcessor.current.action(self.string, speed: self.speed.on, args: self.values)
+                    ActionProcessor.current.action(self.action, speed: self.speed.on, args: self.values)
                 } else {
                     ActionProcessor.current.action(self.action, speed: self.speed.on, args: self.values)
                 }

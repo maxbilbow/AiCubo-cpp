@@ -108,7 +108,7 @@ namespace rmx {
         void draw(Matrix4 rootTransform);
         
         
-        
+        GameNodeList::Iterator * childIterator();
         
         
         GameNode * getParent();

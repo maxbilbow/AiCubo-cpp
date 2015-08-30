@@ -14,6 +14,7 @@
 #import "glfw3.h"
 #endif
 #import "Geometry.hpp"
+
 #include "VertexData.h"
 
 
@@ -36,7 +37,8 @@ void Floor::drawWithScale(float x, float y, float z) {
 //private ByteBuffer _elements;
 //private ShortBuffer _indexData;
 //private int _e = 0;
-Geometry::Geometry(const float * verts,const long * count) {
+Geometry::Geometry(float * verts, long  count) {
+    NodeComponent::NodeComponent();
     vertexData = verts;//new int[sizeof(int) * size];
     vertexCount = count;//= new int[sizeof(int) * size / 3];
 }
@@ -87,6 +89,9 @@ void Geometry::render(GameNode * node, Matrix4 base) {
 #endif
 }
 
+Matrix4 Geometry::modelMatrix() {
+    return this->getTransform()->worldMatrix() * this->getTransform()->scale();
+}
 void _render() {
     //this.pushMatrx();
     //		glVertex3dv(_elements);
@@ -136,7 +141,7 @@ void _render() {
 class ACube : public Geometry {
 
 public:
-    ACube():Geometry(cubeData, &cubeDataSize){}
+    ACube():Geometry(cubeData, cubeDataSize){}
 protected:
 #ifdef GLFW
     void drawWithScale(float X, float Y, float Z)override {
@@ -183,12 +188,11 @@ protected:
 #endif
 };
 
-Geometry * Geometry::_cube = nullptr;
+//Geometry * Geometry::_cube = nullptr;
 Geometry * Geometry::Cube() {
-    if (_cube ==   nullptr)
-        _cube = new ACube();
-    return _cube;
+    return new ACube();
 }
+
 
 
 

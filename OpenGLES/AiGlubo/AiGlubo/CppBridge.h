@@ -14,15 +14,27 @@
 
 #endif /* CppBridge_hpp */
 
-#import <Foundation/NSObject.h>
-#import <Foundation/NSString.h>
-@interface CppBridge : NSObject 
+//#import <Foundation/NSObject.h>
+//#import <Foundation/NSString.h>
+typedef struct _Uniform
+{
+    float * pm;
+    float * mvm;
+}Uniform;
+
+@interface CppBridge : NSObject
 + (void) setupScene;
-+ (GLKMatrix4) modelViewMatrix;
-+ (GLKMatrix4) baseModelViewMatrix;
++ (GLKMatrix4) viewMatrix;
++ (GLKVector3) eulerAngles;
+
 + (GLKMatrix4) projectionMatrix;
++ (Uniform)getUniformWithModelViewMatrix:(GLKMatrix4)modelView withAspect:(float)aspect;
++ (void*)rawProjectionMatrixWithAspect:(float)aspect;
+
 + (GLKMatrix4) projectionMatrixWithAspect:(float)aspect;
 + (void) updateSceneLogic;
+
++ (GeometryIterator*)geometries;
 
 + (void) sendMessage:(NSString* )message;
 
@@ -40,6 +52,8 @@
 + (long)sizeOf:(unsigned int)shape;
 
 @end
+
+
 
 //extern void RMXSetupScene();
 //extern float* RMXModelViewMatrix();

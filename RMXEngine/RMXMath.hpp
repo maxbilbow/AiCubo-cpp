@@ -25,6 +25,7 @@ Matrix4 RMXMatrix4RotateAboutPoint(Matrix4 m, float radians, Vector3 axis, Vecto
 Matrix4& RMXMatrix4SetPosition(Matrix4& m, Vector3 position);
 Matrix4& Matrix4SetPositionZero(Matrix4& m);
 Matrix4 operator*(Matrix4 lhs,  Matrix4 rhs);
+Matrix4 operator*(Matrix4 lhs,  Vector3 rhs);
 Matrix4 operator*(Matrix4 lhs,  float rhs);
 bool operator==(Matrix4 lhs,  Matrix4 rhs);
 bool operator!=(Matrix4 lhs,  Matrix4 rhs);

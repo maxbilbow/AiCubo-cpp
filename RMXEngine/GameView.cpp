@@ -131,7 +131,7 @@ void GameView::enterGameLoop() {
         glLoadIdentity();
         
 //            camera.look();
-        scene->renderScene(camera);
+        scene->renderScene(camera->viewMatrix());
         
         glfwSwapBuffers(_window);
         

@@ -99,13 +99,28 @@ Matrix4 Camera::baseModelViewMatrix() {
     return GLKMatrix4Invert(m, new bool());
 }
 
-Matrix4 Camera::modelViewMatrix() {
+//Matrix4 Camera::modelViewMatrix() {
+//    
+//    Matrix4 m = this->getNode()->getTransform()->worldMatrix();
+//
+////    cout << GameNode::getCurrent()->Name() <<GameNode::getCurrent()->getTransform()->worldMatrix() << endl;
+//    return RMXMatrix4Negate(m);
+//}
+//
+
+Matrix4 Camera::viewMatrix() {
     
     Matrix4 m = this->getNode()->getTransform()->worldMatrix();
-
-//    cout << GameNode::getCurrent()->Name() <<GameNode::getCurrent()->getTransform()->worldMatrix() << endl;
+   
+#ifdef GLFW
     return RMXMatrix4Negate(m);
+#else
+    return GLKMatrix4Invert(m,nullptr);
+#endif
+    //    cout << GameNode::getCurrent()->Name() <<GameNode::getCurrent()->getTransform()->worldMatrix() << endl;
+//    m = //RMXMatrix4Negate(m);
 }
+
 
 Matrix4 Camera::projectionMatrix() {
     return GLKMatrix4MakePerspective(fovX * PI_OVER_180, aspect, nearZ, farZ);

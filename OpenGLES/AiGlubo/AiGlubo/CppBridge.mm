@@ -9,6 +9,10 @@
 #import "AiCubo.hpp"
 //#import <GLKit/GLKMatrix4.h>
 #include "VertexData.h"
+#import <Foundation/NSObject.h>
+#import <Foundation/NSString.h>
+#import <Foundation/NSArray.h>
+#include "GeometryIterator.h"
 #include "CppBridge.h"
 
 
@@ -19,38 +23,53 @@ AiCubo game = AiCubo();
 
 @implementation CppBridge
 
+static GeometryIterator * geometries;
 + (void) setupScene
 {
 //    RMXLoadVertices();
     game.run();
+    geometries = [GeometryIterator new];
 }
 
++ (GeometryIterator*)geometries
+{
+    return geometries;
+}
 + (GLKMatrix4) projectionMatrix
 {
     return Scene::getCurrent()->pointOfView()->getCamera()->projectionMatrix();
+}
+
+
++ (Uniform)getUniformWithModelViewMatrix:(GLKMatrix4)modelView withAspect:(float)aspect {
+    Uniform u;
+    u.pm = [CppBridge projectionMatrixWithAspect:aspect].m;
+    u.mvm = modelView.m;
+    return u;
+}
+
+
++ (void*)rawProjectionMatrixWithAspect:(float)aspect
+{
+    
+    GLKMatrix4 m =[CppBridge projectionMatrixWithAspect:aspect];
+    return m.m;
 }
 
 + (GLKMatrix4) projectionMatrixWithAspect:(float)aspect {
     return Scene::getCurrent()->pointOfView()->getCamera()->projectionMatrix(aspect);
 }
 
-+ (GLKMatrix4) baseModelViewMatrix
++ (GLKVector3)eulerAngles
 {
-    GLKMatrix4 m = Scene::getCurrent()->pointOfView()->getCamera()->baseModelViewMatrix();
-    
-    
-    
-    return m;
+    return Scene::getCurrent()->pointOfView()->getTransform()->eulerAngles();
 }
 
-+ (GLKMatrix4) modelViewMatrix
++ (GLKMatrix4) viewMatrix
 {
-    GLKMatrix4 m = Scene::getCurrent()->pointOfView()->getCamera()->modelViewMatrix();
-    
-    
-    return m;
-    //    return Matrix4SetPositionZero(m);
+    return Scene::getCurrent()->pointOfView()->getCamera()->viewMatrix();
 }
+
 + (const float*)vertsForShape:(unsigned int)shape {
     switch (shape) {
         case VERTS_CUBE:

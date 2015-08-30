@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/pre-dexed/debug/classes-0919574d5a622125ba0b8bc71f5be7f75c0dec81.jar" />
+    </item>
+    <item
+        jar="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-7607f96d595a7356ae1cc179dbe0777595cd0afe.jar" />
+    </item>
+    <item
+        jar="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/exploded-aar/com.android.support/support-v13/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="5d4bccb885c8a89d066ecb6c4addb553a99a79a2">
+        <dex dex="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-85bb65aff23cae42b9d2f51568ed00bbd93c3b8b.jar" />
+    </item>
+    <item
+        jar="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/exploded-aar/com.android.support/support-v13/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="bb0ac3f3ee2d71854501cc28e52cc84a20209b41">
+        <dex dex="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/pre-dexed/debug/classes-8f56911852961accef5817c4c6770bbbeaed3e35.jar" />
+    </item>
+    <item
+        jar="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1ccbc26be2c465c622a48310e8092241b01abe80">
+        <dex dex="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/pre-dexed/debug/classes-a963993eeb4c6f6078c659e75d4106315eaac72e.jar" />
+    </item>
+    <item
+        jar="/Users/Max/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="/Users/Max/Gits/AiCubo-cpp/MediaEffects/Application/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-88610930dc24047d871d14ce1e05a0d5234a1192.jar" />
+    </item>
+
+</items>
