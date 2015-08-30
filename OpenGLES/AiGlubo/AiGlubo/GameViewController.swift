@@ -140,30 +140,24 @@ class GameViewController: GLKViewController {
         
         self.effect?.transform.projectionMatrix = projectionMatrix
          let baseModelViewMatrix = CppBridge.modelViewMatrix()
+        
 //        self.effect?.transform.modelviewMatrix = CppBridge.baseModelViewMatrix()
 
-        
         // Compute the model view matrix for the object rendered with GLKit
-        var modelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0, 0.0, -1.5)
+        var modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -1.5)
         modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, rotation, 1.0, 1.0, 1.0)
-        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix,modelViewMatrix)
+        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix)
         
-//        self.effect?.transform.modelviewMatrix = modelViewMatrix
-//        var bool: Bool = false
-//        self.effect?.transform.modelviewMatrix = GLKMatrix4Invert(baseModelViewMatrix, &bool)
         self.effect?.transform.modelviewMatrix = modelViewMatrix
         
         // Compute the model view matrix for the object rendered with ES2
-        modelViewMatrix = GLKMatrix4Translate(modelViewMatrix,0.0, 0.0, 3.0)
+        modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, 1.5)
         modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, rotation, 1.0, 1.0, 1.0)
-        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix,modelViewMatrix)
-        
+        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix)
         
         normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelViewMatrix), nil)
         
-//        var bool: Bool = false
-//        self.effect?.transform.modelviewMatrix = GLKMatrix4Invert(baseModelViewMatrix, &bool)
-        modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, baseModelViewMatrix)
+        modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix)
         
         rotation += Float(self.timeSinceLastUpdate * 0.5)
     }
@@ -175,9 +169,9 @@ class GameViewController: GLKViewController {
         glBindVertexArrayOES(vertexArray)
         
         // Render the object with GLKit
-        self.effect?.prepareToDraw()
-        
-        glDrawArrays(GLenum(GL_TRIANGLES) , 0, 36)
+//        self.effect?.prepareToDraw()
+//        
+//        glDrawArrays(GLenum(GL_TRIANGLES) , 0, 36)
         
         // Render the object again with ES2
         glUseProgram(program)
