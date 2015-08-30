@@ -31,13 +31,16 @@ AiCubo game = AiCubo();
     return m;
 }
 
-+ (void) updateSceneLogic {
++ (void) updateSceneLogic:(Matrix4)moodelMatrix {
     Scene::getCurrent()->updateSceneLogic();
+    
+//    Scene::getCurrent()->renderScene(moodelMatrix);
 }
 
 + (void) sendMessage:(NSString*)message {
     Transform * player = Scene::getCurrent()->pointOfView()->getTransform()->rootTransform();
-    player->move(Forward);//physicsBody()->applyForce(0.5f, player->getTransform()->forward());
+    player->BroadcastMessage("forward", new float(1));//physicsBody()->applyForce(0.5f, player->getTransform()->forward());
+    NSLog(@"Message: %@",message);
 }
 
     + (NSString*)toStringMatrix4:(GLKMatrix4)m

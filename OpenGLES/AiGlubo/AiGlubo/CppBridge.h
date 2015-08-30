@@ -20,7 +20,7 @@
 + (void) setupScene;
 + (GLKMatrix4) modelViewMatrix;
 
-+ (void) updateSceneLogic;
++ (void) updateSceneLogic:(GLKMatrix4)Matrix4;
 
 + (void) sendMessage:(NSString* )message;
 

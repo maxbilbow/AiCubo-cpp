@@ -48,7 +48,7 @@ namespace rmx {
         static Scene * getCurrent();
         static Scene * setCurrent(Scene * scene);
         void updateSceneLogic();
-        void renderScene(Camera * camera);
+        void renderScene(Matrix4);
         
         void setAsCurrent();
         

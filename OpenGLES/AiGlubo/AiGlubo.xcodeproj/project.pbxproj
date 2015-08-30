@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500D230E1B9242F3007920EA /* iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22FB1B9242F3007920EA /* iOS.swift */; };
+		500D23111B9242F3007920EA /* RMSMaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22FF1B9242F3007920EA /* RMSMaths.swift */; };
+		500D23121B9242F3007920EA /* RMX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23001B9242F3007920EA /* RMX.swift */; };
+		500D23141B9242F3007920EA /* RMXDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23021B9242F3007920EA /* RMXDebugger.swift */; };
+		500D23151B9242F3007920EA /* RMXFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23031B9242F3007920EA /* RMXFunctions.swift */; };
+		500D23171B9242F3007920EA /* RMXValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23051B9242F3007920EA /* RMXValue.swift */; };
+		500D231B1B9242F3007920EA /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D230A1B9242F3007920EA /* UserActions.swift */; };
+		500D23461B924394007920EA /* Accelorometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D233C1B924394007920EA /* Accelorometer.swift */; };
+		500D23481B924394007920EA /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D233E1B924394007920EA /* Buttons.swift */; };
+		500D234A1B924394007920EA /* iOSControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23401B924394007920EA /* iOSControllers.swift */; };
+		500D234F1B924394007920EA /* RMXInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23451B924394007920EA /* RMXInterface.swift */; };
+		500D23511B9243F9007920EA /* MobileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23411B924394007920EA /* MobileInput.swift */; };
+		507814AD1B92959A0081080A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 507814AC1B92959A0081080A /* art.scnassets */; };
 		508F775E1B91664100BF7989 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508F775D1B91664100BF7989 /* OpenGL.framework */; };
 		508F77601B91666600BF7989 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508F775F1B91666600BF7989 /* Cocoa.framework */; };
 		508F77621B91667400BF7989 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508F77611B91667400BF7989 /* IOKit.framework */; };
@@ -295,6 +308,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		500D22FB1B9242F3007920EA /* iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
+		500D22FE1B9242F3007920EA /* OSX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSX.swift; sourceTree = "<group>"; };
+		500D22FF1B9242F3007920EA /* RMSMaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSMaths.swift; sourceTree = "<group>"; };
+		500D23001B9242F3007920EA /* RMX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMX.swift; sourceTree = "<group>"; };
+		500D23021B9242F3007920EA /* RMXDebugger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXDebugger.swift; sourceTree = "<group>"; };
+		500D23031B9242F3007920EA /* RMXFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXFunctions.swift; sourceTree = "<group>"; };
+		500D23051B9242F3007920EA /* RMXValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXValue.swift; sourceTree = "<group>"; };
+		500D230A1B9242F3007920EA /* UserActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActions.swift; sourceTree = "<group>"; };
+		500D233C1B924394007920EA /* Accelorometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accelorometer.swift; sourceTree = "<group>"; };
+		500D233D1B924394007920EA /* ActionProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionProcessor.swift; sourceTree = "<group>"; };
+		500D233E1B924394007920EA /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		500D233F1B924394007920EA /* DesktopInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopInput.swift; sourceTree = "<group>"; };
+		500D23401B924394007920EA /* iOSControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSControllers.swift; sourceTree = "<group>"; };
+		500D23411B924394007920EA /* MobileInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileInput.swift; sourceTree = "<group>"; };
+		500D23421B924394007920EA /* RMKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMKey.swift; sourceTree = "<group>"; };
+		500D23431B924394007920EA /* RMXAudioVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXAudioVideo.swift; sourceTree = "<group>"; };
+		500D23451B924394007920EA /* RMXInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXInterface.swift; sourceTree = "<group>"; };
+		507814AC1B92959A0081080A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		508F775D1B91664100BF7989 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
 		508F775F1B91666600BF7989 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		508F77611B91667400BF7989 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -401,6 +432,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		500D22F61B9242F3007920EA /* RMXSwift */ = {
+			isa = PBXGroup;
+			children = (
+				500D233B1B924394007920EA /* UserInterface */,
+				500D22FA1B9242F3007920EA /* iOS */,
+				500D22FD1B9242F3007920EA /* OSX */,
+				500D22FF1B9242F3007920EA /* RMSMaths.swift */,
+				500D23001B9242F3007920EA /* RMX.swift */,
+				500D23021B9242F3007920EA /* RMXDebugger.swift */,
+				500D23031B9242F3007920EA /* RMXFunctions.swift */,
+				500D23051B9242F3007920EA /* RMXValue.swift */,
+				500D230A1B9242F3007920EA /* UserActions.swift */,
+			);
+			name = RMXSwift;
+			path = Source;
+			sourceTree = "<group>";
+		};
+		500D22FA1B9242F3007920EA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				500D22FB1B9242F3007920EA /* iOS.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		500D22FD1B9242F3007920EA /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				500D22FE1B9242F3007920EA /* OSX.swift */,
+			);
+			path = OSX;
+			sourceTree = "<group>";
+		};
+		500D233B1B924394007920EA /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				500D233C1B924394007920EA /* Accelorometer.swift */,
+				500D233D1B924394007920EA /* ActionProcessor.swift */,
+				500D233E1B924394007920EA /* Buttons.swift */,
+				500D233F1B924394007920EA /* DesktopInput.swift */,
+				500D23401B924394007920EA /* iOSControllers.swift */,
+				500D23411B924394007920EA /* MobileInput.swift */,
+				500D23421B924394007920EA /* RMKey.swift */,
+				500D23431B924394007920EA /* RMXAudioVideo.swift */,
+				500D23451B924394007920EA /* RMXInterface.swift */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
 		50B2A3E11B91402D0041F112 = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +492,7 @@
 				50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */,
 				50B2A4CA1B914A280041F112 /* AiCubo.cpp */,
 				50B2A4CB1B914A280041F112 /* AiCubo.hpp */,
+				500D22F61B9242F3007920EA /* RMXSwift */,
 				50B2A4C71B9145AB0041F112 /* RMXKit */,
 				50B2A4A51B91458B0041F112 /* RMXEngine */,
 				50B2A3EC1B91402D0041F112 /* AiGlubo */,
@@ -441,6 +522,7 @@
 				50B2A42C1B9141960041F112 /* CppBridge.mm */,
 				50B2A42D1B9141960041F112 /* CppBridge.h */,
 				50B2A3F51B91402D0041F112 /* Main.storyboard */,
+				507814AC1B92959A0081080A /* art.scnassets */,
 				50B2A3F81B91402D0041F112 /* Assets.xcassets */,
 				50B2A3FA1B91402D0041F112 /* LaunchScreen.storyboard */,
 				50B2A3FD1B91402D0041F112 /* Info.plist */,
@@ -854,6 +936,7 @@
 				50B2A4C01B9145A30041F112 /* Headers in Resources */,
 				50B2A45E1B91444D0041F112 /* RMXEngine in Resources */,
 				50B2A3F91B91402D0041F112 /* Assets.xcassets in Resources */,
+				507814AD1B92959A0081080A /* art.scnassets in Resources */,
 				50B2A3FC1B91402D0041F112 /* LaunchScreen.storyboard in Resources */,
 				50B2A3F01B91402D0041F112 /* Shader.fsh in Resources */,
 			);
@@ -867,6 +950,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B2A4C91B9148EC0041F112 /* GameView.cpp in Sources */,
+				500D234A1B924394007920EA /* iOSControllers.swift in Sources */,
+				500D23141B9242F3007920EA /* RMXDebugger.swift in Sources */,
+				500D23511B9243F9007920EA /* MobileInput.swift in Sources */,
 				50B2A4991B9145840041F112 /* EntityGenerator.cpp in Sources */,
 				50B2A49D1B9145840041F112 /* Geometry.cpp in Sources */,
 				50B2A49B1B9145840041F112 /* GameNode.cpp in Sources */,
@@ -875,15 +961,21 @@
 				50B2A4A31B9145840041F112 /* SpriteBehaviour.cpp in Sources */,
 				50B2A4BE1B9145A30041F112 /* Dictionary.cpp in Sources */,
 				50B2A4981B9145840041F112 /* CollisionEvent.cpp in Sources */,
+				500D23151B9242F3007920EA /* RMXFunctions.swift in Sources */,
 				50B2A3F41B91402D0041F112 /* GameViewController.swift in Sources */,
 				50B2A42E1B9141960041F112 /* CppBridge.mm in Sources */,
 				50B2A4A41B9145840041F112 /* Transform.cpp in Sources */,
 				50B2A4CC1B914A280041F112 /* AiCubo.cpp in Sources */,
+				500D230E1B9242F3007920EA /* iOS.swift in Sources */,
 				50B2A4C21B9145A30041F112 /* LinkedList.cpp in Sources */,
+				500D23111B9242F3007920EA /* RMSMaths.swift in Sources */,
+				500D23461B924394007920EA /* Accelorometer.swift in Sources */,
 				50B2A4971B9145840041F112 /* CollisionBody.cpp in Sources */,
 				50B2A4961B9145840041F112 /* Camera.cpp in Sources */,
 				50B2A49E1B9145840041F112 /* NodeComponent.cpp in Sources */,
+				500D23121B9242F3007920EA /* RMX.swift in Sources */,
 				50B2A4C81B9148570041F112 /* GameController.cpp in Sources */,
+				500D234F1B924394007920EA /* RMXInterface.swift in Sources */,
 				50B2A4BD1B9145A30041F112 /* BoundingSphere.cpp in Sources */,
 				50B2A3EE1B91402D0041F112 /* AppDelegate.swift in Sources */,
 				50B2A4951B9145840041F112 /* Behaviour.cpp in Sources */,
@@ -892,6 +984,9 @@
 				50B2A4A01B9145840041F112 /* PhysicsWorld.cpp in Sources */,
 				50B2A49F1B9145840041F112 /* PhysicsBody.cpp in Sources */,
 				50B2A4BF1B9145A30041F112 /* EventListener.cpp in Sources */,
+				500D231B1B9242F3007920EA /* UserActions.swift in Sources */,
+				500D23481B924394007920EA /* Buttons.swift in Sources */,
+				500D23171B9242F3007920EA /* RMXValue.swift in Sources */,
 				50B2A4BC1B9145A30041F112 /* BoundingBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -53,7 +53,7 @@ void Scene::setAsCurrent() {
 }
 
 
-void Scene::renderScene(Camera * camera) {
+void Scene::renderScene(Matrix4 modelMatrix) {
 //    this->_rootNode->draw(cam->modelViewMatrix());
 
 //    if (this->renderDelegate != null)
@@ -61,7 +61,7 @@ void Scene::renderScene(Camera * camera) {
 
     LinkedList<GameNode>::Iterator * i = _rootNode->getChildren()->getIterator();
     while (i->hasNext()) {
-        i->next()->draw(camera->modelViewMatrix());
+        i->next()->draw(modelMatrix);
     }
 }
 

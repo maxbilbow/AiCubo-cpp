@@ -9,6 +9,7 @@
 import GLKit
 import OpenGLES
 
+
 func BUFFER_OFFSET(i: Int) -> UnsafePointer<Void> {
     let p: UnsafePointer<Void> = nil
     return p.advancedBy(i)
@@ -19,6 +20,11 @@ let UNIFORM_NORMAL_MATRIX = 1
 var uniforms = [GLint](count: 2, repeatedValue: 0)
 
 class GameViewController: GLKViewController {
+    
+    private static var _instance: GameViewController!
+    static var instance: GameViewController {
+        return _instance
+    }
     
     var program: GLuint = 0
     
@@ -41,7 +47,9 @@ class GameViewController: GLKViewController {
     }
     
     override func viewDidLoad() {
+        GameViewController._instance = self
         super.viewDidLoad()
+        
         
         self.context = EAGLContext(API: .OpenGLES2)
         
@@ -50,6 +58,7 @@ class GameViewController: GLKViewController {
         }
         
         let view = self.view as! GLKView
+        RMXMobileInput.instance
         view.context = self.context!
         view.drawableDepthFormat = .Format24
         
@@ -128,6 +137,7 @@ class GameViewController: GLKViewController {
         
         let baseModelViewMatrix = CppBridge.modelViewMatrix()
         print(CppBridge.toStringMatrix4(baseModelViewMatrix))
+        CppBridge.updateSceneLogic(baseModelViewMatrix)
 //        var r = false
 //        baseModelViewMatrix = GLKMatrix4Invert(baseModelViewMatrix, &r)
        
