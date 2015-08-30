@@ -24,6 +24,14 @@
 
 + (void) sendMessage:(NSString* )message;
 
++ (void) sendMessage:(NSString* )message withScale:(float)scale;
+
++ (void) moveWithDirection:(NSString* )direction withForce:(float)force;
+
++ (void) turnAboutAxis:(NSString* )axis withForce:(float)force;
+
++ (void) sendMessage:(NSString* )message withVector:(GLKVector3)vetor withScale:(float)scale;
+
 + (NSString*)toStringMatrix4:(GLKMatrix4)m;
 
 @end

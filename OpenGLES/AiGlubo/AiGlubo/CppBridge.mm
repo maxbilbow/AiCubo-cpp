@@ -37,12 +37,62 @@ AiCubo game = AiCubo();
 //    Scene::getCurrent()->renderScene(moodelMatrix);
 }
 
-+ (void) sendMessage:(NSString*)message {
-    Transform * player = Scene::getCurrent()->pointOfView()->getTransform()->rootTransform();
-    player->BroadcastMessage("forward", new float(1));//physicsBody()->applyForce(0.5f, player->getTransform()->forward());
-    NSLog(@"Message: %@",message);
++ (void) moveWithDirection:(NSString* )direction withForce:(float)force
+{
+    GameNode * player = GameNode::getCurrent();
+    GameNode * camera = Scene::getCurrent()->pointOfView();
+    if ([direction isEqualToString:@"forward"])
+        player->physicsBody()->applyForce(Forward, force);
+    else if ([direction isEqualToString:@"left"])
+        player->physicsBody()->applyForce(Left, force);
+    else if ([direction isEqualToString:@"up"])
+        player->physicsBody()->applyForce(Up, force);
+    else if ([direction isEqualToString:@"pitch"])
+        camera->physicsBody()->applyTorque(Pitch, force);
+    else if ([direction isEqualToString:@"yaw"])
+        player->physicsBody()->applyTorque(Yaw, force);
+    else if ([direction isEqualToString:@"roll"])
+        player->physicsBody()->applyTorque(Roll, force);
+
+     cout << player->getTransform()->position() << endl;
 }
 
++ (void) turnAboutAxis:(NSString* )axis withForce:(float)force
+{
+    GameNode * player = GameNode::getCurrent();
+    GameNode * camera = Scene::getCurrent()->pointOfView();
+    if ([axis isEqualToString:@"pitch"])
+        camera->getTransform()->rotate(Pitch, force);
+    else if ([axis isEqualToString:@"yaw"])
+        player->physicsBody()->applyTorque(Yaw, force);
+    else if ([axis isEqualToString:@"roll"])
+        player->physicsBody()->applyTorque(Roll, force);
+}
+
++ (void) sendMessage:(NSString*)message {
+    GameNode * player = Scene::getCurrent()->pointOfView();
+    if ([message isEqualToString:@"jump"])
+        player->BroadcastMessage("jump");
+   //physicsBody()->applyForce(0.5f, player->getTransform()->forward());
+}
+
+
++ (void) sendMessage:(NSString* )message withScale:(float)scale {
+    GameNode * player = Scene::getCurrent()->pointOfView();
+    if ([message isEqualToString:@"jump"]) {
+        if (scale == 0)
+            player->BroadcastMessage("crouch");
+        else if (scale == 1)
+            player->BroadcastMessage("jump");
+    } else if ([message isEqualToString:@"setEffectedByGravity:"]) {
+        player->physicsBody()->setEffectedByGravity(scale);
+    }
+    NSLog(@"%@%f",message,scale);
+}
+
++ (void) sendMessage:(NSString* )message withVector:(GLKVector3)vetor withScale:(float)scale {
+    
+}
     + (NSString*)toStringMatrix4:(GLKMatrix4)m
     {
         NSString * s = @"AFTER Matrix:\n";

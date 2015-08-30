@@ -70,3 +70,9 @@ namespace rmx {
     typedef LinkedList<Behaviour> GameNodeBehaviours;
     typedef LinkedList<GameNode> GameNodeList;
 }
+
+enum RMXMessage {
+    Forward, Left, Up, X, Y, Z,
+    Pitch, Yaw, Roll,
+    Jump
+};

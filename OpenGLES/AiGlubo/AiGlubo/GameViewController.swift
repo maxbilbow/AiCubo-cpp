@@ -136,10 +136,12 @@ class GameViewController: GLKViewController {
         self.effect?.transform.projectionMatrix = projectionMatrix
         
         let baseModelViewMatrix = CppBridge.modelViewMatrix()
-        print(CppBridge.toStringMatrix4(baseModelViewMatrix))
+//        print(CppBridge.toStringMatrix4(baseModelViewMatrix))
         CppBridge.updateSceneLogic(baseModelViewMatrix)
-//        var r = false
-//        baseModelViewMatrix = GLKMatrix4Invert(baseModelViewMatrix, &r)
+//       baseModelViewMatrix.m30 *= -1
+//        baseModelViewMatrix.m31 *= -1
+//        baseModelViewMatrix.m32 *= -1
+//        baseModelViewMatrix = GLKMatrix4Invert(baseModelViewMatrix)
        
 //        baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, rotation, 0.0, 1.0, 0.0)
         

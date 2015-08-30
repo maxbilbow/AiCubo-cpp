@@ -46,8 +46,11 @@ namespace rmx {
         
         GameNode * setNode(GameNode * node) override;
         
+        void applyForce(RMXMessage direction, float force);
         
         void applyForce(float force, Vector3 direction, Vector3 atPoint = GLKVector3Make(0,0,0));
+        
+        void applyTorque(RMXMessage direction, float force);
         
         void applyTorque(float force, Vector3 axis, Vector3 atPoint = GLKVector3Make(0,0,0));
         

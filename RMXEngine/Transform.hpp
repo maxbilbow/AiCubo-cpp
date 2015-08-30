@@ -16,11 +16,7 @@
 
 
 namespace rmx{
-    enum RMXMoveMessage {
-        Forward, Left, Up, X, Y, Z,
-        Pitch, Yaw, Roll,
-        Jump
-    };
+   
    
     class Transform : public NodeComponent {
 //        Matrix4 _worldMatrix;
@@ -35,7 +31,7 @@ namespace rmx{
         
     public:
         Transform(GameNode * node);
-        typedef RMXMoveMessage Move;
+        typedef RMXMessage Move;
 //        Transform(Node * node);
         Transform * New(GameNode * node);
         

@@ -110,6 +110,41 @@ CollisionBody * PhysicsBody::collisionBody() {
     return this->_collisionBody;
 }
 
+
+void PhysicsBody::applyForce(RMXMessage direction, float force)
+{
+    switch (direction) {
+        case Forward:
+            this->applyForce(force, this->getNode()->getTransform()->forward());
+            break;
+        case Up:
+            this->applyForce(force, this->getNode()->getTransform()->up());
+            break;
+        case Left:
+            this->applyForce(force, this->getNode()->getTransform()->left());
+            break;
+        default:
+            break;
+    }
+}
+
+void PhysicsBody::applyTorque(RMXMessage direction, float force)
+{
+    switch (direction) {
+        case Pitch:
+            this->applyTorque(force, this->getNode()->getTransform()->left());
+            break;
+        case Yaw:
+            this->applyTorque(force, this->getNode()->getTransform()->up());
+            break;
+        case Roll:
+            this->applyTorque(force, this->getNode()->getTransform()->forward());
+            break;
+        default:
+            break;
+    }
+}
+
 void PhysicsBody::applyForce(float force, Vector3 direction, Vector3 atPoint) {
     if (_type != Dynamic)
         return;

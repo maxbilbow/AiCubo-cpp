@@ -69,7 +69,8 @@ import UIKit
                 let percentage = CGPoint(x: move.x / limX, y: move.y / limY)
                 self.moveButtonPad!.center = rect.origin + rect.size * 0.5 + move * 1
     //            self.moveButtonPad?.setNeedsDisplay()
-                CppBridge.sendMessage("\(UserAction.MOVE):1:\(percentage * self.moveSpeed)")
+                CppBridge.moveWithDirection(UserAction.MOVE_FORWARD.description, withForce: Float(percentage.y * self.moveSpeed))
+                CppBridge.moveWithDirection(UserAction.MOVE_LEFT.description, withForce: Float(percentage.x * self.moveSpeed))
     //            NSLog("FWD: \((x / limX).toData()), SIDE: \((y / limY).toData())),  TOTAL: \(1)")
             }
             
@@ -119,6 +120,6 @@ import UIKit
         
         func jump(recogniser: UILongPressGestureRecognizer){
             let speed: RMFloat = recogniser.state == .Ended ? 1 : 0
-            CppBridge.sendMessage("\(UserAction.JUMP):\(speed)")
+            CppBridge.sendMessage(UserAction.JUMP.description, withScale: speed)
         }
     }

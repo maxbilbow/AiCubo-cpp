@@ -37,12 +37,14 @@ extension RMXMobileInput {
     
     
     func toggleGravity(recognizer: UITapGestureRecognizer) {
-        CppBridge.sendMessage("\(UserAction.TOGGLE_GRAVITY):1")
+        grav = grav == 1 ? 0 : 1
+        CppBridge.sendMessage("setEffectedByGravity", withScale: grav)
         }
         
         
     func toggleAllGravity(recognizer: UITapGestureRecognizer) {
-        CppBridge.sendMessage("\(UserAction.TOGGLE_GRAVITY):1")
+        grav = grav == 1 ? 0 : 1
+        CppBridge.sendMessage("setEffectedByGravity", withScale: grav)
     }
     
     
@@ -50,8 +52,9 @@ extension RMXMobileInput {
     func handleOrientation(recognizer: UIPanGestureRecognizer) {
         if recognizer.numberOfTouches() == 1 {
             let point = recognizer.velocityInView(GameViewController.instance.view)
+            CppBridge.turnAboutAxis(UserAction.MOVE_PITCH.description, withForce: self.lookSpeed * 10 * Float(point.y))
+            CppBridge.turnAboutAxis(UserAction.MOVE_YAW.description, withForce: self.lookSpeed * Float(point.x))
             
-            CppBridge.sendMessage("\(UserAction.LOOK_AROUND):\(self.lookSpeed):\(point)")
         }
 //            _handleRelease(recognizer.state)
     }

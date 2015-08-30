@@ -12,11 +12,14 @@ public protocol SoundMaker : Hashable { }
 public enum UserAction : String, CustomStringConvertible {
     //Movement
     case MOVE = "Move Around"
-    case MOVE_FORWARD = "Move Forward"
+    case MOVE_FORWARD = "forward"
     case MOVE_BACKWARD = "Move Backward"
-    case MOVE_LEFT = "Move Left"
+    case MOVE_LEFT = "left"
     case MOVE_RIGHT = "Move Right"
-    case MOVE_UP  = "Move Up"
+    case MOVE_UP  = "up"
+    case MOVE_PITCH = "pitch"
+    case MOVE_YAW = "yaw"
+    case MOVE_ROLL = "roll"
     case MOVE_DOWN = "Move Down"
     case ROLL_LEFT = "Roll Left"
     case ROLL_RIGHT = "Roll Right"

@@ -22,9 +22,9 @@ class RMXMobileInput : RMXInterface {
     
      let _testing = false
      let _hasMotion = true
-    
+    var grav: Float = 1
     let motionManager: CMMotionManager = CMMotionManager()
-    let rollSpeed: RMFloat = -1
+    let rollSpeed: RMFloat = -0.01
     
     var moveButtonPad: UIImageView?// = RMXModels.getImage()
     var moveButton: UIView?
@@ -33,8 +33,8 @@ class RMXMobileInput : RMXInterface {
     var topBar: UIView?
     var menuAccessBar: UIView?
     var pauseMenu: UIView?
-    var moveSpeed: CGFloat = -4 //-0.01 //-0.4
-    var lookSpeed: RMFloat = 0.1
+    var moveSpeed: CGFloat = 0.4 //-0.01 //-0.4
+    var lookSpeed: RMFloat = 0.001
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -222,9 +222,10 @@ class RMXMobileInput : RMXInterface {
         bounds.origin.y -= 5
         self.moveButton = self.moveButton(bounds.size, origin: bounds.origin)
         
-        GameViewController.instance.view.addSubview(self.moveButton!)
-        GameViewController.instance.view.bringSubviewToFront(self.moveButton!)
         
+        let view = GameViewController.instance.view;
+        view.addSubview(self.moveButton!)
+        view.bringSubviewToFront(self.moveButton!)
         let padImage: UIImage = RMXMobileInput.getImage()
         self.moveButtonPad = UIImageView(frame: self.moveButtonCenter)//(image: padImage)
         self.moveButtonPad!.image = padImage
@@ -233,7 +234,7 @@ class RMXMobileInput : RMXInterface {
         handleMovement.minimumPressDuration = 0.0
         self.moveButtonPad!.addGestureRecognizer(handleMovement)
         self.moveButtonPad!.userInteractionEnabled = true
-        GameViewController.instance.view.addSubview(self.moveButtonPad!)
+        view.addSubview(self.moveButtonPad!)
 
         
         self.jumpButton = UIButton(frame: self.jumpButtonCenter)
@@ -243,7 +244,7 @@ class RMXMobileInput : RMXInterface {
         jump.minimumPressDuration = 0.0
         self.jumpButton?.addGestureRecognizer(jump)
         self.jumpButton!.enabled = true
-        GameViewController.instance.view.addSubview(self.jumpButton!)
+        view.addSubview(self.jumpButton!)
         
         self.boomButton = UIButton(frame: self.boomButtonCenter)
         self.boomButton?.setImage(RMXMobileInput.getImage(), forState: UIControlState.Normal)
@@ -252,21 +253,21 @@ class RMXMobileInput : RMXInterface {
         explode.minimumPressDuration = 0.0
         self.boomButton?.addGestureRecognizer(explode)
         self.boomButton!.enabled = true
-        GameViewController.instance.view.addSubview(self.boomButton!)
+        view.addSubview(self.boomButton!)
         
         
-        GameViewController.instance.view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "zoom:"))
+        view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "zoom:"))
         // add a tap gesture recognizer
-        GameViewController.instance.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "grabOrThrow:"))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "grabOrThrow:"))
         rightView.addGestureRecognizer(UIPanGestureRecognizer(target: self,action: "handleOrientation:"))
-        GameViewController.instance.view.addSubview(rightView)
+        view.addSubview(rightView)
         
-        GameViewController.instance.view.bringSubviewToFront(self.boomButton!)
-        GameViewController.instance.view.bringSubviewToFront(self.jumpButton!)
+        view.bringSubviewToFront(self.boomButton!)
+        view.bringSubviewToFront(self.jumpButton!)
         
         let resetCamera = UITapGestureRecognizer(target: self, action: "resetCamera:")
         resetCamera.numberOfTapsRequired = 2
-        GameViewController.instance.view.addGestureRecognizer(resetCamera)
+        view.addGestureRecognizer(resetCamera)
     }
     
     var i = 0
