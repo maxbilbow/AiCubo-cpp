@@ -8,8 +8,9 @@
 #import "RMXEngine.hpp"
 #import "AiCubo.hpp"
 //#import <GLKit/GLKMatrix4.h>
-
+#include "VertexData.h"
 #include "CppBridge.h"
+
 
 using namespace rmx;
 using namespace std;
@@ -20,18 +21,59 @@ AiCubo game = AiCubo();
 
 + (void) setupScene
 {
+//    RMXLoadVertices();
     game.run();
 }
-+ (GLKMatrix4) modelViewMatrix
+
++ (GLKMatrix4) projectionMatrix
 {
-    GLKMatrix4 m = Scene::getCurrent()->pointOfView()->getCamera()->modelViewMatrix();
+    return Scene::getCurrent()->pointOfView()->getCamera()->projectionMatrix();
+}
+
++ (GLKMatrix4) projectionMatrixWithAspect:(float)aspect {
+    return Scene::getCurrent()->pointOfView()->getCamera()->projectionMatrix(aspect);
+}
+
++ (GLKMatrix4) baseModelViewMatrix
+{
+    GLKMatrix4 m = Scene::getCurrent()->pointOfView()->getCamera()->baseModelViewMatrix();
     
     
     
     return m;
 }
 
-+ (void) updateSceneLogic:(Matrix4)moodelMatrix {
++ (GLKMatrix4) modelViewMatrix
+{
+    GLKMatrix4 m = Scene::getCurrent()->pointOfView()->getCamera()->modelViewMatrix();
+    
+    
+    return m;
+    //    return Matrix4SetPositionZero(m);
+}
++ (const float*)vertsForShape:(unsigned int)shape {
+    switch (shape) {
+        case VERTS_CUBE:
+            return cubeData;
+        default:
+            return cubeData;
+    }
+    return RMXVertsForShape(shape);
+}
+
++ (long)sizeOf:(unsigned int)shape {
+    switch (shape) {
+        case VERTS_CUBE:
+            return cubeDataSize;
+            
+        default:
+            return cubeDataSize;
+    }
+}
+
+
+
++ (void) updateSceneLogic{
     Scene::getCurrent()->updateSceneLogic();
     
 //    Scene::getCurrent()->renderScene(moodelMatrix);

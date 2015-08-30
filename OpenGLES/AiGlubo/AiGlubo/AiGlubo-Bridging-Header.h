@@ -5,4 +5,5 @@
 
 
 #import <GLKit/GLKMatrix4.h>
+#import "VertexData.h"
 #import "CppBridge.h"

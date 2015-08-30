@@ -117,7 +117,7 @@ import SpriteKit
         
         
         
-        
+        func update() {}
         
     //    func destroyWorld() -> RMXScene? {
     //        return nil //_world?.destroy()

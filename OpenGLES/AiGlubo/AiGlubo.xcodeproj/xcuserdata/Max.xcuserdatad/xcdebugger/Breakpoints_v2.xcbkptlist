@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../RMXEngine/Geometry.cpp"
-            timestampString = "462508622.685679"
+            timestampString = "462627059.70779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "Geometry::render(GameNode * node, Matrix4 rootTransform)"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "Geometry::render(GameNode * node, Matrix4 base)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,13 +26,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiGlubo/CppBridge.mm"
-            timestampString = "462535674.457841"
+            timestampString = "462627777.281101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "+updateSceneLogic:"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "+updateSceneLogic"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Source/VertexData.h"
+            timestampString = "462626179.830633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

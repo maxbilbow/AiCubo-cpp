@@ -58,6 +58,11 @@ Matrix4 RMXMatrix4RotateAboutPoint(Matrix4 m, float radians, Vector3 axis, Vecto
     return m;
 }
 
+Matrix4& Matrix4SetPositionZero(Matrix4& m) {
+    m.m30 = m.m31 = m.m32 = 0;
+    return m;
+}
+
 Matrix4& RMXMatrix4SetPosition(Matrix4& m, Vector3 pos) {
     m.m30 = pos.x; m.m31 = pos.y; m.m32 = pos.z;
     return m;

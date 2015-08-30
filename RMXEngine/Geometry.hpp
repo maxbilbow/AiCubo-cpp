@@ -18,7 +18,8 @@ namespace rmx {
  
     class Geometry{
         static Geometry * _cube;
-        int * _vertexData = nullptr, * _indexData = nullptr;
+        const float * vertexData;// = nullptr, * _indexData = nullptr;
+        const long * vertexCount;//
         int _size = 0, _count = 0;
         bool vertexMode = FALSE;
         void pushMatrix(GameNode *, Matrix4);
@@ -34,10 +35,10 @@ namespace rmx {
         
         static Geometry * Cube();
         
-        int * vertexData();
-        int * indexData();
+//        int * vertexData();
+//        int * indexData();
         
-        Geometry(int size);
+        Geometry(const float * vertexData, const long * count);
         void addVertex(Vector3 v);
         
         void addVertex(float x, float y, float z);
@@ -54,7 +55,7 @@ namespace rmx {
     protected:
         void drawWithScale(float x, float y, float z) override;
     public:
-        Floor():Geometry(4*9) {}
+        Floor():Geometry(nullptr,nullptr){}
         
     };
 

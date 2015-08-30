@@ -103,7 +103,9 @@ class GameViewController: GLKViewController {
         
         glGenBuffers(1, &vertexBuffer)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), GLsizeiptr(sizeof(GLfloat) * gCubeVertexData.count), &gCubeVertexData, GLenum(GL_STATIC_DRAW))
+//        glBufferData(GLenum(GL_ARRAY_BUFFER), GLsizeiptr(sizeof(GLfloat) * gCubeVertexData.count), &gCubeVertexData, GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ARRAY_BUFFER), GLsizeiptr(sizeof(GLfloat) * CppBridge.sizeOf(VERTS_CUBE)),
+            CppBridge.vertsForShape(VERTS_CUBE), GLenum(GL_STATIC_DRAW))
         
         glEnableVertexAttribArray(GLuint(GLKVertexAttrib.Position.rawValue))
         glVertexAttribPointer(GLuint(GLKVertexAttrib.Position.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 24, BUFFER_OFFSET(0))
@@ -130,36 +132,38 @@ class GameViewController: GLKViewController {
     // MARK: - GLKView and GLKViewController delegate methods
     
     func update() {
-        let aspect = fabsf(Float(self.view.bounds.size.width / self.view.bounds.size.height))
-        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 0.1, 100.0)
+        CppBridge.updateSceneLogic()
+        RMXMobileInput.instance.update();
+        
+        
+        let projectionMatrix = CppBridge.projectionMatrixWithAspect(Float(self.view.bounds.size.width / self.view.bounds.size.height))
         
         self.effect?.transform.projectionMatrix = projectionMatrix
-        
-        let baseModelViewMatrix = CppBridge.modelViewMatrix()
-//        print(CppBridge.toStringMatrix4(baseModelViewMatrix))
-        CppBridge.updateSceneLogic(baseModelViewMatrix)
-//       baseModelViewMatrix.m30 *= -1
-//        baseModelViewMatrix.m31 *= -1
-//        baseModelViewMatrix.m32 *= -1
-//        baseModelViewMatrix = GLKMatrix4Invert(baseModelViewMatrix)
-       
-//        baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, rotation, 0.0, 1.0, 0.0)
+         let baseModelViewMatrix = CppBridge.modelViewMatrix()
+//        self.effect?.transform.modelviewMatrix = CppBridge.baseModelViewMatrix()
+
         
         // Compute the model view matrix for the object rendered with GLKit
-        var modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -1.5)
+        var modelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0, 0.0, -1.5)
         modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, rotation, 1.0, 1.0, 1.0)
-        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix)
+        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix,modelViewMatrix)
         
+//        self.effect?.transform.modelviewMatrix = modelViewMatrix
+//        var bool: Bool = false
+//        self.effect?.transform.modelviewMatrix = GLKMatrix4Invert(baseModelViewMatrix, &bool)
         self.effect?.transform.modelviewMatrix = modelViewMatrix
         
         // Compute the model view matrix for the object rendered with ES2
-        modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, 1.5)
+        modelViewMatrix = GLKMatrix4Translate(modelViewMatrix,0.0, 0.0, 3.0)
         modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, rotation, 1.0, 1.0, 1.0)
-        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix)
+        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix,modelViewMatrix)
+        
         
         normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelViewMatrix), nil)
         
-        modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix)
+//        var bool: Bool = false
+//        self.effect?.transform.modelviewMatrix = GLKMatrix4Invert(baseModelViewMatrix, &bool)
+        modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, baseModelViewMatrix)
         
         rotation += Float(self.timeSinceLastUpdate * 0.5)
     }
@@ -343,48 +347,48 @@ class GameViewController: GLKViewController {
     
 }
 
-var gCubeVertexData: [GLfloat] = [
-    // Data layout for each line below is:
-    // positionX, positionY, positionZ,     normalX, normalY, normalZ,
-    0.5, -0.5, -0.5,        1.0, 0.0, 0.0,
-    0.5, 0.5, -0.5,         1.0, 0.0, 0.0,
-    0.5, -0.5, 0.5,         1.0, 0.0, 0.0,
-    0.5, -0.5, 0.5,         1.0, 0.0, 0.0,
-    0.5, 0.5, -0.5,         1.0, 0.0, 0.0,
-    0.5, 0.5, 0.5,          1.0, 0.0, 0.0,
-    
-    0.5, 0.5, -0.5,         0.0, 1.0, 0.0,
-    -0.5, 0.5, -0.5,        0.0, 1.0, 0.0,
-    0.5, 0.5, 0.5,          0.0, 1.0, 0.0,
-    0.5, 0.5, 0.5,          0.0, 1.0, 0.0,
-    -0.5, 0.5, -0.5,        0.0, 1.0, 0.0,
-    -0.5, 0.5, 0.5,         0.0, 1.0, 0.0,
-    
-    -0.5, 0.5, -0.5,        -1.0, 0.0, 0.0,
-    -0.5, -0.5, -0.5,      -1.0, 0.0, 0.0,
-    -0.5, 0.5, 0.5,         -1.0, 0.0, 0.0,
-    -0.5, 0.5, 0.5,         -1.0, 0.0, 0.0,
-    -0.5, -0.5, -0.5,      -1.0, 0.0, 0.0,
-    -0.5, -0.5, 0.5,        -1.0, 0.0, 0.0,
-    
-    -0.5, -0.5, -0.5,      0.0, -1.0, 0.0,
-    0.5, -0.5, -0.5,        0.0, -1.0, 0.0,
-    -0.5, -0.5, 0.5,        0.0, -1.0, 0.0,
-    -0.5, -0.5, 0.5,        0.0, -1.0, 0.0,
-    0.5, -0.5, -0.5,        0.0, -1.0, 0.0,
-    0.5, -0.5, 0.5,         0.0, -1.0, 0.0,
-    
-    0.5, 0.5, 0.5,          0.0, 0.0, 1.0,
-    -0.5, 0.5, 0.5,         0.0, 0.0, 1.0,
-    0.5, -0.5, 0.5,         0.0, 0.0, 1.0,
-    0.5, -0.5, 0.5,         0.0, 0.0, 1.0,
-    -0.5, 0.5, 0.5,         0.0, 0.0, 1.0,
-    -0.5, -0.5, 0.5,        0.0, 0.0, 1.0,
-    
-    0.5, -0.5, -0.5,        0.0, 0.0, -1.0,
-    -0.5, -0.5, -0.5,      0.0, 0.0, -1.0,
-    0.5, 0.5, -0.5,         0.0, 0.0, -1.0,
-    0.5, 0.5, -0.5,         0.0, 0.0, -1.0,
-    -0.5, -0.5, -0.5,      0.0, 0.0, -1.0,
-    -0.5, 0.5, -0.5,        0.0, 0.0, -1.0
-]
+//var gCubeVertexData: [GLfloat] = [
+//    // Data layout for each line below is:
+//    // positionX, positionY, positionZ,     normalX, normalY, normalZ,
+//    0.5, -0.5, -0.5,        1.0, 0.0, 0.0,
+//    0.5, 0.5, -0.5,         1.0, 0.0, 0.0,
+//    0.5, -0.5, 0.5,         1.0, 0.0, 0.0,
+//    0.5, -0.5, 0.5,         1.0, 0.0, 0.0,
+//    0.5, 0.5, -0.5,         1.0, 0.0, 0.0,
+//    0.5, 0.5, 0.5,          1.0, 0.0, 0.0,
+//    
+//    0.5, 0.5, -0.5,         0.0, 1.0, 0.0,
+//    -0.5, 0.5, -0.5,        0.0, 1.0, 0.0,
+//    0.5, 0.5, 0.5,          0.0, 1.0, 0.0,
+//    0.5, 0.5, 0.5,          0.0, 1.0, 0.0,
+//    -0.5, 0.5, -0.5,        0.0, 1.0, 0.0,
+//    -0.5, 0.5, 0.5,         0.0, 1.0, 0.0,
+//    
+//    -0.5, 0.5, -0.5,        -1.0, 0.0, 0.0,
+//    -0.5, -0.5, -0.5,      -1.0, 0.0, 0.0,
+//    -0.5, 0.5, 0.5,         -1.0, 0.0, 0.0,
+//    -0.5, 0.5, 0.5,         -1.0, 0.0, 0.0,
+//    -0.5, -0.5, -0.5,      -1.0, 0.0, 0.0,
+//    -0.5, -0.5, 0.5,        -1.0, 0.0, 0.0,
+//    
+//    -0.5, -0.5, -0.5,      0.0, -1.0, 0.0,
+//    0.5, -0.5, -0.5,        0.0, -1.0, 0.0,
+//    -0.5, -0.5, 0.5,        0.0, -1.0, 0.0,
+//    -0.5, -0.5, 0.5,        0.0, -1.0, 0.0,
+//    0.5, -0.5, -0.5,        0.0, -1.0, 0.0,
+//    0.5, -0.5, 0.5,         0.0, -1.0, 0.0,
+//    
+//    0.5, 0.5, 0.5,          0.0, 0.0, 1.0,
+//    -0.5, 0.5, 0.5,         0.0, 0.0, 1.0,
+//    0.5, -0.5, 0.5,         0.0, 0.0, 1.0,
+//    0.5, -0.5, 0.5,         0.0, 0.0, 1.0,
+//    -0.5, 0.5, 0.5,         0.0, 0.0, 1.0,
+//    -0.5, -0.5, 0.5,        0.0, 0.0, 1.0,
+//    
+//    0.5, -0.5, -0.5,        0.0, 0.0, -1.0,
+//    -0.5, -0.5, -0.5,      0.0, 0.0, -1.0,
+//    0.5, 0.5, -0.5,         0.0, 0.0, -1.0,
+//    0.5, 0.5, -0.5,         0.0, 0.0, -1.0,
+//    -0.5, -0.5, -0.5,      0.0, 0.0, -1.0,
+//    -0.5, 0.5, -0.5,        0.0, 0.0, -1.0
+//]

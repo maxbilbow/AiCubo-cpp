@@ -19,8 +19,10 @@
 @interface CppBridge : NSObject 
 + (void) setupScene;
 + (GLKMatrix4) modelViewMatrix;
-
-+ (void) updateSceneLogic:(GLKMatrix4)Matrix4;
++ (GLKMatrix4) baseModelViewMatrix;
++ (GLKMatrix4) projectionMatrix;
++ (GLKMatrix4) projectionMatrixWithAspect:(float)aspect;
++ (void) updateSceneLogic;
 
 + (void) sendMessage:(NSString* )message;
 
@@ -33,6 +35,9 @@
 + (void) sendMessage:(NSString* )message withVector:(GLKVector3)vetor withScale:(float)scale;
 
 + (NSString*)toStringMatrix4:(GLKMatrix4)m;
+
++ (const float*)vertsForShape:(unsigned int)shape;
++ (long)sizeOf:(unsigned int)shape;
 
 @end
 

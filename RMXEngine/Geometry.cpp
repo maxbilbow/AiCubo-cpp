@@ -14,6 +14,7 @@
 #import "glfw3.h"
 #endif
 #import "Geometry.hpp"
+#include "VertexData.h"
 
 
 using namespace rmx;
@@ -35,30 +36,22 @@ void Floor::drawWithScale(float x, float y, float z) {
 //private ByteBuffer _elements;
 //private ShortBuffer _indexData;
 //private int _e = 0;
-Geometry::Geometry(int size) {
-    _vertexData = new int[sizeof(int) * size];
-    _indexData = new int[sizeof(int) * size / 3];
+Geometry::Geometry(const float * verts,const long * count) {
+    vertexData = verts;//new int[sizeof(int) * size];
+    vertexCount = count;//= new int[sizeof(int) * size / 3];
 }
 
-int * Geometry::vertexData() {
-    return _vertexData;
-}
+//const float * Geometry::vertexData() {
+//    return _vertexData;
+//}
+//
+//int * Geometry::indexData() {
+//    return _indexData;
+//}
+//void Geometry::addVertex(Vector3 v) {
+//    this->addVertex(v.x, v.y, v.z);
+//}
 
-int * Geometry::indexData() {
-    return _indexData;
-}
-void Geometry::addVertex(Vector3 v) {
-    this->addVertex(v.x, v.y, v.z);
-}
-
-void Geometry::addVertex(float x, float y, float z)  {
-    if (_count >= _size)
-        throw new invalid_argument("ERROR: TOO MANY VERTICES");
-    _vertexData[_count++] = x;
-    _vertexData[_count++] = y;
-    _vertexData[_count++] = z;
-    
-}
 
 
 
@@ -143,7 +136,7 @@ void _render() {
 class ACube : public Geometry {
 
 public:
-    ACube():Geometry(6*3*4){}
+    ACube():Geometry(cubeData, &cubeDataSize){}
 protected:
 #ifdef GLFW
     void drawWithScale(float X, float Y, float Z)override {
@@ -196,6 +189,8 @@ Geometry * Geometry::Cube() {
         _cube = new ACube();
     return _cube;
 }
+
+
 
 
 

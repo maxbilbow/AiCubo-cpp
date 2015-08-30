@@ -51,7 +51,8 @@ class RMXMobileInput : RMXInterface {
     
    
     
-    func update() {
+    override func update() {
+        super.update();
         self.accelerometer()
     }
 

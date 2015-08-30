@@ -23,7 +23,9 @@ namespace rmx {
 //        Camera(std::string name):NodeComponent(name){}
         void makePerspective(GameView * view);
         Matrix4 modelViewMatrix();
-        
+        Matrix4 baseModelViewMatrix();
+        Matrix4 projectionMatrix();
+        Matrix4 projectionMatrix(float aspect);
         float getFarZ();
         void setFarZ(float farZ);
         float getFovX();
@@ -31,7 +33,7 @@ namespace rmx {
         float getNearZ();
         void setNearZ(float nearZ);
         
-        Matrix4 projectionMatrix();
+
 
     };
     
