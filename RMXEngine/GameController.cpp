@@ -57,6 +57,7 @@ void GameController::initpov() {
     n->addBehaviour(new SpriteBehaviour());
 //    n->setGeometry(Geometry::Cube());
     n->getTransform()->setScale(2.0f, 3.0f, 2.0f);
+    n->getTransform()->setPosition(10,100, -50);
     n->addToCurrentScene();
     n->addBehaviour(new SpriteBehaviour());
     GameNode * head = new GameNode("Camera");//GameNode::newCameraNode();// new GameNode("Head");

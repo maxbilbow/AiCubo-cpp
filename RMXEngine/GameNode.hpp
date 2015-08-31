@@ -117,7 +117,7 @@ namespace rmx {
         
         void setParent(GameNode * parent);
         
-        static GameNode * makeCube(float s,bool body);//, Behaviour * b);
+        static GameNode * makeCube(float s,PhysicsBody * body = nullptr);//, Behaviour * b);
         
         void addToCurrentScene();
 

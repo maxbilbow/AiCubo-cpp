@@ -67,15 +67,15 @@ void CollisionEvent::seperateBodies(Transform * A, Transform * B) {
     
     float diff = this->planeDistance;
     if (A->getNode()->tick() > 0) {
-        if (A->physicsBody()->type() == Dynamic)
+        if (A->physicsBody()->type() == Dynamic && A->physicsBody()->getVelocity() != Vector3Zero)
             A->rootTransform()->stepBack(axis);// -diff * sign);
-        else if (B->physicsBody()->type() == Dynamic)
+        else if (B->physicsBody()->type() == Dynamic && B->physicsBody()->getVelocity() != Vector3Zero)
             B->rootTransform()->stepBack(axis);//diff * sign);
     }
     
     if (A->collisionBody()->boundingBox()->intersects(B->collisionBody()->boundingBox()) ) {
     
-        float time = 0.17f;//RMX.getCurrentFramerate();
+        float time = 0.017;// * 9.8f;//RMX.getCurrentFramerate();
         float escapeForce = time;// * AtoB.length();
         Vector3 dir = //AtoB.getNormalized();
         GLKVector3Make(axis == "x" ? 1 : 0, axis == "y" ? 1 : 0, axis == "z" ? 1 : 0);

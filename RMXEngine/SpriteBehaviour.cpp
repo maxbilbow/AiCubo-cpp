@@ -27,6 +27,9 @@ void SpriteBehaviour::SendMessage(string message, void * args, SendMessageOption
     if (args == nullptr) {
         if (message == "jump" && this->getNode()->physicsBody()->isEffectedByGravity())
             this->jump();
+        else {
+            printf("Unimplemented Massage received: %s\n",message.c_str());
+        }
     } else {
         if (message == "forward")
             this->getNode()->physicsBody()->applyForce(*((float*)args) * -1, getNode()->getTransform()->forward());
@@ -53,6 +56,8 @@ void SpriteBehaviour::SendMessage(string message, void * args, SendMessageOption
         } else if (message == "setEffectedByGravity") {
             bool effected = *((bool*)args);
             this->getNode()->physicsBody()->setEffectedByGravity(effected);
+        } else if( message == "onCollisionStart" || message == "onCollisionEnd" ){
+            
         } else {
             printf("Unimplemented Massage received: %s:",message.c_str());
             cout << args << endl;

@@ -53,9 +53,9 @@ public:
 class EG : public EntityGenerator {
 public:
     GameNode * makeEntity() override {
-        GameNode * head = GameNode::makeCube(0.2f, false);
+        GameNode * head = GameNode::makeCube(0.7f);
         head->addBehaviour( new BehaviourB());
-        GameNode * body = GameNode::makeCube(0.5f, true);
+        GameNode * body = GameNode::makeCube(1.0f, PhysicsBody::newDynamicBody());
         body->addBehaviour( new BehaviourC());
         //        body->getTransform()->setPosition(-10.0f,0.0f,10.0f);
         body->addChild(head);

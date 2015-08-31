@@ -52,7 +52,7 @@ void PhysicsWorld::updatePhysics(GameNode * rootNode) {
     }
 }
 
-const double spf = 0.167;//1 / 60;
+const double spf = 0.0167;
 float getCurrentFramerate() {
     return spf;
 }
@@ -63,14 +63,11 @@ void PhysicsWorld::applyGravityTo(GameNode * node) {
         float ground = t->scale().y;
         float mass = node->getTransform()->mass();
         float framerate = getCurrentFramerate();
-        //		System.out.println(node.getName() + " >> BEFORE: " + m.position());t.
-        
-        //		System.out.println(node.getName() + " >>  AFTER: " + m.position());
-        //		m.translate(x, y, z);
-        if (t->position().y < ground)
-            t->setPosition(0, ground, 0);// setM(3 * 4 + 1, ground);
-        else
-            t->physicsBody()->applyForce( framerate * mass, this->gravity);
+       
+//        if (t->position().y < ground)
+//            t->setPosition(0, ground, 0);// setM(3 * 4 + 1, ground);
+//        else
+        t->physicsBody()->applyForce( framerate * mass, this->gravity);
     }
 }
 
