@@ -27,6 +27,7 @@ namespace rmx {
        
         
     public:
+        int CollisionGroup();
         PhysicsBody * physicsBody();
          LinkedList<CollisionBody> * contacts = new LinkedList<CollisionBody>();
         

@@ -183,8 +183,8 @@ class GameViewController: GLKViewController {
         let projectionMatrix = CppBridge.projectionMatrixWithAspect(
             Float(self.view.bounds.size.width / self.view.bounds.size.height))
         self.effect?.transform.projectionMatrix = projectionMatrix
-        let eulerAngles = CppBridge.eulerAngles()
-        print(eulerAngles.print)
+//        let eulerAngles = CppBridge.eulerAngles()
+//        print(eulerAngles.print)
       
         ///Load Geometries
         let geometries = CppBridge.geometries().shapeData;

@@ -143,6 +143,15 @@ namespace rmx {
         static unsigned int Count();
         
         /*!
+         *  @author Max Bilbow, 15-08-06 16:08:21
+         *
+         *  @return the uniqueID assigned at initialization
+         *  @since 0.2
+         */
+//        int getID();
+        unsigned int uniqueID();
+        
+        /*!
          *  @author Max Bilbow, 15-08-04 17:08:40
          *
          *  @return A LinkedList containing all available Objects.
@@ -217,15 +226,17 @@ namespace rmx {
          *  @since 0.1
          */
         virtual Object * clone();
-        
+       
         /*!
          *  @author Max Bilbow, 15-08-06 16:08:21
          *
-         *  @return the uniqueID assigned at initialization
-         *  @since 0.1
+         *  @return the classname of the object as a string
+         *  @since 0.2
          */
-        int getID();
-       
+        std::string ClassName() {
+            return typeid(this).name();
+        };
+        
         /*!
          *  @author Max Bilbow, 15-08-06 16:08:42
          *
@@ -240,7 +251,11 @@ namespace rmx {
          *  @since 0.1
          *  @TODO: find a way of making this work...
          */
-        virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) { }
+        virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {
+#if RMX_DEBUG_OBJECT
+            std::cout << message << std::endl;
+#endif
+        }
         
         virtual void BroadcastMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {
             this->SendMessage(message, args, options);

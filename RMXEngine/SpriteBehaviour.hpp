@@ -17,7 +17,10 @@
 namespace rmx {
     class SpriteBehaviour : public Behaviour {
     public:
-
+        SpriteBehaviour():Behaviour() {
+            setName("SpriteBehaviour");
+        }
+        void jump(float force = 10.0f);
         void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) override;
     };
 }

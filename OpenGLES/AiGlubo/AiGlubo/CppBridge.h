@@ -40,6 +40,8 @@ typedef struct _Uniform
 
 + (void) sendMessage:(NSString* )message withScale:(float)scale;
 
++ (void) sendMessage:(NSString* )message withBool:(bool)on;
+
 + (void) moveWithDirection:(NSString* )direction withForce:(float)force;
 
 + (void) turnAboutAxis:(NSString* )axis withForce:(float)force;

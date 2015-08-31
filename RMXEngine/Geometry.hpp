@@ -38,7 +38,7 @@ namespace rmx {
         
 //        int * vertexData();
 //        int * indexData();
-        
+        Geometry();
         Geometry(float * vertexData, long count);
         void addVertex(Vector3 v);
         
@@ -50,7 +50,7 @@ namespace rmx {
     };
     
     
-
+    
     class Floor : public Geometry {
         
     protected:
@@ -58,6 +58,17 @@ namespace rmx {
     public:
         Floor():Geometry(nullptr,0){}
         
+    };
+    
+    class Cube : public Geometry {
+        Cube(float*,long);
+    public:
+        Cube();
+
+    protected:
+    #ifdef GLFW
+        void drawWithScale(float X, float Y, float Z)override {
+    #endif
     };
 
 }

@@ -66,10 +66,21 @@ NodeComponent * GameNode::setComponent(NodeComponent * component)  {
     return this->components.setValueForKey(key,component);
 }
 
+bool GameNode::hasBehaviour(Behaviour * behaviour) {
+    LinkedList<Behaviour>::Iterator * i = this->behaviours->getIterator();
+    while (i->hasNext())
+        if (i->next()->ClassName() == behaviour->ClassName())
+            return true;
+    return false;
+}
+
 void GameNode::addBehaviour(Behaviour * behaviour) {
-    if (behaviour != nullptr && !this->behaviours->contains(behaviour)) {
+    if (behaviour != nullptr && !this->hasBehaviour(behaviour)) {
+        cout << "BEHAVIOUR: Adding " << behaviour->uniqueName() << " to " << this->uniqueName() << endl;
         this->behaviours->append(behaviour);
         behaviour->setNode(this);
+    } else {
+        cout << "FAILED to add " << behaviour->uniqueName() << " to " << this->uniqueName() << endl;
     }
 }
     
@@ -241,21 +252,28 @@ void GameNode::setParent(GameNode * parent) {
 ///TODO
 void GameNode::SendMessage(std::string message, void * args, SendMessageOptions options) {
     //TODO
+    cout << "Message Received by " << this->uniqueName() << ": " << message << endl;
 }
 
 void GameNode::BroadcastMessage(std::string message, void * args, SendMessageOptions options) {
+//    cout << "Message Broadcasted to " << this->uniqueName() << ": " << message << endl;
+//    cout << "Sending to " << this->behaviours->count() << " behaviours" << endl;
+//    Object::BroadcastMessage(message, args, options);
     GameNodeBehaviours::Iterator * i = this->behaviours->getIterator();
-    while (i->hasNext())
-        i->next()->SendMessage(message,args,options);
+    while (i->hasNext()) {
+        Behaviour * b = i->next();
+        b->SendMessage(message,args,options);
+//        cout << "Message sent to: " << b->uniqueName() << endl;
+    }
 }
-    
-GameNode * GameNode::makeCube(float s,bool body, Behaviour * b) {
+
+GameNode * GameNode::makeCube(float s,bool body) {
     GameNode * n = new GameNode("Cube #"+to_string(random()%100));
     n->setGeometry(Geometry::Cube());
         if (body)
             n->setPhysicsBody(PhysicsBody::newDynamicBody());
         n->getTransform()->setScale(s, s, s);
-        n->addBehaviour(b);
+//        n->addBehaviour(b);
 //        n->addToCurrentScene();
         return n;
     }

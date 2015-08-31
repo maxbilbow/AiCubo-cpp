@@ -37,14 +37,14 @@ extension RMXMobileInput {
     
     
     func toggleGravity(recognizer: UITapGestureRecognizer) {
-        grav = grav == 1 ? 0 : 1
-        CppBridge.sendMessage("setEffectedByGravity", withScale: grav)
-        }
+        CppBridge.sendMessage("setEffectedByGravity", withBool: grav)
+        self.grav = !self.grav
+    }
         
         
     func toggleAllGravity(recognizer: UITapGestureRecognizer) {
-        grav = grav == 1 ? 0 : 1
-        CppBridge.sendMessage("setEffectedByGravity", withScale: grav)
+        CppBridge.sendMessage("setEffectedByGravity", withBool: grav)
+        self.grav = !self.grav
     }
     
     

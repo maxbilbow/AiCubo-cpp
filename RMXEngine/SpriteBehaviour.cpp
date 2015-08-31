@@ -18,12 +18,15 @@
 using namespace rmx;
 using namespace std;
 
-
+void SpriteBehaviour::jump(float force){
+   this->getNode()->physicsBody()->applyForce(force, GLKVector3Make(0,1,0));
+}
 
 void SpriteBehaviour::SendMessage(string message, void * args, SendMessageOptions options) {
+//    Behaviour::SendMessage(message, args, options);
     if (args == nullptr) {
-        if (message == "jump")
-            this->getNode()->physicsBody()->applyForce(10, GLKVector3Make(0,1,0));
+        if (message == "jump" && this->getNode()->physicsBody()->isEffectedByGravity())
+            this->jump();
     } else {
         if (message == "forward")
             this->getNode()->physicsBody()->applyForce(*((float*)args) * -1, getNode()->getTransform()->forward());
@@ -44,8 +47,18 @@ void SpriteBehaviour::SendMessage(string message, void * args, SendMessageOption
     //        cout << "       Pos:" << this->getTransform()->position() << endl;
     //        cout << "   LastPos:" << this->getTransform()->lastPosition() << endl;
     ////        cout << "" << endl;
+        } else if (message == "jump") {
+            if (this->getNode()->physicsBody()->isEffectedByGravity())
+                this->jump(*((float*)args));
+        } else if (message == "setEffectedByGravity") {
+            bool effected = *((bool*)args);
+            this->getNode()->physicsBody()->setEffectedByGravity(effected);
+        } else {
+            printf("Unimplemented Massage received: %s:",message.c_str());
+            cout << args << endl;
         }
     }
     
-    //            std::cout << this->getNode()->getTransform()->localMatrix();
+//    cout << "SpriteBehaviour Received Message: " << message << ": " << args << endl;
+//                std::cout << this->getNode()->getTransform()->localMatrix();
 }

@@ -55,7 +55,7 @@ void Object::setName(std::string name) {
     this->name = name;
 }
 
-int Object::getID() {
+unsigned int Object::uniqueID() {
     return this->_id;
 }
 

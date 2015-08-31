@@ -138,59 +138,61 @@ void _render() {
 //    return _cube;
 //}
 
-class ACube : public Geometry {
+Geometry::Geometry() {
+    Geometry::Geometry(cubeData, cubeDataSize);
+}
+Cube::Cube() {
+    Geometry::Geometry(cubeData, cubeDataSize);
+}
 
-public:
-    ACube():Geometry(cubeData, cubeDataSize){}
-protected:
 #ifdef GLFW
-    void drawWithScale(float X, float Y, float Z)override {
-        
-        glBegin(GL_QUADS);
-        glColor3f(1.0f,1.0f,0.0f);
-        glNormal3f(0,1,0);
-        glVertex3f( X, Y,-Z);
-        glVertex3f(-X, Y,-Z);
-        glVertex3f(-X, Y, Z);
-        glVertex3f( X, Y, Z);
-        glColor3f(1.0f,0.5f,0.0f);
-        glNormal3f(0,-1,0);
-        glVertex3f( X,-Y, Z);
-        glVertex3f(-X,-Y, Z);
-        glVertex3f(-X,-Y,-Z);
-        glVertex3f( X,-Y,-Z);
-        glColor3f(1.0f,0.0f,0.0f);
-        glNormal3f(0,0,1);
-        glVertex3f( X, Y, Z);
-        glVertex3f(-X, Y, Z);
-        glVertex3f(-X,-Y, Z);
-        glVertex3f( X,-Y, Z);
-        glColor3f(1.0f,1.0f,0.0f);
-        glNormal3f(0,0,-1);
-        glVertex3f( X,-Y,-Z);
-        glVertex3f(-X,-Y,-Z);
-        glVertex3f(-X, Y,-Z);
-        glVertex3f( X, Y,-Z);
-        glColor3f(0.0f,0.0f,1.0f);
-        glNormal3f(-1,0,0);
-        glVertex3f(-X, Y, Z);
-        glVertex3f(-X, Y,-Z);
-        glVertex3f(-X,-Y,-Z);
-        glVertex3f(-X,-Y, Z);
-        glColor3f(1.0f,0.0f,1.0f);
-        glNormal3f(1,0,0);
-        glVertex3f( X, Y,-Z);
-        glVertex3f( X, Y, Z);
-        glVertex3f( X,-Y, Z);
-        glVertex3f( X,-Y,-Z);
-        glEnd();
-    }
+void Cube::drawWithScale(float X, float Y, float Z)override {
+    
+    glBegin(GL_QUADS);
+    glColor3f(1.0f,1.0f,0.0f);
+    glNormal3f(0,1,0);
+    glVertex3f( X, Y,-Z);
+    glVertex3f(-X, Y,-Z);
+    glVertex3f(-X, Y, Z);
+    glVertex3f( X, Y, Z);
+    glColor3f(1.0f,0.5f,0.0f);
+    glNormal3f(0,-1,0);
+    glVertex3f( X,-Y, Z);
+    glVertex3f(-X,-Y, Z);
+    glVertex3f(-X,-Y,-Z);
+    glVertex3f( X,-Y,-Z);
+    glColor3f(1.0f,0.0f,0.0f);
+    glNormal3f(0,0,1);
+    glVertex3f( X, Y, Z);
+    glVertex3f(-X, Y, Z);
+    glVertex3f(-X,-Y, Z);
+    glVertex3f( X,-Y, Z);
+    glColor3f(1.0f,1.0f,0.0f);
+    glNormal3f(0,0,-1);
+    glVertex3f( X,-Y,-Z);
+    glVertex3f(-X,-Y,-Z);
+    glVertex3f(-X, Y,-Z);
+    glVertex3f( X, Y,-Z);
+    glColor3f(0.0f,0.0f,1.0f);
+    glNormal3f(-1,0,0);
+    glVertex3f(-X, Y, Z);
+    glVertex3f(-X, Y,-Z);
+    glVertex3f(-X,-Y,-Z);
+    glVertex3f(-X,-Y, Z);
+    glColor3f(1.0f,0.0f,1.0f);
+    glNormal3f(1,0,0);
+    glVertex3f( X, Y,-Z);
+    glVertex3f( X, Y, Z);
+    glVertex3f( X,-Y, Z);
+    glVertex3f( X,-Y,-Z);
+    glEnd();
+}
 #endif
-};
+
 
 //Geometry * Geometry::_cube = nullptr;
 Geometry * Geometry::Cube() {
-    return new ACube();
+    return new class Cube();
 }
 
 

@@ -90,8 +90,7 @@ PhysicsBody * PhysicsBody::newKinematicBody() {
 
 PhysicsBody * PhysicsBody::newTransientBody() {
     PhysicsBody * body = new PhysicsBody();
-    body->_type = Transient;
-    
+    body->_type = Transient;    
     return body;
 }
 

@@ -49,16 +49,16 @@ GameController * GameController::getInstance() {
 
 void GameController::initpov() {
     GameNode * n = GameNode::getCurrent();
-    n->addBehaviour(new SpriteBehaviour());
+    
     n->setPhysicsBody(PhysicsBody::newDynamicBody());
     n->physicsBody()->setMass(5);
-    cout << n->physicsBody() << endl;
+//    cout << n->physicsBody() << endl;
 
-
+    n->addBehaviour(new SpriteBehaviour());
 //    n->setGeometry(Geometry::Cube());
     n->getTransform()->setScale(2.0f, 3.0f, 2.0f);
     n->addToCurrentScene();
-    
+    n->addBehaviour(new SpriteBehaviour());
     GameNode * head = new GameNode("Camera");//GameNode::newCameraNode();// new GameNode("Head");
     head->setCamera(new Camera());
     n->addChild(head);
@@ -94,9 +94,10 @@ void GameController::updateAfterScene(GLWindow * window) {
 }
 
 void GameController::repeatedKeys(GLWindow * window) {
-    GameNode * player = GameNode::getCurrent();//GameNode::getCurrent();
     
     #ifdef GLFW
+    GameNode * player = GameNode::getCurrent();//GameNode::getCurrent();
+
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         player->BroadcastMessage("forward", new float(1.0));
     }

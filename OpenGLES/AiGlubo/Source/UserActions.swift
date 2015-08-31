@@ -23,7 +23,7 @@ public enum UserAction : String, CustomStringConvertible {
     case MOVE_DOWN = "Move Down"
     case ROLL_LEFT = "Roll Left"
     case ROLL_RIGHT = "Roll Right"
-    case JUMP = "Jump"
+    case JUMP = "jump"
     case ROTATE = "Rotate"
     case LOOK_AROUND = "Look Around"
     case STOP_MOVEMENT = "Stop Moving"

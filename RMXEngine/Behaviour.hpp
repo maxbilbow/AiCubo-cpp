@@ -21,8 +21,9 @@ namespace rmx {
         bool enabled;
     public:
        
-        Behaviour() {
+        Behaviour():NodeComponent() {
             this->enabled = true;
+            this->setName("Behaviour");
         }
         
         bool isEnabled(){
@@ -34,6 +35,12 @@ namespace rmx {
         }
         virtual void update(){}
         virtual void lateUpdate(){}
+        
+        virtual void SendMessage(std::string,void*,SendMessageOptions) override {
+            Object::SendMessage("Message Received via Behaviour");
+            }
+        
+        
     };
     
     

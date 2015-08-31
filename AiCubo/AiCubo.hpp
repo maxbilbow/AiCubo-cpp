@@ -19,7 +19,7 @@ namespace rmx {
 class BehaviourA : public Behaviour {
 public:
     void update() override {
-        Transform * t = this->getNode()->getTransform();
+//        Transform * t = this->getNode()->getTransform();
         //        t->physicsBody()->applyForce(0.01, t->forward());
     }
 };
@@ -53,9 +53,10 @@ public:
 class EG : public EntityGenerator {
 public:
     GameNode * makeEntity() override {
-        GameNode * head = GameNode::makeCube(0.2f, false, new BehaviourB());
-        
-        GameNode * body = GameNode::makeCube(0.5f, true, new BehaviourC());
+        GameNode * head = GameNode::makeCube(0.2f, false);
+        head->addBehaviour( new BehaviourB());
+        GameNode * body = GameNode::makeCube(0.5f, true);
+        body->addBehaviour( new BehaviourC());
         //        body->getTransform()->setPosition(-10.0f,0.0f,10.0f);
         body->addChild(head);
         head->getTransform()->setPosition(0.0f,1.0f,0.0f);

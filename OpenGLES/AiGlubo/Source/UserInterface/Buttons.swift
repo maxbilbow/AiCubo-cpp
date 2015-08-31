@@ -93,8 +93,9 @@ import UIKit
         }
         
         func explode(recogniser: UILongPressGestureRecognizer) {
+             CppBridge.sendMessage(UserAction.MOVE_UP.description, withScale: -Float(self.moveSpeed))
             //        RMXNode.current?.setAngle(roll: 0)
-            CppBridge.sendMessage("\(UserAction.THROW_OR_GRAB_UNTRACKED)")
+//            CppBridge.sendMessage("\(UserAction.THROW_OR_GRAB_UNTRACKED)")
 //            if recogniser.state == .Ended {
 //                if RMXNode.current?.isHoldingItem ?? false {
 //                    RMX.ActionProcessor.current.action(UserAction.THROW_OR_GRAB_UNTRACKED)
@@ -119,7 +120,17 @@ import UIKit
         }
         
         func jump(recogniser: UILongPressGestureRecognizer){
-            let speed: RMFloat = recogniser.state == .Ended ? 1 : 0
-            CppBridge.sendMessage(UserAction.JUMP.description, withScale: speed)
+            switch recogniser.state {
+            case .Began:
+                CppBridge.sendMessage(UserAction.JUMP.description, withScale: 0)
+                break
+            case .Ended:
+                CppBridge.sendMessage(UserAction.JUMP.description, withScale: 1)
+                break
+            default:
+                CppBridge.sendMessage(UserAction.MOVE_UP.description, withScale: Float(self.moveSpeed))
+                break
+            }
+            
         }
     }

@@ -22,7 +22,9 @@ namespace rmx {
    
     protected:
         GameNode * parent = nullptr;
+        
     private:
+        bool hasBehaviour(Behaviour*);
         static GameNode * _current;
         
         long _tick = 0;
@@ -115,7 +117,7 @@ namespace rmx {
         
         void setParent(GameNode * parent);
         
-        static GameNode * makeCube(float s,bool body, Behaviour * b);
+        static GameNode * makeCube(float s,bool body);//, Behaviour * b);
         
         void addToCurrentScene();
 

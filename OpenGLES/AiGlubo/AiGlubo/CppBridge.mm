@@ -115,7 +115,7 @@ static GeometryIterator * geometries;
     else if ([direction isEqualToString:@"roll"])
         player->physicsBody()->applyTorque(Roll, force);
 
-     cout << player->getTransform()->position() << endl;
+//     cout << player->getTransform()->position() << endl;
 }
 
 + (void) turnAboutAxis:(NSString* )axis withForce:(float)force
@@ -131,28 +131,32 @@ static GeometryIterator * geometries;
 }
 
 + (void) sendMessage:(NSString*)message {
-    GameNode * player = Scene::getCurrent()->pointOfView();
-    if ([message isEqualToString:@"jump"])
-        player->BroadcastMessage("jump");
-   //physicsBody()->applyForce(0.5f, player->getTransform()->forward());
+//    NSLog(@"Unimplemented message received: %@",message);
+    GameNode * player = GameNode::getCurrent();
+    player->BroadcastMessage([message UTF8String]);
 }
 
++ (void) sendMessage:(NSString* )message withBool:(bool)on
+{
+    GameNode * player = GameNode::getCurrent();
+    player->BroadcastMessage([message UTF8String],&on);
+}
 
 + (void) sendMessage:(NSString* )message withScale:(float)scale {
-    GameNode * player = Scene::getCurrent()->pointOfView();
+    GameNode * player = GameNode::getCurrent();//->pointOfView();
     if ([message isEqualToString:@"jump"]) {
         if (scale == 0)
             player->BroadcastMessage("crouch");
         else if (scale == 1)
             player->BroadcastMessage("jump");
-    } else if ([message isEqualToString:@"setEffectedByGravity:"]) {
-        player->physicsBody()->setEffectedByGravity(scale);
+    } else {
+        player->BroadcastMessage([message UTF8String],&scale);
+//        NSLog(@"Unimplemented Massage received: %@:@%f",message,scale);
     }
-    NSLog(@"%@%f",message,scale);
 }
 
-+ (void) sendMessage:(NSString* )message withVector:(GLKVector3)vetor withScale:(float)scale {
-    
++ (void) sendMessage:(NSString* )message withVector:(GLKVector3)vector withScale:(float)scale {
+    NSLog(@"Unimplemented Massage received: %@:%f:(%f,%f,%f)",message,scale,vector.x,vector.y,vector.z);
 }
     + (NSString*)toStringMatrix4:(GLKMatrix4)m
     {

@@ -22,7 +22,7 @@ class RMXMobileInput : RMXInterface {
     
      let _testing = false
      let _hasMotion = true
-    var grav: Float = 1
+    var grav: Bool = true
     let motionManager: CMMotionManager = CMMotionManager()
     let rollSpeed: RMFloat = -0.01
     
@@ -34,7 +34,7 @@ class RMXMobileInput : RMXInterface {
     var menuAccessBar: UIView?
     var pauseMenu: UIView?
     var moveSpeed: CGFloat = 0.4 //-0.01 //-0.4
-    var lookSpeed: RMFloat = 0.001
+    var lookSpeed: RMFloat = -0.0005
     
     override func viewDidLoad(){
         super.viewDidLoad()

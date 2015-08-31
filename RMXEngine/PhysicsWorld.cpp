@@ -52,22 +52,25 @@ void PhysicsWorld::updatePhysics(GameNode * rootNode) {
     }
 }
 
+const double spf = 0.167;//1 / 60;
 float getCurrentFramerate() {
-    return 0.1667;
+    return spf;
 }
     
 void PhysicsWorld::applyGravityTo(GameNode * node) {
-    if (node->physicsBody()->isEffectedByGravity()) {
+    if (node->physicsBody()->type() == Dynamic && node->physicsBody()->isEffectedByGravity()) {
         Transform * t = node->getTransform();
         float ground = t->scale().y;
         float mass = node->getTransform()->mass();
         float framerate = getCurrentFramerate();
         //		System.out.println(node.getName() + " >> BEFORE: " + m.position());t.
-        t->setPosition(t->position() + this->gravity * framerate * mass);
+        
         //		System.out.println(node.getName() + " >>  AFTER: " + m.position());
         //		m.translate(x, y, z);
         if (t->position().y < ground)
-            t->setM(3 * 4 + 1, ground);
+            t->setPosition(0, ground, 0);// setM(3 * 4 + 1, ground);
+        else
+            t->physicsBody()->applyForce( framerate * mass, this->gravity);
     }
 }
 
@@ -81,19 +84,20 @@ void PhysicsWorld::buildCollisionList(GameNode * rootNode) {
     while (i->hasNext()){
         GameNode * node = i->next();
         if (node->hasPhysicsBody()) {
-            switch (node->physicsBody()->type()) {
-                case Dynamic:
-                    this->dynamicBodies->append(node->collisionBody());
-                    break;
-                case Static:
-                    this->staticBodies->append(node->collisionBody());
-                    break;
-                case Kinematic:
-                    this->kinematicBodies->append(node->collisionBody());
-                    break;
-                default:
-                    break;
-            }
+            if (node->collisionBody()->CollisionGroup() != NO_COLLISIONS)
+                switch (node->physicsBody()->type()) {
+                    case Dynamic:
+                        this->dynamicBodies->append(node->collisionBody());
+                        break;
+                    case Static:
+                        this->staticBodies->append(node->collisionBody());
+                        break;
+                    case Kinematic:
+                        this->kinematicBodies->append(node->collisionBody());
+                        break;
+                    default:
+                        break;
+                }
         }
     }
 }

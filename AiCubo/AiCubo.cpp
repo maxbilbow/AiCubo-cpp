@@ -17,7 +17,8 @@ void AiCubo::setup() {
     Scene * scene = Scene::getCurrent();
     
     
-    GameNode * cube = GameNode::makeCube(0.5f, true, new BehaviourA());
+    GameNode * cube = GameNode::makeCube(0.5f, true);
+    cube->addBehaviour( new BehaviourA());
     cube->getTransform()->setPosition(0.0f,0.0f,5.0f);
     
     
@@ -27,7 +28,11 @@ void AiCubo::setup() {
     floor->getTransform()->setPosition(0,0,0);
     scene->rootNode()->addChild(floor);
     
-    floor->setGeometry(new Floor());
+    floor->setGeometry(new Cube());
+    float inf = 9999;
+    floor->getTransform()->setScale(inf, inf, inf);
+    floor->getTransform()->setPosition(0, -inf/2, 0);
+    floor->setPhysicsBody(PhysicsBody::newTransientBody());
     
     
     EG eg = EG();
@@ -44,7 +49,7 @@ void AiCubo::setup() {
     }
     
 
-    GameNode * box = GameNode::makeCube(5, false, nullptr);
+    GameNode * box = GameNode::makeCube(5, false);
     box->setPhysicsBody(PhysicsBody::newStaticBody());
     box->getTransform()->setPosition(10, 5, 10);
     box->addToCurrentScene();

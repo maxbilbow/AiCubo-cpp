@@ -64,3 +64,8 @@ GameNode * CollisionBody::getNode() {
 PhysicsBody * CollisionBody::physicsBody() {
     return _physicsBody;
 }
+
+
+int CollisionBody::CollisionGroup() {
+    return this->collisionGroup;
+}
