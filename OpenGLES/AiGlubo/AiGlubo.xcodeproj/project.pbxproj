@@ -1463,6 +1463,7 @@
 				50CFDE5E1B936843003EA656 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

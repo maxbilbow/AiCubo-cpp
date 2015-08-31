@@ -37,7 +37,7 @@ typedef Vector3 EulerAngles;
 //#include <list>
 
 
-#define GLFW
+//#define GLFW
 #ifdef GLFW
 #include "glfw3.h"
 typedef GLFWwindow GLWindow;

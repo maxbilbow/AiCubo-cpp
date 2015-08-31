@@ -7,7 +7,7 @@
 //
 
 varying lowp vec4 colorVarying;
-
+//precision mediump float;
 void main()
 {
     gl_FragColor = colorVarying;
