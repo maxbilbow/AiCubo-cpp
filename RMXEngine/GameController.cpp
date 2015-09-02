@@ -47,25 +47,7 @@ GameController * GameController::getInstance() {
 }
 
 
-void GameController::initpov() {
-    GameNode * n = GameNode::getCurrent();
-    
-    n->setPhysicsBody(PhysicsBody::newDynamicBody());
-    n->physicsBody()->setMass(5);
-//    cout << n->physicsBody() << endl;
 
-    n->addBehaviour(new SpriteBehaviour());
-//    n->setGeometry(Geometry::Cube());
-    n->getTransform()->setScale(2.0f, 3.0f, 2.0f);
-    n->getTransform()->setPosition(10,100, -50);
-    n->addToCurrentScene();
-    n->addBehaviour(new SpriteBehaviour());
-    GameNode * head = new GameNode("Camera");//GameNode::newCameraNode();// new GameNode("Head");
-    head->setCamera(new Camera());
-    n->addChild(head);
-    view->setPointOfView(head);
-//    GameNode::setCurrent(n);
-}
 
 
 void GameController::run() {

@@ -12,7 +12,9 @@ import MetalKit
 let MaxBuffers = 3
 let ConstantBufferSize = 1024*1024
 
-let vertexData = ShapeData.triangle()
+//let vertexData = ShapeData.cube()
+
+let cube = ShapeData.cube()
 
 
 let vertexColorData:[Float] =
@@ -56,7 +58,8 @@ class GameViewController: NSViewController, MTKViewDelegate {
     var pipelineState: MTLRenderPipelineState! = nil
     var vertexBuffer: MTLBuffer! = nil
     var vertexColorBuffer: MTLBuffer! = nil
-    var uniformBuffer: MTLBuffer! = nil
+    var uniformsBuffers: [MTLBuffer] = []
+//    var bufferProvider: BufferProvider!
     
     let inflightSemaphore = dispatch_semaphore_create(MaxBuffers)
     var bufferIndex = 0
@@ -91,8 +94,8 @@ class GameViewController: NSViewController, MTKViewDelegate {
         commandQueue.label = "main command queue"
         
         let defaultLibrary = device.newDefaultLibrary()!
-        let fragmentProgram = defaultLibrary.newFunctionWithName("passThroughFragment")!
-        let vertexProgram = defaultLibrary.newFunctionWithName("passThroughVertex")!
+        let fragmentProgram = defaultLibrary.newFunctionWithName("basic_fragment")!
+        let vertexProgram = defaultLibrary.newFunctionWithName("basic_vertex")!
         
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
         pipelineStateDescriptor.vertexFunction = vertexProgram
@@ -110,14 +113,19 @@ class GameViewController: NSViewController, MTKViewDelegate {
         vertexBuffer = device.newBufferWithLength(ConstantBufferSize, options: [])
         vertexBuffer.label = "vertices"
         
-        let vertexColorSize = vertexData.count * sizeofValue(vertexColorData[0])
+        let vertexColorSize = cubeDataSize//.count * sizeofValue(vertexData[0])
         vertexColorBuffer = device.newBufferWithBytes(vertexColorData, length: vertexColorSize, options: [])
         vertexColorBuffer.label = "colors"
         
-        let uniformBufferSize = sizeof(Float) * 16
-        uniformBuffer = device.newBufferWithLength(uniformBufferSize, options: [])
-        uniformBuffer.label = "uniforms"
-       
+        let geometries = CppBridge.geometries()
+//        self.bufferProvider = BufferProvider(device: self.device, inflightBuffersCount: geometries.count, sizeOfUniformsBuffer: 32)
+        
+        for shape in geometries.shapeData {
+            let uniformBufferSize = sizeof(Float) * 16
+            let uniformBuffer = device.newBufferWithLength(uniformBufferSize, options: [])
+            uniformBuffer.label = (shape as! ShapeData).uniqueName
+            uniformsBuffers.append(uniformBuffer)
+        }
         
 
     }
@@ -129,7 +137,7 @@ class GameViewController: NSViewController, MTKViewDelegate {
         let vData = UnsafeMutablePointer<Float>(pData + 256*bufferIndex)
         
         // reset the vertices to default before adding animated offsets
-        vData.initializeFrom(vertexData.vertexData, count: vertexData.count)// vertexData)
+        vData.initializeFrom(cube.vertexData, count: cube.count)// vertexData)
         
         // Animate triangle offsets
         let lastTriVertex = 24
@@ -172,7 +180,7 @@ class GameViewController: NSViewController, MTKViewDelegate {
         // use semaphore to encode 3 frames ahead
         dispatch_semaphore_wait(inflightSemaphore, DISPATCH_TIME_FOREVER)
         
-        self.update()
+//        self.update()
         
         let commandBuffer = commandQueue.commandBuffer()
         commandBuffer.label = "Frame command buffer"
@@ -185,30 +193,33 @@ class GameViewController: NSViewController, MTKViewDelegate {
         renderEncoder.label = "render encoder"
         
 
-        let pm = CppBridge.rawProjectionMatrixWithAspect(aspect)
+        let projectionMatrix = CppBridge.rawProjectionMatrixWithAspect(aspect)
         ///Load Geometries
         let geometries = CppBridge.geometries().shapeData;
         
         for shape in geometries {
+            
             let vertexData = shape as! ShapeData
-            let bufferPointer = uniformBuffer?.contents()
+                if let uniformBuffer = uniformsBuffers.first {
             //            var uniforms = CppBridge.getUniformWithModelViewMatrix(vertexData.modelViewMatrix, withAspect: aspect)
+                    let bufferPointer = uniformBuffer.contents()
+                    // 4
+                    memcpy(bufferPointer, vertexData.modelViewMatrixRaw, sizeof(Float)*16)
+                    //            memcpy(bufferPointer!, &uniforms, sizeof(Float)*16*2)
+                    memcpy(bufferPointer + sizeof(Float)*16, projectionMatrix, sizeof(Float)*16)
+                    // 5
+                    renderEncoder.setVertexBuffer(uniformBuffer, offset: 0, atIndex: 1)
+                    //            return;
+                    
+                    renderEncoder.pushDebugGroup("draw \(shape.uniqueName)")
+                    renderEncoder.setRenderPipelineState(pipelineState)
+                    renderEncoder.setVertexBuffer(vertexBuffer, offset: 256*bufferIndex, atIndex: 0)
+                    renderEncoder.setVertexBuffer(vertexColorBuffer, offset:3 , atIndex: 0)
+                    renderEncoder.setVertexBuffer(uniformBuffer, offset: 0, atIndex: 1)
+                    renderEncoder.drawPrimitives(.TriangleStrip, vertexStart: 0, vertexCount: vertexData.vertexCount, instanceCount: 1)
             
-            // 4
-            memcpy(bufferPointer!, vertexData.modelViewMatrixRaw, sizeof(Float)*16)
-            //            memcpy(bufferPointer!, &uniforms, sizeof(Float)*16*2)
-            memcpy(bufferPointer! + sizeof(Float)*16, pm, sizeof(Float)*16)
-            // 5
-            renderEncoder.setVertexBuffer(self.uniformBuffer, offset: 0, atIndex: 2)
-            //            return;
-            
-            renderEncoder.pushDebugGroup("draw morphing triangle")
-            renderEncoder.setRenderPipelineState(pipelineState)
-            renderEncoder.setVertexBuffer(vertexBuffer, offset: 256*bufferIndex, atIndex: 0)
-            renderEncoder.setVertexBuffer(vertexColorBuffer, offset:0 , atIndex: 1)
-            renderEncoder.setVertexBuffer(uniformBuffer, offset: 0, atIndex: 2)
-            renderEncoder.drawPrimitives(.TriangleStrip, vertexStart: 0, vertexCount: vertexData.vertexCount, instanceCount: 1)
-            
+            }
+
         }
 
         
@@ -231,6 +242,7 @@ class GameViewController: NSViewController, MTKViewDelegate {
         commandBuffer.commit()
     }
     
+   
     
     func mtkView(view: MTKView, drawableSizeWillChange size: CGSize) {
         

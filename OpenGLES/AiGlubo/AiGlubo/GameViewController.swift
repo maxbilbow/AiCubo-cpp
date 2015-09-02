@@ -15,9 +15,14 @@ func BUFFER_OFFSET(i: Int) -> UnsafePointer<Void> {
     return p.advancedBy(i)
 }
 
-let UNIFORM_MODELVIEWPROJECTION_MATRIX = 0
+let UNIFORM_VIEWPROJECTION_MATRIX = 0
 let UNIFORM_NORMAL_MATRIX = 1
-var uniforms = [GLint](count: 2, repeatedValue: 0)
+let UNIFORM_MODEL_MATRIX = 2
+let UNIFORM_SCALE_VECTOR = 3
+let UNIFORM_TIME_FLOAT = 4
+let UNIFORM_COLOR_VECTOR = 5
+//let VIEW_MATRIX = 2
+var uniforms = [GLint](count: 6, repeatedValue: 0)
 
 class GameViewController: GLKViewController {
     
@@ -28,8 +33,9 @@ class GameViewController: GLKViewController {
     
     var program: GLuint = 0
     
-    var modelViewProjectionMatrix:GLKMatrix4 = GLKMatrix4Identity
-    var normalMatrix: GLKMatrix3 = GLKMatrix3Identity
+//    var modelViewProjectionMatrix:GLKMatrix4 = GLKMatrix4Identity
+//    var viewProjectionMatrix:GLKMatrix4 = GLKMatrix4Identity
+//    var normalMatrix: GLKMatrix3 = GLKMatrix3Identity
     var rotation: Float = 0.0
     
     var vertexArray: GLuint = 0
@@ -132,41 +138,9 @@ class GameViewController: GLKViewController {
 //        
 //    }
     
-    func setPosition(shape: ShapeData, projectionMatrix: GLKMatrix4, es2: Bool) {
-        let modelViewMatrix = shape.modelViewMatrix// GLKMatrix4ScaleWithVector3(shape.modelViewMatrix, shape.scale)
-       
-        if es2 {
-            normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelViewMatrix), nil)
-            
-            modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix)
-        } else {
-            self.effect?.transform.projectionMatrix = projectionMatrix
-            self.effect?.transform.modelviewMatrix = modelViewMatrix
-        }
-    }
+   
     
-    func render(es2: Bool) {
-
-        if es2 {
-            // Render the object again with ES2
-            glUseProgram(program)
-            
-            withUnsafePointer(&modelViewProjectionMatrix, {
-                glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, UnsafePointer($0));
-            })
-            
-            withUnsafePointer(&normalMatrix, {
-                glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, UnsafePointer($0));
-            })
-            
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-        } else {
-            self.effect?.prepareToDraw()
-            
-            glDrawArrays(GLenum(GL_TRIANGLES) , 0, 36)
-            
-        }
-    }
+   
     
 
     override func glkView(view: GLKView, drawInRect rect: CGRect) {
@@ -188,14 +162,59 @@ class GameViewController: GLKViewController {
       
         ///Load Geometries
         let geometries = CppBridge.geometries().shapeData;
-        var alt = true
+        let es2 = true
+        var viewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, CppBridge.viewMatrix())
+        
         for shape in geometries {
+           
             
-            setPosition(shape as! ShapeData, projectionMatrix: projectionMatrix, es2: alt)
-            
-            render(alt)
-            alt = !alt;
-            
+           
+            if !es2 {
+                self.effect?.transform.projectionMatrix = projectionMatrix
+                self.effect?.transform.modelviewMatrix = shape.modelViewMatrix
+                self.effect?.prepareToDraw()
+                glDrawArrays(GLenum(GL_TRIANGLES) , 0, 36)
+            } else {
+                // Render the object again with ES2
+                var normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(shape.modelViewMatrix), nil)
+                var scale = shape.scaleVector
+                var modelMatrix = GLKMatrix4Scale(shape.modelMatrix, scale.x, scale.y, scale.z)
+                var color = (shape as! ShapeData).color ?? GLKVector4Make(0.4,0.4,1.0,1.0)
+                if color.w == 0 {
+                    color = GLKVector4Make(0.4,0.4,1.0,1.0)
+                }
+                glUseProgram(program)
+                
+                withUnsafePointer(&viewProjectionMatrix, {
+                    glUniformMatrix4fv(uniforms[UNIFORM_VIEWPROJECTION_MATRIX], 1, 0, UnsafePointer($0));
+                })
+                
+//                withUnsafePointer(&rotation, {
+                    glUniform1f(uniforms[UNIFORM_TIME_FLOAT], rotation);
+//                })
+                
+                withUnsafePointer(&modelMatrix, {
+                    glUniformMatrix4fv(uniforms[UNIFORM_MODEL_MATRIX], 1, 0, UnsafePointer($0));
+                })
+                
+                withUnsafePointer(&normalMatrix, {
+                    glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, UnsafePointer($0));
+                })
+                
+                withUnsafePointer(&scale, {
+                    glUniform3fv(uniforms[UNIFORM_SCALE_VECTOR], 1, UnsafePointer($0));
+                })
+                
+                withUnsafePointer(&color, {
+                    glUniform4fv(uniforms[UNIFORM_COLOR_VECTOR], 1, UnsafePointer($0));
+                })
+                
+                
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
+            }
+
+//            es2 = !es2;
+            rotation += 0.01
         }
         rotation += Float(self.timeSinceLastUpdate * 0.5)
        
@@ -258,8 +277,15 @@ class GameViewController: GLKViewController {
         }
         
         // Get uniform locations.
-        uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX] = glGetUniformLocation(program, "modelViewProjectionMatrix")
+        uniforms[UNIFORM_VIEWPROJECTION_MATRIX] = glGetUniformLocation(program, "viewProjectionMatrix")
         uniforms[UNIFORM_NORMAL_MATRIX] = glGetUniformLocation(program, "normalMatrix")
+        uniforms[UNIFORM_MODEL_MATRIX] = glGetUniformLocation(program, "modelMatrix")
+        uniforms[UNIFORM_SCALE_VECTOR] = glGetUniformLocation(program, "scaleVector")
+        uniforms[UNIFORM_TIME_FLOAT] = glGetUniformLocation(program, "time")
+
+        uniforms[UNIFORM_COLOR_VECTOR] = glGetUniformLocation(program, "colorVector")
+
+
         
         // Release vertex and fragment shaders.
         if vertShader != 0 {
@@ -355,48 +381,3 @@ class GameViewController: GLKViewController {
     
 }
 
-//var gCubeVertexData: [GLfloat] = [
-//    // Data layout for each line below is:
-//    // positionX, positionY, positionZ,     normalX, normalY, normalZ,
-//    0.5, -0.5, -0.5,        1.0, 0.0, 0.0,
-//    0.5, 0.5, -0.5,         1.0, 0.0, 0.0,
-//    0.5, -0.5, 0.5,         1.0, 0.0, 0.0,
-//    0.5, -0.5, 0.5,         1.0, 0.0, 0.0,
-//    0.5, 0.5, -0.5,         1.0, 0.0, 0.0,
-//    0.5, 0.5, 0.5,          1.0, 0.0, 0.0,
-//    
-//    0.5, 0.5, -0.5,         0.0, 1.0, 0.0,
-//    -0.5, 0.5, -0.5,        0.0, 1.0, 0.0,
-//    0.5, 0.5, 0.5,          0.0, 1.0, 0.0,
-//    0.5, 0.5, 0.5,          0.0, 1.0, 0.0,
-//    -0.5, 0.5, -0.5,        0.0, 1.0, 0.0,
-//    -0.5, 0.5, 0.5,         0.0, 1.0, 0.0,
-//    
-//    -0.5, 0.5, -0.5,        -1.0, 0.0, 0.0,
-//    -0.5, -0.5, -0.5,      -1.0, 0.0, 0.0,
-//    -0.5, 0.5, 0.5,         -1.0, 0.0, 0.0,
-//    -0.5, 0.5, 0.5,         -1.0, 0.0, 0.0,
-//    -0.5, -0.5, -0.5,      -1.0, 0.0, 0.0,
-//    -0.5, -0.5, 0.5,        -1.0, 0.0, 0.0,
-//    
-//    -0.5, -0.5, -0.5,      0.0, -1.0, 0.0,
-//    0.5, -0.5, -0.5,        0.0, -1.0, 0.0,
-//    -0.5, -0.5, 0.5,        0.0, -1.0, 0.0,
-//    -0.5, -0.5, 0.5,        0.0, -1.0, 0.0,
-//    0.5, -0.5, -0.5,        0.0, -1.0, 0.0,
-//    0.5, -0.5, 0.5,         0.0, -1.0, 0.0,
-//    
-//    0.5, 0.5, 0.5,          0.0, 0.0, 1.0,
-//    -0.5, 0.5, 0.5,         0.0, 0.0, 1.0,
-//    0.5, -0.5, 0.5,         0.0, 0.0, 1.0,
-//    0.5, -0.5, 0.5,         0.0, 0.0, 1.0,
-//    -0.5, 0.5, 0.5,         0.0, 0.0, 1.0,
-//    -0.5, -0.5, 0.5,        0.0, 0.0, 1.0,
-//    
-//    0.5, -0.5, -0.5,        0.0, 0.0, -1.0,
-//    -0.5, -0.5, -0.5,      0.0, 0.0, -1.0,
-//    0.5, 0.5, -0.5,         0.0, 0.0, -1.0,
-//    0.5, 0.5, -0.5,         0.0, 0.0, -1.0,
-//    -0.5, -0.5, -0.5,      0.0, 0.0, -1.0,
-//    -0.5, 0.5, -0.5,        0.0, 0.0, -1.0
-//]

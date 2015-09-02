@@ -195,6 +195,10 @@ std::ostream& operator<<(std::ostream& in,  Vector3 v) {
     return in << v.x << ", " << v.y << ", " << v.z;
 }
 
+std::ostream& operator<<(std::ostream& in,  Vector4 v) {
+    return in << v.x << ", " << v.y << ", " << v.z << ", " << v.w;
+}
+
 bool operator==(Matrix4 lhs,  Matrix4 rhs) {
     for (int i=0;i<16;++i)
         if (lhs.m[i] != rhs.m[i])

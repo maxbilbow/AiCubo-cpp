@@ -51,6 +51,7 @@ void operator*=(Vector3& lhs,  float rhs);
 void operator/=(Vector3& lhs,  float rhs);
 
 std::ostream& operator<<(std::ostream& in,  Vector3 m);
+std::ostream& operator<<(std::ostream& in,  Vector4 v);
 std::ostream& operator<<(std::ostream& in,  Matrix4 m);
 
 std::string operator+(std::string lhs, float rhs);

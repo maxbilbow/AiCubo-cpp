@@ -27,12 +27,14 @@ typedef rmx::Camera Camera;
 @private Transform * transform;
 }
 
-- (id)initWithData:( float *)data andCount:(long)count andTransform:(Transform *) t
+- (id)initWithData:( float *)data andCount:(long)count andTransform:(Transform *)t andColor:(GLKVector4)color
 {
     self = [super init];
     self.vertexData = data;
     self.count = count;
     self->transform = t;
+    self.color = color;
+    
     return self;
 }
 
@@ -43,11 +45,14 @@ typedef rmx::Camera Camera;
 
 - (GLKMatrix4)modelViewMatrix
 {
-    return Scene::getCurrent()->pointOfView()->getCamera()->viewMatrix() * (self->transform->worldMatrix() * self.scale);    
+    return Scene::getCurrent()->pointOfView()->getCamera()->viewMatrix() * (self->transform->worldMatrix() * self.scaleVector);
 }
 
 
-
+- (NSString*)uniqueName
+{
+    return [NSString stringWithFormat:@"%s", self->transform->getNode()->uniqueName().c_str()];
+}
 
 - (void*)modelViewMatrixRaw
 {
@@ -59,10 +64,11 @@ typedef rmx::Camera Camera;
     return self->transform->worldMatrix();
 }
 
-- (GLKVector3)scale
+- (GLKVector3)scaleVector
 {
     return self->transform->scale();
 }
+
 
 
 ShapeData * _cube, * _triangle;
@@ -71,7 +77,7 @@ ShapeData * _cube, * _triangle;
 + (ShapeData*)cube
 {
     if (_cube == NULL)
-        _cube = [[ShapeData alloc]initWithData:cubeData andCount:cubeDataSize andTransform:NULL];
+        _cube = [[ShapeData alloc]initWithData:cubeData andCount:cubeDataSize andTransform:NULL andColor: GLKVector4Make(0.4, 0.4, 1.0, 1.0)];
     return _cube;
 }
 
@@ -79,7 +85,7 @@ ShapeData * _cube, * _triangle;
 + (ShapeData*)triangle
 {
     if (_triangle == NULL)
-        _triangle = [[ShapeData alloc]initWithData:triandleData andCount:triandleDataSize andTransform:NULL];
+        _triangle = [[ShapeData alloc]initWithData:triandleData andCount:triandleDataSize andTransform:NULL andColor: GLKVector4Make(0.4, 0.4, 1.0, 1.0)];
     return _triangle;
 }
 
@@ -107,7 +113,8 @@ GameNode * node;
 void addGeometryData(NSMutableArray * list, GameNode * node) {
     if (node->hasGeometry()) {
         Geometry *g = node->geometry();
-        [list addObject:[[ShapeData alloc]initWithData:g->vertexData andCount:g->vertexCount andTransform:node->getTransform()]];
+        [list addObject:[[ShapeData alloc]initWithData:g->vertexData andCount:g->vertexCount andTransform:node->getTransform() andColor:g->color()]];
+        cout << g->color() << endl;
     }
     GameNodeIterator * i = node->getChildren()->getIterator();
     while (i->hasNext()) {

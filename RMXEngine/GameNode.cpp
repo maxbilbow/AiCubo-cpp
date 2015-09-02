@@ -269,7 +269,7 @@ void GameNode::BroadcastMessage(std::string message, void * args, SendMessageOpt
 
 GameNode * GameNode::makeCube(float s, PhysicsBody * body) {
     GameNode * n = new GameNode("Cube");
-    n->setGeometry(new Cube());
+    n->setGeometry(Geometry::Cube());
     if (body!=nullptr)
         n->setPhysicsBody(body);
     n->getTransform()->setScale(s, s, s);

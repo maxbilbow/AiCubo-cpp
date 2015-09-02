@@ -40,7 +40,16 @@ void Floor::drawWithScale(float x, float y, float z) {
 Geometry::Geometry(float * verts, long  count) {
     NodeComponent::NodeComponent();
     vertexData = verts;//new int[sizeof(int) * size];
-    vertexCount = count;//= new int[sizeof(int) * size / 3];
+    vertexCount = count;//= new int[sizeof(int) * size / 3]; 0.4, 0.4, 1.0, 1.0
+    _color = GLKVector4Make((float) (rand() % 100) / 100,
+                            (float) (rand() % 100) / 100,
+                            (float) (rand() % 100) / 100,
+                            (float) 1.0);
+    cout << _color << endl;
+}
+
+Vector4 Geometry::color() {
+    return this->_color;
 }
 
 //const float * Geometry::vertexData() {
@@ -139,13 +148,14 @@ void _render() {
 //}
 
 Geometry::Geometry() {
-    Geometry::Geometry(cubeData, cubeDataSize);
+    throw invalid_argument("Geometry must be initialized with Geometry(float* ,long )");       //    Geometry::Geometry(cubeData, cubeDataSize);
 }
-Cube::Cube() {
+#ifdef GLFW
+Cube::Cube(float* cd,long size) {
     Geometry::Geometry(cubeData, cubeDataSize);
 }
 
-#ifdef GLFW
+
 void Cube::drawWithScale(float X, float Y, float Z)override {
     
     glBegin(GL_QUADS);
@@ -192,7 +202,8 @@ void Cube::drawWithScale(float X, float Y, float Z)override {
 
 //Geometry * Geometry::_cube = nullptr;
 Geometry * Geometry::Cube() {
-    return new class Cube();
+    Geometry * cube = new Geometry(cubeData, cubeDataSize);
+    return cube;
 }
 
 

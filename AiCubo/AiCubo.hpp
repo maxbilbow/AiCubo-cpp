@@ -68,4 +68,5 @@ public:
 class AiCubo : public rmx::GameController {
 protected:
     void setup() override;
+    void initpov() override;
 };

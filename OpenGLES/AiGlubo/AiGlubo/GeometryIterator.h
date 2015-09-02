@@ -14,12 +14,14 @@
 
 @interface ShapeData : NSObject
 @property float * vertexData;
+@property (nonatomic) NSString* uniqueName;
 @property (nonatomic) long vertexCount;
 @property long count;
 @property (nonatomic) GLKMatrix4 modelViewMatrix;
 @property (nonatomic) void * modelViewMatrixRaw;
 @property (nonatomic) GLKMatrix4 modelMatrix;
-@property (nonatomic) GLKVector3 scale;
+@property (nonatomic) GLKVector3 scaleVector;
+@property GLKVector4 color;
 
 + (ShapeData*)cube;
 + (ShapeData*)triangle;

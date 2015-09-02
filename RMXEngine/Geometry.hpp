@@ -23,10 +23,12 @@ namespace rmx {
         bool vertexMode = FALSE;
         void pushMatrix(GameNode *, Matrix4);
         void popMatrix();
+        Vector4 _color;
     protected:
         virtual void drawWithScale(float x, float y, float z) {
              throw std::invalid_argument("drawWithScale(float x, float y, float z) must be overriden");
         }
+        Geometry();
     public:
         float * vertexData;// = nullptr, * _indexData = nullptr;
         long vertexCount;
@@ -34,11 +36,12 @@ namespace rmx {
         void setVertexMode(bool vertexMode);
         void render(GameNode * GameNode, Matrix4 root);
         
+        Vector4 color();
         static Geometry * Cube();
         
 //        int * vertexData();
 //        int * indexData();
-        Geometry();
+//
         Geometry(float * vertexData, long count);
         void addVertex(Vector3 v);
         
@@ -60,15 +63,18 @@ namespace rmx {
         
     };
     
+    #ifdef GLFW
     class Cube : public Geometry {
-        Cube(float*,long);
+       
     public:
-        Cube();
+         Cube(float* = nullptr,long = 0);
 
     protected:
-    #ifdef GLFW
+
         void drawWithScale(float X, float Y, float Z)override {
-    #endif
+    
     };
+#endif
+        
 
 }

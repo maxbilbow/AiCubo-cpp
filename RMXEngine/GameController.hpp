@@ -23,7 +23,7 @@ namespace rmx {
         GameView * view;
         static GameController * _singleton;
         
-        void initpov();
+        virtual void initpov() {};
    
         virtual void setup(){
             this->initpov();
