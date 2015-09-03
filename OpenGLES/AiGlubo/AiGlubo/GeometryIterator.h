@@ -12,19 +12,26 @@
 
 #endif /* GeometryIterator_h */
 
+
+
 @interface ShapeData : NSObject
-@property float * vertexData;
+@property (nonatomic) float * vertexData;
 @property (nonatomic) NSString* uniqueName;
-@property (nonatomic) long vertexCount;
-@property long count;
-@property (nonatomic) GLKMatrix4 modelViewMatrix;
-@property (nonatomic) void * modelViewMatrixRaw;
+@property (nonatomic) long vertexDataSize;
+//@property long count;
+//@property (nonatomic) GLKMatrix4 modelViewMatrix;
+@property (nonatomic) float * modelMatrixRaw;
 @property (nonatomic) GLKMatrix4 modelMatrix;
 @property (nonatomic) GLKVector3 scaleVector;
-@property GLKVector4 color;
+@property (nonatomic) float* scaleVectorRaw;
+@property (nonatomic) float* colorVectorRaw;
 
-+ (ShapeData*)cube;
-+ (ShapeData*)triangle;
+@property (nonatomic) UInt16 * indexData;
+@property (nonatomic) long indexDataSize;
+@property (nonatomic) GLKVector4 color;
+- (id)initWithGeometry:(void*)geometry;
+//+ (ShapeData*)cube;
+//+ (ShapeData*)triangle;
 //- (id)initWithData:(const float*)data andCount:(const long*)count;
 @end
 

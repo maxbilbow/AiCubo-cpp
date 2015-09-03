@@ -13,14 +13,16 @@
 
 #endif /* Geometry_hpp */
 
-
 namespace rmx {
  
     class Geometry : public NodeComponent {
         static Geometry * _cube;
         //
-        int _size = 0, _count = 0;
-        bool vertexMode = FALSE;
+       
+        float * _vertexData;
+        long _vertexDataSize;
+        UInt16 * _indexData;
+        long  _indexDataSize;
         void pushMatrix(GameNode *, Matrix4);
         void popMatrix();
         Vector4 _color;
@@ -30,19 +32,21 @@ namespace rmx {
         }
         Geometry();
     public:
-        float * vertexData;// = nullptr, * _indexData = nullptr;
-        long vertexCount;
+        float * vertexData();// = nullptr, * _indexData = nullptr;
+        long vertexDataSize();
+        unsigned short * indexData();
+        long indexDataSize();
         bool isVertexMode();
         void setVertexMode(bool vertexMode);
         void render(GameNode * GameNode, Matrix4 root);
-        
+        Vector3 scale();
         Vector4 color();
         static Geometry * Cube();
         
 //        int * vertexData();
 //        int * indexData();
 //
-        Geometry(float * vertexData, long count);
+        Geometry(float*,long, unsigned short *, long);
         void addVertex(Vector3 v);
         
         void addVertex(float x, float y, float z);
@@ -59,7 +63,7 @@ namespace rmx {
     protected:
         void drawWithScale(float x, float y, float z) override;
     public:
-        Floor():Geometry(nullptr,0){}
+        Floor():Geometry(nullptr,0,nullptr,0){}
         
     };
     
@@ -67,7 +71,7 @@ namespace rmx {
     class Cube : public Geometry {
        
     public:
-         Cube(float* = nullptr,long = 0);
+         Cube(float* = nullptr,long = 0, int * indices = nullptr);
 
     protected:
 
@@ -78,3 +82,5 @@ namespace rmx {
         
 
 }
+
+//    typedef rmx::Geometry RMXGeometry;

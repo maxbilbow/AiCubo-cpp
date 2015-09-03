@@ -52,8 +52,8 @@ extension RMXMobileInput {
     func handleOrientation(recognizer: UIPanGestureRecognizer) {
         if recognizer.numberOfTouches() == 1 {
             let point = recognizer.velocityInView(GameViewController.instance.view)
-            CppBridge.turnAboutAxis(UserAction.MOVE_PITCH.description, withForce: self.lookSpeed * 10 * Float(point.y))
-            CppBridge.turnAboutAxis(UserAction.MOVE_YAW.description, withForce: self.lookSpeed * Float(point.x))
+            CppBridge.turnAboutAxis(UserAction.MOVE_PITCH.description, withForce: self.lookSpeed * Float(point.y))
+            CppBridge.turnAboutAxis(UserAction.MOVE_YAW.description, withForce: self.turnSpeed * Float(point.x))
             
         }
 //            _handleRelease(recognizer.state)

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../RMXEngine/Geometry.cpp"
-            timestampString = "462894176.954415"
+            timestampString = "462977914.737933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "Geometry::render(GameNode * node, Matrix4 base)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiGlubo/CppBridge.mm"
-            timestampString = "462656200.707246"
+            timestampString = "462985367.27966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "+updateSceneLogic"
             landmarkType = "5">
          </BreakpointContent>
@@ -255,22 +255,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AiMubo/GameViewController.swift"
-            timestampString = "462751423.351222"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "drawInMTKView(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../../RMXEngine/GameNode.cpp"
             timestampString = "462731063.239883"
             startingColumnNumber = "9223372036854775807"
@@ -304,11 +288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiGlubo/GeometryIterator.mm"
-            timestampString = "462893928.187119"
+            timestampString = "462977914.737933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-uniqueName"
             landmarkType = "5">
          </BreakpointContent>
@@ -319,28 +303,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AiMubo/GameViewController.swift"
-            timestampString = "462752031.63357"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "drawInMTKView(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "AiGlubo/GameViewController.swift"
-            timestampString = "462893103.113961"
+            timestampString = "462990610.942575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "glkView(_:drawInRect:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -352,27 +320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiGlubo/GameViewController.swift"
-            timestampString = "462893554.968298"
+            timestampString = "462990610.942575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "glkView(_:drawInRect:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AiGlubo/GameViewController.swift"
-            timestampString = "462893554.968298"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "glkView(_:drawInRect:)"
             landmarkType = "5">
             <Locations>
@@ -416,11 +368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiGlubo/GameViewController.swift"
-            timestampString = "462893554.968298"
+            timestampString = "462990610.942575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "glkView(_:drawInRect:)"
             landmarkType = "5">
             <Locations>
@@ -464,12 +416,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../RMXEngine/Geometry.cpp"
-            timestampString = "462894176.954415"
+            timestampString = "462977914.737933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "Geometry::Geometry(float * verts, long count)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "Geometry::Geometry(float * verts, long size, unsigned short * indices, long indexDataSize)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -480,13 +432,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../RMXEngine/Geometry.cpp"
-            timestampString = "462894638.787345"
+            timestampString = "462977914.737933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "Geometry::Geometry()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AiMubo/GameViewController.swift"
+            timestampString = "462990610.942575"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "drawInMTKView(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AiMubo.GameViewController.drawInMTKView (AiMubo.GameViewController)(ObjectiveC.MTKView) -&gt; ()"
+                  moduleName = "AiMubo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Max/Gits/AiCubo-cpp/OpenGLES/AiGlubo/AiMubo/GameViewController.swift"
+                  timestampString = "462981710.970037"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "6110">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AiMubo.GameViewController.drawInMTKView (AiMubo.GameViewController)(ObjectiveC.MTKView) -&gt; ()"
+                  moduleName = "AiMubo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Max/Gits/AiCubo-cpp/OpenGLES/AiGlubo/AiMubo/GameViewController.swift"
+                  timestampString = "462981710.970249"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "6122">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

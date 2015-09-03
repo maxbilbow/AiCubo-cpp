@@ -49,7 +49,7 @@ static GeometryIterator * geometries;
 }
 
 
-+ (void*)rawProjectionMatrixWithAspect:(float)aspect
++ (float*)rawProjectionMatrixWithAspect:(float)aspect
 {
     
     GLKMatrix4 m =[CppBridge projectionMatrixWithAspect:aspect];
@@ -70,25 +70,7 @@ static GeometryIterator * geometries;
     return Scene::getCurrent()->pointOfView()->getCamera()->viewMatrix();
 }
 
-+ (const float*)vertsForShape:(unsigned int)shape {
-    switch (shape) {
-        case VERTS_CUBE:
-            return cubeData;
-        default:
-            return cubeData;
-    }
-    return RMXVertsForShape(shape);
-}
 
-+ (long)sizeOf:(unsigned int)shape {
-    switch (shape) {
-        case VERTS_CUBE:
-            return cubeDataSize;
-            
-        default:
-            return cubeDataSize;
-    }
-}
 
 
 

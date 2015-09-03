@@ -32,7 +32,7 @@ struct Uniforms
 
 vertex VertexOut passThroughVertex(uint vid [[ vertex_id ]],
                                    const device VertexIn* vertex_array  [[ buffer(0) ]],
-                                   constant packed_float4* color        [[ buffer(1) ]],
+//                                   constant packed_float4* color        [[ buffer(1) ]],
                                    const device Uniforms& uniforms      [[ buffer(2) ]]
                                    )
 {

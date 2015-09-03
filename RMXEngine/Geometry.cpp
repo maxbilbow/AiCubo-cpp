@@ -37,10 +37,12 @@ void Floor::drawWithScale(float x, float y, float z) {
 //private ByteBuffer _elements;
 //private ShortBuffer _indexData;
 //private int _e = 0;
-Geometry::Geometry(float * verts, long  count) {
+Geometry::Geometry(float * verts, long  size, unsigned short * indices, long indexDataSize) {
     NodeComponent::NodeComponent();
-    vertexData = verts;//new int[sizeof(int) * size];
-    vertexCount = count;//= new int[sizeof(int) * size / 3]; 0.4, 0.4, 1.0, 1.0
+    _vertexData = verts;//new int[sizeof(int) * size];
+    _vertexDataSize = size;//= new int[sizeof(int) * size / 3]; 0.4, 0.4, 1.0, 1.0
+    _indexData = indices;
+    _indexDataSize = indexDataSize;
     _color = GLKVector4Make((float) (rand() % 100) / 100,
                             (float) (rand() % 100) / 100,
                             (float) (rand() % 100) / 100,
@@ -48,8 +50,28 @@ Geometry::Geometry(float * verts, long  count) {
     cout << _color << endl;
 }
 
+float * Geometry::vertexData() {
+    return _vertexData;
+}
+
+long Geometry::vertexDataSize() {
+    return _vertexDataSize;
+}
+
+unsigned short * Geometry::indexData() {
+    return _indexData;
+}
+
+long Geometry::indexDataSize() {
+    return _indexDataSize;
+}
+
 Vector4 Geometry::color() {
     return this->_color;
+}
+
+Vector3 Geometry::scale() {
+    return this->getNode()->getTransform()->scale();
 }
 
 //const float * Geometry::vertexData() {
@@ -202,7 +224,7 @@ void Cube::drawWithScale(float X, float Y, float Z)override {
 
 //Geometry * Geometry::_cube = nullptr;
 Geometry * Geometry::Cube() {
-    Geometry * cube = new Geometry(cubeData, cubeDataSize);
+    Geometry * cube = new Geometry(cubeVertexData, cubeVertexDataSize, cubeIndexData, cubeIndexDataSize);
     return cube;
 }
 

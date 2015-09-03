@@ -7,7 +7,13 @@
 //
 
 import GLKit
+#if iOS
 import OpenGLES
+    #else
+    import OpenGL
+    typealias EAGLContext = CGContextRef
+    typealias GLKViewController = NSViewController
+    #endif
 
 
 func BUFFER_OFFSET(i: Int) -> UnsafePointer<Void> {
@@ -25,6 +31,7 @@ let UNIFORM_COLOR_VECTOR = 5
 var uniforms = [GLint](count: 6, repeatedValue: 0)
 
 class GameViewController: GLKViewController {
+   
     
     private static var _instance: GameViewController!
     static var instance: GameViewController {
@@ -106,8 +113,8 @@ class GameViewController: GLKViewController {
         glGenBuffers(1, &vertexBuffer)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
 //        glBufferData(GLenum(GL_ARRAY_BUFFER), GLsizeiptr(sizeof(GLfloat) * gCubeVertexData.count), &gCubeVertexData, GLenum(GL_STATIC_DRAW))
-        glBufferData(GLenum(GL_ARRAY_BUFFER), GLsizeiptr(sizeof(GLfloat) * CppBridge.sizeOf(VERTS_CUBE)),
-            CppBridge.vertsForShape(VERTS_CUBE), GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ARRAY_BUFFER), GLsizeiptr(sizeof(GLfloat) * cubeVertexDataSize),
+            cubeVertexData, GLenum(GL_STATIC_DRAW))
         
         glEnableVertexAttribArray(GLuint(GLKVertexAttrib.Position.rawValue))
 
@@ -164,21 +171,21 @@ class GameViewController: GLKViewController {
         let geometries = CppBridge.geometries().shapeData;
         let es2 = true
         var viewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, CppBridge.viewMatrix())
+        let viewMatrix = CppBridge.viewMatrix()
+        func modelViewMatrix(modelMatrix: GLKMatrix4) -> GLKMatrix4 {
+            return GLKMatrix4Multiply(viewMatrix, modelMatrix)
+        }
+        
+        func normalMatrix(modelMatrix: GLKMatrix4) -> GLKMatrix3 {
+            return GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelViewMatrix(modelMatrix)), nil)
+        }
         
         for shape in geometries {
-           
-            
-           
-            if !es2 {
-                self.effect?.transform.projectionMatrix = projectionMatrix
-                self.effect?.transform.modelviewMatrix = shape.modelViewMatrix
-                self.effect?.prepareToDraw()
-                glDrawArrays(GLenum(GL_TRIANGLES) , 0, 36)
-            } else {
                 // Render the object again with ES2
-                var normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(shape.modelViewMatrix), nil)
+            
                 var scale = shape.scaleVector
-                var modelMatrix = GLKMatrix4Scale(shape.modelMatrix, scale.x, scale.y, scale.z)
+                var modelMatrix = shape.modelMatrix// GLKMatrix4Scale(shape.modelMatrix, scale.x, scale.y, scale.z)
+                var normalMatrix = normalMatrix(modelMatrix)
                 var color = (shape as! ShapeData).color ?? GLKVector4Make(0.4,0.4,1.0,1.0)
                 if color.w == 0 {
                     color = GLKVector4Make(0.4,0.4,1.0,1.0)
@@ -209,13 +216,10 @@ class GameViewController: GLKViewController {
                     glUniform4fv(uniforms[UNIFORM_COLOR_VECTOR], 1, UnsafePointer($0));
                 })
                 
-                
+//                glDrawElements(GLenum(GL_TRIANGLES), 36, <#T##type: GLenum##GLenum#>, <#T##indices: UnsafePointer<Void>##UnsafePointer<Void>#>)
                 glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
             }
-
-//            es2 = !es2;
-            rotation += 0.01
-        }
+        
         rotation += Float(self.timeSinceLastUpdate * 0.5)
        
     }

@@ -69,8 +69,8 @@ import UIKit
                 let percentage = CGPoint(x: move.x / limX, y: move.y / limY)
                 self.moveButtonPad!.center = rect.origin + rect.size * 0.5 + move * 1
     //            self.moveButtonPad?.setNeedsDisplay()
-                CppBridge.moveWithDirection(UserAction.MOVE_FORWARD.description, withForce: Float(percentage.y * self.moveSpeed))
-                CppBridge.moveWithDirection(UserAction.MOVE_LEFT.description, withForce: Float(percentage.x * self.moveSpeed))
+                CppBridge.moveWithDirection(UserAction.MOVE_FORWARD.description, withForce: Float(percentage.y) * self.moveSpeed)
+                CppBridge.moveWithDirection(UserAction.MOVE_LEFT.description, withForce: Float(percentage.x) * self.moveSpeed)
     //            NSLog("FWD: \((x / limX).toData()), SIDE: \((y / limY).toData())),  TOTAL: \(1)")
             }
             

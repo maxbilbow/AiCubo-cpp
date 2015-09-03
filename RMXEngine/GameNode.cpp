@@ -154,6 +154,7 @@ Geometry * GameNode::geometry() {
     return this->_geometry;// (Geometry) this.getComponent(Geometry.class);
 }
 
+
 bool GameNode::hasGeometry() {
     return this->_hasGeometry;
 }

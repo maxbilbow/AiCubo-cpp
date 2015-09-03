@@ -20,6 +20,93 @@
 		500D234F1B924394007920EA /* RMXInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23451B924394007920EA /* RMXInterface.swift */; };
 		500D23511B9243F9007920EA /* MobileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23411B924394007920EA /* MobileInput.swift */; };
 		50134EE11B94FCDA00E26F75 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE8A1B938132003EA656 /* Shaders.metal */; };
+		506F112B1B989E2D00A4F10F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F112A1B989E2D00A4F10F /* AppDelegate.swift */; };
+		506F11321B989E2D00A4F10F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506F11301B989E2D00A4F10F /* Main.storyboard */; };
+		506F11341B989E2D00A4F10F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506F11331B989E2D00A4F10F /* Assets.xcassets */; };
+		506F11371B989E2D00A4F10F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506F11351B989E2D00A4F10F /* LaunchScreen.storyboard */; };
+		506F113C1B989F0C00A4F10F /* CppBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A42C1B9141960041F112 /* CppBridge.mm */; };
+		506F113D1B989F0F00A4F10F /* GeometryIterator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE471B933AB2003EA656 /* GeometryIterator.mm */; };
+		506F11421B989F7500A4F10F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE521B936843003EA656 /* GameViewController.swift */; };
+		506F11431B98A04F00A4F10F /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D6BD291B986B93002A06A3 /* VertexData.c */; };
+		506F11441B98A06300A4F10F /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A61B9145A30041F112 /* BoundingBox.cpp */; };
+		506F11451B98A06300A4F10F /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */; };
+		506F11461B98A06300A4F10F /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47D1B9145840041F112 /* GameController.cpp */; };
+		506F11471B98A06300A4F10F /* GameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47F1B9145840041F112 /* GameNode.cpp */; };
+		506F11481B98A06300A4F10F /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4811B9145840041F112 /* GameView.cpp */; };
+		506F11491B98A06300A4F10F /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4721B9145840041F112 /* Behaviour.cpp */; };
+		506F114A1B98A06300A4F10F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4741B9145840041F112 /* Camera.cpp */; };
+		506F114B1B98A06300A4F10F /* CollisionBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4761B9145840041F112 /* CollisionBody.cpp */; };
+		506F114C1B98A06300A4F10F /* CollisionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4781B9145840041F112 /* CollisionEvent.cpp */; };
+		506F114D1B98A06300A4F10F /* EntityGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47B1B9145840041F112 /* EntityGenerator.cpp */; };
+		506F114E1B98A06300A4F10F /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4831B9145840041F112 /* Geometry.cpp */; };
+		506F114F1B98A06300A4F10F /* NodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4861B9145840041F112 /* NodeComponent.cpp */; };
+		506F11501B98A06300A4F10F /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4881B9145840041F112 /* PhysicsBody.cpp */; };
+		506F11511B98A06300A4F10F /* PhysicsWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48A1B9145840041F112 /* PhysicsWorld.cpp */; };
+		506F11521B98A06300A4F10F /* RMXMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48D1B9145840041F112 /* RMXMath.cpp */; };
+		506F11531B98A06300A4F10F /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48F1B9145840041F112 /* Scene.cpp */; };
+		506F11541B98A06300A4F10F /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */; };
+		506F11551B98A06300A4F10F /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4931B9145840041F112 /* Transform.cpp */; };
+		506F11561B98A06E00A4F10F /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AA1B9145A30041F112 /* Dictionary.cpp */; };
+		506F11571B98A06E00A4F10F /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AB1B9145A30041F112 /* EventListener.cpp */; };
+		506F11581B98A06E00A4F10F /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B71B9145A30041F112 /* LinkedList.cpp */; };
+		506F11591B98A06E00A4F10F /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B81B9145A30041F112 /* NotificationCenter.cpp */; };
+		506F115A1B98A06E00A4F10F /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B91B9145A30041F112 /* Object.cpp */; };
+		506F115B1B98A07700A4F10F /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4CA1B914A280041F112 /* AiCubo.cpp */; };
+		506F115C1B98A08700A4F10F /* Accelorometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D233C1B924394007920EA /* Accelorometer.swift */; };
+		506F115D1B98A08700A4F10F /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D233E1B924394007920EA /* Buttons.swift */; };
+		506F115E1B98A08700A4F10F /* iOSControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23401B924394007920EA /* iOSControllers.swift */; };
+		506F115F1B98A08700A4F10F /* MobileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23411B924394007920EA /* MobileInput.swift */; };
+		506F11601B98A08700A4F10F /* RMXInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23451B924394007920EA /* RMXInterface.swift */; };
+		506F11611B98A08700A4F10F /* iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22FB1B9242F3007920EA /* iOS.swift */; };
+		506F11621B98A09D00A4F10F /* RMSMaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22FF1B9242F3007920EA /* RMSMaths.swift */; };
+		506F11631B98A09D00A4F10F /* RMX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23001B9242F3007920EA /* RMX.swift */; };
+		506F11641B98A09D00A4F10F /* RMXFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23031B9242F3007920EA /* RMXFunctions.swift */; };
+		506F11651B98A09D00A4F10F /* RMXValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23051B9242F3007920EA /* RMXValue.swift */; };
+		506F11661B98A09D00A4F10F /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D230A1B9242F3007920EA /* UserActions.swift */; };
+		506F11671B98A0A000A4F10F /* RMXDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23021B9242F3007920EA /* RMXDebugger.swift */; };
+		506F11681B98A0B200A4F10F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE8A1B938132003EA656 /* Shaders.metal */; };
+		506F11701B98A6A600A4F10F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F116F1B98A6A600A4F10F /* AppDelegate.swift */; };
+		506F11721B98A6A600A4F10F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506F11711B98A6A600A4F10F /* Assets.xcassets */; };
+		506F11751B98A6A600A4F10F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506F11731B98A6A600A4F10F /* MainMenu.xib */; };
+		506F117B1B98A70B00A4F10F /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A61B9145A30041F112 /* BoundingBox.cpp */; };
+		506F117C1B98A70B00A4F10F /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */; };
+		506F117D1B98A70B00A4F10F /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47D1B9145840041F112 /* GameController.cpp */; };
+		506F117E1B98A70B00A4F10F /* GameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47F1B9145840041F112 /* GameNode.cpp */; };
+		506F117F1B98A70B00A4F10F /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4811B9145840041F112 /* GameView.cpp */; };
+		506F11801B98A70B00A4F10F /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4721B9145840041F112 /* Behaviour.cpp */; };
+		506F11811B98A70B00A4F10F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4741B9145840041F112 /* Camera.cpp */; };
+		506F11821B98A70B00A4F10F /* CollisionBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4761B9145840041F112 /* CollisionBody.cpp */; };
+		506F11831B98A70B00A4F10F /* CollisionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4781B9145840041F112 /* CollisionEvent.cpp */; };
+		506F11841B98A70B00A4F10F /* EntityGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47B1B9145840041F112 /* EntityGenerator.cpp */; };
+		506F11851B98A70B00A4F10F /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4831B9145840041F112 /* Geometry.cpp */; };
+		506F11861B98A70B00A4F10F /* NodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4861B9145840041F112 /* NodeComponent.cpp */; };
+		506F11871B98A70B00A4F10F /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4881B9145840041F112 /* PhysicsBody.cpp */; };
+		506F11881B98A70B00A4F10F /* PhysicsWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48A1B9145840041F112 /* PhysicsWorld.cpp */; };
+		506F11891B98A70B00A4F10F /* RMXMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48D1B9145840041F112 /* RMXMath.cpp */; };
+		506F118A1B98A70B00A4F10F /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48F1B9145840041F112 /* Scene.cpp */; };
+		506F118B1B98A70B00A4F10F /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */; };
+		506F118C1B98A70B00A4F10F /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4931B9145840041F112 /* Transform.cpp */; };
+		506F118D1B98A71100A4F10F /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B71B9145A30041F112 /* LinkedList.cpp */; };
+		506F118E1B98A71100A4F10F /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B81B9145A30041F112 /* NotificationCenter.cpp */; };
+		506F118F1B98A71100A4F10F /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B91B9145A30041F112 /* Object.cpp */; };
+		506F11901B98A71600A4F10F /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AA1B9145A30041F112 /* Dictionary.cpp */; };
+		506F11911B98A71600A4F10F /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AB1B9145A30041F112 /* EventListener.cpp */; };
+		506F11921B98A71B00A4F10F /* RMSMaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22FF1B9242F3007920EA /* RMSMaths.swift */; };
+		506F11931B98A71B00A4F10F /* RMX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23001B9242F3007920EA /* RMX.swift */; };
+		506F11941B98A71B00A4F10F /* RMXDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23021B9242F3007920EA /* RMXDebugger.swift */; };
+		506F11951B98A71B00A4F10F /* RMXFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23031B9242F3007920EA /* RMXFunctions.swift */; };
+		506F11961B98A71B00A4F10F /* RMXValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23051B9242F3007920EA /* RMXValue.swift */; };
+		506F11971B98A71B00A4F10F /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D230A1B9242F3007920EA /* UserActions.swift */; };
+		506F11981B98A72D00A4F10F /* DesktopInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D233F1B924394007920EA /* DesktopInput.swift */; };
+		506F11991B98A72D00A4F10F /* RMKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23421B924394007920EA /* RMKey.swift */; };
+		506F119A1B98A72D00A4F10F /* RMXInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D23451B924394007920EA /* RMXInterface.swift */; };
+		506F119B1B98A73600A4F10F /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4CA1B914A280041F112 /* AiCubo.cpp */; };
+		506F119C1B98A73C00A4F10F /* CppBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A42C1B9141960041F112 /* CppBridge.mm */; };
+		506F119D1B98A73C00A4F10F /* GeometryIterator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE471B933AB2003EA656 /* GeometryIterator.mm */; };
+		506F119E1B98A73C00A4F10F /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D6BD291B986B93002A06A3 /* VertexData.c */; };
+		506F11A01B98A91E00A4F10F /* OSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22FE1B9242F3007920EA /* OSX.swift */; };
+		506F11A11B98A92A00A4F10F /* ActionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D233D1B924394007920EA /* ActionProcessor.swift */; };
+		506F11A31B98AD8000A4F10F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F11A21B98AD8000A4F10F /* GameViewController.swift */; };
 		507814AD1B92959A0081080A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 507814AC1B92959A0081080A /* art.scnassets */; };
 		508F775E1B91664100BF7989 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508F775D1B91664100BF7989 /* OpenGL.framework */; };
 		508F77601B91666600BF7989 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508F775F1B91666600BF7989 /* Cocoa.framework */; };
@@ -87,7 +174,6 @@
 		50B2A4EF1B9163760041F112 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */; };
 		50B2A4F01B9163760041F112 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4931B9145840041F112 /* Transform.cpp */; };
 		50B2A54C1B9163E50041F112 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B2A5151B9163CD0041F112 /* libglfw3.a */; };
-		50CFDE461B931379003EA656 /* VertexData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE451B931379003EA656 /* VertexData.cpp */; };
 		50CFDE481B933AB2003EA656 /* GeometryIterator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE471B933AB2003EA656 /* GeometryIterator.mm */; };
 		50CFDE511B936843003EA656 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE501B936843003EA656 /* AppDelegate.swift */; };
 		50CFDE531B936843003EA656 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE521B936843003EA656 /* GameViewController.swift */; };
@@ -119,7 +205,6 @@
 		50CFDE7B1B936B0A003EA656 /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4881B9145840041F112 /* PhysicsBody.cpp */; };
 		50CFDE7C1B936B0A003EA656 /* PhysicsWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48A1B9145840041F112 /* PhysicsWorld.cpp */; };
 		50CFDE7D1B936B0A003EA656 /* RMXMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48D1B9145840041F112 /* RMXMath.cpp */; };
-		50CFDE7E1B936B0A003EA656 /* VertexData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE451B931379003EA656 /* VertexData.cpp */; };
 		50CFDE7F1B936B0A003EA656 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48F1B9145840041F112 /* Scene.cpp */; };
 		50CFDE801B936B0A003EA656 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */; };
 		50CFDE811B936B0A003EA656 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4931B9145840041F112 /* Transform.cpp */; };
@@ -131,6 +216,8 @@
 		50CFDE871B936B34003EA656 /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B81B9145A30041F112 /* NotificationCenter.cpp */; };
 		50CFDE881B936B34003EA656 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B91B9145A30041F112 /* Object.cpp */; };
 		50CFDE891B936B4C003EA656 /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4CA1B914A280041F112 /* AiCubo.cpp */; };
+		50D6BD2B1B986B93002A06A3 /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D6BD291B986B93002A06A3 /* VertexData.c */; };
+		50D6BD4B1B987031002A06A3 /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D6BD291B986B93002A06A3 /* VertexData.c */; };
 		50F9EEE91B9737F30040514B /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F9EEE81B9737F30040514B /* icons.xcassets */; };
 		50F9EEEA1B9737F30040514B /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F9EEE81B9737F30040514B /* icons.xcassets */; };
 /* End PBXBuildFile section */
@@ -372,6 +459,20 @@
 		500D23431B924394007920EA /* RMXAudioVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXAudioVideo.swift; sourceTree = "<group>"; };
 		500D23451B924394007920EA /* RMXInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXInterface.swift; sourceTree = "<group>"; };
 		50134EE21B95053000E26F75 /* BufferProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferProvider.swift; sourceTree = "<group>"; };
+		506F11281B989E2D00A4F10F /* AiCubo-M.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AiCubo-M.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		506F112A1B989E2D00A4F10F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		506F112C1B989E2D00A4F10F /* GameViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController2.swift; sourceTree = "<group>"; };
+		506F112E1B989E2D00A4F10F /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		506F11311B989E2D00A4F10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		506F11331B989E2D00A4F10F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		506F11361B989E2D00A4F10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		506F11381B989E2D00A4F10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		506F116D1B98A6A600A4F10F /* AiGlubo-es.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AiGlubo-es.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		506F116F1B98A6A600A4F10F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		506F11711B98A6A600A4F10F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		506F11741B98A6A600A4F10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		506F11761B98A6A600A4F10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		506F11A21B98AD8000A4F10F /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		507814AC1B92959A0081080A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		508F775D1B91664100BF7989 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
 		508F775F1B91666600BF7989 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -452,8 +553,7 @@
 		50B2A4D11B91630A0041F112 /* AiCubo-cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AiCubo-cpp"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B2A4D31B91630A0041F112 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = ../../glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
-		50CFDE251B931304003EA656 /* VertexData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VertexData.h; path = Source/VertexData.h; sourceTree = "<group>"; };
-		50CFDE451B931379003EA656 /* VertexData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VertexData.cpp; path = Source/VertexData.cpp; sourceTree = "<group>"; };
+		50CFDE251B931304003EA656 /* VertexDataOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VertexDataOld.h; path = Source/VertexDataOld.h; sourceTree = "<group>"; };
 		50CFDE471B933AB2003EA656 /* GeometryIterator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GeometryIterator.mm; path = AiGlubo/GeometryIterator.mm; sourceTree = "<group>"; };
 		50CFDE491B933ABF003EA656 /* GeometryIterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GeometryIterator.h; path = AiGlubo/GeometryIterator.h; sourceTree = "<group>"; };
 		50CFDE4E1B936843003EA656 /* AiMubo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiMubo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -465,10 +565,26 @@
 		50CFDE5B1B936843003EA656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50CFDE6A1B936993003EA656 /* AiMubo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AiMubo-Bridging-Header.h"; sourceTree = "<group>"; };
 		50CFDE8A1B938132003EA656 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		50D6BD291B986B93002A06A3 /* VertexData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = VertexData.c; path = ../../RMXEngine/VertexData.c; sourceTree = "<group>"; };
+		50D6BD2A1B986B93002A06A3 /* VertexData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VertexData.h; path = ../../RMXEngine/VertexData.h; sourceTree = "<group>"; };
 		50F9EEE81B9737F30040514B /* icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = icons.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		506F11251B989E2D00A4F10F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		506F116A1B98A6A600A4F10F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50B2A3E71B91402D0041F112 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,6 +664,32 @@
 			path = UserInterface;
 			sourceTree = "<group>";
 		};
+		506F11291B989E2D00A4F10F /* AiCubo-M */ = {
+			isa = PBXGroup;
+			children = (
+				506F112A1B989E2D00A4F10F /* AppDelegate.swift */,
+				506F112C1B989E2D00A4F10F /* GameViewController2.swift */,
+				506F112E1B989E2D00A4F10F /* Shaders.metal */,
+				506F11301B989E2D00A4F10F /* Main.storyboard */,
+				506F11331B989E2D00A4F10F /* Assets.xcassets */,
+				506F11351B989E2D00A4F10F /* LaunchScreen.storyboard */,
+				506F11381B989E2D00A4F10F /* Info.plist */,
+			);
+			path = "AiCubo-M";
+			sourceTree = "<group>";
+		};
+		506F116E1B98A6A600A4F10F /* AiGlubo-es */ = {
+			isa = PBXGroup;
+			children = (
+				506F116F1B98A6A600A4F10F /* AppDelegate.swift */,
+				506F11A21B98AD8000A4F10F /* GameViewController.swift */,
+				506F11711B98A6A600A4F10F /* Assets.xcassets */,
+				506F11731B98A6A600A4F10F /* MainMenu.xib */,
+				506F11761B98A6A600A4F10F /* Info.plist */,
+			);
+			path = "AiGlubo-es";
+			sourceTree = "<group>";
+		};
 		50B2A3E11B91402D0041F112 = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +707,8 @@
 				50B2A3EC1B91402D0041F112 /* AiGlubo */,
 				50B2A4D21B91630A0041F112 /* AiCubo-cpp */,
 				50CFDE4F1B936843003EA656 /* AiMubo */,
+				506F11291B989E2D00A4F10F /* AiCubo-M */,
+				506F116E1B98A6A600A4F10F /* AiGlubo-es */,
 				50B2A3EB1B91402D0041F112 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -575,6 +719,8 @@
 				50B2A3EA1B91402D0041F112 /* AiCubo.app */,
 				50B2A4D11B91630A0041F112 /* AiCubo-cpp */,
 				50CFDE4E1B936843003EA656 /* AiMubo.app */,
+				506F11281B989E2D00A4F10F /* AiCubo-M.app */,
+				506F116D1B98A6A600A4F10F /* AiGlubo-es.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -607,6 +753,8 @@
 				50B2A42D1B9141960041F112 /* CppBridge.h */,
 				50CFDE471B933AB2003EA656 /* GeometryIterator.mm */,
 				50CFDE491B933ABF003EA656 /* GeometryIterator.h */,
+				50D6BD291B986B93002A06A3 /* VertexData.c */,
+				50D6BD2A1B986B93002A06A3 /* VertexData.h */,
 			);
 			name = RMXEngine;
 			sourceTree = "<group>";
@@ -712,7 +860,6 @@
 				50B2A4881B9145840041F112 /* PhysicsBody.cpp */,
 				50B2A48A1B9145840041F112 /* PhysicsWorld.cpp */,
 				50B2A48D1B9145840041F112 /* RMXMath.cpp */,
-				50CFDE451B931379003EA656 /* VertexData.cpp */,
 				50B2A48F1B9145840041F112 /* Scene.cpp */,
 				50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */,
 				50B2A4931B9145840041F112 /* Transform.cpp */,
@@ -734,7 +881,7 @@
 				50B2A4891B9145840041F112 /* PhysicsBody.hpp */,
 				50B2A48B1B9145840041F112 /* PhysicsWorld.hpp */,
 				50B2A48C1B9145840041F112 /* RMXEngine.hpp */,
-				50CFDE251B931304003EA656 /* VertexData.h */,
+				50CFDE251B931304003EA656 /* VertexDataOld.h */,
 				50B2A48E1B9145840041F112 /* RMXMath.hpp */,
 				50B2A4901B9145840041F112 /* Scene.hpp */,
 				50B2A4921B9145840041F112 /* SpriteBehaviour.hpp */,
@@ -752,6 +899,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		506F11271B989E2D00A4F10F /* AiCubo-M */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 506F11391B989E2D00A4F10F /* Build configuration list for PBXNativeTarget "AiCubo-M" */;
+			buildPhases = (
+				506F11241B989E2D00A4F10F /* Sources */,
+				506F11251B989E2D00A4F10F /* Frameworks */,
+				506F11261B989E2D00A4F10F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AiCubo-M";
+			productName = "AiCubo-M";
+			productReference = 506F11281B989E2D00A4F10F /* AiCubo-M.app */;
+			productType = "com.apple.product-type.application";
+		};
+		506F116C1B98A6A600A4F10F /* AiGlubo-es */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 506F11771B98A6A600A4F10F /* Build configuration list for PBXNativeTarget "AiGlubo-es" */;
+			buildPhases = (
+				506F11691B98A6A600A4F10F /* Sources */,
+				506F116A1B98A6A600A4F10F /* Frameworks */,
+				506F116B1B98A6A600A4F10F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AiGlubo-es";
+			productName = "AiGlubo-es";
+			productReference = 506F116D1B98A6A600A4F10F /* AiGlubo-es.app */;
+			productType = "com.apple.product-type.application";
+		};
 		50B2A3E91B91402D0041F112 /* AiCubo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50B2A4001B91402D0041F112 /* Build configuration list for PBXNativeTarget "AiCubo" */;
@@ -814,6 +995,12 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Rattle Media Ltd";
 				TargetAttributes = {
+					506F11271B989E2D00A4F10F = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					506F116C1B98A6A600A4F10F = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					50B2A3E91B91402D0041F112 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 668T39KN4E;
@@ -848,6 +1035,8 @@
 				50B2A3E91B91402D0041F112 /* AiCubo */,
 				50B2A4D01B91630A0041F112 /* AiCubo-cpp */,
 				50CFDE4D1B936843003EA656 /* AiMubo */,
+				506F11271B989E2D00A4F10F /* AiCubo-M */,
+				506F116C1B98A6A600A4F10F /* AiGlubo-es */,
 			);
 		};
 /* End PBXProject section */
@@ -1052,6 +1241,25 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		506F11261B989E2D00A4F10F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				506F11371B989E2D00A4F10F /* LaunchScreen.storyboard in Resources */,
+				506F11341B989E2D00A4F10F /* Assets.xcassets in Resources */,
+				506F11321B989E2D00A4F10F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		506F116B1B98A6A600A4F10F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				506F11721B98A6A600A4F10F /* Assets.xcassets in Resources */,
+				506F11751B98A6A600A4F10F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50B2A3E81B91402D0041F112 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1082,6 +1290,102 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		506F11241B989E2D00A4F10F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				506F114A1B98A06300A4F10F /* Camera.cpp in Sources */,
+				506F114E1B98A06300A4F10F /* Geometry.cpp in Sources */,
+				506F11451B98A06300A4F10F /* BoundingSphere.cpp in Sources */,
+				506F11471B98A06300A4F10F /* GameNode.cpp in Sources */,
+				506F11541B98A06300A4F10F /* SpriteBehaviour.cpp in Sources */,
+				506F11421B989F7500A4F10F /* GameViewController.swift in Sources */,
+				506F11661B98A09D00A4F10F /* UserActions.swift in Sources */,
+				506F115F1B98A08700A4F10F /* MobileInput.swift in Sources */,
+				506F11521B98A06300A4F10F /* RMXMath.cpp in Sources */,
+				506F11531B98A06300A4F10F /* Scene.cpp in Sources */,
+				506F114C1B98A06300A4F10F /* CollisionEvent.cpp in Sources */,
+				506F11441B98A06300A4F10F /* BoundingBox.cpp in Sources */,
+				506F11431B98A04F00A4F10F /* VertexData.c in Sources */,
+				506F11591B98A06E00A4F10F /* NotificationCenter.cpp in Sources */,
+				506F11511B98A06300A4F10F /* PhysicsWorld.cpp in Sources */,
+				506F115A1B98A06E00A4F10F /* Object.cpp in Sources */,
+				506F11631B98A09D00A4F10F /* RMX.swift in Sources */,
+				506F11611B98A08700A4F10F /* iOS.swift in Sources */,
+				506F11671B98A0A000A4F10F /* RMXDebugger.swift in Sources */,
+				506F11461B98A06300A4F10F /* GameController.cpp in Sources */,
+				506F11561B98A06E00A4F10F /* Dictionary.cpp in Sources */,
+				506F11621B98A09D00A4F10F /* RMSMaths.swift in Sources */,
+				506F11681B98A0B200A4F10F /* Shaders.metal in Sources */,
+				506F11601B98A08700A4F10F /* RMXInterface.swift in Sources */,
+				506F114D1B98A06300A4F10F /* EntityGenerator.cpp in Sources */,
+				506F113D1B989F0F00A4F10F /* GeometryIterator.mm in Sources */,
+				506F11491B98A06300A4F10F /* Behaviour.cpp in Sources */,
+				506F115C1B98A08700A4F10F /* Accelorometer.swift in Sources */,
+				506F113C1B989F0C00A4F10F /* CppBridge.mm in Sources */,
+				506F11501B98A06300A4F10F /* PhysicsBody.cpp in Sources */,
+				506F11551B98A06300A4F10F /* Transform.cpp in Sources */,
+				506F115D1B98A08700A4F10F /* Buttons.swift in Sources */,
+				506F11641B98A09D00A4F10F /* RMXFunctions.swift in Sources */,
+				506F115E1B98A08700A4F10F /* iOSControllers.swift in Sources */,
+				506F112B1B989E2D00A4F10F /* AppDelegate.swift in Sources */,
+				506F115B1B98A07700A4F10F /* AiCubo.cpp in Sources */,
+				506F11571B98A06E00A4F10F /* EventListener.cpp in Sources */,
+				506F114F1B98A06300A4F10F /* NodeComponent.cpp in Sources */,
+				506F114B1B98A06300A4F10F /* CollisionBody.cpp in Sources */,
+				506F11651B98A09D00A4F10F /* RMXValue.swift in Sources */,
+				506F11581B98A06E00A4F10F /* LinkedList.cpp in Sources */,
+				506F11481B98A06300A4F10F /* GameView.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		506F11691B98A6A600A4F10F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				506F11841B98A70B00A4F10F /* EntityGenerator.cpp in Sources */,
+				506F11861B98A70B00A4F10F /* NodeComponent.cpp in Sources */,
+				506F117D1B98A70B00A4F10F /* GameController.cpp in Sources */,
+				506F117E1B98A70B00A4F10F /* GameNode.cpp in Sources */,
+				506F119B1B98A73600A4F10F /* AiCubo.cpp in Sources */,
+				506F11941B98A71B00A4F10F /* RMXDebugger.swift in Sources */,
+				506F117C1B98A70B00A4F10F /* BoundingSphere.cpp in Sources */,
+				506F11901B98A71600A4F10F /* Dictionary.cpp in Sources */,
+				506F119C1B98A73C00A4F10F /* CppBridge.mm in Sources */,
+				506F11801B98A70B00A4F10F /* Behaviour.cpp in Sources */,
+				506F118F1B98A71100A4F10F /* Object.cpp in Sources */,
+				506F118A1B98A70B00A4F10F /* Scene.cpp in Sources */,
+				506F118E1B98A71100A4F10F /* NotificationCenter.cpp in Sources */,
+				506F119A1B98A72D00A4F10F /* RMXInterface.swift in Sources */,
+				506F11A31B98AD8000A4F10F /* GameViewController.swift in Sources */,
+				506F11851B98A70B00A4F10F /* Geometry.cpp in Sources */,
+				506F119E1B98A73C00A4F10F /* VertexData.c in Sources */,
+				506F11811B98A70B00A4F10F /* Camera.cpp in Sources */,
+				506F11991B98A72D00A4F10F /* RMKey.swift in Sources */,
+				506F11921B98A71B00A4F10F /* RMSMaths.swift in Sources */,
+				506F117F1B98A70B00A4F10F /* GameView.cpp in Sources */,
+				506F118C1B98A70B00A4F10F /* Transform.cpp in Sources */,
+				506F11871B98A70B00A4F10F /* PhysicsBody.cpp in Sources */,
+				506F11A01B98A91E00A4F10F /* OSX.swift in Sources */,
+				506F11831B98A70B00A4F10F /* CollisionEvent.cpp in Sources */,
+				506F11931B98A71B00A4F10F /* RMX.swift in Sources */,
+				506F118D1B98A71100A4F10F /* LinkedList.cpp in Sources */,
+				506F117B1B98A70B00A4F10F /* BoundingBox.cpp in Sources */,
+				506F11881B98A70B00A4F10F /* PhysicsWorld.cpp in Sources */,
+				506F11A11B98A92A00A4F10F /* ActionProcessor.swift in Sources */,
+				506F11951B98A71B00A4F10F /* RMXFunctions.swift in Sources */,
+				506F11981B98A72D00A4F10F /* DesktopInput.swift in Sources */,
+				506F11821B98A70B00A4F10F /* CollisionBody.cpp in Sources */,
+				506F11911B98A71600A4F10F /* EventListener.cpp in Sources */,
+				506F119D1B98A73C00A4F10F /* GeometryIterator.mm in Sources */,
+				506F11891B98A70B00A4F10F /* RMXMath.cpp in Sources */,
+				506F11961B98A71B00A4F10F /* RMXValue.swift in Sources */,
+				506F11971B98A71B00A4F10F /* UserActions.swift in Sources */,
+				506F118B1B98A70B00A4F10F /* SpriteBehaviour.cpp in Sources */,
+				506F11701B98A6A600A4F10F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50B2A3E61B91402D0041F112 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1093,13 +1397,13 @@
 				50B2A4991B9145840041F112 /* EntityGenerator.cpp in Sources */,
 				50B2A49D1B9145840041F112 /* Geometry.cpp in Sources */,
 				50B2A49B1B9145840041F112 /* GameNode.cpp in Sources */,
+				50D6BD4B1B987031002A06A3 /* VertexData.c in Sources */,
 				50B2A4A21B9145840041F112 /* Scene.cpp in Sources */,
 				50B2A4C41B9145A30041F112 /* Object.cpp in Sources */,
 				50B2A4A31B9145840041F112 /* SpriteBehaviour.cpp in Sources */,
 				50B2A4BE1B9145A30041F112 /* Dictionary.cpp in Sources */,
 				50B2A4981B9145840041F112 /* CollisionEvent.cpp in Sources */,
 				500D23151B9242F3007920EA /* RMXFunctions.swift in Sources */,
-				50CFDE461B931379003EA656 /* VertexData.cpp in Sources */,
 				50B2A3F41B91402D0041F112 /* GameViewController.swift in Sources */,
 				50B2A42E1B9141960041F112 /* CppBridge.mm in Sources */,
 				50B2A4A41B9145840041F112 /* Transform.cpp in Sources */,
@@ -1173,11 +1477,11 @@
 				50CFDE631B936893003EA656 /* RMSMaths.swift in Sources */,
 				50CFDE711B936B0A003EA656 /* GameController.cpp in Sources */,
 				50CFDE6E1B9369A9003EA656 /* GeometryIterator.mm in Sources */,
+				50D6BD2B1B986B93002A06A3 /* VertexData.c in Sources */,
 				50CFDE811B936B0A003EA656 /* Transform.cpp in Sources */,
 				50CFDE871B936B34003EA656 /* NotificationCenter.cpp in Sources */,
 				50CFDE661B936893003EA656 /* RMXFunctions.swift in Sources */,
 				50CFDE7D1B936B0A003EA656 /* RMXMath.cpp in Sources */,
-				50CFDE7E1B936B0A003EA656 /* VertexData.cpp in Sources */,
 				50CFDE761B936B0A003EA656 /* CollisionBody.cpp in Sources */,
 				50CFDE651B936893003EA656 /* RMXDebugger.swift in Sources */,
 				50CFDE7A1B936B0A003EA656 /* NodeComponent.cpp in Sources */,
@@ -1221,6 +1525,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		506F11301B989E2D00A4F10F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				506F11311B989E2D00A4F10F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		506F11351B989E2D00A4F10F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				506F11361B989E2D00A4F10F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		506F11731B98A6A600A4F10F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				506F11741B98A6A600A4F10F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		50B2A3F51B91402D0041F112 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1248,6 +1576,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		506F113A1B989E2D00A4F10F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "AiCubo-M/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DiOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow.ios.AiCubo-M";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AiMubo/AiMubo-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		506F113B1B989E2D00A4F10F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "AiCubo-M/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DiOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow.ios.AiCubo-M";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AiMubo/AiMubo-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		506F11781B98A6A600A4F10F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "AiGlubo-es/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "-DGLES";
+				OTHER_SWIFT_FLAGS = "-DOSX";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow.osx.AiGlubo-es";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "AiMubo/AiMubo-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		506F11791B98A6A600A4F10F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "AiGlubo-es/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "-DGLES";
+				OTHER_SWIFT_FLAGS = "-DOSX";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow.osx.AiGlubo-es";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "AiMubo/AiMubo-Bridging-Header.h";
+			};
+			name = Release;
+		};
 		50B2A3FE1B91402D0041F112 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1340,6 +1730,7 @@
 				INFOPLIST_FILE = AiGlubo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "-DGLES";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maxbilbow.ios.AiGlubo;
 				PRODUCT_NAME = AiCubo;
 				SWIFT_OBJC_BRIDGING_HEADER = "AiGlubo/AiGlubo-Bridging-Header.h";
@@ -1356,6 +1747,7 @@
 				INFOPLIST_FILE = AiGlubo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "-DGLES";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maxbilbow.ios.AiGlubo;
 				PRODUCT_NAME = AiCubo;
 				SWIFT_OBJC_BRIDGING_HEADER = "AiGlubo/AiGlubo-Bridging-Header.h";
@@ -1438,6 +1830,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		506F11391B989E2D00A4F10F /* Build configuration list for PBXNativeTarget "AiCubo-M" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				506F113A1B989E2D00A4F10F /* Debug */,
+				506F113B1B989E2D00A4F10F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		506F11771B98A6A600A4F10F /* Build configuration list for PBXNativeTarget "AiGlubo-es" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				506F11781B98A6A600A4F10F /* Debug */,
+				506F11791B98A6A600A4F10F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		50B2A3E51B91402D0041F112 /* Build configuration list for PBXProject "AiCubo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

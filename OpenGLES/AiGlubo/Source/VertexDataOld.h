@@ -18,15 +18,13 @@
 //    long count;
 //} VertexData;
 
-
+/*
 const unsigned int VERTS_CUBE = 0;
 extern  float cubeData[];
 extern const long cubeDataSize;
-extern float triandleData[];
-extern const long triandleDataSize;
+
+extern float triandleVertexData[];
+extern const long triandleVertexDataSize;
 extern float * RMXVertsForShape(unsigned int);
 extern long RMXSizeOf(unsigned int);
-//void RMXLoadVertices();
-//static VertexData gCube;
-//float * gCubeVertexData;
-//long gCubeVertexDataCount();
+*/

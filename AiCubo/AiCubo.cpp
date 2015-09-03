@@ -92,4 +92,20 @@ void AiCubo::setup() {
     box5->getTransform()->setPosition(-20, 8, -10);
     box5->addToCurrentScene();
     
+    GameNode * box6 = GameNode::makeCube(1, PhysicsBody::newStaticBody());
+    box6->getTransform()->setPosition(0, 1, -10);
+    box6->addToCurrentScene();
+    
+    GameNode * box7 = GameNode::makeCube(1, PhysicsBody::newStaticBody());
+    box7->getTransform()->setPosition(0, 1, 10);
+    box7->addToCurrentScene();
+    
+    GameNode * box8 = GameNode::makeCube(1, PhysicsBody::newStaticBody());
+    box8->getTransform()->setPosition(-10, 1, 0);
+    box8->addToCurrentScene();
+    
+    GameNode * box9 = GameNode::makeCube(1, PhysicsBody::newStaticBody());
+    box9->getTransform()->setPosition(10, 1, 0);
+    box9->addToCurrentScene();
+    
 }

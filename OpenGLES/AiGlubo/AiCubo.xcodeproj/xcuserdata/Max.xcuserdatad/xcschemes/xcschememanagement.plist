@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AiCubo-M.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>35</integer>
+		</dict>
 		<key>AiCubo-cpp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>AiGlubo-es.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>36</integer>
 		</dict>
 		<key>AiGlubo.xcscheme</key>
 		<dict>
@@ -22,6 +32,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>506F11271B989E2D00A4F10F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>506F116C1B98A6A600A4F10F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>50B2A3E91B91402D0041F112</key>
 		<dict>
 			<key>primary</key>

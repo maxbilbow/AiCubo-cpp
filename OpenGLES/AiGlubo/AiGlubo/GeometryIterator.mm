@@ -21,73 +21,101 @@ using namespace std;
 
 typedef rmx::GameNodeList::Iterator GameNodeIterator;
 typedef rmx::Camera Camera;
-
+//typedef rmx::Geometry Geometry;
 
 @implementation ShapeData {
-@private Transform * transform;
+@private Geometry * geometry;
 }
 
-- (id)initWithData:( float *)data andCount:(long)count andTransform:(Transform *)t andColor:(GLKVector4)color
+- (id)initWithGeometry:(void*)g
 {
     self = [super init];
-    self.vertexData = data;
-    self.count = count;
-    self->transform = t;
-    self.color = color;
-    
+    self->geometry = (Geometry*) g;
+//    self.vertexData = geometry->vertexData();
+//    self.count = count;
+//    self->transform = t;
+//    self.color = geometry->color();
+//    self.indices = i;
     return self;
 }
 
-- (long)vertexCount
+- (long)vertexDataSize
 {
-    return _count / 6;
+    return self->geometry->vertexDataSize();
 }
 
-- (GLKMatrix4)modelViewMatrix
+- (long)indexDataSize
 {
-    return Scene::getCurrent()->pointOfView()->getCamera()->viewMatrix() * (self->transform->worldMatrix() * self.scaleVector);
+    return self->geometry->indexDataSize();
 }
+
+- (float*)vertexData
+{
+    return self->geometry->vertexData();
+}
+
+- (UInt16*)indexData
+{
+    return self->geometry->indexData();
+}
+
+//- (GLKMatrix4)modelViewMatrix
+//{
+//    return Scene::getCurrent()->pointOfView()->getCamera()->viewMatrix() * (self->geometry->modelMatrix() * self.scaleVector);
+//}
 
 
 - (NSString*)uniqueName
 {
-    return [NSString stringWithFormat:@"%s", self->transform->getNode()->uniqueName().c_str()];
+    return [NSString stringWithFormat:@"%s", self->geometry->getNode()->uniqueName().c_str()];
 }
 
-- (void*)modelViewMatrixRaw
+- (float*)modelMatrixRaw
 {
-    return self.modelViewMatrix.m;
+    return self.modelMatrix.m;
 }
 
 - (GLKMatrix4)modelMatrix
 {
-    return self->transform->worldMatrix();
+    return self->geometry->modelMatrix();
 }
 
 - (GLKVector3)scaleVector
 {
-    return self->transform->scale();
+    return self->geometry->scale();
 }
 
+- (float*)scaleVectorRaw
+{
+    return self.scaleVector.v;
+}
 
+- (float*)colorVectorRaw
+{
+    return self.color.v;
+}
+- (GLKVector4)color
+{
+    return self->geometry->color();
+}
 
 ShapeData * _cube, * _triangle;
 
 
-+ (ShapeData*)cube
-{
-    if (_cube == NULL)
-        _cube = [[ShapeData alloc]initWithData:cubeData andCount:cubeDataSize andTransform:NULL andColor: GLKVector4Make(0.4, 0.4, 1.0, 1.0)];
-    return _cube;
-}
+//+ (ShapeData*)cube
+//{
+//    if (_cube == NULL)
+//        _cube = [[ShapeData alloc]initWithData:cubeVertexData andCount:cubeVertexDataSize andTransform:NULL andColor: GLKVector4Make(0.4, 0.4, 1.0, 1.0)];
+//    return _cube;
+//}
 
 
-+ (ShapeData*)triangle
-{
-    if (_triangle == NULL)
-        _triangle = [[ShapeData alloc]initWithData:triandleData andCount:triandleDataSize andTransform:NULL andColor: GLKVector4Make(0.4, 0.4, 1.0, 1.0)];
-    return _triangle;
-}
+//+ (ShapeData*)triangle
+//{
+//    if (_triangle == NULL)
+//        _triangle = [[ShapeData alloc]initWithData:triandleVertexData andCount:triandleVertexDataSize andTransform:NULL andColor: GLKVector4Make(0.4, 0.4, 1.0, 1.0)];
+//    return _triangle;
+//}
 
 @end
 
@@ -113,7 +141,7 @@ GameNode * node;
 void addGeometryData(NSMutableArray * list, GameNode * node) {
     if (node->hasGeometry()) {
         Geometry *g = node->geometry();
-        [list addObject:[[ShapeData alloc]initWithData:g->vertexData andCount:g->vertexCount andTransform:node->getTransform() andColor:g->color()]];
+        [list addObject:[[ShapeData alloc]initWithGeometry:node->geometry()]];
         cout << g->color() << endl;
     }
     GameNodeIterator * i = node->getChildren()->getIterator();

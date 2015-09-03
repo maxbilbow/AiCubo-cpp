@@ -29,7 +29,7 @@ typedef struct _Uniform
 
 + (GLKMatrix4) projectionMatrix;
 + (Uniform)getUniformWithModelViewMatrix:(GLKMatrix4)modelView withAspect:(float)aspect;
-+ (void*)rawProjectionMatrixWithAspect:(float)aspect;
++ (float*)rawProjectionMatrixWithAspect:(float)aspect;
 
 + (GLKMatrix4) projectionMatrixWithAspect:(float)aspect;
 + (void) updateSceneLogic;
@@ -50,8 +50,8 @@ typedef struct _Uniform
 
 + (NSString*)toStringMatrix4:(GLKMatrix4)m;
 
-+ (const float*)vertsForShape:(unsigned int)shape;
-+ (long)sizeOf:(unsigned int)shape;
+//+ (const float*)vertsForShape:(unsigned int)shape;
+//+ (long)sizeOf:(unsigned int)shape;
 
 @end
 
