@@ -1837,6 +1837,7 @@
 				506F113B1B989E2D00A4F10F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		506F11771B98A6A600A4F10F /* Build configuration list for PBXNativeTarget "AiGlubo-es" */ = {
 			isa = XCConfigurationList;
@@ -1845,6 +1846,7 @@
 				506F11791B98A6A600A4F10F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50B2A3E51B91402D0041F112 /* Build configuration list for PBXProject "AiCubo" */ = {
 			isa = XCConfigurationList;
