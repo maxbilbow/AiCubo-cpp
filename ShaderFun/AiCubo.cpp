@@ -16,16 +16,16 @@ void AiCubo::initpov() {
     GameController::initpov();
     GameNode * n = GameNode::getCurrent();
     
-    n->setPhysicsBody(PhysicsBody::newTransientBody());
-    n->physicsBody()->setType(Dynamic);
+    n->setPhysicsBody(PhysicsBody::newDynamicBody());
+//    n->physicsBody()->setType(Dynamic);
     n->physicsBody()->setEffectedByGravity(false);
     n->physicsBody()->setMass(2);
     //    cout << n->physicsBody() << endl;
-    
+    n->physicsBody()->setFriction(0);
     n->addBehaviour(new SpriteBehaviour());
     //    n->setGeometry(Geometry::Cube());
     n->getTransform()->setScale(2.0f, 3.0f, 2.0f);
-//    n->getTransform()->setPosition(10,100, -50);
+    n->getTransform()->setPosition(10,100, -50);
     n->addToCurrentScene();
     n->addBehaviour(new SpriteBehaviour());
     GameNode * head = new GameNode("Camera");//GameNode::newCameraNode();// new GameNode("Head");
@@ -51,13 +51,13 @@ void AiCubo::setup() {
     floor->setGeometry(Geometry::Cube());
     float inf = 600;
     floor->setPhysicsBody(PhysicsBody::newStaticBody());
-    floor->getTransform()->setScale(inf, 10, inf);
-    floor->getTransform()->setPosition(0, -10, 0);
+    floor->getTransform()->setScale(inf, inf, inf);
+    floor->getTransform()->setPosition(0, -inf, 0);
     scene->rootNode()->addChild(floor);
     
     EG eg = EG();
     
-    eg.makeShapesAndAddToScene(scene, 1);
+    eg.makeShapesAndAddToScene(scene, 5);
     
     LinkedList<GameNode>::Iterator * i = scene->rootNode()->getChildren()->getIterator();
     while(i->hasNext()) {

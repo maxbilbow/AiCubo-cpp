@@ -7,13 +7,13 @@
 //
 
 import GLKit
-#if iOS
+
 import OpenGLES
-    #else
-    import OpenGL
-    typealias EAGLContext = CGContextRef
-    typealias GLKViewController = NSViewController
-    #endif
+//    #else
+//    import OpenGL
+//    typealias EAGLContext = CGContextRef
+//    typealias GLKViewController = NSViewController
+//    #endif
 
 
 func BUFFER_OFFSET(i: Int) -> UnsafePointer<Void> {
@@ -184,7 +184,7 @@ class GameViewController: GLKViewController {
                 // Render the object again with ES2
             
                 var scale = shape.scaleVector
-                var modelMatrix = shape.modelMatrix// GLKMatrix4Scale(shape.modelMatrix, scale.x, scale.y, scale.z)
+                var modelMatrix = shape.modelScaleMatrix// GLKMatrix4Scale(shape.modelMatrix, scale.x, scale.y, scale.z)
                 var normalMatrix = normalMatrix(modelMatrix)
                 var color = (shape as! ShapeData).color ?? GLKVector4Make(0.4,0.4,1.0,1.0)
                 if color.w == 0 {

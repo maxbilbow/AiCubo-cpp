@@ -317,6 +317,18 @@ public extension GLKMatrix4 {
         let row4 = "   ROW4: \(m30.toData()) \(m31.toData()) \(m32.toData()) \(m33.toData())"
         return "\(row1)\n\(row2)\n\(row3)\n\(row4)\n"
     }
+    
+    var left: GLKVector3 {
+        return GLKVector3Make(m00, m01, m02)
+    }
+    
+    var up: GLKVector3 {
+        return GLKVector3Make(m10, m11, m12)
+    }
+    
+    var forward: GLKVector3 {
+        return GLKVector3Make(m20, m21, m22)
+    }
 }
 
 

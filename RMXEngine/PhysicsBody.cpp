@@ -105,6 +105,23 @@ float PhysicsBody::TotalMass() {
     return this->getNode()->getTransform()->mass();
 }
 
+void PhysicsBody::setFriction(float friction) {
+    this->friction = friction;
+}
+
+void PhysicsBody::setRollingFriction(float rollingFriction) {
+    this->rollingFriction = rollingFriction;
+}
+
+void PhysicsBody::setDamping(float damping) {
+    this->damping = damping;
+}
+
+void PhysicsBody::setRotationalDamping(float rotationalDamping) {
+    this->rotationalDamping = rotationalDamping;
+}
+
+
 CollisionBody * PhysicsBody::collisionBody() {
     return this->_collisionBody;
 }

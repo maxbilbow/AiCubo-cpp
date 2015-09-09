@@ -7,13 +7,21 @@
 //
 
 #include <metal_stdlib>
+#include <metal_matrix>
 
 using namespace metal;
 
-struct VertexInOut
+struct VertexIn
 {
     float4  position [[position]];
     float4  color;
+};
+
+struct VertexOut
+{
+    float4 position [[position]];
+    float4 color;
+    float3 normal;
 };
 
 struct Uniform
@@ -26,38 +34,40 @@ struct Uniform
 struct Instance
 {
     float4x4 modelMatrix;
-    float3 scale;
+    float4 scale;
+    float4 color;
 };
 
-vertex VertexInOut passThroughVertex(uint vid [[ vertex_id ]],
+vertex VertexOut passThroughVertex(uint vid [[ vertex_id ]],
                                      uint iid [[ instance_id ]],
                                      constant packed_float4* pos    [[ buffer(0) ]],
                                      constant packed_float4* col    [[ buffer(1) ]],
                                      constant Uniform& u            [[ buffer(2) ]],
-                                     constant Instance* i           [[ buffer(3) ]]
+                                     constant Instance* instance           [[ buffer(3) ]]
                                 )
 {
-    Instance instance = i[iid];
-    float4x4 view = u.viewMatrix;
-    float4x4 projection = u.projectionMatrix;
-    float4 scale = float4(instance.scale.xyz,1);
-    float4x4 model =  instance.modelMatrix;
+    float4x4 viewProjection = u.projectionMatrix * u.viewMatrix;
+    float4 scale = float4(instance[iid].scale.xyz,1);
+    float4x4 model = instance[iid].modelMatrix;
     
-    float4 position = pos[vid];
-    float4 color = col[vid];
+    float3x3 normals = { model[0].xyz, model[1].xyz, model[2].xyz };
+    
+    float4 position = pos[vid] * scale;
+    float4 color = normalize(col[vid] + instance[iid].color);
     float time = 0;//u.time;
+    float4x4 modelViewProjection = viewProjection * model;
     
-
     
-    VertexInOut outVertex;
+    VertexOut outVertex;
     
-    outVertex.position = projection * view * model * position * scale;
+    outVertex.position = modelViewProjection * position;
     outVertex.color    = float4(color.x, color.y, color.z + sin(time), color.w);
+    outVertex.normal   = float3(1);
     
     return outVertex;
 };
 
-fragment half4 passThroughFragment(VertexInOut inFrag [[stage_in]])
+fragment half4 passThroughFragment(VertexOut inFrag [[stage_in]])
 {
     return half4(inFrag.color);
 };

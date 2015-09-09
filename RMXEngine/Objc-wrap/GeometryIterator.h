@@ -23,6 +23,7 @@
 @property (nonatomic) float * modelMatrixRaw;
 @property (nonatomic) GLKMatrix4 modelMatrix;
 @property (nonatomic) GLKVector3 scaleVector;
+@property (nonatomic) GLKMatrix4 modelScaleMatrix;
 @property (nonatomic) float* scaleVectorRaw;
 @property (nonatomic) float* colorVectorRaw;
 

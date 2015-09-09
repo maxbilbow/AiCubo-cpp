@@ -10,10 +10,9 @@ import Cocoa
 import MetalKit
 import GLKit
 
-let MaxBuffers = 3
-let ConstantBufferSize = 1024*1024
+let MaxBuffers = 4
+//let ConstantBufferSize = 1024*1024
 
-var modelMatrix: GLKMatrix4 = GLKMatrix4Identity
 let scaleVector = GLKVector3Make(1,1,1)
 
 let vertexData:[Float] =
@@ -58,12 +57,12 @@ let vertexData:[Float] =
    
 
 ]
-let A:UInt16 =  0, B:UInt16 =  1, C:UInt16 =  2, D:UInt16 =  3
-let E:UInt16 =  4, F:UInt16 =  5, G:UInt16 =  6, H:UInt16 =  7
-let I:UInt16 =  8, J:UInt16 =  9, K:UInt16 = 10, L:UInt16 = 11
-let M:UInt16 = 12, N:UInt16 = 13, O:UInt16 = 14, P:UInt16 = 15
-let Q:UInt16 = 16, R:UInt16 = 17, S:UInt16 = 18, T:UInt16 = 19
-let U:UInt16 = 20, V:UInt16 = 21, W:UInt16 = 22, X:UInt16 = 23
+let A:UInt16 =  0, B:UInt16 =  1, C:UInt16 =  2, D:UInt16 =  3 //Front
+let E:UInt16 =  4, F:UInt16 =  5, G:UInt16 =  6, H:UInt16 =  7 //Back
+let I:UInt16 =  8, J:UInt16 =  9, K:UInt16 = 10, L:UInt16 = 11 //Bottom
+let M:UInt16 = 12, N:UInt16 = 13, O:UInt16 = 14, P:UInt16 = 15 //Top
+let Q:UInt16 = 16, R:UInt16 = 17, S:UInt16 = 18, T:UInt16 = 19 //Right
+let U:UInt16 = 20, V:UInt16 = 21, W:UInt16 = 22, X:UInt16 = 23 //Left
 
 
 let indices: [UInt16] = [
@@ -159,7 +158,7 @@ let vertexColorData:[Float] =
     1.0, 0.0, 1.0, 1.0, //left
     1.0, 0.0, 1.0, 1.0,
     1.0, 0.0, 1.0, 1.0,
-    1.0, 0.0, 1.0, 1.0,
+    1.0, 0.0, 1.0, 1.0
     
 //    0.0, 1.0, 1.0, 1.0,
 //    0.2, 0.2, 0.2, 1.0
@@ -178,24 +177,16 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
     var vertexColorBuffer: MTLBuffer! = nil
     var indexBuffer: MTLBuffer! = nil
     var uniformBuffer: MTLBuffer! = nil
-    var textureBuffer: MTLBuffer! = nil
+//    var textureBuffer: MTLBuffer! = nil
     var uniforms: Uniform! = nil
-//    var viewPort: MTLViewport! = nil
+
     let inflightSemaphore = dispatch_semaphore_create(MaxBuffers)
-    var bufferIndex = 0
 
     private static var _instance: GameViewController!
     
     static var instance: GameViewController {
         return _instance
     }
-    
-    
-    // offsets used in animation
-    var xOffset:[Float] = [ -1.0, 1.0, -1.0 ]
-    var yOffset:[Float] = [ 1.0, 0.0, -1.0 ]
-    var xDelta:[Float] = [ 0.002, -0.001, 0.003 ]
-    var yDelta:[Float] = [ 0.001,  0.002, -0.001 ]
 
     override func viewDidLoad() {
         GameViewController._instance = self
@@ -211,7 +202,9 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         view.sampleCount = 4
         
         loadAssets()
+
     }
+
     
     func loadAssets() {
         
@@ -238,7 +231,7 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         }
         
         // generate a large enough buffer to allow streaming vertices for 3 semaphore controlled frames
-        vertexBuffer = device.newBufferWithLength(ConstantBufferSize, options: [])
+        vertexBuffer = device.newBufferWithLength(vertexData.count * sizeofValue(vertexData[0]), options: [])
         vertexBuffer.label = "vertices"
         
         let vertexColorSize = vertexData.count * sizeofValue(vertexColorData[0])
@@ -247,41 +240,44 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         
         let indexSize = indices.count * sizeofValue(indices[0])
         indexBuffer = device.newBufferWithBytes(indices, length: indexSize, options: [])
+        indexBuffer.label = "indexData"
         
-        let texSize = txtCoords.count * sizeofValue(txtCoords[0])
-        textureBuffer = device.newBufferWithBytes(txtCoords, length: texSize, options: [])
         loadUniforms()
 //        texture = MetalTexture(resourceName: "cube", ext: "png", mipmaped: true)
 //        texture.loadTexture(device: device, commandQ: commandQ, flip: true)
         
     }
-    var instances: [Uniform] = [
-        Uniform(keys: ("modelMatrix",16), ("scale",3)),
-        Uniform(keys: ("modelMatrix",16), ("scale",3)),
-        Uniform(keys: ("modelMatrix",16), ("scale",3)),
-        Uniform(keys: ("modelMatrix",16), ("scale",3))
-    ]
+    var instances: Instances!// = Instances(count: 4)
     var instanceBuffer: MTLBuffer!
     func loadUniforms() {
         
         uniforms = Uniform(width: Float(view.bounds.width), height: Float(view.bounds.height),
             vars: ("time",1))
         
-        uniforms.setView(matrix: viewMatrix)
+        uniforms.setView(matrix: viewMatrix, invert: true)
 //        uniforms.setValue(forKey: "scale", array: [1,1,1])
         print("Uniforms:")
         print(uniforms.print)
         uniformBuffer = device.newBufferWithBytes(uniforms.bytes, length: uniforms.size, options: [])
 
+        let shapes = CppBridge.geometries().shapeData
+        
+        instances = Instances(count: shapes.count)
         var size:Int = 0
         var x:Float = 0, y:Float = 0, z:Float = 0
         for var i = 0; i<instances.count; ++i {
-            instances[i].setValue(forKey: "scale", vector3: GLKVector3Make(1,1,1))
-            instances[i].setValue(forKey: "modelMatrix", matrix4: GLKMatrix4Identity * GLKMatrix4MakeTranslation(x, y, z))
-            z += 4; y += 4
+            if mode == .Test {
+                instances[i].setScale(scale: GLKVector3Make(1, 1, 1))
+                instances[i].setValue(forKey: "scale", vector3: GLKVector3Make(1, 1, 1))
+                instances[i].setValue(forKey: "modelMatrix", matrix4: GLKMatrix4Identity * GLKMatrix4MakeTranslation(x, y, z))
+                z = Float(random() % 30) - 15; y = Float(random() % 30) - 15; x = Float(random() % 30) - 15
+            }
             size += instances[i].size
+            let s = instances[i].getMatrix4("modelMatrix")!.print
+            print("\(i)\n\(s)")
             
         }
+//        print("Size: \((size / sizeofValue(Float(0)))/19)")
         instanceBuffer = device.newBufferWithLength(size, options: [])
     }
     
@@ -290,7 +286,7 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         
         // vData is pointer to the MTLBuffer's Float data contents
         let pData = vertexBuffer.contents()
-        let vData = UnsafeMutablePointer<Float>(pData + 256*bufferIndex)
+        let vData = UnsafeMutablePointer<Float>(pData)// + 256*bufferIndex)
         
         // reset the vertices to default before adding animated offsets
         vData.initializeFrom(vertexData)
@@ -321,36 +317,55 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         uniforms.setValue(forKey: "time", value: uniforms.getValue("time")! + 0.01)
         if mode == .Engine {
             CppBridge.updateSceneLogic()
-            uniforms.setView(matrix: CppBridge.viewMatrix())
+            uniforms.setView(matrix: CppBridge.viewMatrix(), invert: false)
         }
-//        let geometries = CppBridge.geometries()
-//        for shape in geometries.shapeData {
-            let renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor)
-            renderEncoder.label = "render encoder"
-            renderEncoder.setCullMode(MTLCullMode.Front)
         
+        
+        let renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor)
+        renderEncoder.label = "render encoder"
+        renderEncoder.setCullMode(MTLCullMode.Front)
+       
         let uPointer = uniformBuffer.contents()
         memcpy(uPointer, uniforms.bytes, uniforms.size)
         renderEncoder.setVertexBuffer(uniformBuffer, offset: 0, atIndex: 2)
 
         
-        var bytes: [Float] = []
-        for var i = 0;i<instances.count; ++i{
-            bytes += instances[i].bytes
-        }
+//        var bytes: [Float] = []
+//        for var i = 0;i<instances.count; ++i{
+//            bytes += instances[i].bytes
+//        }
+//        memcpy(iPointer, bytes, sizeofValue(bytes[0]) * bytes.count)
+        
         let iPointer = instanceBuffer.contents()
-        memcpy(iPointer, bytes, instances.count * instances[0].size)
+        if mode == .Test {
+            for var i = 0;i<instances.count; ++i{
+                memcpy(iPointer + instances[i].size * i, instances[i].bytes, instances[i].size)
+            }
+        } else if mode == .Engine {
+            let shapes = CppBridge.geometries().shapeData
+            for var i = 0;i<instances.count; ++i{
+                instances[i].setModel(matrix: (shapes.objectAtIndex(i) as? ShapeData)!.modelMatrix)
+                instances[i].setScale(scale: (shapes.objectAtIndex(i) as? ShapeData)!.scaleVector)
+                instances[i].setColor(color: (shapes.objectAtIndex(i) as? ShapeData)!.color)
+                memcpy(iPointer + instances[i].size * i, instances[i].bytes, instances[i].size)
+            }
+        }
         
         renderEncoder.setVertexBuffer(instanceBuffer, offset: 0, atIndex: 3)
         
         renderEncoder.pushDebugGroup("draw morphing triangle")
         renderEncoder.setRenderPipelineState(pipelineState)
-        renderEncoder.setVertexBuffer(vertexBuffer, offset: 256*bufferIndex, atIndex: 0)
+        renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
         renderEncoder.setVertexBuffer(vertexColorBuffer, offset:0 , atIndex: 1)
         
         
 //        renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 9, instanceCount: 1)
-        renderEncoder.drawIndexedPrimitives(.Triangle, indexCount: indices.count, indexType: MTLIndexType.UInt16, indexBuffer: indexBuffer, indexBufferOffset: 0, instanceCount: instances.count)
+        renderEncoder.drawIndexedPrimitives(.Triangle,
+            indexCount: indices.count,
+            indexType: MTLIndexType.UInt16,
+            indexBuffer: indexBuffer,
+            indexBufferOffset: 0,
+            instanceCount: instances.count)
         
         renderEncoder.popDebugGroup()
         renderEncoder.endEncoding()
@@ -366,7 +381,7 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         }
         
         // bufferIndex matches the current semaphore controled frame index to ensure writing occurs at the correct region in the vertex buffer
-        bufferIndex = (bufferIndex + 1) % MaxBuffers
+//        bufferIndex = (bufferIndex + 1) % MaxBuffers
         
         commandBuffer.presentDrawable(view.currentDrawable!)
         commandBuffer.commit()
@@ -374,34 +389,83 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
     
     
     func mtkView(view: MTKView, drawableSizeWillChange size: CGSize) {
-        projection = GLKMatrix4MakePerspective(45, Float(view.bounds.width/view.bounds.height), 0.01, 1000)
+        projection = GLKMatrix4MakePerspective(45, Float(view.bounds.width/view.bounds.height), 0.01, 2000)
         uniforms.setProjection(matrix: projection)
     }
     
-    override func keyDown(theEvent: NSEvent) {
-        print(theEvent)
+    override func keyDown(event: NSEvent) {
+        print(event)
         switch mode {
         case .Test:
+            switch event.characters! {
+            case "w":
+                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0, 0, -0.1)
+                break
+            case "s":
+                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0, 0, 0.1)
+                break
+            case "a":
+                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, -0.1, 0, 0)
+                break
+            case "d":
+                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0.1, 0, 0)
+                break
+            case "e":
+                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0, 0.1, 0)
+                break
+            case "q":
+                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0, -0.1, 0)
+                break
+            default:
+                return
+            }
+//            self.viewMatrix *= translation
+            print("View Matrix:")
+            print(viewMatrix.print)
+            uniforms.setView(matrix: viewMatrix, invert: true)
             return
         case .Engine:
+         
             return
         }
     }
-    override func keyUp(theEvent: NSEvent) {
-        print(theEvent)
+    override func keyUp(event: NSEvent) {
+        print(event)
     }
     
-    
+    let models = 2
     override func mouseDragged(event: NSEvent) {
         switch mode {
         case .Test:
-            let rx = GLKMatrix4MakeRotation(Float(event.deltaY * PI_OVER_180), 1, 0, 0)
-            let ry = GLKMatrix4MakeRotation(Float(event.deltaX * PI_OVER_180), 0, 1, 0)
-            modelMatrix *= rx
-            modelMatrix *= ry
-//            viewMatrix = GLKMatrix4RotateX(viewMatrix, Float(theEvent.deltaY) * PI_OVER_180f)
-//            viewMatrix = GLKMatrix4RotateY(viewMatrix, Float(theEvent.deltaX) * PI_OVER_180f)
-            instances[0].setModel(matrix: modelMatrix)
+            let rx = GLKMatrix4MakeRotation(Float(event.deltaY) * PI_OVER_180f,
+                viewMatrix.m00, viewMatrix.m01, viewMatrix.m02)
+            let ry = GLKMatrix4MakeRotation(Float(event.deltaX) * PI_OVER_180f,
+                viewMatrix.m10, viewMatrix.m11, viewMatrix.m12)
+
+            
+            for var i = 0; i<instances.count; ++i {
+                if var m = instances[i].getMatrix4("modelMatrix") {
+//                    let r = viewMatrix * GLKMatrix4Transpose(m)
+                    let p = GLKVector3Make(m.m30,m.m31,m.m32)
+                    m *= rx
+                    m *= ry
+                    m = GLKMatrix4Make(
+                        m.m00, m.m01, m.m02, 0,
+                        m.m10, m.m11, m.m12, 0,
+                        m.m20, m.m21, m.m22, 0,
+                        p.x  , p.y  , p.z  , 1
+                    )
+
+//                    m = GLKMatrix4Rotate(m, Float(event.deltaY) * PI_OVER_180f,
+//                        r.m00, r.m01, r.m02)
+//                    m = GLKMatrix4Rotate(m, Float(event.deltaX) * PI_OVER_180f,
+//                        r.m10, r.m11, r.m12)
+                    if i < models {
+                        print(" R: \(i)\n\(m.print)")
+                    }
+                    instances[i].setModel(matrix: m)
+                }
+            }
             return
         case .Engine:
             return
@@ -414,12 +478,12 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
     override func magnifyWithEvent(event: NSEvent) {
         switch mode {
         case .Test:
-            let translation = GLKMatrix4MakeTranslation(0, 0, Float(event.magnification))
-            self.viewMatrix *= translation
-            uniforms.setView(matrix: viewMatrix)
+            var scale = instances[0].scale!
+            scale *= (1 + Float(event.magnification))
+            instances[0].setScale(scale: scale)
             return
         case .Engine:
-            CppBridge.sendMessage("forward", withScale: Float(event.magnification))
+           
             return
         }
 
@@ -428,16 +492,39 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
     override func rotateWithEvent(event: NSEvent) {
         switch mode {
         case .Test:
-            let rz = GLKMatrix4MakeRotation(event.rotation * PI_OVER_180f,0,0,1)
-            modelMatrix *= rz
-            instances[0].setModel(matrix: modelMatrix)
+            viewMatrix = GLKMatrix4RotateZ(viewMatrix,Float(event.rotation) * PI_OVER_180f)
+            
+            print("View Matrix:")
+            print(viewMatrix.print)
+            uniforms.setView(matrix: viewMatrix, invert: true)
+
+//            
+//            let rz = GLKMatrix4MakeRotation(event.rotation * PI_OVER_180f,
+//                viewMatrix.m20, viewMatrix.m21, viewMatrix.m22)
+//            for var i = 0; i<instances.count; ++i {
+//                if var m = instances[i].getMatrix4("modelMatrix") {
+//                    let p = GLKVector3Make(m.m30,m.m31,m.m32)
+//                    m *= rz
+//                    m = GLKMatrix4Make(
+//                        m.m00, m.m01, m.m02, 0,
+//                        m.m10, m.m11, m.m12, 0,
+//                        m.m20, m.m21, m.m22, 0,
+//                        p.x  , p.y  , p.z  , 1
+//                    )
+//                    if i < models {
+//                        print("RZ: \(i)\n\(m.print)")
+//                    }
+//
+//                    instances[i].setModel(matrix: m)
+//                }
+//            }
             return
         case .Engine:
             CppBridge.turnAboutAxis("roll", withForce: event.rotation * PI_OVER_180f)
             return
         }
     }
-    let mode = Mode.Test
+    let mode = Mode.Engine
     enum Mode {
         case Test, Engine
     }
@@ -446,12 +533,13 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
     override func scrollWheel(event: NSEvent) {
         switch mode {
         case .Test:
-            let rx = GLKMatrix4MakeRotation(Float(event.deltaY * PI_OVER_180), 1, 0, 0)
-            let ry = GLKMatrix4MakeRotation(Float(event.deltaX * PI_OVER_180), 0, 1, 0)
-            viewMatrix *= rx
-            viewMatrix *= ry
-            uniforms.setView(matrix: viewMatrix)
-//            instance.setValue(forKey: "modelMatrix", matrix4: modelMatrix)
+           
+            viewMatrix = GLKMatrix4RotateX(viewMatrix,Float(event.deltaY) * -PI_OVER_180f)
+            viewMatrix = GLKMatrix4RotateY(viewMatrix,Float(event.deltaX) * -PI_OVER_180f)
+           
+            print("View Matrix:")
+            print(viewMatrix.print)
+            uniforms.setView(matrix: viewMatrix, invert: true)
             return
         case .Engine:
             CppBridge.turnAboutAxis("pitch", withForce: -Float(event.deltaY))

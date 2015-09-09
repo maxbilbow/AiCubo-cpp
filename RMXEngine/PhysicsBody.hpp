@@ -42,6 +42,11 @@ namespace rmx {
         
         float TotalMass();
     
+        void setFriction(float);
+        void setRollingFriction(float);
+        void setDamping(float);
+        void setRotationalDamping(float);
+        
         CollisionBody * collisionBody();
         
         GameNode * setNode(GameNode * node) override;

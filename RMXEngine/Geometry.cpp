@@ -121,7 +121,7 @@ void Geometry::render(GameNode * node, Matrix4 base) {
 }
 
 Matrix4 Geometry::modelMatrix() {
-    return this->getTransform()->worldMatrix() * this->getTransform()->scale();
+    return this->getTransform()->worldMatrix();
 }
 void _render() {
     //this.pushMatrx();

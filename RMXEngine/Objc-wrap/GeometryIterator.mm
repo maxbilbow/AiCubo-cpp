@@ -75,6 +75,10 @@ typedef rmx::Camera Camera;
     return self.modelMatrix.m;
 }
 
+- (GLKMatrix4)modelScaleMatrix
+{
+    return self.modelMatrix * self.scaleVector;
+}
 - (GLKMatrix4)modelMatrix
 {
     return self->geometry->modelMatrix();

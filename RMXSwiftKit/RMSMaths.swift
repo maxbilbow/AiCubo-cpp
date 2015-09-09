@@ -131,6 +131,10 @@ public func *= (inout lhs: SCNVector3, rhs: RMFloat) {
     lhs = SCNVector3MultiplyScalar(lhs, s: rhs)
 }
 
+public func *= (inout lhs: GLKVector3, rhs: Float) {
+    lhs = GLKVector3MultiplyScalar(lhs, rhs)
+}
+
 public func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }
