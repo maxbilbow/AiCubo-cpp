@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShaderFun/GameViewController.swift"
-            timestampString = "463508415.598968"
+            timestampString = "463525706.857215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "loadAssets()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShaderFun/Shaders.metal"
-            timestampString = "463517711.763708"
+            timestampString = "463521613.267749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "passThroughVertex(uint vid [[ vertex_id ]], uint iid [[ instance_id ]], constant packed_float4* pos [[ buffer(0) ]], constant packed_float4* col [[ buffer(1) ]], constant Uniform&amp; u [[ buffer(2) ]], constant Instance* instance [[ buffer(3) ]] )"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "passThroughVertex(uint vid [[ vertex_id ]], uint iid [[ instance_id ]], constant VertexIn* vertexIn [[ buffer(0) ]], // constant packed_float4* pos [[ buffer(0) ]], constant packed_float3* normal [[ buffer(1) ]], constant Uniform&amp; u [[ buffer(2) ]], constant Instance* instance [[ buffer(3) ]] )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

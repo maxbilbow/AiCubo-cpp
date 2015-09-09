@@ -26,12 +26,14 @@
 @property (nonatomic) GLKMatrix4 modelScaleMatrix;
 @property (nonatomic) float* scaleVectorRaw;
 @property (nonatomic) float* colorVectorRaw;
+@property float* normalData;
+@property (nonatomic) long normalDataSize;
 
 @property (nonatomic) UInt16 * indexData;
 @property (nonatomic) long indexDataSize;
 @property (nonatomic) GLKVector4 color;
 - (id)initWithGeometry:(void*)geometry;
-//+ (ShapeData*)cube;
++ (ShapeData*)cube;
 //+ (ShapeData*)triangle;
 //- (id)initWithData:(const float*)data andCount:(const long*)count;
 @end

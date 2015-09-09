@@ -21,7 +21,7 @@ void AiCubo::initpov() {
     n->physicsBody()->setEffectedByGravity(false);
     n->physicsBody()->setMass(2);
     //    cout << n->physicsBody() << endl;
-    n->physicsBody()->setFriction(0);
+    n->physicsBody()->setFriction(0.01);
     n->addBehaviour(new SpriteBehaviour());
     //    n->setGeometry(Geometry::Cube());
     n->getTransform()->setScale(2.0f, 3.0f, 2.0f);

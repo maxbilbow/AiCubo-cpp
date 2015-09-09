@@ -41,22 +41,34 @@ typedef rmx::Camera Camera;
 
 - (long)vertexDataSize
 {
-    return self->geometry->vertexDataSize();
+    if (self->geometry != nullptr)
+        return self->geometry->vertexDataSize();
+    else
+        return _vertexDataSize;
 }
 
 - (long)indexDataSize
 {
-    return self->geometry->indexDataSize();
+    if (self->geometry != nullptr)
+        return self->geometry->indexDataSize();
+    else
+        return _vertexDataSize;
 }
 
 - (float*)vertexData
 {
-    return self->geometry->vertexData();
+    if (self->geometry != nullptr)
+        return self->geometry->vertexData();
+    else
+        return _vertexData;
 }
 
 - (UInt16*)indexData
 {
-    return self->geometry->indexData();
+    if (self->geometry != nullptr)
+        return self->geometry->indexData();
+    else
+        return _indexData;
 }
 
 //- (GLKMatrix4)modelViewMatrix
@@ -106,14 +118,23 @@ typedef rmx::Camera Camera;
 ShapeData * _cube, * _triangle;
 
 
-//+ (ShapeData*)cube
-//{
-//    if (_cube == NULL)
-//        _cube = [[ShapeData alloc]initWithData:cubeVertexData andCount:cubeVertexDataSize andTransform:NULL andColor: GLKVector4Make(0.4, 0.4, 1.0, 1.0)];
-//    return _cube;
-//}
++ (ShapeData*)cube
+{
+    if (_cube == NULL) {
+        _cube = [[ShapeData alloc]init];
+        [_cube setVertexData:cubeVertexData];
+        [_cube setVertexDataSize:cubeVertexDataSize];
+        [_cube setIndexData:cubeIndexData];
+        [_cube setIndexDataSize:cubeIndexDataSize];
+        [_cube setNormalData:cubeNormalData];
+    }
+    return _cube;
+}
 
-
+- (long)normalDataSize
+{
+    return _vertexDataSize;
+}
 //+ (ShapeData*)triangle
 //{
 //    if (_triangle == NULL)

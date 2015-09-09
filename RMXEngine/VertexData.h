@@ -17,6 +17,7 @@
 extern float * cubeVertexData;
 extern long cubeVertexDataSize;
 extern unsigned short cubeIndexData[];
+extern float cubeNormalData[];
 extern long cubeIndexDataSize;
 
 extern float triandleVertexData[];
