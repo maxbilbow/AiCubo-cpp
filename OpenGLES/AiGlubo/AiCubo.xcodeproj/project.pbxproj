@@ -7,7 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50134EE11B94FCDA00E26F75 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE8A1B938132003EA656 /* Shaders.metal */; };
+		5026081A1BA170B000C572EE /* Uniforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608161BA170B000C572EE /* Uniforms.swift */; };
+		5026081B1BA170B000C572EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608171BA170B000C572EE /* AppDelegate.swift */; };
+		5026081C1BA170B000C572EE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608181BA170B000C572EE /* GameViewController.swift */; };
+		5026081D1BA170B000C572EE /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 502608191BA170B000C572EE /* Shaders.metal */; };
+		5026081F1BA170D500C572EE /* OSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0671BA0B1E90037B8A1 /* OSX.swift */; };
+		502608211BA170DA00C572EE /* RMSMaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0691BA0B1E90037B8A1 /* RMSMaths.swift */; };
+		502608221BA170DA00C572EE /* RMX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B06A1BA0B1E90037B8A1 /* RMX.swift */; };
+		502608231BA170DA00C572EE /* RMXDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B06B1BA0B1E90037B8A1 /* RMXDebugger.swift */; };
+		502608241BA170DA00C572EE /* RMXFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B06C1BA0B1E90037B8A1 /* RMXFunctions.swift */; };
+		502608251BA170DA00C572EE /* RMXValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B06D1BA0B1E90037B8A1 /* RMXValue.swift */; };
+		502608261BA170DA00C572EE /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B06E1BA0B1E90037B8A1 /* UserActions.swift */; };
+		502608271BA170DF00C572EE /* RMXInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0721BA0B1E90037B8A1 /* RMXInterface.swift */; };
+		502608281BA1711800C572EE /* CppBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0971BA0B2090037B8A1 /* CppBridge.mm */; };
+		502608291BA1711800C572EE /* GeometryIterator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0991BA0B2090037B8A1 /* GeometryIterator.mm */; };
+		5026082B1BA1719600C572EE /* AiCubo2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026082A1BA1719600C572EE /* AiCubo2.cpp */; };
+		502608E91BA1786E00C572EE /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E51BA1786E00C572EE /* BoundingBox.cpp */; };
+		502608EA1BA1786E00C572EE /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E51BA1786E00C572EE /* BoundingBox.cpp */; };
+		502608EB1BA1786E00C572EE /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E71BA1786E00C572EE /* BoundingSphere.cpp */; };
+		502608EC1BA1786E00C572EE /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E71BA1786E00C572EE /* BoundingSphere.cpp */; };
 		5055B0731BA0B1E90037B8A1 /* Accelorometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0601BA0B1E90037B8A1 /* Accelorometer.swift */; };
 		5055B0741BA0B1E90037B8A1 /* Accelorometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0601BA0B1E90037B8A1 /* Accelorometer.swift */; };
 		5055B0751BA0B1E90037B8A1 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0611BA0B1E90037B8A1 /* Buttons.swift */; };
@@ -43,10 +61,7 @@
 		506F11321B989E2D00A4F10F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506F11301B989E2D00A4F10F /* Main.storyboard */; };
 		506F11341B989E2D00A4F10F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506F11331B989E2D00A4F10F /* Assets.xcassets */; };
 		506F11371B989E2D00A4F10F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506F11351B989E2D00A4F10F /* LaunchScreen.storyboard */; };
-		506F11421B989F7500A4F10F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE521B936843003EA656 /* GameViewController.swift */; };
 		506F11431B98A04F00A4F10F /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D6BD291B986B93002A06A3 /* VertexData.c */; };
-		506F11441B98A06300A4F10F /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A61B9145A30041F112 /* BoundingBox.cpp */; };
-		506F11451B98A06300A4F10F /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */; };
 		506F11461B98A06300A4F10F /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47D1B9145840041F112 /* GameController.cpp */; };
 		506F11471B98A06300A4F10F /* GameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47F1B9145840041F112 /* GameNode.cpp */; };
 		506F11481B98A06300A4F10F /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4811B9145840041F112 /* GameView.cpp */; };
@@ -69,12 +84,9 @@
 		506F11591B98A06E00A4F10F /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B81B9145A30041F112 /* NotificationCenter.cpp */; };
 		506F115A1B98A06E00A4F10F /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B91B9145A30041F112 /* Object.cpp */; };
 		506F115B1B98A07700A4F10F /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4CA1B914A280041F112 /* AiCubo.cpp */; };
-		506F11681B98A0B200A4F10F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE8A1B938132003EA656 /* Shaders.metal */; };
 		506F11701B98A6A600A4F10F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F116F1B98A6A600A4F10F /* AppDelegate.swift */; };
 		506F11721B98A6A600A4F10F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506F11711B98A6A600A4F10F /* Assets.xcassets */; };
 		506F11751B98A6A600A4F10F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506F11731B98A6A600A4F10F /* MainMenu.xib */; };
-		506F117B1B98A70B00A4F10F /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A61B9145A30041F112 /* BoundingBox.cpp */; };
-		506F117C1B98A70B00A4F10F /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */; };
 		506F117D1B98A70B00A4F10F /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47D1B9145840041F112 /* GameController.cpp */; };
 		506F117E1B98A70B00A4F10F /* GameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47F1B9145840041F112 /* GameNode.cpp */; };
 		506F117F1B98A70B00A4F10F /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4811B9145840041F112 /* GameView.cpp */; };
@@ -127,8 +139,6 @@
 		50B2A4A21B9145840041F112 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48F1B9145840041F112 /* Scene.cpp */; };
 		50B2A4A31B9145840041F112 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */; };
 		50B2A4A41B9145840041F112 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4931B9145840041F112 /* Transform.cpp */; };
-		50B2A4BC1B9145A30041F112 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A61B9145A30041F112 /* BoundingBox.cpp */; };
-		50B2A4BD1B9145A30041F112 /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */; };
 		50B2A4BE1B9145A30041F112 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AA1B9145A30041F112 /* Dictionary.cpp */; };
 		50B2A4BF1B9145A30041F112 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AB1B9145A30041F112 /* EventListener.cpp */; };
 		50B2A4C01B9145A30041F112 /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = 50B2A4AC1B9145A30041F112 /* Headers */; };
@@ -140,8 +150,6 @@
 		50B2A4C91B9148EC0041F112 /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4811B9145840041F112 /* GameView.cpp */; };
 		50B2A4CC1B914A280041F112 /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4CA1B914A280041F112 /* AiCubo.cpp */; };
 		50B2A4D41B91630A0041F112 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4D31B91630A0041F112 /* main.cpp */; };
-		50B2A4D81B9163450041F112 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A61B9145A30041F112 /* BoundingBox.cpp */; };
-		50B2A4D91B9163450041F112 /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */; };
 		50B2A4DA1B9163450041F112 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AA1B9145A30041F112 /* Dictionary.cpp */; };
 		50B2A4DB1B9163450041F112 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AB1B9145A30041F112 /* EventListener.cpp */; };
 		50B2A4DC1B9163480041F112 /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4CA1B914A280041F112 /* AiCubo.cpp */; };
@@ -164,9 +172,6 @@
 		50B2A4EE1B9163760041F112 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48F1B9145840041F112 /* Scene.cpp */; };
 		50B2A4EF1B9163760041F112 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */; };
 		50B2A4F01B9163760041F112 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4931B9145840041F112 /* Transform.cpp */; };
-		50B2A54C1B9163E50041F112 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B2A5151B9163CD0041F112 /* libglfw3.a */; };
-		50CFDE511B936843003EA656 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE501B936843003EA656 /* AppDelegate.swift */; };
-		50CFDE531B936843003EA656 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE521B936843003EA656 /* GameViewController.swift */; };
 		50CFDE571B936843003EA656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CFDE561B936843003EA656 /* Assets.xcassets */; };
 		50CFDE5A1B936843003EA656 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50CFDE581B936843003EA656 /* MainMenu.xib */; };
 		50CFDE711B936B0A003EA656 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47D1B9145840041F112 /* GameController.cpp */; };
@@ -185,225 +190,16 @@
 		50CFDE7F1B936B0A003EA656 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48F1B9145840041F112 /* Scene.cpp */; };
 		50CFDE801B936B0A003EA656 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */; };
 		50CFDE811B936B0A003EA656 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4931B9145840041F112 /* Transform.cpp */; };
-		50CFDE821B936B15003EA656 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A61B9145A30041F112 /* BoundingBox.cpp */; };
-		50CFDE831B936B15003EA656 /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */; };
 		50CFDE841B936B15003EA656 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AA1B9145A30041F112 /* Dictionary.cpp */; };
 		50CFDE851B936B15003EA656 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4AB1B9145A30041F112 /* EventListener.cpp */; };
 		50CFDE861B936B34003EA656 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B71B9145A30041F112 /* LinkedList.cpp */; };
 		50CFDE871B936B34003EA656 /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B81B9145A30041F112 /* NotificationCenter.cpp */; };
 		50CFDE881B936B34003EA656 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4B91B9145A30041F112 /* Object.cpp */; };
-		50CFDE891B936B4C003EA656 /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4CA1B914A280041F112 /* AiCubo.cpp */; };
 		50D6BD2B1B986B93002A06A3 /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D6BD291B986B93002A06A3 /* VertexData.c */; };
 		50D6BD4B1B987031002A06A3 /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D6BD291B986B93002A06A3 /* VertexData.c */; };
 		50F9EEE91B9737F30040514B /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F9EEE81B9737F30040514B /* icons.xcassets */; };
 		50F9EEEA1B9737F30040514B /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F9EEE81B9737F30040514B /* icons.xcassets */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		50B2A5141B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 996AC33FC54B4C819772D8C6;
-			remoteInfo = glfw;
-		};
-		50B2A5161B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6178F54F8FA34FBFA3BB38DF;
-			remoteInfo = Boing;
-		};
-		50B2A5181B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5F1C0B02C4664C1F86A951DA;
-			remoteInfo = Gears;
-		};
-		50B2A51A1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B5AA1D814DB641EF8F89D95E;
-			remoteInfo = Heightmap;
-		};
-		50B2A51C1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0F75809C91344D9F8173BE44;
-			remoteInfo = Particles;
-		};
-		50B2A51E1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D540C05B477A4FE69E6DBD65;
-			remoteInfo = Simple;
-		};
-		50B2A5201B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1C6E12B6D57245DE86A834D3;
-			remoteInfo = SplitView;
-		};
-		50B2A5221B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84125CCF158842A7A378DCAA;
-			remoteInfo = Wave;
-		};
-		50B2A5241B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6CD1DE2CD69C4AF8864360D9;
-			remoteInfo = accuracy;
-		};
-		50B2A5261B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 079E23018A6941CFB654D803;
-			remoteInfo = clipboard;
-		};
-		50B2A5281B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C4E08048EC5649428B373C18;
-			remoteInfo = cursor;
-		};
-		50B2A52A1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DD6B86A015CB43F98445A054;
-			remoteInfo = cursoranim;
-		};
-		50B2A52C1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BE76A0EE3CB04932A6C4C59C;
-			remoteInfo = defaults;
-		};
-		50B2A52E1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CFBDDB2FBF5041FFB5F962DA;
-			remoteInfo = empty;
-		};
-		50B2A5301B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D3E4797E0AD45B3A4D5C0A3;
-			remoteInfo = events;
-		};
-		50B2A5321B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9BCFC6CBAE474439BAD8B544;
-			remoteInfo = fsaa;
-		};
-		50B2A5341B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 57F32E65185D44E690D20CE4;
-			remoteInfo = gamma;
-		};
-		50B2A5361B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 771D162A24E7451389447165;
-			remoteInfo = glfwinfo;
-		};
-		50B2A5381B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8B4C71EB9CC24230A848E71E;
-			remoteInfo = iconify;
-		};
-		50B2A53A1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AFC9ADC27F7143579BC9A2BD;
-			remoteInfo = joysticks;
-		};
-		50B2A53C1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A44E6E919B254E3198665451;
-			remoteInfo = monitors;
-		};
-		50B2A53E1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA23E4DC2592404BBC807781;
-			remoteInfo = peter;
-		};
-		50B2A5401B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9C6DF259E2B945ACA38F291D;
-			remoteInfo = reopen;
-		};
-		50B2A5421B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A79EF03780534CE19DAAE789;
-			remoteInfo = sharing;
-		};
-		50B2A5441B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 82B0764A1CE24413A39CAD15;
-			remoteInfo = tearing;
-		};
-		50B2A5461B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9C2817C8FB66452296C09D23;
-			remoteInfo = threads;
-		};
-		50B2A5481B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 30FAC0D390C447AAB7E02A4F;
-			remoteInfo = title;
-		};
-		50B2A54A1B9163CD0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BB3AAEF3867742C0A996A621;
-			remoteInfo = windows;
-		};
-		50B2A54D1B9163FB0041F112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 50B02DD8DBC64912945DF1E2;
-			remoteInfo = glfw;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		50B2A4CF1B91630A0041F112 /* CopyFiles */ = {
@@ -418,7 +214,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		50134EE21B95053000E26F75 /* BufferProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferProvider.swift; sourceTree = "<group>"; };
+		502608161BA170B000C572EE /* Uniforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uniforms.swift; sourceTree = "<group>"; };
+		502608171BA170B000C572EE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		502608181BA170B000C572EE /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		502608191BA170B000C572EE /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		5026082A1BA1719600C572EE /* AiCubo2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AiCubo2.cpp; path = AiMubo/AiCubo2.cpp; sourceTree = "<group>"; };
+		502608E51BA1786E00C572EE /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundingBox.cpp; path = ../../RMXEngine/BoundingBox.cpp; sourceTree = "<group>"; };
+		502608E61BA1786E00C572EE /* BoundingBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BoundingBox.hpp; path = ../../RMXEngine/BoundingBox.hpp; sourceTree = "<group>"; };
+		502608E71BA1786E00C572EE /* BoundingSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundingSphere.cpp; path = ../../RMXEngine/BoundingSphere.cpp; sourceTree = "<group>"; };
+		502608E81BA1786E00C572EE /* BoundingSphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BoundingSphere.hpp; path = ../../RMXEngine/BoundingSphere.hpp; sourceTree = "<group>"; };
 		5055B0601BA0B1E90037B8A1 /* Accelorometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accelorometer.swift; sourceTree = "<group>"; };
 		5055B0611BA0B1E90037B8A1 /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		5055B0621BA0B1E90037B8A1 /* iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
@@ -506,10 +310,6 @@
 		50B2A4921B9145840041F112 /* SpriteBehaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SpriteBehaviour.hpp; path = ../../RMXEngine/SpriteBehaviour.hpp; sourceTree = "<group>"; };
 		50B2A4931B9145840041F112 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = ../../RMXEngine/Transform.cpp; sourceTree = "<group>"; };
 		50B2A4941B9145840041F112 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = ../../RMXEngine/Transform.hpp; sourceTree = "<group>"; };
-		50B2A4A61B9145A30041F112 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundingBox.cpp; path = ../../RMXKit/BoundingBox.cpp; sourceTree = "<group>"; };
-		50B2A4A71B9145A30041F112 /* BoundingBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BoundingBox.hpp; path = ../../RMXKit/BoundingBox.hpp; sourceTree = "<group>"; };
-		50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundingSphere.cpp; path = ../../RMXKit/BoundingSphere.cpp; sourceTree = "<group>"; };
-		50B2A4A91B9145A30041F112 /* BoundingSphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BoundingSphere.hpp; path = ../../RMXKit/BoundingSphere.hpp; sourceTree = "<group>"; };
 		50B2A4AA1B9145A30041F112 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = ../../RMXKit/Dictionary.cpp; sourceTree = "<group>"; };
 		50B2A4AB1B9145A30041F112 /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventListener.cpp; path = ../../RMXKit/EventListener.cpp; sourceTree = "<group>"; };
 		50B2A4AC1B9145A30041F112 /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Headers; path = ../../RMXKit/Headers; sourceTree = "<group>"; };
@@ -531,17 +331,12 @@
 		50B2A4CB1B914A280041F112 /* AiCubo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AiCubo.hpp; path = ../../AiCubo/AiCubo.hpp; sourceTree = "<group>"; };
 		50B2A4D11B91630A0041F112 /* AiCubo-cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AiCubo-cpp"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B2A4D31B91630A0041F112 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = ../../glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
 		50CFDE251B931304003EA656 /* VertexDataOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VertexDataOld.h; path = Source/VertexDataOld.h; sourceTree = "<group>"; };
 		50CFDE4E1B936843003EA656 /* AiMubo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiMubo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		50CFDE501B936843003EA656 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		50CFDE521B936843003EA656 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		50CFDE541B936843003EA656 /* Shadersold.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shadersold.metal; sourceTree = "<group>"; };
 		50CFDE561B936843003EA656 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50CFDE591B936843003EA656 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		50CFDE5B1B936843003EA656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50CFDE6A1B936993003EA656 /* AiMubo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AiMubo-Bridging-Header.h"; sourceTree = "<group>"; };
-		50CFDE8A1B938132003EA656 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		50D6BD291B986B93002A06A3 /* VertexData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = VertexData.c; path = ../../RMXEngine/VertexData.c; sourceTree = "<group>"; };
 		50D6BD2A1B986B93002A06A3 /* VertexData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VertexData.h; path = ../../RMXEngine/VertexData.h; sourceTree = "<group>"; };
 		50F9EEE81B9737F30040514B /* icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = icons.xcassets; sourceTree = "<group>"; };
@@ -578,7 +373,6 @@
 				508F77621B91667400BF7989 /* IOKit.framework in Frameworks */,
 				508F77601B91666600BF7989 /* Cocoa.framework in Frameworks */,
 				508F775E1B91664100BF7989 /* OpenGL.framework in Frameworks */,
-				50B2A54C1B9163E50041F112 /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,8 +481,8 @@
 				508F77611B91667400BF7989 /* IOKit.framework */,
 				508F775F1B91666600BF7989 /* Cocoa.framework */,
 				508F775D1B91664100BF7989 /* OpenGL.framework */,
-				50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */,
 				50B2A4CA1B914A280041F112 /* AiCubo.cpp */,
+				5026082A1BA1719600C572EE /* AiCubo2.cpp */,
 				50B2A4CB1B914A280041F112 /* AiCubo.hpp */,
 				5055B05E1BA0B1E90037B8A1 /* RMXSwiftKit */,
 				50B2A4C71B9145AB0041F112 /* RMXKit */,
@@ -777,50 +571,14 @@
 			path = "AiCubo-cpp";
 			sourceTree = "<group>";
 		};
-		50B2A4F21B9163CD0041F112 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				50B2A5151B9163CD0041F112 /* libglfw3.a */,
-				50B2A5171B9163CD0041F112 /* Boing.app */,
-				50B2A5191B9163CD0041F112 /* Gears.app */,
-				50B2A51B1B9163CD0041F112 /* Heightmap.app */,
-				50B2A51D1B9163CD0041F112 /* Particles.app */,
-				50B2A51F1B9163CD0041F112 /* Simple.app */,
-				50B2A5211B9163CD0041F112 /* SplitView.app */,
-				50B2A5231B9163CD0041F112 /* Wave.app */,
-				50B2A5251B9163CD0041F112 /* accuracy.app */,
-				50B2A5271B9163CD0041F112 /* clipboard */,
-				50B2A5291B9163CD0041F112 /* cursor */,
-				50B2A52B1B9163CD0041F112 /* cursoranim.app */,
-				50B2A52D1B9163CD0041F112 /* defaults */,
-				50B2A52F1B9163CD0041F112 /* empty.app */,
-				50B2A5311B9163CD0041F112 /* events */,
-				50B2A5331B9163CD0041F112 /* fsaa */,
-				50B2A5351B9163CD0041F112 /* gamma */,
-				50B2A5371B9163CD0041F112 /* glfwinfo */,
-				50B2A5391B9163CD0041F112 /* iconify */,
-				50B2A53B1B9163CD0041F112 /* joysticks */,
-				50B2A53D1B9163CD0041F112 /* monitors */,
-				50B2A53F1B9163CD0041F112 /* peter */,
-				50B2A5411B9163CD0041F112 /* reopen */,
-				50B2A5431B9163CD0041F112 /* sharing.app */,
-				50B2A5451B9163CD0041F112 /* tearing.app */,
-				50B2A5471B9163CD0041F112 /* threads.app */,
-				50B2A5491B9163CD0041F112 /* title.app */,
-				50B2A54B1B9163CD0041F112 /* windows.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		50CFDE4F1B936843003EA656 /* AiMubo */ = {
 			isa = PBXGroup;
 			children = (
-				50CFDE501B936843003EA656 /* AppDelegate.swift */,
-				50CFDE521B936843003EA656 /* GameViewController.swift */,
-				50134EE21B95053000E26F75 /* BufferProvider.swift */,
-				50CFDE541B936843003EA656 /* Shadersold.metal */,
-				50CFDE8A1B938132003EA656 /* Shaders.metal */,
 				50CFDE561B936843003EA656 /* Assets.xcassets */,
+				502608161BA170B000C572EE /* Uniforms.swift */,
+				502608171BA170B000C572EE /* AppDelegate.swift */,
+				502608181BA170B000C572EE /* GameViewController.swift */,
+				502608191BA170B000C572EE /* Shaders.metal */,
 				50CFDE581B936843003EA656 /* MainMenu.xib */,
 				50CFDE5B1B936843003EA656 /* Info.plist */,
 				50CFDE6A1B936993003EA656 /* AiMubo-Bridging-Header.h */,
@@ -831,8 +589,8 @@
 		50CFDE6F1B936ADC003EA656 /* cpp */ = {
 			isa = PBXGroup;
 			children = (
-				50B2A4A61B9145A30041F112 /* BoundingBox.cpp */,
-				50B2A4A81B9145A30041F112 /* BoundingSphere.cpp */,
+				502608E51BA1786E00C572EE /* BoundingBox.cpp */,
+				502608E71BA1786E00C572EE /* BoundingSphere.cpp */,
 				50B2A47D1B9145840041F112 /* GameController.cpp */,
 				50B2A47F1B9145840041F112 /* GameNode.cpp */,
 				50B2A4811B9145840041F112 /* GameView.cpp */,
@@ -856,8 +614,8 @@
 		50CFDE701B936AE5003EA656 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				50B2A4A71B9145A30041F112 /* BoundingBox.hpp */,
-				50B2A4A91B9145A30041F112 /* BoundingSphere.hpp */,
+				502608E61BA1786E00C572EE /* BoundingBox.hpp */,
+				502608E81BA1786E00C572EE /* BoundingSphere.hpp */,
 				50B2A47E1B9145840041F112 /* GameController.hpp */,
 				50B2A4801B9145840041F112 /* GameNode.hpp */,
 				50B2A4821B9145840041F112 /* GameView.hpp */,
@@ -947,7 +705,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				50B2A54E1B9163FB0041F112 /* PBXTargetDependency */,
 			);
 			name = "AiCubo-cpp";
 			productName = "AiCubo-cpp";
@@ -1010,12 +767,6 @@
 			mainGroup = 50B2A3E11B91402D0041F112;
 			productRefGroup = 50B2A3EB1B91402D0041F112 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 50B2A4F21B9163CD0041F112 /* Products */;
-					ProjectRef = 50B2A4F11B9163CD0041F112 /* GLFW.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				50B2A3E91B91402D0041F112 /* AiCubo */,
@@ -1026,205 +777,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		50B2A5151B9163CD0041F112 /* libglfw3.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libglfw3.a;
-			remoteRef = 50B2A5141B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5171B9163CD0041F112 /* Boing.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Boing.app;
-			remoteRef = 50B2A5161B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5191B9163CD0041F112 /* Gears.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Gears.app;
-			remoteRef = 50B2A5181B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A51B1B9163CD0041F112 /* Heightmap.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Heightmap.app;
-			remoteRef = 50B2A51A1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A51D1B9163CD0041F112 /* Particles.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Particles.app;
-			remoteRef = 50B2A51C1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A51F1B9163CD0041F112 /* Simple.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Simple.app;
-			remoteRef = 50B2A51E1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5211B9163CD0041F112 /* SplitView.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SplitView.app;
-			remoteRef = 50B2A5201B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5231B9163CD0041F112 /* Wave.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Wave.app;
-			remoteRef = 50B2A5221B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5251B9163CD0041F112 /* accuracy.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = accuracy.app;
-			remoteRef = 50B2A5241B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5271B9163CD0041F112 /* clipboard */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = clipboard;
-			remoteRef = 50B2A5261B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5291B9163CD0041F112 /* cursor */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = cursor;
-			remoteRef = 50B2A5281B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A52B1B9163CD0041F112 /* cursoranim.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = cursoranim.app;
-			remoteRef = 50B2A52A1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A52D1B9163CD0041F112 /* defaults */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = defaults;
-			remoteRef = 50B2A52C1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A52F1B9163CD0041F112 /* empty.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = empty.app;
-			remoteRef = 50B2A52E1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5311B9163CD0041F112 /* events */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = events;
-			remoteRef = 50B2A5301B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5331B9163CD0041F112 /* fsaa */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = fsaa;
-			remoteRef = 50B2A5321B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5351B9163CD0041F112 /* gamma */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = gamma;
-			remoteRef = 50B2A5341B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5371B9163CD0041F112 /* glfwinfo */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = glfwinfo;
-			remoteRef = 50B2A5361B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5391B9163CD0041F112 /* iconify */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = iconify;
-			remoteRef = 50B2A5381B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A53B1B9163CD0041F112 /* joysticks */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = joysticks;
-			remoteRef = 50B2A53A1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A53D1B9163CD0041F112 /* monitors */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = monitors;
-			remoteRef = 50B2A53C1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A53F1B9163CD0041F112 /* peter */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = peter;
-			remoteRef = 50B2A53E1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5411B9163CD0041F112 /* reopen */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = reopen;
-			remoteRef = 50B2A5401B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5431B9163CD0041F112 /* sharing.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = sharing.app;
-			remoteRef = 50B2A5421B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5451B9163CD0041F112 /* tearing.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = tearing.app;
-			remoteRef = 50B2A5441B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5471B9163CD0041F112 /* threads.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = threads.app;
-			remoteRef = 50B2A5461B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A5491B9163CD0041F112 /* title.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = title.app;
-			remoteRef = 50B2A5481B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50B2A54B1B9163CD0041F112 /* windows.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = windows.app;
-			remoteRef = 50B2A54A1B9163CD0041F112 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		506F11261B989E2D00A4F10F /* Resources */ = {
@@ -1282,21 +834,17 @@
 			files = (
 				506F114A1B98A06300A4F10F /* Camera.cpp in Sources */,
 				506F114E1B98A06300A4F10F /* Geometry.cpp in Sources */,
-				506F11451B98A06300A4F10F /* BoundingSphere.cpp in Sources */,
 				506F11471B98A06300A4F10F /* GameNode.cpp in Sources */,
 				506F11541B98A06300A4F10F /* SpriteBehaviour.cpp in Sources */,
-				506F11421B989F7500A4F10F /* GameViewController.swift in Sources */,
 				506F11521B98A06300A4F10F /* RMXMath.cpp in Sources */,
 				506F11531B98A06300A4F10F /* Scene.cpp in Sources */,
 				506F114C1B98A06300A4F10F /* CollisionEvent.cpp in Sources */,
-				506F11441B98A06300A4F10F /* BoundingBox.cpp in Sources */,
 				506F11431B98A04F00A4F10F /* VertexData.c in Sources */,
 				506F11591B98A06E00A4F10F /* NotificationCenter.cpp in Sources */,
 				506F11511B98A06300A4F10F /* PhysicsWorld.cpp in Sources */,
 				506F115A1B98A06E00A4F10F /* Object.cpp in Sources */,
 				506F11461B98A06300A4F10F /* GameController.cpp in Sources */,
 				506F11561B98A06E00A4F10F /* Dictionary.cpp in Sources */,
-				506F11681B98A0B200A4F10F /* Shaders.metal in Sources */,
 				506F114D1B98A06300A4F10F /* EntityGenerator.cpp in Sources */,
 				506F11491B98A06300A4F10F /* Behaviour.cpp in Sources */,
 				506F11501B98A06300A4F10F /* PhysicsBody.cpp in Sources */,
@@ -1320,7 +868,6 @@
 				506F117D1B98A70B00A4F10F /* GameController.cpp in Sources */,
 				506F117E1B98A70B00A4F10F /* GameNode.cpp in Sources */,
 				506F119B1B98A73600A4F10F /* AiCubo.cpp in Sources */,
-				506F117C1B98A70B00A4F10F /* BoundingSphere.cpp in Sources */,
 				5055B07C1BA0B1E90037B8A1 /* MobileInput.swift in Sources */,
 				506F11901B98A71600A4F10F /* Dictionary.cpp in Sources */,
 				5055B0841BA0B1E90037B8A1 /* RMSMaths.swift in Sources */,
@@ -1346,7 +893,6 @@
 				5055B07E1BA0B1E90037B8A1 /* DesktopInput.swift in Sources */,
 				506F11831B98A70B00A4F10F /* CollisionEvent.cpp in Sources */,
 				506F118D1B98A71100A4F10F /* LinkedList.cpp in Sources */,
-				506F117B1B98A70B00A4F10F /* BoundingBox.cpp in Sources */,
 				5055B07A1BA0B1E90037B8A1 /* iOSControllers.swift in Sources */,
 				506F11881B98A70B00A4F10F /* PhysicsWorld.cpp in Sources */,
 				506F11821B98A70B00A4F10F /* CollisionBody.cpp in Sources */,
@@ -1381,6 +927,7 @@
 				50B2A4981B9145840041F112 /* CollisionEvent.cpp in Sources */,
 				5055B0751BA0B1E90037B8A1 /* Buttons.swift in Sources */,
 				5055B0931BA0B1E90037B8A1 /* RMXInterface.swift in Sources */,
+				502608E91BA1786E00C572EE /* BoundingBox.cpp in Sources */,
 				5055B09A1BA0B2090037B8A1 /* CppBridge.mm in Sources */,
 				50B2A3F41B91402D0041F112 /* GameViewController.swift in Sources */,
 				50B2A4A41B9145840041F112 /* Transform.cpp in Sources */,
@@ -1393,8 +940,8 @@
 				50B2A49E1B9145840041F112 /* NodeComponent.cpp in Sources */,
 				5055B0731BA0B1E90037B8A1 /* Accelorometer.swift in Sources */,
 				50B2A4C81B9148570041F112 /* GameController.cpp in Sources */,
-				50B2A4BD1B9145A30041F112 /* BoundingSphere.cpp in Sources */,
 				50B2A3EE1B91402D0041F112 /* AppDelegate.swift in Sources */,
+				502608EB1BA1786E00C572EE /* BoundingSphere.cpp in Sources */,
 				5055B0791BA0B1E90037B8A1 /* iOSControllers.swift in Sources */,
 				50B2A4951B9145840041F112 /* Behaviour.cpp in Sources */,
 				50B2A4A11B9145840041F112 /* RMXMath.cpp in Sources */,
@@ -1403,7 +950,6 @@
 				50B2A4A01B9145840041F112 /* PhysicsWorld.cpp in Sources */,
 				50B2A49F1B9145840041F112 /* PhysicsBody.cpp in Sources */,
 				50B2A4BF1B9145A30041F112 /* EventListener.cpp in Sources */,
-				50B2A4BC1B9145A30041F112 /* BoundingBox.cpp in Sources */,
 				5055B08B1BA0B1E90037B8A1 /* RMXValue.swift in Sources */,
 				5055B0891BA0B1E90037B8A1 /* RMXFunctions.swift in Sources */,
 				5055B0851BA0B1E90037B8A1 /* RMX.swift in Sources */,
@@ -1431,11 +977,9 @@
 				50B2A4DB1B9163450041F112 /* EventListener.cpp in Sources */,
 				50B2A4E41B9163760041F112 /* CollisionEvent.cpp in Sources */,
 				50B2A4DA1B9163450041F112 /* Dictionary.cpp in Sources */,
-				50B2A4D91B9163450041F112 /* BoundingSphere.cpp in Sources */,
 				50B2A4E91B9163760041F112 /* Geometry.cpp in Sources */,
 				50B2A4EC1B9163760041F112 /* PhysicsWorld.cpp in Sources */,
 				50B2A4EA1B9163760041F112 /* NodeComponent.cpp in Sources */,
-				50B2A4D81B9163450041F112 /* BoundingBox.cpp in Sources */,
 				50B2A4DD1B91634C0041F112 /* LinkedList.cpp in Sources */,
 				50B2A4DE1B91634C0041F112 /* NotificationCenter.cpp in Sources */,
 				50B2A4DF1B91634C0041F112 /* Object.cpp in Sources */,
@@ -1446,46 +990,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5026081D1BA170B000C572EE /* Shaders.metal in Sources */,
+				5026081C1BA170B000C572EE /* GameViewController.swift in Sources */,
 				50CFDE801B936B0A003EA656 /* SpriteBehaviour.cpp in Sources */,
 				50CFDE781B936B0A003EA656 /* EntityGenerator.cpp in Sources */,
+				5026081A1BA170B000C572EE /* Uniforms.swift in Sources */,
 				50CFDE731B936B0A003EA656 /* GameView.cpp in Sources */,
-				50134EE11B94FCDA00E26F75 /* Shaders.metal in Sources */,
+				502608261BA170DA00C572EE /* UserActions.swift in Sources */,
 				50CFDE711B936B0A003EA656 /* GameController.cpp in Sources */,
 				50D6BD2B1B986B93002A06A3 /* VertexData.c in Sources */,
+				5026082B1BA1719600C572EE /* AiCubo2.cpp in Sources */,
+				502608271BA170DF00C572EE /* RMXInterface.swift in Sources */,
+				502608EC1BA1786E00C572EE /* BoundingSphere.cpp in Sources */,
 				50CFDE811B936B0A003EA656 /* Transform.cpp in Sources */,
 				50CFDE871B936B34003EA656 /* NotificationCenter.cpp in Sources */,
+				502608281BA1711800C572EE /* CppBridge.mm in Sources */,
 				50CFDE7D1B936B0A003EA656 /* RMXMath.cpp in Sources */,
+				502608211BA170DA00C572EE /* RMSMaths.swift in Sources */,
 				50CFDE761B936B0A003EA656 /* CollisionBody.cpp in Sources */,
 				50CFDE7A1B936B0A003EA656 /* NodeComponent.cpp in Sources */,
 				50CFDE741B936B0A003EA656 /* Behaviour.cpp in Sources */,
-				50CFDE531B936843003EA656 /* GameViewController.swift in Sources */,
 				50CFDE881B936B34003EA656 /* Object.cpp in Sources */,
 				50CFDE841B936B15003EA656 /* Dictionary.cpp in Sources */,
 				50CFDE861B936B34003EA656 /* LinkedList.cpp in Sources */,
-				50CFDE821B936B15003EA656 /* BoundingBox.cpp in Sources */,
+				502608291BA1711800C572EE /* GeometryIterator.mm in Sources */,
 				50CFDE7C1B936B0A003EA656 /* PhysicsWorld.cpp in Sources */,
-				50CFDE511B936843003EA656 /* AppDelegate.swift in Sources */,
-				50CFDE891B936B4C003EA656 /* AiCubo.cpp in Sources */,
 				50CFDE791B936B0A003EA656 /* Geometry.cpp in Sources */,
 				50CFDE721B936B0A003EA656 /* GameNode.cpp in Sources */,
 				50CFDE851B936B15003EA656 /* EventListener.cpp in Sources */,
+				502608251BA170DA00C572EE /* RMXValue.swift in Sources */,
+				5026081B1BA170B000C572EE /* AppDelegate.swift in Sources */,
 				50CFDE751B936B0A003EA656 /* Camera.cpp in Sources */,
-				50CFDE831B936B15003EA656 /* BoundingSphere.cpp in Sources */,
+				502608241BA170DA00C572EE /* RMXFunctions.swift in Sources */,
 				50CFDE7F1B936B0A003EA656 /* Scene.cpp in Sources */,
 				50CFDE7B1B936B0A003EA656 /* PhysicsBody.cpp in Sources */,
 				50CFDE771B936B0A003EA656 /* CollisionEvent.cpp in Sources */,
+				502608231BA170DA00C572EE /* RMXDebugger.swift in Sources */,
+				5026081F1BA170D500C572EE /* OSX.swift in Sources */,
+				502608221BA170DA00C572EE /* RMX.swift in Sources */,
+				502608EA1BA1786E00C572EE /* BoundingBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		50B2A54E1B9163FB0041F112 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = glfw;
-			targetProxy = 50B2A54D1B9163FB0041F112 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		506F11301B989E2D00A4F10F /* Main.storyboard */ = {

@@ -10,40 +10,95 @@
 		5008469A1B85EB2E003D2470 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500846991B85EB2E003D2470 /* Cocoa.framework */; };
 		5008469C1B85EB35003D2470 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008469B1B85EB35003D2470 /* CoreVideo.framework */; };
 		5008469E1B85EB4F003D2470 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008469D1B85EB4F003D2470 /* IOKit.framework */; };
-		5026F9C51B8B7AAC00237AD7 /* EntityGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026F9C31B8B7AAC00237AD7 /* EntityGenerator.cpp */; };
+		502608791BA1743800C572EE /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026084E1BA1743800C572EE /* Behaviour.cpp */; };
+		5026087B1BA1743800C572EE /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608501BA1743800C572EE /* Camera.cpp */; };
+		5026087D1BA1743800C572EE /* CollisionBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608521BA1743800C572EE /* CollisionBody.cpp */; };
+		5026087F1BA1743800C572EE /* CollisionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608541BA1743800C572EE /* CollisionEvent.cpp */; };
+		502608811BA1743800C572EE /* EntityGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608571BA1743800C572EE /* EntityGenerator.cpp */; };
+		502608831BA1743800C572EE /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608591BA1743800C572EE /* GameController.cpp */; };
+		502608851BA1743800C572EE /* GameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026085B1BA1743800C572EE /* GameNode.cpp */; };
+		502608871BA1743800C572EE /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026085D1BA1743800C572EE /* GameView.cpp */; };
+		502608891BA1743800C572EE /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026085F1BA1743800C572EE /* Geometry.cpp */; };
+		5026088B1BA1743800C572EE /* NodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608621BA1743800C572EE /* NodeComponent.cpp */; };
+		502608911BA1743800C572EE /* Uniforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608691BA1743800C572EE /* Uniforms.swift */; };
+		502608931BA1743800C572EE /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026086A1BA1743800C572EE /* PhysicsBody.cpp */; };
+		502608951BA1743800C572EE /* PhysicsWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026086C1BA1743800C572EE /* PhysicsWorld.cpp */; };
+		502608971BA1743800C572EE /* RMXMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026086F1BA1743800C572EE /* RMXMath.cpp */; };
+		502608991BA1743800C572EE /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608711BA1743800C572EE /* Scene.cpp */; };
+		5026089B1BA1743800C572EE /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608731BA1743800C572EE /* SpriteBehaviour.cpp */; };
+		5026089D1BA1743800C572EE /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608751BA1743800C572EE /* Transform.cpp */; };
+		5026089F1BA1743800C572EE /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 502608771BA1743800C572EE /* VertexData.c */; };
+		502608C21BA1747400C572EE /* OSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AA1BA1747400C572EE /* OSX.swift */; };
+		502608C61BA1747400C572EE /* RMSMaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AC1BA1747400C572EE /* RMSMaths.swift */; };
+		502608C81BA1747400C572EE /* RMX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AD1BA1747400C572EE /* RMX.swift */; };
+		502608CA1BA1747400C572EE /* RMXDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AE1BA1747400C572EE /* RMXDebugger.swift */; };
+		502608CC1BA1747400C572EE /* RMXFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AF1BA1747400C572EE /* RMXFunctions.swift */; };
+		502608CE1BA1747400C572EE /* RMXValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608B01BA1747400C572EE /* RMXValue.swift */; };
+		502608D01BA1747400C572EE /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608B11BA1747400C572EE /* UserActions.swift */; };
+		502608DD1BA174EF00C572EE /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608D91BA174EF00C572EE /* BoundingBox.cpp */; };
+		502608DF1BA174EF00C572EE /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608DB1BA174EF00C572EE /* BoundingSphere.cpp */; };
 		503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
 		503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
 		503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */; };
 		503A23C81B6A69BF008F89F6 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503A23C61B6A69BF008F89F6 /* EventListener.cpp */; };
-		5044D91D1B874593003B4AE2 /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9021B874593003B4AE2 /* Behaviour.cpp */; };
-		5044D91E1B874593003B4AE2 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9041B874593003B4AE2 /* Camera.cpp */; };
-		5044D91F1B874593003B4AE2 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9071B874593003B4AE2 /* GameController.cpp */; };
-		5044D9201B874593003B4AE2 /* GameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9091B874593003B4AE2 /* GameNode.cpp */; };
-		5044D9211B874593003B4AE2 /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D90B1B874593003B4AE2 /* GameView.cpp */; };
-		5044D9221B874593003B4AE2 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D90D1B874593003B4AE2 /* Geometry.cpp */; };
-		5044D9231B874593003B4AE2 /* NodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9101B874593003B4AE2 /* NodeComponent.cpp */; };
-		5044D9241B874593003B4AE2 /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9121B874593003B4AE2 /* PhysicsBody.cpp */; };
-		5044D9251B874593003B4AE2 /* PhysicsWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9141B874593003B4AE2 /* PhysicsWorld.cpp */; };
-		5044D9261B874593003B4AE2 /* RMXMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9171B874593003B4AE2 /* RMXMath.cpp */; };
-		5044D9271B874593003B4AE2 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D9191B874593003B4AE2 /* Scene.cpp */; };
-		5044D9281B874593003B4AE2 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5044D91B1B874593003B4AE2 /* Transform.cpp */; };
 		5076A84F1B84F1C5008A07AF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84D1B84F1C5008A07AF /* GLKit.framework */; };
 		5076A8501B84F1C5008A07AF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84E1B84F1C5008A07AF /* OpenGL.framework */; };
 		508726AE1B8294E600E631BE /* test2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726AC1B8294E600E631BE /* test2.cpp */; };
-		50B2A3B41B913E9D0041F112 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A3B31B913E9D0041F112 /* AppDelegate.swift */; };
-		50B2A3B61B913E9D0041F112 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A3B51B913E9D0041F112 /* GameViewController.swift */; };
-		50B2A3B81B913E9D0041F112 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A3B71B913E9D0041F112 /* Shaders.metal */; };
-		50B2A3BA1B913E9D0041F112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B2A3B91B913E9D0041F112 /* Assets.xcassets */; };
-		50B2A3BD1B913E9E0041F112 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B2A3BB1B913E9E0041F112 /* MainMenu.xib */; };
-		50C1CABD1B8DD49F00B7B2B4 /* CollisionBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CABB1B8DD49F00B7B2B4 /* CollisionBody.cpp */; };
-		50C1CADF1B8DD4AB00B7B2B4 /* CollisionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CADD1B8DD4AB00B7B2B4 /* CollisionEvent.cpp */; };
-		50C1CAE21B8DD4B600B7B2B4 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE01B8DD4B600B7B2B4 /* BoundingBox.cpp */; };
-		50C1CAE51B8DD4C000B7B2B4 /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE31B8DD4C000B7B2B4 /* BoundingSphere.cpp */; };
-		50C1CAE81B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE61B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp */; };
 		50C1CAEB1B8E0B4500B7B2B4 /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE91B8E0B4500B7B2B4 /* AiCubo.cpp */; };
 		50C811921B87447F0001FBFE /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C811591B8744700001FBFE /* libglfw3.a */; };
-		50CFDE8F1B9399C3003EA656 /* VertexData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CFDE8D1B9399C3003EA656 /* VertexData.cpp */; };
-		6C0DA6661B70EB4500A4325E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
+		50E52CF31BA17C1A002EDECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E52CF21BA17C1A002EDECD /* AppDelegate.swift */; };
+		50E52CF51BA17C1A002EDECD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50E52CF41BA17C1A002EDECD /* Assets.xcassets */; };
+		50E52CF81BA17C1A002EDECD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50E52CF61BA17C1A002EDECD /* MainMenu.xib */; };
+		50E52CFD1BA17C34002EDECD /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C1CAE91B8E0B4500B7B2B4 /* AiCubo.cpp */; };
+		50E52CFE1BA17C67002EDECD /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026084E1BA1743800C572EE /* Behaviour.cpp */; };
+		50E52CFF1BA17C67002EDECD /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608501BA1743800C572EE /* Camera.cpp */; };
+		50E52D001BA17C67002EDECD /* CollisionBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608521BA1743800C572EE /* CollisionBody.cpp */; };
+		50E52D011BA17C67002EDECD /* CollisionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608541BA1743800C572EE /* CollisionEvent.cpp */; };
+		50E52D021BA17C67002EDECD /* EntityGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608571BA1743800C572EE /* EntityGenerator.cpp */; };
+		50E52D031BA17C67002EDECD /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608591BA1743800C572EE /* GameController.cpp */; };
+		50E52D041BA17C67002EDECD /* GameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026085B1BA1743800C572EE /* GameNode.cpp */; };
+		50E52D051BA17C67002EDECD /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026085D1BA1743800C572EE /* GameView.cpp */; };
+		50E52D061BA17C67002EDECD /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608D91BA174EF00C572EE /* BoundingBox.cpp */; };
+		50E52D071BA17C67002EDECD /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608DB1BA174EF00C572EE /* BoundingSphere.cpp */; };
+		50E52D081BA17C67002EDECD /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026085F1BA1743800C572EE /* Geometry.cpp */; };
+		50E52D091BA17C67002EDECD /* NodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608621BA1743800C572EE /* NodeComponent.cpp */; };
+		50E52D0A1BA17C6E002EDECD /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
+		50E52D0B1BA17C6E002EDECD /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
+		50E52D0C1BA17C6E002EDECD /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EB10C1B710D87003F6156 /* Object.cpp */; };
+		50E52D0E1BA17C6E002EDECD /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */; };
+		50E52D0F1BA17C6E002EDECD /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503A23C61B6A69BF008F89F6 /* EventListener.cpp */; };
+		50E52D101BA17C82002EDECD /* OSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AA1BA1747400C572EE /* OSX.swift */; };
+		50E52D121BA17C87002EDECD /* RMX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AD1BA1747400C572EE /* RMX.swift */; };
+		50E52D131BA17C87002EDECD /* RMXDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AE1BA1747400C572EE /* RMXDebugger.swift */; };
+		50E52D141BA17C87002EDECD /* RMXFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AF1BA1747400C572EE /* RMXFunctions.swift */; };
+		50E52D151BA17C87002EDECD /* RMXValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608B01BA1747400C572EE /* RMXValue.swift */; };
+		50E52D161BA17C87002EDECD /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608B11BA1747400C572EE /* UserActions.swift */; };
+		50E52D171BA17CAE002EDECD /* CppBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 502608661BA1743800C572EE /* CppBridge.mm */; };
+		50E52D181BA17CAE002EDECD /* GeometryIterator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 502608681BA1743800C572EE /* GeometryIterator.mm */; };
+		50E52D191BA17CAE002EDECD /* Uniforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608691BA1743800C572EE /* Uniforms.swift */; };
+		50E52D1D1BA17DE6002EDECD /* RMSMaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502608AC1BA1747400C572EE /* RMSMaths.swift */; };
+		50E52D1E1BA17E22002EDECD /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026086A1BA1743800C572EE /* PhysicsBody.cpp */; };
+		50E52D1F1BA17E22002EDECD /* PhysicsWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026086C1BA1743800C572EE /* PhysicsWorld.cpp */; };
+		50E52D201BA17E22002EDECD /* RMXMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5026086F1BA1743800C572EE /* RMXMath.cpp */; };
+		50E52D211BA17E22002EDECD /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608711BA1743800C572EE /* Scene.cpp */; };
+		50E52D221BA17E22002EDECD /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608731BA1743800C572EE /* SpriteBehaviour.cpp */; };
+		50E52D231BA17E22002EDECD /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608751BA1743800C572EE /* Transform.cpp */; };
+		50E52D241BA17E22002EDECD /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 502608771BA1743800C572EE /* VertexData.c */; };
+		50E52D261BA17E51002EDECD /* RMXWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E52D251BA17E51002EDECD /* RMXWindow.swift */; };
+		50E52D271BA17E51002EDECD /* RMXWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E52D251BA17E51002EDECD /* RMXWindow.swift */; };
+		50E52D291BA17ED7002EDECD /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E52D281BA17ED7002EDECD /* Window.swift */; };
+		50E52D2A1BA17ED7002EDECD /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E52D281BA17ED7002EDECD /* Window.swift */; };
+		50E52D2D1BA17F89002EDECD /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C811591B8744700001FBFE /* libglfw3.a */; };
+		50E52D2E1BA18267002EDECD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008469D1B85EB4F003D2470 /* IOKit.framework */; };
+		50E52D2F1BA18272002EDECD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008469B1B85EB35003D2470 /* CoreVideo.framework */; };
+		50E52D301BA18278002EDECD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500846991B85EB2E003D2470 /* Cocoa.framework */; };
+		50E52D311BA18282002EDECD /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84D1B84F1C5008A07AF /* GLKit.framework */; };
+		50E52D321BA18289002EDECD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5076A84E1B84F1C5008A07AF /* OpenGL.framework */; };
+		50E52D371BA1863B002EDECD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
+		50E52D391BA18675002EDECD /* GLFWView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50E52D381BA18675002EDECD /* GLFWView.mm */; };
+		50E52D3A1BA18675002EDECD /* GLFWView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50E52D381BA18675002EDECD /* GLFWView.mm */; };
+		50E52D3D1BA18970002EDECD /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E52D3C1BA18970002EDECD /* GLViewController.swift */; };
+		50E52D3E1BA18970002EDECD /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E52D3C1BA18970002EDECD /* GLViewController.swift */; };
 		6C0DA6671B70EB9B00A4325E /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
 		6C0DA6681B70EB9B00A4325E /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
 		6C0DA66A1B70EB9B00A4325E /* RMXKit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C501B679E6500AD2FAC /* RMXKit.cpp */; };
@@ -266,6 +321,13 @@
 			remoteGlobalIDString = 50B02DD8DBC64912945DF1E2;
 			remoteInfo = glfw;
 		};
+		50E52D2B1BA17F5A002EDECD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 50B02DD8DBC64912945DF1E2;
+			remoteInfo = glfw;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -284,36 +346,70 @@
 		500846991B85EB2E003D2470 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5008469B1B85EB35003D2470 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5008469D1B85EB4F003D2470 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		5026F9C31B8B7AAC00237AD7 /* EntityGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EntityGenerator.cpp; path = RMXEngine/EntityGenerator.cpp; sourceTree = SOURCE_ROOT; };
-		5026F9C41B8B7AAC00237AD7 /* EntityGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EntityGenerator.hpp; path = RMXEngine/EntityGenerator.hpp; sourceTree = SOURCE_ROOT; };
+		5026084E1BA1743800C572EE /* Behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Behaviour.cpp; sourceTree = "<group>"; };
+		5026084F1BA1743800C572EE /* Behaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Behaviour.hpp; sourceTree = "<group>"; };
+		502608501BA1743800C572EE /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		502608511BA1743800C572EE /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
+		502608521BA1743800C572EE /* CollisionBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionBody.cpp; sourceTree = "<group>"; };
+		502608531BA1743800C572EE /* CollisionBody.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CollisionBody.hpp; sourceTree = "<group>"; };
+		502608541BA1743800C572EE /* CollisionEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionEvent.cpp; sourceTree = "<group>"; };
+		502608551BA1743800C572EE /* CollisionEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CollisionEvent.hpp; sourceTree = "<group>"; };
+		502608561BA1743800C572EE /* Delegates.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Delegates.hpp; sourceTree = "<group>"; };
+		502608571BA1743800C572EE /* EntityGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EntityGenerator.cpp; sourceTree = "<group>"; };
+		502608581BA1743800C572EE /* EntityGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EntityGenerator.hpp; sourceTree = "<group>"; };
+		502608591BA1743800C572EE /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
+		5026085A1BA1743800C572EE /* GameController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameController.hpp; sourceTree = "<group>"; };
+		5026085B1BA1743800C572EE /* GameNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameNode.cpp; sourceTree = "<group>"; };
+		5026085C1BA1743800C572EE /* GameNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameNode.hpp; sourceTree = "<group>"; };
+		5026085D1BA1743800C572EE /* GameView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameView.cpp; sourceTree = "<group>"; };
+		5026085E1BA1743800C572EE /* GameView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameView.hpp; sourceTree = "<group>"; };
+		5026085F1BA1743800C572EE /* Geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
+		502608601BA1743800C572EE /* Geometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Geometry.hpp; sourceTree = "<group>"; };
+		502608611BA1743800C572EE /* Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Includes.h; sourceTree = "<group>"; };
+		502608621BA1743800C572EE /* NodeComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeComponent.cpp; sourceTree = "<group>"; };
+		502608631BA1743800C572EE /* NodeComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NodeComponent.hpp; sourceTree = "<group>"; };
+		502608651BA1743800C572EE /* CppBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CppBridge.h; sourceTree = "<group>"; };
+		502608661BA1743800C572EE /* CppBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CppBridge.mm; sourceTree = "<group>"; };
+		502608671BA1743800C572EE /* GeometryIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometryIterator.h; sourceTree = "<group>"; };
+		502608681BA1743800C572EE /* GeometryIterator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeometryIterator.mm; sourceTree = "<group>"; };
+		502608691BA1743800C572EE /* Uniforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uniforms.swift; sourceTree = "<group>"; };
+		5026086A1BA1743800C572EE /* PhysicsBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBody.cpp; sourceTree = "<group>"; };
+		5026086B1BA1743800C572EE /* PhysicsBody.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhysicsBody.hpp; sourceTree = "<group>"; };
+		5026086C1BA1743800C572EE /* PhysicsWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsWorld.cpp; sourceTree = "<group>"; };
+		5026086D1BA1743800C572EE /* PhysicsWorld.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhysicsWorld.hpp; sourceTree = "<group>"; };
+		5026086E1BA1743800C572EE /* RMXEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RMXEngine.hpp; sourceTree = "<group>"; };
+		5026086F1BA1743800C572EE /* RMXMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RMXMath.cpp; sourceTree = "<group>"; };
+		502608701BA1743800C572EE /* RMXMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RMXMath.hpp; sourceTree = "<group>"; };
+		502608711BA1743800C572EE /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		502608721BA1743800C572EE /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
+		502608731BA1743800C572EE /* SpriteBehaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBehaviour.cpp; sourceTree = "<group>"; };
+		502608741BA1743800C572EE /* SpriteBehaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpriteBehaviour.hpp; sourceTree = "<group>"; };
+		502608751BA1743800C572EE /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transform.cpp; sourceTree = "<group>"; };
+		502608761BA1743800C572EE /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Transform.hpp; sourceTree = "<group>"; };
+		502608771BA1743800C572EE /* VertexData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = VertexData.c; sourceTree = "<group>"; };
+		502608781BA1743800C572EE /* VertexData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertexData.h; sourceTree = "<group>"; };
+		502608A31BA1747400C572EE /* Accelorometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accelorometer.swift; sourceTree = "<group>"; };
+		502608A41BA1747400C572EE /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		502608A51BA1747400C572EE /* iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
+		502608A61BA1747400C572EE /* iOSControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSControllers.swift; sourceTree = "<group>"; };
+		502608A71BA1747400C572EE /* MobileInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileInput.swift; sourceTree = "<group>"; };
+		502608A91BA1747400C572EE /* DesktopInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopInput.swift; sourceTree = "<group>"; };
+		502608AA1BA1747400C572EE /* OSX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSX.swift; sourceTree = "<group>"; };
+		502608AB1BA1747400C572EE /* RMKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMKey.swift; sourceTree = "<group>"; };
+		502608AC1BA1747400C572EE /* RMSMaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSMaths.swift; sourceTree = "<group>"; };
+		502608AD1BA1747400C572EE /* RMX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMX.swift; sourceTree = "<group>"; };
+		502608AE1BA1747400C572EE /* RMXDebugger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXDebugger.swift; sourceTree = "<group>"; };
+		502608AF1BA1747400C572EE /* RMXFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXFunctions.swift; sourceTree = "<group>"; };
+		502608B01BA1747400C572EE /* RMXValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXValue.swift; sourceTree = "<group>"; };
+		502608B11BA1747400C572EE /* UserActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActions.swift; sourceTree = "<group>"; };
+		502608B31BA1747400C572EE /* ActionProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionProcessor.swift; sourceTree = "<group>"; };
+		502608B41BA1747400C572EE /* RMXAudioVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXAudioVideo.swift; sourceTree = "<group>"; };
+		502608B51BA1747400C572EE /* RMXInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXInterface.swift; sourceTree = "<group>"; };
+		502608D91BA174EF00C572EE /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = "<group>"; };
+		502608DA1BA174EF00C572EE /* BoundingBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundingBox.hpp; sourceTree = "<group>"; };
+		502608DB1BA174EF00C572EE /* BoundingSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingSphere.cpp; sourceTree = "<group>"; };
+		502608DC1BA174EF00C572EE /* BoundingSphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundingSphere.hpp; sourceTree = "<group>"; };
 		503A23C61B6A69BF008F89F6 /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventListener.cpp; sourceTree = "<group>"; };
-		5044D9021B874593003B4AE2 /* Behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Behaviour.cpp; path = RMXEngine/Behaviour.cpp; sourceTree = SOURCE_ROOT; };
-		5044D9031B874593003B4AE2 /* Behaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Behaviour.hpp; path = RMXEngine/Behaviour.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9041B874593003B4AE2 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = RMXEngine/Camera.cpp; sourceTree = SOURCE_ROOT; };
-		5044D9051B874593003B4AE2 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = RMXEngine/Camera.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9061B874593003B4AE2 /* Delegates.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Delegates.hpp; path = RMXEngine/Delegates.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9071B874593003B4AE2 /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameController.cpp; path = RMXEngine/GameController.cpp; sourceTree = SOURCE_ROOT; };
-		5044D9081B874593003B4AE2 /* GameController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GameController.hpp; path = RMXEngine/GameController.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9091B874593003B4AE2 /* GameNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameNode.cpp; path = RMXEngine/GameNode.cpp; sourceTree = SOURCE_ROOT; };
-		5044D90A1B874593003B4AE2 /* GameNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GameNode.hpp; path = RMXEngine/GameNode.hpp; sourceTree = SOURCE_ROOT; };
-		5044D90B1B874593003B4AE2 /* GameView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameView.cpp; path = RMXEngine/GameView.cpp; sourceTree = SOURCE_ROOT; };
-		5044D90C1B874593003B4AE2 /* GameView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GameView.hpp; path = RMXEngine/GameView.hpp; sourceTree = SOURCE_ROOT; };
-		5044D90D1B874593003B4AE2 /* Geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Geometry.cpp; path = RMXEngine/Geometry.cpp; sourceTree = SOURCE_ROOT; };
-		5044D90E1B874593003B4AE2 /* Geometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Geometry.hpp; path = RMXEngine/Geometry.hpp; sourceTree = SOURCE_ROOT; };
-		5044D90F1B874593003B4AE2 /* Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Includes.h; path = RMXEngine/Includes.h; sourceTree = SOURCE_ROOT; };
-		5044D9101B874593003B4AE2 /* NodeComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NodeComponent.cpp; path = RMXEngine/NodeComponent.cpp; sourceTree = SOURCE_ROOT; };
-		5044D9111B874593003B4AE2 /* NodeComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NodeComponent.hpp; path = RMXEngine/NodeComponent.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9121B874593003B4AE2 /* PhysicsBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhysicsBody.cpp; path = RMXEngine/PhysicsBody.cpp; sourceTree = SOURCE_ROOT; };
-		5044D9131B874593003B4AE2 /* PhysicsBody.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PhysicsBody.hpp; path = RMXEngine/PhysicsBody.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9141B874593003B4AE2 /* PhysicsWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhysicsWorld.cpp; path = RMXEngine/PhysicsWorld.cpp; sourceTree = SOURCE_ROOT; };
-		5044D9151B874593003B4AE2 /* PhysicsWorld.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PhysicsWorld.hpp; path = RMXEngine/PhysicsWorld.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9161B874593003B4AE2 /* RMXEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RMXEngine.hpp; path = RMXEngine/RMXEngine.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9171B874593003B4AE2 /* RMXMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RMXMath.cpp; path = RMXEngine/RMXMath.cpp; sourceTree = SOURCE_ROOT; };
-		5044D9181B874593003B4AE2 /* RMXMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RMXMath.hpp; path = RMXEngine/RMXMath.hpp; sourceTree = SOURCE_ROOT; };
-		5044D9191B874593003B4AE2 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scene.cpp; path = RMXEngine/Scene.cpp; sourceTree = SOURCE_ROOT; };
-		5044D91A1B874593003B4AE2 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Scene.hpp; path = RMXEngine/Scene.hpp; sourceTree = SOURCE_ROOT; };
-		5044D91B1B874593003B4AE2 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = RMXEngine/Transform.cpp; sourceTree = SOURCE_ROOT; };
-		5044D91C1B874593003B4AE2 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = RMXEngine/Transform.hpp; sourceTree = SOURCE_ROOT; };
 		5044D9291B874664003B4AE2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = AiCubo/tools/Constants.h; sourceTree = SOURCE_ROOT; };
 		5044D92A1B874664003B4AE2 /* GLFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLFacade.cpp; path = AiCubo/tools/GLFacade.cpp; sourceTree = SOURCE_ROOT; };
 		5044D92B1B874664003B4AE2 /* GLFacade.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLFacade.hpp; path = AiCubo/tools/GLFacade.hpp; sourceTree = SOURCE_ROOT; };
@@ -461,23 +557,6 @@
 		508726AC1B8294E600E631BE /* test2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test2.cpp; sourceTree = "<group>"; };
 		509BC17D1B68A389007172B6 /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedList.cpp; path = RMXKit/LinkedList.cpp; sourceTree = SOURCE_ROOT; };
 		509BC1891B68BBBE007172B6 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = RMXKit/Dictionary.cpp; sourceTree = SOURCE_ROOT; };
-		50B2A3B11B913E9D0041F112 /* AiMubo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiMubo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		50B2A3B31B913E9D0041F112 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		50B2A3B51B913E9D0041F112 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		50B2A3B71B913E9D0041F112 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
-		50B2A3B91B913E9D0041F112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		50B2A3BC1B913E9E0041F112 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		50B2A3BE1B913E9E0041F112 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50C1CABB1B8DD49F00B7B2B4 /* CollisionBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBody.cpp; path = RMXEngine/CollisionBody.cpp; sourceTree = SOURCE_ROOT; };
-		50C1CABC1B8DD49F00B7B2B4 /* CollisionBody.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CollisionBody.hpp; path = RMXEngine/CollisionBody.hpp; sourceTree = SOURCE_ROOT; };
-		50C1CADD1B8DD4AB00B7B2B4 /* CollisionEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionEvent.cpp; path = RMXEngine/CollisionEvent.cpp; sourceTree = SOURCE_ROOT; };
-		50C1CADE1B8DD4AB00B7B2B4 /* CollisionEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CollisionEvent.hpp; path = RMXEngine/CollisionEvent.hpp; sourceTree = SOURCE_ROOT; };
-		50C1CAE01B8DD4B600B7B2B4 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = "<group>"; };
-		50C1CAE11B8DD4B600B7B2B4 /* BoundingBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundingBox.hpp; sourceTree = "<group>"; };
-		50C1CAE31B8DD4C000B7B2B4 /* BoundingSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingSphere.cpp; sourceTree = "<group>"; };
-		50C1CAE41B8DD4C000B7B2B4 /* BoundingSphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundingSphere.hpp; sourceTree = "<group>"; };
-		50C1CAE61B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpriteBehaviour.cpp; path = RMXEngine/SpriteBehaviour.cpp; sourceTree = SOURCE_ROOT; };
-		50C1CAE71B8DFEEA00B7B2B4 /* SpriteBehaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SpriteBehaviour.hpp; path = RMXEngine/SpriteBehaviour.hpp; sourceTree = SOURCE_ROOT; };
 		50C1CAE91B8E0B4500B7B2B4 /* AiCubo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AiCubo.cpp; path = AiCubo/AiCubo.cpp; sourceTree = SOURCE_ROOT; };
 		50C1CAEA1B8E0B4500B7B2B4 /* AiCubo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AiCubo.hpp; path = AiCubo/AiCubo.hpp; sourceTree = SOURCE_ROOT; };
 		50C43C461B679E6500AD2FAC /* RMXKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -488,8 +567,17 @@
 		50C43C5E1B679E9200AD2FAC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NotificationCenter.cpp; sourceTree = "<group>"; };
 		50C811351B87446F0001FBFE /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
-		50CFDE8D1B9399C3003EA656 /* VertexData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VertexData.cpp; path = OpenGLES/AiGlubo/Source/VertexData.cpp; sourceTree = SOURCE_ROOT; };
-		50CFDE8E1B9399C3003EA656 /* VertexData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VertexData.h; path = OpenGLES/AiGlubo/Source/VertexData.h; sourceTree = SOURCE_ROOT; };
+		50E52CF01BA17C1A002EDECD /* AiCubo-glfw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AiCubo-glfw.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50E52CF21BA17C1A002EDECD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "AiCubo-glfw/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
+		50E52CF41BA17C1A002EDECD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "AiCubo-glfw/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		50E52CF71BA17C1A002EDECD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		50E52CF91BA17C1A002EDECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "AiCubo-glfw/Info.plist"; sourceTree = SOURCE_ROOT; };
+		50E52D1C1BA17D28002EDECD /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
+		50E52D251BA17E51002EDECD /* RMXWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMXWindow.swift; path = OSX/RMXWindow.swift; sourceTree = "<group>"; };
+		50E52D281BA17ED7002EDECD /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		50E52D381BA18675002EDECD /* GLFWView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLFWView.mm; sourceTree = "<group>"; };
+		50E52D3B1BA18681002EDECD /* GLFWView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFWView.h; sourceTree = "<group>"; };
+		50E52D3C1BA18970002EDECD /* GLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
 		6C9EB10C1B710D87003F6156 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		6C9EB1121B710DEA003F6156 /* ASingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASingleton.h; sourceTree = "<group>"; };
 		6C9EB1141B710DEA003F6156 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
@@ -503,13 +591,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		50B2A3AE1B913E9D0041F112 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		50C43C431B679E6500AD2FAC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -530,9 +611,132 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50E52CED1BA17C1A002EDECD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50E52D321BA18289002EDECD /* OpenGL.framework in Frameworks */,
+				50E52D311BA18282002EDECD /* GLKit.framework in Frameworks */,
+				50E52D301BA18278002EDECD /* Cocoa.framework in Frameworks */,
+				50E52D2F1BA18272002EDECD /* CoreVideo.framework in Frameworks */,
+				50E52D2E1BA18267002EDECD /* IOKit.framework in Frameworks */,
+				50E52D2D1BA17F89002EDECD /* libglfw3.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5026084D1BA1743800C572EE /* RMXEngine */ = {
+			isa = PBXGroup;
+			children = (
+				5026084E1BA1743800C572EE /* Behaviour.cpp */,
+				5026084F1BA1743800C572EE /* Behaviour.hpp */,
+				502608501BA1743800C572EE /* Camera.cpp */,
+				502608511BA1743800C572EE /* Camera.hpp */,
+				502608521BA1743800C572EE /* CollisionBody.cpp */,
+				502608531BA1743800C572EE /* CollisionBody.hpp */,
+				502608541BA1743800C572EE /* CollisionEvent.cpp */,
+				502608551BA1743800C572EE /* CollisionEvent.hpp */,
+				502608561BA1743800C572EE /* Delegates.hpp */,
+				502608571BA1743800C572EE /* EntityGenerator.cpp */,
+				502608581BA1743800C572EE /* EntityGenerator.hpp */,
+				502608591BA1743800C572EE /* GameController.cpp */,
+				5026085A1BA1743800C572EE /* GameController.hpp */,
+				5026085B1BA1743800C572EE /* GameNode.cpp */,
+				5026085C1BA1743800C572EE /* GameNode.hpp */,
+				5026085D1BA1743800C572EE /* GameView.cpp */,
+				5026085E1BA1743800C572EE /* GameView.hpp */,
+				502608D91BA174EF00C572EE /* BoundingBox.cpp */,
+				502608DA1BA174EF00C572EE /* BoundingBox.hpp */,
+				502608DB1BA174EF00C572EE /* BoundingSphere.cpp */,
+				502608DC1BA174EF00C572EE /* BoundingSphere.hpp */,
+				5026085F1BA1743800C572EE /* Geometry.cpp */,
+				502608601BA1743800C572EE /* Geometry.hpp */,
+				502608611BA1743800C572EE /* Includes.h */,
+				502608621BA1743800C572EE /* NodeComponent.cpp */,
+				502608631BA1743800C572EE /* NodeComponent.hpp */,
+				502608641BA1743800C572EE /* Objc-wrap */,
+				5026086A1BA1743800C572EE /* PhysicsBody.cpp */,
+				5026086B1BA1743800C572EE /* PhysicsBody.hpp */,
+				5026086C1BA1743800C572EE /* PhysicsWorld.cpp */,
+				5026086D1BA1743800C572EE /* PhysicsWorld.hpp */,
+				5026086E1BA1743800C572EE /* RMXEngine.hpp */,
+				5026086F1BA1743800C572EE /* RMXMath.cpp */,
+				502608701BA1743800C572EE /* RMXMath.hpp */,
+				502608711BA1743800C572EE /* Scene.cpp */,
+				502608721BA1743800C572EE /* Scene.hpp */,
+				502608731BA1743800C572EE /* SpriteBehaviour.cpp */,
+				502608741BA1743800C572EE /* SpriteBehaviour.hpp */,
+				502608751BA1743800C572EE /* Transform.cpp */,
+				502608761BA1743800C572EE /* Transform.hpp */,
+				502608771BA1743800C572EE /* VertexData.c */,
+				502608781BA1743800C572EE /* VertexData.h */,
+			);
+			path = RMXEngine;
+			sourceTree = "<group>";
+		};
+		502608641BA1743800C572EE /* Objc-wrap */ = {
+			isa = PBXGroup;
+			children = (
+				502608651BA1743800C572EE /* CppBridge.h */,
+				502608661BA1743800C572EE /* CppBridge.mm */,
+				502608671BA1743800C572EE /* GeometryIterator.h */,
+				502608681BA1743800C572EE /* GeometryIterator.mm */,
+				502608691BA1743800C572EE /* Uniforms.swift */,
+			);
+			path = "Objc-wrap";
+			sourceTree = "<group>";
+		};
+		502608A11BA1747400C572EE /* RMXSwiftKit */ = {
+			isa = PBXGroup;
+			children = (
+				502608A21BA1747400C572EE /* iOS */,
+				502608A81BA1747400C572EE /* OSX */,
+				502608AC1BA1747400C572EE /* RMSMaths.swift */,
+				502608AD1BA1747400C572EE /* RMX.swift */,
+				502608AE1BA1747400C572EE /* RMXDebugger.swift */,
+				502608AF1BA1747400C572EE /* RMXFunctions.swift */,
+				502608B01BA1747400C572EE /* RMXValue.swift */,
+				502608B11BA1747400C572EE /* UserActions.swift */,
+				50E52D251BA17E51002EDECD /* RMXWindow.swift */,
+				502608B21BA1747400C572EE /* UserInterface */,
+			);
+			path = RMXSwiftKit;
+			sourceTree = "<group>";
+		};
+		502608A21BA1747400C572EE /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				502608A31BA1747400C572EE /* Accelorometer.swift */,
+				502608A41BA1747400C572EE /* Buttons.swift */,
+				502608A51BA1747400C572EE /* iOS.swift */,
+				502608A61BA1747400C572EE /* iOSControllers.swift */,
+				502608A71BA1747400C572EE /* MobileInput.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		502608A81BA1747400C572EE /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				502608A91BA1747400C572EE /* DesktopInput.swift */,
+				502608AA1BA1747400C572EE /* OSX.swift */,
+				502608AB1BA1747400C572EE /* RMKey.swift */,
+			);
+			path = OSX;
+			sourceTree = "<group>";
+		};
+		502608B21BA1747400C572EE /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				502608B31BA1747400C572EE /* ActionProcessor.swift */,
+				502608B41BA1747400C572EE /* RMXAudioVideo.swift */,
+				502608B51BA1747400C572EE /* RMXInterface.swift */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
 		503A23971B6A2910008F89F6 /* old */ = {
 			isa = PBXGroup;
 			children = (
@@ -814,76 +1018,16 @@
 			path = glfw/include/GLFW;
 			sourceTree = "<group>";
 		};
-		508726BC1B8359D900E631BE /* engine */ = {
-			isa = PBXGroup;
-			children = (
-				50CFDE8D1B9399C3003EA656 /* VertexData.cpp */,
-				50CFDE8E1B9399C3003EA656 /* VertexData.h */,
-				5044D9021B874593003B4AE2 /* Behaviour.cpp */,
-				5044D9031B874593003B4AE2 /* Behaviour.hpp */,
-				5044D9041B874593003B4AE2 /* Camera.cpp */,
-				5044D9051B874593003B4AE2 /* Camera.hpp */,
-				5044D9061B874593003B4AE2 /* Delegates.hpp */,
-				5044D9071B874593003B4AE2 /* GameController.cpp */,
-				5044D9081B874593003B4AE2 /* GameController.hpp */,
-				5044D9091B874593003B4AE2 /* GameNode.cpp */,
-				50C1CAE61B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp */,
-				50C1CAE71B8DFEEA00B7B2B4 /* SpriteBehaviour.hpp */,
-				5044D90A1B874593003B4AE2 /* GameNode.hpp */,
-				5044D90B1B874593003B4AE2 /* GameView.cpp */,
-				5044D90C1B874593003B4AE2 /* GameView.hpp */,
-				5044D90D1B874593003B4AE2 /* Geometry.cpp */,
-				5044D90E1B874593003B4AE2 /* Geometry.hpp */,
-				5044D90F1B874593003B4AE2 /* Includes.h */,
-				5044D9101B874593003B4AE2 /* NodeComponent.cpp */,
-				5044D9111B874593003B4AE2 /* NodeComponent.hpp */,
-				5044D9121B874593003B4AE2 /* PhysicsBody.cpp */,
-				5044D9131B874593003B4AE2 /* PhysicsBody.hpp */,
-				5044D9141B874593003B4AE2 /* PhysicsWorld.cpp */,
-				5044D9151B874593003B4AE2 /* PhysicsWorld.hpp */,
-				5044D9161B874593003B4AE2 /* RMXEngine.hpp */,
-				5044D9171B874593003B4AE2 /* RMXMath.cpp */,
-				5044D9181B874593003B4AE2 /* RMXMath.hpp */,
-				5044D9191B874593003B4AE2 /* Scene.cpp */,
-				5044D91A1B874593003B4AE2 /* Scene.hpp */,
-				5044D91B1B874593003B4AE2 /* Transform.cpp */,
-				5044D91C1B874593003B4AE2 /* Transform.hpp */,
-				5026F9C31B8B7AAC00237AD7 /* EntityGenerator.cpp */,
-				5026F9C41B8B7AAC00237AD7 /* EntityGenerator.hpp */,
-				50C1CABB1B8DD49F00B7B2B4 /* CollisionBody.cpp */,
-				50C1CABC1B8DD49F00B7B2B4 /* CollisionBody.hpp */,
-				50C1CADD1B8DD4AB00B7B2B4 /* CollisionEvent.cpp */,
-				50C1CADE1B8DD4AB00B7B2B4 /* CollisionEvent.hpp */,
-				50C1CAE01B8DD4B600B7B2B4 /* BoundingBox.cpp */,
-				50C1CAE11B8DD4B600B7B2B4 /* BoundingBox.hpp */,
-				50C1CAE31B8DD4C000B7B2B4 /* BoundingSphere.cpp */,
-				50C1CAE41B8DD4C000B7B2B4 /* BoundingSphere.hpp */,
-			);
-			name = engine;
-			path = ../RMXKit;
-			sourceTree = "<group>";
-		};
-		50B2A3B21B913E9D0041F112 /* AiMubo */ = {
-			isa = PBXGroup;
-			children = (
-				50B2A3B31B913E9D0041F112 /* AppDelegate.swift */,
-				50B2A3B51B913E9D0041F112 /* GameViewController.swift */,
-				50B2A3B71B913E9D0041F112 /* Shaders.metal */,
-				50B2A3B91B913E9D0041F112 /* Assets.xcassets */,
-				50B2A3BB1B913E9E0041F112 /* MainMenu.xib */,
-				50B2A3BE1B913E9E0041F112 /* Info.plist */,
-			);
-			path = AiMubo;
-			sourceTree = "<group>";
-		};
 		50C43C3D1B679E6500AD2FAC = {
 			isa = PBXGroup;
 			children = (
+				50E52D1C1BA17D28002EDECD /* bridge.h */,
 				50C811351B87446F0001FBFE /* GLFW.xcodeproj */,
+				502608A11BA1747400C572EE /* RMXSwiftKit */,
 				50C43C4B1B679E6500AD2FAC /* RMXKit */,
+				5026084D1BA1743800C572EE /* RMXEngine */,
 				50C43C5D1B679E9200AD2FAC /* AiCubo */,
 				503A23971B6A2910008F89F6 /* old */,
-				50B2A3B21B913E9D0041F112 /* AiMubo */,
 				50C43C481B679E6500AD2FAC /* Frameworks */,
 				50C43C471B679E6500AD2FAC /* Products */,
 			);
@@ -894,7 +1038,7 @@
 			children = (
 				50C43C461B679E6500AD2FAC /* RMXKit.bundle */,
 				50C43C5C1B679E9200AD2FAC /* AiCubo */,
-				50B2A3B11B913E9D0041F112 /* AiMubo.app */,
+				50E52CF01BA17C1A002EDECD /* AiCubo-glfw.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -932,7 +1076,14 @@
 				50C1CAE91B8E0B4500B7B2B4 /* AiCubo.cpp */,
 				50C1CAEA1B8E0B4500B7B2B4 /* AiCubo.hpp */,
 				50C43C5E1B679E9200AD2FAC /* main.cpp */,
-				508726BC1B8359D900E631BE /* engine */,
+				50E52CF21BA17C1A002EDECD /* AppDelegate.swift */,
+				50E52CF41BA17C1A002EDECD /* Assets.xcassets */,
+				50E52CF61BA17C1A002EDECD /* MainMenu.xib */,
+				50E52CF91BA17C1A002EDECD /* Info.plist */,
+				50E52D281BA17ED7002EDECD /* Window.swift */,
+				50E52D3C1BA18970002EDECD /* GLViewController.swift */,
+				50E52D381BA18675002EDECD /* GLFWView.mm */,
+				50E52D3B1BA18681002EDECD /* GLFWView.h */,
 			);
 			path = AiCubo;
 			sourceTree = "<group>";
@@ -1010,23 +1161,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		50B2A3B01B913E9D0041F112 /* AiMubo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 50B2A3E01B913E9E0041F112 /* Build configuration list for PBXNativeTarget "AiMubo" */;
-			buildPhases = (
-				50B2A3AD1B913E9D0041F112 /* Sources */,
-				50B2A3AE1B913E9D0041F112 /* Frameworks */,
-				50B2A3AF1B913E9D0041F112 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AiMubo;
-			productName = AiMubo;
-			productReference = 50B2A3B11B913E9D0041F112 /* AiMubo.app */;
-			productType = "com.apple.product-type.application";
-		};
 		50C43C451B679E6500AD2FAC /* RMXKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50C43C551B679E6500AD2FAC /* Build configuration list for PBXNativeTarget "RMXKit" */;
@@ -1062,6 +1196,24 @@
 			productReference = 50C43C5C1B679E9200AD2FAC /* AiCubo */;
 			productType = "com.apple.product-type.tool";
 		};
+		50E52CEF1BA17C1A002EDECD /* AiCubo-glfw */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50E52CFA1BA17C1A002EDECD /* Build configuration list for PBXNativeTarget "AiCubo-glfw" */;
+			buildPhases = (
+				50E52CEC1BA17C1A002EDECD /* Sources */,
+				50E52CED1BA17C1A002EDECD /* Frameworks */,
+				50E52CEE1BA17C1A002EDECD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50E52D2C1BA17F5A002EDECD /* PBXTargetDependency */,
+			);
+			name = "AiCubo-glfw";
+			productName = "AiCubo-glfw";
+			productReference = 50E52CF01BA17C1A002EDECD /* AiCubo-glfw.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1075,14 +1227,14 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Rattle Media Ltd";
 				TargetAttributes = {
-					50B2A3B01B913E9D0041F112 = {
-						CreatedOnToolsVersion = 7.0;
-					};
 					50C43C451B679E6500AD2FAC = {
 						CreatedOnToolsVersion = 7.0;
 					};
 					50C43C5B1B679E9200AD2FAC = {
 						CreatedOnToolsVersion = 7.0;
+					};
+					50E52CEF1BA17C1A002EDECD = {
+						CreatedOnToolsVersion = 7.1;
 					};
 				};
 			};
@@ -1107,7 +1259,7 @@
 			targets = (
 				50C43C451B679E6500AD2FAC /* RMXKit */,
 				50C43C5B1B679E9200AD2FAC /* AiCubo */,
-				50B2A3B01B913E9D0041F112 /* AiMubo */,
+				50E52CEF1BA17C1A002EDECD /* AiCubo-glfw */,
 			);
 		};
 /* End PBXProject section */
@@ -1312,28 +1464,18 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		50B2A3AF1B913E9D0041F112 /* Resources */ = {
+		50E52CEE1BA17C1A002EDECD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50B2A3BA1B913E9D0041F112 /* Assets.xcassets in Resources */,
-				50B2A3BD1B913E9E0041F112 /* MainMenu.xib in Resources */,
+				50E52CF51BA17C1A002EDECD /* Assets.xcassets in Resources */,
+				50E52CF81BA17C1A002EDECD /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		50B2A3AD1B913E9D0041F112 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50B2A3B81B913E9D0041F112 /* Shaders.metal in Sources */,
-				50B2A3B61B913E9D0041F112 /* GameViewController.swift in Sources */,
-				50B2A3B41B913E9D0041F112 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		50C43C421B679E6500AD2FAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1352,32 +1494,91 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				502608991BA1743800C572EE /* Scene.cpp in Sources */,
+				502608811BA1743800C572EE /* EntityGenerator.cpp in Sources */,
+				50E52D3D1BA18970002EDECD /* GLViewController.swift in Sources */,
 				503A23C81B6A69BF008F89F6 /* EventListener.cpp in Sources */,
-				5044D9231B874593003B4AE2 /* NodeComponent.cpp in Sources */,
 				503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */,
-				5044D9211B874593003B4AE2 /* GameView.cpp in Sources */,
+				5026089F1BA1743800C572EE /* VertexData.c in Sources */,
+				502608D01BA1747400C572EE /* UserActions.swift in Sources */,
 				6C9EB10F1B710D87003F6156 /* Object.cpp in Sources */,
-				50C1CAE21B8DD4B600B7B2B4 /* BoundingBox.cpp in Sources */,
-				5044D91D1B874593003B4AE2 /* Behaviour.cpp in Sources */,
-				5044D9271B874593003B4AE2 /* Scene.cpp in Sources */,
-				50C1CADF1B8DD4AB00B7B2B4 /* CollisionEvent.cpp in Sources */,
-				5044D9221B874593003B4AE2 /* Geometry.cpp in Sources */,
-				50C1CABD1B8DD49F00B7B2B4 /* CollisionBody.cpp in Sources */,
-				5044D9281B874593003B4AE2 /* Transform.cpp in Sources */,
-				5044D91E1B874593003B4AE2 /* Camera.cpp in Sources */,
-				5044D91F1B874593003B4AE2 /* GameController.cpp in Sources */,
+				502608911BA1743800C572EE /* Uniforms.swift in Sources */,
+				502608C61BA1747400C572EE /* RMSMaths.swift in Sources */,
+				5026089D1BA1743800C572EE /* Transform.cpp in Sources */,
+				502608831BA1743800C572EE /* GameController.cpp in Sources */,
+				502608971BA1743800C572EE /* RMXMath.cpp in Sources */,
+				502608931BA1743800C572EE /* PhysicsBody.cpp in Sources */,
+				5026089B1BA1743800C572EE /* SpriteBehaviour.cpp in Sources */,
+				502608791BA1743800C572EE /* Behaviour.cpp in Sources */,
+				5026087B1BA1743800C572EE /* Camera.cpp in Sources */,
+				50E52D391BA18675002EDECD /* GLFWView.mm in Sources */,
 				50C1CAEB1B8E0B4500B7B2B4 /* AiCubo.cpp in Sources */,
-				5044D9241B874593003B4AE2 /* PhysicsBody.cpp in Sources */,
+				5026088B1BA1743800C572EE /* NodeComponent.cpp in Sources */,
+				5026087F1BA1743800C572EE /* CollisionEvent.cpp in Sources */,
+				502608891BA1743800C572EE /* Geometry.cpp in Sources */,
+				50E52D291BA17ED7002EDECD /* Window.swift in Sources */,
+				502608C21BA1747400C572EE /* OSX.swift in Sources */,
 				503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */,
-				50C1CAE81B8DFEEA00B7B2B4 /* SpriteBehaviour.cpp in Sources */,
-				5044D9251B874593003B4AE2 /* PhysicsWorld.cpp in Sources */,
-				50C1CAE51B8DD4C000B7B2B4 /* BoundingSphere.cpp in Sources */,
-				6C0DA6661B70EB4500A4325E /* main.cpp in Sources */,
-				50CFDE8F1B9399C3003EA656 /* VertexData.cpp in Sources */,
+				502608CC1BA1747400C572EE /* RMXFunctions.swift in Sources */,
+				502608951BA1743800C572EE /* PhysicsWorld.cpp in Sources */,
+				50E52D261BA17E51002EDECD /* RMXWindow.swift in Sources */,
+				502608C81BA1747400C572EE /* RMX.swift in Sources */,
+				502608DF1BA174EF00C572EE /* BoundingSphere.cpp in Sources */,
+				5026087D1BA1743800C572EE /* CollisionBody.cpp in Sources */,
+				502608DD1BA174EF00C572EE /* BoundingBox.cpp in Sources */,
 				503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */,
-				5026F9C51B8B7AAC00237AD7 /* EntityGenerator.cpp in Sources */,
-				5044D9261B874593003B4AE2 /* RMXMath.cpp in Sources */,
-				5044D9201B874593003B4AE2 /* GameNode.cpp in Sources */,
+				502608851BA1743800C572EE /* GameNode.cpp in Sources */,
+				502608CE1BA1747400C572EE /* RMXValue.swift in Sources */,
+				502608CA1BA1747400C572EE /* RMXDebugger.swift in Sources */,
+				502608871BA1743800C572EE /* GameView.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E52CEC1BA17C1A002EDECD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50E52D231BA17E22002EDECD /* Transform.cpp in Sources */,
+				50E52CFF1BA17C67002EDECD /* Camera.cpp in Sources */,
+				50E52D1D1BA17DE6002EDECD /* RMSMaths.swift in Sources */,
+				50E52D2A1BA17ED7002EDECD /* Window.swift in Sources */,
+				50E52D0E1BA17C6E002EDECD /* NotificationCenter.cpp in Sources */,
+				50E52D131BA17C87002EDECD /* RMXDebugger.swift in Sources */,
+				50E52D091BA17C67002EDECD /* NodeComponent.cpp in Sources */,
+				50E52D0B1BA17C6E002EDECD /* LinkedList.cpp in Sources */,
+				50E52D211BA17E22002EDECD /* Scene.cpp in Sources */,
+				50E52D141BA17C87002EDECD /* RMXFunctions.swift in Sources */,
+				50E52D271BA17E51002EDECD /* RMXWindow.swift in Sources */,
+				50E52D031BA17C67002EDECD /* GameController.cpp in Sources */,
+				50E52D0F1BA17C6E002EDECD /* EventListener.cpp in Sources */,
+				50E52D1E1BA17E22002EDECD /* PhysicsBody.cpp in Sources */,
+				50E52D191BA17CAE002EDECD /* Uniforms.swift in Sources */,
+				50E52D241BA17E22002EDECD /* VertexData.c in Sources */,
+				50E52D3E1BA18970002EDECD /* GLViewController.swift in Sources */,
+				50E52D171BA17CAE002EDECD /* CppBridge.mm in Sources */,
+				50E52D181BA17CAE002EDECD /* GeometryIterator.mm in Sources */,
+				50E52D011BA17C67002EDECD /* CollisionEvent.cpp in Sources */,
+				50E52CFD1BA17C34002EDECD /* AiCubo.cpp in Sources */,
+				50E52D071BA17C67002EDECD /* BoundingSphere.cpp in Sources */,
+				50E52D0C1BA17C6E002EDECD /* Object.cpp in Sources */,
+				50E52D081BA17C67002EDECD /* Geometry.cpp in Sources */,
+				50E52D371BA1863B002EDECD /* main.cpp in Sources */,
+				50E52D051BA17C67002EDECD /* GameView.cpp in Sources */,
+				50E52D0A1BA17C6E002EDECD /* Dictionary.cpp in Sources */,
+				50E52D061BA17C67002EDECD /* BoundingBox.cpp in Sources */,
+				50E52D1F1BA17E22002EDECD /* PhysicsWorld.cpp in Sources */,
+				50E52D101BA17C82002EDECD /* OSX.swift in Sources */,
+				50E52D221BA17E22002EDECD /* SpriteBehaviour.cpp in Sources */,
+				50E52D121BA17C87002EDECD /* RMX.swift in Sources */,
+				50E52D161BA17C87002EDECD /* UserActions.swift in Sources */,
+				50E52D3A1BA18675002EDECD /* GLFWView.mm in Sources */,
+				50E52D041BA17C67002EDECD /* GameNode.cpp in Sources */,
+				50E52D021BA17C67002EDECD /* EntityGenerator.cpp in Sources */,
+				50E52CFE1BA17C67002EDECD /* Behaviour.cpp in Sources */,
+				50E52D151BA17C87002EDECD /* RMXValue.swift in Sources */,
+				50E52D201BA17E22002EDECD /* RMXMath.cpp in Sources */,
+				50E52D001BA17C67002EDECD /* CollisionBody.cpp in Sources */,
+				50E52CF31BA17C1A002EDECD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1389,49 +1590,26 @@
 			name = glfw;
 			targetProxy = 50C811901B8744790001FBFE /* PBXContainerItemProxy */;
 		};
+		50E52D2C1BA17F5A002EDECD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = glfw;
+			targetProxy = 50E52D2B1BA17F5A002EDECD /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		50B2A3BB1B913E9E0041F112 /* MainMenu.xib */ = {
+		50E52CF61BA17C1A002EDECD /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				50B2A3BC1B913E9E0041F112 /* Base */,
+				50E52CF71BA17C1A002EDECD /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
+			path = "AiCubo-glfw";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		50B2A3BF1B913E9E0041F112 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AiMubo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maxbilbow.osx.AiMubo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		50B2A3C01B913E9E0041F112 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AiMubo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maxbilbow.osx.AiMubo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		50C43C531B679E6500AD2FAC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1587,18 +1765,64 @@
 			};
 			name = Release;
 		};
+		50E52CFB1BA17C1A002EDECD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/gflw/deps/",
+					"$(SRCROOT)/gflw/include/",
+				);
+				HEADER_SEARCH_PATHS = (
+					usr/local/include,
+					opt/local/include,
+				);
+				INFOPLIST_FILE = "AiCubo-glfw/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					usr/local/lib,
+					opt/local/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow.AiCubo-glfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		50E52CFC1BA17C1A002EDECD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/gflw/deps/",
+					"$(SRCROOT)/gflw/include/",
+				);
+				HEADER_SEARCH_PATHS = (
+					usr/local/include,
+					opt/local/include,
+				);
+				INFOPLIST_FILE = "AiCubo-glfw/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					usr/local/lib,
+					opt/local/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow.AiCubo-glfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		50B2A3E01B913E9E0041F112 /* Build configuration list for PBXNativeTarget "AiMubo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				50B2A3BF1B913E9E0041F112 /* Debug */,
-				50B2A3C01B913E9E0041F112 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		50C43C411B679E6500AD2FAC /* Build configuration list for PBXProject "RMXKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1625,6 +1849,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		50E52CFA1BA17C1A002EDECD /* Build configuration list for PBXNativeTarget "AiCubo-glfw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50E52CFB1BA17C1A002EDECD /* Debug */,
+				50E52CFC1BA17C1A002EDECD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

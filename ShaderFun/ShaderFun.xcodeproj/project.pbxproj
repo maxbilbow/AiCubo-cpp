@@ -11,7 +11,6 @@
 		5017893E1B9D87DA00D97496 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017893D1B9D87DA00D97496 /* GameViewController.swift */; };
 		501789401B9D87DA00D97496 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5017893F1B9D87DA00D97496 /* Shaders.metal */; };
 		501789451B9D87DA00D97496 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 501789431B9D87DA00D97496 /* MainMenu.xib */; };
-		5017895A1B9DBB5600D97496 /* Uniforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501789591B9DBB5600D97496 /* Uniforms.swift */; };
 		5017895D1B9DEFCD00D97496 /* cube.png in Resources */ = {isa = PBXBuildFile; fileRef = 5017895C1B9DEFCD00D97496 /* cube.png */; };
 		501827961B9E03A2008B2841 /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5018275A1B9E03A2008B2841 /* Behaviour.cpp */; };
 		501827971B9E03A2008B2841 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5018275C1B9E03A2008B2841 /* Camera.cpp */; };
@@ -52,6 +51,12 @@
 		501827F71B9E0654008B2841 /* CppBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 501827F41B9E0654008B2841 /* CppBridge.mm */; };
 		501827F81B9E0654008B2841 /* GeometryIterator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 501827F61B9E0654008B2841 /* GeometryIterator.mm */; };
 		501827FB1B9E0686008B2841 /* AiCubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501827F91B9E0686008B2841 /* AiCubo.cpp */; };
+		502607F61BA1705B00C572EE /* Uniforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502607F51BA1705A00C572EE /* Uniforms.swift */; };
+		5035C1D41BA16176003E0405 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035C1D31BA16176003E0405 /* AppDelegate.swift */; };
+		5035C1D61BA16177003E0405 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035C1D51BA16177003E0405 /* GameViewController.swift */; };
+		5035C1D81BA16177003E0405 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5035C1D71BA16177003E0405 /* Shaders.metal */; };
+		5035C1DB1BA16177003E0405 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5035C1D91BA16177003E0405 /* Main.storyboard */; };
+		5035C1DD1BA16177003E0405 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5035C1DC1BA16177003E0405 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +68,6 @@
 		501789461B9D87DA00D97496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5017894C1B9D936000D97496 /* ShaderFun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShaderFun-Bridging-Header.h"; sourceTree = "<group>"; };
 		5017894D1B9D936100D97496 /* Uniform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Uniform.m; sourceTree = "<group>"; };
-		501789591B9DBB5600D97496 /* Uniforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uniforms.swift; sourceTree = "<group>"; };
 		5017895C1B9DEFCD00D97496 /* cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube.png; sourceTree = "<group>"; };
 		5018275A1B9E03A2008B2841 /* Behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Behaviour.cpp; sourceTree = "<group>"; };
 		5018275B1B9E03A2008B2841 /* Behaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Behaviour.hpp; sourceTree = "<group>"; };
@@ -146,10 +150,25 @@
 		501827F61B9E0654008B2841 /* GeometryIterator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeometryIterator.mm; sourceTree = "<group>"; };
 		501827F91B9E0686008B2841 /* AiCubo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AiCubo.cpp; sourceTree = "<group>"; };
 		501827FA1B9E0686008B2841 /* AiCubo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AiCubo.hpp; sourceTree = "<group>"; };
+		502607F51BA1705A00C572EE /* Uniforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Uniforms.swift; path = "../RMXEngine/Objc-wrap/Uniforms.swift"; sourceTree = "<group>"; };
+		5035C1D11BA16176003E0405 /* AiTvbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiTvbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5035C1D31BA16176003E0405 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5035C1D51BA16177003E0405 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		5035C1D71BA16177003E0405 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		5035C1DA1BA16177003E0405 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5035C1DC1BA16177003E0405 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5035C1DE1BA16177003E0405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		501789351B9D87DA00D97496 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5035C1CE1BA16176003E0405 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -164,11 +183,12 @@
 			children = (
 				501827F91B9E0686008B2841 /* AiCubo.cpp */,
 				501827FA1B9E0686008B2841 /* AiCubo.hpp */,
-				501789591B9DBB5600D97496 /* Uniforms.swift */,
+				502607F51BA1705A00C572EE /* Uniforms.swift */,
 				501827C01B9E04A0008B2841 /* RMXSwiftKit */,
 				501827591B9E03A2008B2841 /* RMXEngine */,
 				5018277F1B9E03A2008B2841 /* RMXKit */,
 				5017893A1B9D87DA00D97496 /* ShaderFun */,
+				5035C1D21BA16176003E0405 /* AiTvbo */,
 				501789391B9D87DA00D97496 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -177,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				501789381B9D87DA00D97496 /* ShaderFun.app */,
+				5035C1D11BA16176003E0405 /* AiTvbo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -339,6 +360,19 @@
 			path = "Objc-wrap";
 			sourceTree = "<group>";
 		};
+		5035C1D21BA16176003E0405 /* AiTvbo */ = {
+			isa = PBXGroup;
+			children = (
+				5035C1D31BA16176003E0405 /* AppDelegate.swift */,
+				5035C1D51BA16177003E0405 /* GameViewController.swift */,
+				5035C1D71BA16177003E0405 /* Shaders.metal */,
+				5035C1D91BA16177003E0405 /* Main.storyboard */,
+				5035C1DC1BA16177003E0405 /* Assets.xcassets */,
+				5035C1DE1BA16177003E0405 /* Info.plist */,
+			);
+			path = AiTvbo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -359,6 +393,23 @@
 			productReference = 501789381B9D87DA00D97496 /* ShaderFun.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5035C1D01BA16176003E0405 /* AiTvbo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5035C1E11BA16177003E0405 /* Build configuration list for PBXNativeTarget "AiTvbo" */;
+			buildPhases = (
+				5035C1CD1BA16176003E0405 /* Sources */,
+				5035C1CE1BA16176003E0405 /* Frameworks */,
+				5035C1CF1BA16176003E0405 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AiTvbo;
+			productName = AiTvbo;
+			productReference = 5035C1D11BA16176003E0405 /* AiTvbo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -371,6 +422,9 @@
 				TargetAttributes = {
 					501789371B9D87DA00D97496 = {
 						CreatedOnToolsVersion = 7.0;
+					};
+					5035C1D01BA16176003E0405 = {
+						CreatedOnToolsVersion = 7.1;
 					};
 				};
 			};
@@ -388,6 +442,7 @@
 			projectRoot = "";
 			targets = (
 				501789371B9D87DA00D97496 /* ShaderFun */,
+				5035C1D01BA16176003E0405 /* AiTvbo */,
 			);
 		};
 /* End PBXProject section */
@@ -400,6 +455,15 @@
 				501789451B9D87DA00D97496 /* MainMenu.xib in Resources */,
 				5017895D1B9DEFCD00D97496 /* cube.png in Resources */,
 				501827AB1B9E03A2008B2841 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5035C1CF1BA16176003E0405 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5035C1DD1BA16177003E0405 /* Assets.xcassets in Resources */,
+				5035C1DB1BA16177003E0405 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,11 +493,11 @@
 				5018279E1B9E03A2008B2841 /* Geometry.cpp in Sources */,
 				501827961B9E03A2008B2841 /* Behaviour.cpp in Sources */,
 				501827AD1B9E03A2008B2841 /* NotificationCenter.cpp in Sources */,
+				502607F61BA1705B00C572EE /* Uniforms.swift in Sources */,
 				5018279B1B9E03A2008B2841 /* GameController.cpp in Sources */,
 				501827E51B9E04A0008B2841 /* RMXInterface.swift in Sources */,
 				501827A51B9E03A2008B2841 /* Transform.cpp in Sources */,
 				501827A01B9E03A2008B2841 /* PhysicsBody.cpp in Sources */,
-				5017895A1B9DBB5600D97496 /* Uniforms.swift in Sources */,
 				501827AE1B9E03A2008B2841 /* Object.cpp in Sources */,
 				501827971B9E03A2008B2841 /* Camera.cpp in Sources */,
 				501827A11B9E03A2008B2841 /* PhysicsWorld.cpp in Sources */,
@@ -455,6 +519,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5035C1CD1BA16176003E0405 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5035C1D81BA16177003E0405 /* Shaders.metal in Sources */,
+				5035C1D61BA16177003E0405 /* GameViewController.swift in Sources */,
+				5035C1D41BA16176003E0405 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -464,6 +538,14 @@
 				501789441B9D87DA00D97496 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		5035C1D91BA16177003E0405 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5035C1DA1BA16177003E0405 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -578,6 +660,38 @@
 			};
 			name = Release;
 		};
+		5035C1DF1BA16177003E0405 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INFOPLIST_FILE = AiTvbo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxbilbow.tv.AiTvbo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		5035C1E01BA16177003E0405 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = AiTvbo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxbilbow.tv.AiTvbo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -595,6 +709,15 @@
 			buildConfigurations = (
 				5017894A1B9D87DA00D97496 /* Debug */,
 				5017894B1B9D87DA00D97496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5035C1E11BA16177003E0405 /* Build configuration list for PBXNativeTarget "AiTvbo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5035C1DF1BA16177003E0405 /* Debug */,
+				5035C1E01BA16177003E0405 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

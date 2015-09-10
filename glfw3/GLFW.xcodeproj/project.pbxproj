@@ -4609,6 +4609,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../gflw/include/",
 					"$(SRCROOT)/../gflw/deps/",
+					opt/local/include,
+					usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					usr/local/lib,
+					opt/local/lib,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk;
@@ -5099,6 +5105,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../gflw/include/",
 					"$(SRCROOT)/../gflw/deps/",
+					opt/local/include,
+					usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					usr/local/lib,
+					opt/local/lib,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk;
@@ -8685,6 +8697,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../gflw/include/",
 					"$(SRCROOT)/../gflw/deps/",
+					opt/local/include,
+					usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					usr/local/lib,
+					opt/local/lib,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk;
@@ -9100,6 +9118,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../gflw/include/",
 					"$(SRCROOT)/../gflw/deps/",
+					opt/local/include,
+					usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					usr/local/lib,
+					opt/local/lib,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk;

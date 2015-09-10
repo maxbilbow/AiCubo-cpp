@@ -29,9 +29,7 @@ typedef Vector3 EulerAngles;
 #import "RMXKit.h"
 #import "RMXMath.hpp"
 
-//#import <CoreVideo/CoreVideo.h>
-//#import <IOKit/IOKitLib.h>
-//#import <Cocoa/Cocoa.h>
+
 //
 //#include <vector>
 //#include <list>
@@ -39,6 +37,9 @@ typedef Vector3 EulerAngles;
 
 //#define GLFW
 #ifdef GLFW
+//#import <CoreVideo/CoreVideo.h>
+//#import <IOKit/IOKitLib.h>
+//#import <Cocoa/Cocoa.h>
 #include "glfw3.h"
 typedef GLFWwindow GLWindow;
 #else

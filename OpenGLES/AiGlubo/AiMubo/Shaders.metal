@@ -1,66 +1,87 @@
 //
-//  Shaders2.metal
-//  AiGlubo
+//  Shaders.metal
+//  ShaderFun
 //
-//  Created by Max Bilbow on 30/08/2015.
-//  Copyright © 2015 Rattle Media Ltd. All rights reserved.
+//  Created by Max Bilbow on 07/09/2015.
+//  Copyright (c) 2015 Rattle Media Ltd. All rights reserved.
 //
 
 #include <metal_stdlib>
+#include <metal_matrix>
+
 using namespace metal;
 
+constant float3 kLightDirection(-0.43, -0.8, -0.43);
 
-
-// 1
-struct VertexIn{
-    packed_float3 position;
-//    packed_float4 color;
-//    packed_float2 texCoord;
+struct VertexIn
+{
+    float4  position;
+//    float3  normal;
+//    float4  color;
 };
 
-struct VertexOut{
+struct VertexOut
+{
     float4 position [[position]];
     float4 color;
-//    float2 texCoord;
+    float3 normal;
+    float time;
 };
 
-struct Uniforms{
+struct Uniform
+{
+    float4x4 viewMatrix;
+    float4x4 projectionMatrix;
+    float time;
+};
+
+struct Instance
+{
     float4x4 modelMatrix;
-    float4x4 viewProjectionMatrix;
-    float3 scaleVector;
-    float4 colorVector;
-//    float4x4 projectionMatrix;
-   
+    float4 scale;
+    float4 color;
 };
 
-vertex VertexOut basic_vertex(
-                              const device VertexIn* vertex_array [[ buffer(0) ]],
-                              const device Uniforms&  uniforms    [[ buffer(1) ]],
-                              unsigned int vid [[ vertex_id ]]) {
+vertex VertexOut passThroughVertex(uint vid [[ vertex_id ]],
+                                     uint iid [[ instance_id ]],
+                                     constant VertexIn* vertexIn         [[ buffer(0) ]],
+//                                     constant packed_float4* pos         [[ buffer(0) ]],
+                                     constant packed_float3* normal         [[ buffer(1) ]],
+                                     constant Uniform& u                 [[ buffer(2) ]],
+                                     constant Instance* instance         [[ buffer(3) ]]
+                                )
+{
+    float4x4 viewProjection = u.projectionMatrix * u.viewMatrix;
+    float4 scale = float4(instance[iid].scale.xyz,1);
+    float4x4 model = instance[iid].modelMatrix;
     
-    VertexIn VertexIn = vertex_array[vid];
-    float4x4 m_Matrix = uniforms.modelMatrix;
-    float4x4 vp_Matrix = uniforms.viewProjectionMatrix;
-    float4 scale = float4(uniforms.scaleVector,1);
-    float4 color = uniforms.colorVector;
+    float3x3 normalMatrix = { model[0].xyz, model[1].xyz, model[2].xyz };
     
-    float4 position = float4(VertexIn.position,1);
+    float4 position = vertexIn[vid].position * scale;
+//    float4 position = pos[vid] * scale;
+//    float4 color = normalize(col[vid] + instance[iid].color);
+    float4 color = instance[iid].color;
     
-    VertexOut VertexOut;
-    VertexOut.position = vp_Matrix * m_Matrix * scale * position;
-    VertexOut.color = color;
-    // 2
-//    VertexOut.texCoord = VertexIn.texCoord;
+    float4x4 modelViewProjection = viewProjection * model;
     
-    return VertexOut;
-}
+    
+    VertexOut outVertex;
+    
+    outVertex.position = modelViewProjection * position;
+    outVertex.color    = float4(color.x, color.y, color.z, color.w);
+    outVertex.normal   = normalMatrix * float3(normal[vid]);
+    outVertex.time     = u.time;
+    
+    return outVertex;
+};
 
-// 3
-fragment float4 basic_fragment(VertexOut interpolated [[stage_in]]) {//,
-//                               texture2d<float>  tex2D     [[ texture(0) ]],
-//                               // 4
-//                               sampler           sampler2D [[ sampler(0) ]]) {
-    // 5
-    float4 color = interpolated.color;//tex2D.sample(sampler2D, interpolated.texCoord);
-    return float4(1.0,0.0,0.0,1.0);//color;
-}
+fragment half4 passThroughFragment(VertexOut vert [[stage_in]])
+{
+    float3 lightDir = kLightDirection;// float3(kLightDirection.x + sin(vert.time), kLightDirection.y, kLightDirection.z);
+    float diffuseIntensity = max(0.33, dot(normalize(vert.normal), -lightDir));
+    float4 diffuseColor =  vert.color; //texture.sample(texSampler, vert.texCoords);
+    float4 color = diffuseColor * diffuseIntensity;
+    return half4(color.r, color.g, color.b, 1);
+    
+//    return half4(inFrag.color);
+};

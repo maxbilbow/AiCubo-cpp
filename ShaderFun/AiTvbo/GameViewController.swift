@@ -1,12 +1,13 @@
 //
 //  GameViewController.swift
-//  AiMubo
+//  AiTvbo
 //
-//  Created by Max Bilbow on 29/08/2015.
+
 //  Copyright (c) 2015 Rattle Media Ltd. All rights reserved.
 //
 
-import Cocoa
+import UIKit
+import Metal
 import MetalKit
 
 let MaxBuffers = 3
@@ -42,7 +43,7 @@ let vertexColorData:[Float] =
     1.0, 0.0, 0.0, 1.0
 ]
 
-class GameViewController: NSViewController, MTKViewDelegate {
+class GameViewController:UIViewController, MTKViewDelegate {
     
     let device: MTLDevice = MTLCreateSystemDefaultDevice()!
     
@@ -59,17 +60,16 @@ class GameViewController: NSViewController, MTKViewDelegate {
     var yOffset:[Float] = [ 1.0, 0.0, -1.0 ]
     var xDelta:[Float] = [ 0.002, -0.001, 0.003 ]
     var yDelta:[Float] = [ 0.001,  0.002, -0.001 ]
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         // setup view properties
         let view = self.view as! MTKView
-        view.delegate = self
         view.device = device
-        view.sampleCount = 4
-        
+        view.delegate = self
+
         loadAssets()
     }
     
@@ -150,22 +150,6 @@ class GameViewController: NSViewController, MTKViewDelegate {
         let commandBuffer = commandQueue.commandBuffer()
         commandBuffer.label = "Frame command buffer"
         
-        guard let renderPassDescriptor = view.currentRenderPassDescriptor else {
-            return
-        }
-
-        let renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor)
-        renderEncoder.label = "render encoder"
-        
-        renderEncoder.pushDebugGroup("draw morphing triangle")
-        renderEncoder.setRenderPipelineState(pipelineState)
-        renderEncoder.setVertexBuffer(vertexBuffer, offset: 256*bufferIndex, atIndex: 0)
-        renderEncoder.setVertexBuffer(vertexColorBuffer, offset:0 , atIndex: 1)
-        renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 9, instanceCount: 1)
-        
-        renderEncoder.popDebugGroup()
-        renderEncoder.endEncoding()
-        
         // use completion handler to signal the semaphore when this frame is completed allowing the encoding of the next frame to proceed
         // use capture list to avoid any retain cycles if the command buffer gets retained anywhere besides this stack frame
         commandBuffer.addCompletedHandler{ [weak self] commandBuffer in
@@ -175,10 +159,26 @@ class GameViewController: NSViewController, MTKViewDelegate {
             return
         }
         
+        if let renderPassDescriptor = view.currentRenderPassDescriptor, currentDrawable = view.currentDrawable
+        {
+            let renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor)
+            renderEncoder.label = "render encoder"
+            
+            renderEncoder.pushDebugGroup("draw morphing triangle")
+            renderEncoder.setRenderPipelineState(pipelineState)
+            renderEncoder.setVertexBuffer(vertexBuffer, offset: 256*bufferIndex, atIndex: 0)
+            renderEncoder.setVertexBuffer(vertexColorBuffer, offset:0 , atIndex: 1)
+            renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 9, instanceCount: 1)
+            
+            renderEncoder.popDebugGroup()
+            renderEncoder.endEncoding()
+                
+            commandBuffer.presentDrawable(currentDrawable)
+        }
+        
         // bufferIndex matches the current semaphore controled frame index to ensure writing occurs at the correct region in the vertex buffer
         bufferIndex = (bufferIndex + 1) % MaxBuffers
         
-        commandBuffer.presentDrawable(view.currentDrawable!)
         commandBuffer.commit()
     }
     

@@ -453,7 +453,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
-            landmarkName = "drawInMTKView(_:)"
+            landmarkName = "loadAssets()"
             landmarkType = "5">
             <Locations>
                <Location

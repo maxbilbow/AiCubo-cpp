@@ -67,19 +67,19 @@ namespace rmx {
         
     };
     
-    #ifdef GLFW
-    class Cube : public Geometry {
-       
-    public:
-         Cube(float* = nullptr,long = 0, int * indices = nullptr);
-
-    protected:
-
-        void drawWithScale(float X, float Y, float Z)override {
+//    #ifdef GLFW
+//    class Cube : public Geometry {
+//       
+//    public:
+//         Cube(float* = nullptr,long = 0, int * indices = nullptr);
+//
+//    protected:
+//
+//        void drawWithScale(float X, float Y, float Z)override {
+//    
+//    };
+//    #endif
     
-    };
-#endif
-        
 
 }
 

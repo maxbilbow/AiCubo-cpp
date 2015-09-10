@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AiCubo-glfw.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>36</integer>
+		</dict>
 		<key>AiCubo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>50D0265D1B695D8200895093</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50E52CEF1BA17C1A002EDECD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

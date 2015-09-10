@@ -15,7 +15,7 @@
 //#import "Dictionary.h"
 //#import "ASingleton.h"
 //#import "Object.h"
-//#define GLFW
+#define GLFW
 #include "RMXEngine.hpp"
 
 #import "AiCubo.hpp"
@@ -29,8 +29,9 @@ using namespace rmx;
 
 
 
-int main(int argc, char * argv[]) {
-
+int run(int argc, char * argv[]) {
+    
+    
     AiCubo().run();
 //    runTest2();
 //    RMXLinkedListTest();
