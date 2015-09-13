@@ -54,6 +54,14 @@ float BoundingBox::zMax() {
     return + this->transform()->getLength() / 2;
 }
 
+float BoundingBox::top() {
+    return this->transform()->position().y + yMax();
+}
+
+float BoundingBox::bottom() {
+    return this->transform()->position().y + yMin();
+}
+
 bool BoundingBox::intersects(BoundingBox * other) {
     Vector3 a = this->transform()->position();
     Vector3 b = other->transform()->position();

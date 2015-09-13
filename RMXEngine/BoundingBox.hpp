@@ -30,6 +30,9 @@ namespace rmx {
         float yMax();
         float zMax();
         
+        float top();
+        float bottom();
+        
         bool intersects(BoundingBox * other);
         
         Vector3 getCollisionNormal(BoundingBox * other);

@@ -30,6 +30,8 @@ CollisionEvent::CollisionEvent(GameNode * nodeA, GameNode * nodeB, unsigned int 
  
     this->nodeA = nodeA;
     this->nodeB = nodeB;
+    nodeA->setDidCollideThisTurn(true);
+    nodeB->setDidCollideThisTurn(true);
     this->hitPointA = Vector3Zero;
     this->hitPointB = Vector3Zero;
     this->planeDistance = this->getPlaneDistance();

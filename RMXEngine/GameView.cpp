@@ -202,6 +202,6 @@ void GameView::setHeight(int height) {
 GameNode * GameView::pointOfView() {
     if (_pointOfView != nullptr )//|| this->setPointOfView(GameNode::getCurrent()))
         return _pointOfView;
-    throw invalid_argument("ERROR: Could Not Set _pointOfView");
+    throw invalid_argument("ERROR: Could Not Get _pointOfView");
     return   nullptr;
 }

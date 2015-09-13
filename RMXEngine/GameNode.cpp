@@ -58,7 +58,19 @@ GameNode * GameNode::getCurrent() {
             _current = new GameNode("Player");
         return _current;
 }
-    
+
+void GameNode::setDidCollideThisTurn(bool didCollideThisTurn) {
+    _didCollideThisTurn = didCollideThisTurn;
+}
+
+bool GameNode::didCollideThisTurn() {
+    if (_didCollideThisTurn) {
+        _didCollideThisTurn = false;
+        return true;
+    } else
+        return false;
+}
+
 NodeComponent * GameNode::setComponent(NodeComponent * component)  {
     string key = typeid(component).name();
 //    NodeComponent * result = this->components->getValueForKey(key);
@@ -126,7 +138,7 @@ GameNode * GameNode::getChildWithName(string name) {
     GameNodeList::Iterator * i = this->children.getIterator();
     while (i->hasNext()) {
         GameNode * n = i->next();
-        cout << n->Name() << endl;
+//        cout << n->Name() << endl;
         if (n->Name() == name)
             return n;
     }
@@ -193,8 +205,8 @@ bool GameNode::geometryDidChange(bool reset) {
 }
 
 GameNode * GameNode::rootNode() {
-    if (this->parent == nullptr)
-        cout << "CHILD: " << this << ", PARENT: " << this->parent << endl;
+//    if (this->parent == nullptr)
+//        cout << "CHILD: " << this << ", PARENT: " << this->parent << endl;
     return this->parent == nullptr ? this : this->parent->rootNode();
 }
 

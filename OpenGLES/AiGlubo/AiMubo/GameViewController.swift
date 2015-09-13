@@ -125,7 +125,7 @@ let vertexColorData:[Float] =
 
 class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizerDelegate {
     
-    var metalLayer: CAMetalLayer!
+//    var metalLayer: CAMetalLayer!
     let device: MTLDevice = MTLCreateSystemDefaultDevice()!
     let startTime = Float(NSTimeIntervalSince1970)
     var commandQueue: MTLCommandQueue! = nil
@@ -232,35 +232,16 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
 //        samplerDescriptor.lodMaxClamp           = FLT_MAX
         samplerState = device.newSamplerStateWithDescriptor(samplerDescriptor)
       
-        metalLayer = CAMetalLayer()
-        metalLayer.device = device
-        metalLayer.pixelFormat = .BGRA8Unorm
-        metalLayer.framebufferOnly = true
-        metalLayer.frame = view.layer!.frame
-        let scale:CGFloat = 1// window.screen.nativeScale
-        let layerSize = view.bounds.size
-        //2
-//        view.contentScaleFactor = scale
-        metalLayer.frame = CGRectMake(0, 0, layerSize.width, layerSize.height)
-        metalLayer.drawableSize = CGSizeMake(layerSize.width * scale, layerSize.height * scale)
-    
-        view.layer?.addSublayer(metalLayer)
-        viewDidLayout()
-        
         let size = view.window!.screen!.frame.size
         let colorTexDesc = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.RGBA8Unorm,
             width: Int(size.width), height: Int(size.height), mipmapped: false)
         colorTexDesc.resourceOptions = .StorageModePrivate
         colorTex = device.newTextureWithDescriptor(colorTexDesc)
-//
-//
-//        print(size)
+        
         let depthTexDesc = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.Depth32Float,
             width: Int(size.width), height: Int(size.height), mipmapped: false)
         depthTexDesc.resourceOptions = .StorageModePrivate
         depthTex = device.newTextureWithDescriptor(depthTexDesc)
-        
-        
         
         // generate a large enough buffer to allow streaming vertices for 3 semaphore controlled frames
         vertexBuffer = device.newBufferWithLength(cube.vertexDataSize * sizeofValue(cube.vertexData[0]), options: [])

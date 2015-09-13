@@ -37,7 +37,7 @@ GameController::GameController() {
     this->view = new GameView();
     this->view->setDelegate(this);
     this->lockCursor(true);
-//    this->setView(new GameView());
+    //    this->setView(new GameView());
 }
 
 GameController * GameController::_singleton = nullptr;// = new GameController();
@@ -53,21 +53,21 @@ GameController * GameController::getInstance() {
 
 
 void GameController::run() {
- 
-            this->setup();
+    
+    this->setup();
 #ifdef GLFW
-            this->view->initGL();
-            this->view->enterGameLoop();
-            
-
-            glfwDestroyWindow(view->window());
-
-            glfwTerminate();
+    this->view->initGL();
+    this->view->enterGameLoop();
+    
+    
+    glfwDestroyWindow(view->window());
+    
+    glfwTerminate();
 #endif
-
+    
     
 }
-    
+
 
 void GameController::updateBeforeScene(GLWindow * window) {
     this->repeatedKeys(window);
@@ -81,20 +81,20 @@ void GameController::updateAfterScene(GLWindow * window) {
 
 
 int GameController::getKeyState(GLWindow * w, int key) {
-    #ifndef GLFW
+#ifndef GLFW
     return GameController::getInstance()->keys[key];
 #else
     return getkeyState(w,key);
-    #endif
+#endif
     
 }
 
 
 void GameController::repeatedKeys(GLWindow * window) {
     GameNode * player = GameNode::getCurrent();
-//    #ifdef GLFW
+    //    #ifdef GLFW
     //GameNode::getCurrent();
-
+    
     if (getKeyState(window, RMX_KEY_W) == RMX_PRESS) {
         player->BroadcastMessage("forward", new float(1.0));
     }
@@ -118,9 +118,9 @@ void GameController::repeatedKeys(GLWindow * window) {
     if (getKeyState(window, RMX_KEY_Q) == RMX_PRESS) {
         player->BroadcastMessage("up", new float(- 1.0));
     }
-//    if (getKeyState(window, RMX_KEY_SPACE) == RMX_PRESS) {
-//        player->BroadcastMessage("jump");
-//    }
+    //    if (getKeyState(window, RMX_KEY_SPACE) == RMX_PRESS) {
+    //        player->BroadcastMessage("jump");
+    //    }
     
     if (getKeyState(window, RMX_KEY_RIGHT) == RMX_PRESS) {
         player->getTransform()->move(Yaw, 1.0f);
@@ -145,19 +145,19 @@ void GameController::repeatedKeys(GLWindow * window) {
     if (getKeyState(window, RMX_KEY_Z) == RMX_PRESS) {
         player->getTransform()->move(Roll,-1.0f);
     }
-//#endif
-//    cout << player->getTransform()->localMatrix();
-//    cout << "             Euler: " << player->getTransform()->eulerAngles() << endl;
-//    cout << "       Local Euler: " << player->getTransform()->localEulerAngles() << endl;
-//    cout << "          Position: " << player->getTransform()->position() << endl;
-//    cout << endl;
+    //#endif
+    //    cout << player->getTransform()->localMatrix();
+    //    cout << "             Euler: " << player->getTransform()->eulerAngles() << endl;
+    //    cout << "       Local Euler: " << player->getTransform()->localEulerAngles() << endl;
+    //    cout << "          Position: " << player->getTransform()->position() << endl;
+    //    cout << endl;
 }
 
 
 void GameController::setView(GameView * view) {
     this->view = view;
     this->view->setDelegate(this);
-//    this->keys = new int[600];
+    //    this->keys = new int[600];
 }
 
 //int GameController::keys[600] = {0};
@@ -212,7 +212,7 @@ void GameController::keyCallback(GLWindow *window, int key, int scancode, int ac
                     player()->physicsBody()->setEffectedByGravity(true);
                 break;
         }
-
+    
 }
 
 
@@ -232,7 +232,7 @@ void GameController::cursorCallback(GLWindow * w, double x, double y) {
     
     if (!gc->cursorLocked)
         return;
-//    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;
+    //    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;
     if (restart) {
         xpos = x;
         ypos = y;
@@ -242,17 +242,17 @@ void GameController::cursorCallback(GLWindow * w, double x, double y) {
 #ifdef GLFW
         double dx = x - xpos;
         double dy = y - ypos;
-
+        
         dx *= 0.1; dy *= 0.1;
         xpos = x;
         ypos = y;
         
-        #else
+#else
         double dx = x * 0.4;
         double dy = y * 0.4;
-//        cout << dx << ", " << dy << endl;
+        //        cout << dx << ", " << dy << endl;
 #endif
-//        GameNode * pov =
+        //        GameNode * pov =
         Transform * body = GameNode::getCurrent()->getTransform();
         Transform * head = gc->view->pointOfView()->getTransform();
         head->rotate(Pitch, -dy);
@@ -270,7 +270,7 @@ void GameController::windowSizeCallback(GLWindow * window, int width, int height
     GameController * gvc = getInstance();
     gvc->view->setWidth(width);
     gvc->view->setHeight(height);
-    #ifdef GLFW
+#ifdef GLFW
     glfwSetWindowSize(window, width, height);
 #endif
 }

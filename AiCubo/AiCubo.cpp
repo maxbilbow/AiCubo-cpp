@@ -61,8 +61,8 @@ void AiCubo::setup() {
     while(i->hasNext()) {
         GameNode * node = i->next();
         if (node->getTransform() == nullptr) {
-            cout << node << endl;
-            throw invalid_argument("Transform cannot be NULL!");
+//            cout << node << endl;
+            throw invalid_argument("AiCubo::Transform cannot be NULL!");
         }
     }
     

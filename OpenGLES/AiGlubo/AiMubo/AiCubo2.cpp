@@ -56,15 +56,15 @@ void AiCubo::setup() {
     scene->rootNode()->addChild(floor);
     
     EG eg = EG();
-    
-    eg.makeShapesAndAddToScene(scene, 5);
+    eg.yMin = 10;
+    eg.makeShapesAndAddToScene(scene, 500);
     
     LinkedList<GameNode>::Iterator * i = scene->rootNode()->childNodeIterator();
     while(i->hasNext()) {
         GameNode * node = i->next();
         if (node->getTransform() == nullptr) {
-            cout << node << endl;
-            throw invalid_argument("Transform cannot be NULL!");
+//            cout << node << endl;
+            throw invalid_argument("AiCubo::Transform cannot be NULL!");
         }
     }
     

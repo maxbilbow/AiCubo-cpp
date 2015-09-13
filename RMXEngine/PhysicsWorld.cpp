@@ -30,17 +30,17 @@ using namespace rmx;
 Vector3 PhysicsWorld::getGravity() {
     return this->gravity;
 }
-    
+
 void PhysicsWorld::setGravity(Vector3 gravity) {
     this->gravity = gravity;
 }
 
 void PhysicsWorld::setGravity(float x, float y, float z) {
-        this->gravity.x = x;
-        this->gravity.y = y;
-        this->gravity.z = z;
+    this->gravity.x = x;
+    this->gravity.y = y;
+    this->gravity.z = z;
 }
-    
+
 void PhysicsWorld::updatePhysics(GameNode * rootNode) {
     GameNodeList::Iterator * i = rootNode->childNodeIterator();
     while (i->hasNext()) {
@@ -56,17 +56,28 @@ const double spf = 0.0167;
 float getCurrentFramerate() {
     return spf;
 }
-    
+
 void PhysicsWorld::applyGravityTo(GameNode * node) {
+    if (node->didCollideThisTurn())
+        return;
     if (node->physicsBody()->type() == Dynamic && node->physicsBody()->isEffectedByGravity()) {
         Transform * t = node->getTransform();
-//        float ground = t->scale().y;
+
+        
+        
         float mass = node->getTransform()->mass();
         float framerate = getCurrentFramerate();
-       
-//        if (t->position().y < ground)
-//            t->setPosition(0, ground, 0);// setM(3 * 4 + 1, ground);
-//        else
+        
+//        GameNode * floor = node->rootNode()->getChildWithName("floor");
+//        float ground = t->scale().y / 2;
+//        if (floor != nullptr) {
+//            ground += floor->collisionBody()->boundingBox()->top();
+//            if (t->position().y <= ground) {
+//                t->setPosition(0, ground, 0);// setM(3 * 4 + 1, ground);
+////                return;
+//            }
+//        }
+        
         t->physicsBody()->applyForce( framerate * mass, this->gravity);
     }
 }
@@ -109,7 +120,7 @@ void PhysicsWorld::updateCollisionEvents(GameNode * rootNode) {
         if (!staticBodies->isEmpty())
             checkForStaticCollisions(dynamicBodies, staticBodies);
         checkForDynamicCollisions(dynamicBodies);
-//        count = checks = 0;
+        //        count = checks = 0;
         //			swapLists();
     }
     free(this->staticBodies);//.clear();
@@ -126,9 +137,9 @@ void PhysicsWorld::checkForStaticCollisions(LinkedList<CollisionBody> * dynamic,
         LinkedList<CollisionBody>::Iterator * di = dynamic->getIterator();
         while (di->hasNext()) {
             CollisionBody * dynamicBody = di->next();
-//            checks++;
+            //            checks++;
             if (this->checkForCollision(staticBody,dynamicBody)) {
-//                count++;
+                //                count++;
                 
                 //					di.remove();
             }
@@ -142,17 +153,17 @@ void PhysicsWorld::checkForDynamicCollisions(LinkedList<CollisionBody> * dynamic
     LinkedList<CollisionBody>::Iterator * i = dynamic->getIterator();
     while (i->hasNext()) {
         CollisionBody * B = i->next();
-//        checks++;
+        //        checks++;
         if (this->checkForCollision(A,B)) {
-//            count++;
+            //            count++;
             //					if (unchecked.remove(A))
             //						System.err.println(A.uniqueName() + " removed twie");//checked.addLast(A);
-//            if (
+            //            if (
             dynamic->removeValue(B);
-//                == null)
-//                cout << "WARNING: " << B->uniqueName() << " was not removed from unchecked" << endl;
-//            else
-//                cout << "SUCCESS: " << B->uniqueName() << " was removed from unchecked" << endl;
+            //                == null)
+            //                cout << "WARNING: " << B->uniqueName() << " was not removed from unchecked" << endl;
+            //            else
+            //                cout << "SUCCESS: " << B->uniqueName() << " was removed from unchecked" << endl;
             if (!dynamic->isEmpty()) {
                 this->checkForDynamicCollisions(dynamic);
                 return;

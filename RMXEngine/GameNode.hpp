@@ -28,7 +28,7 @@ namespace rmx {
         static GameNode * _current;
         bool _geometryDidChange;
         long _tick = 0;
-        
+        bool _didCollideThisTurn;
         Transform * _transform = nullptr;
         
         bool _hasCamera = FALSE;
@@ -53,6 +53,8 @@ namespace rmx {
         GameNode();
         GameNode(std::string name);
         
+        bool didCollideThisTurn();
+        void setDidCollideThisTurn(bool);
         GameNode * rootNode();
         long tick();
         CollisionBody * collisionBody();
