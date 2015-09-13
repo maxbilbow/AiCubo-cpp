@@ -74,7 +74,7 @@ void CollisionEvent::seperateBodies(Transform * A, Transform * B) {
     }
     
     if (A->collisionBody()->boundingBox()->intersects(B->collisionBody()->boundingBox()) ) {
-    
+        return; //TODO: Sort it
         float time = 0.017;// * 9.8f;//RMX.getCurrentFramerate();
         float escapeForce = time;// * AtoB.length();
         Vector3 dir = //AtoB.getNormalized();

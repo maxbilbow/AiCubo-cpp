@@ -122,13 +122,15 @@ import UIKit
         func jump(recogniser: UILongPressGestureRecognizer){
             switch recogniser.state {
             case .Began:
-                CppBridge.sendMessage(UserAction.JUMP.description, withScale: 0)
+                CppBridge.setKey(RMX_KEY_SPACE, action: RMX_PRESS, withMods: 0)
+//                CppBridge.sendMessage(UserAction.JUMP.description, withScale: 0)
                 break
             case .Ended:
-                CppBridge.sendMessage(UserAction.JUMP.description, withScale: 1)
+//                CppBridge.sendMessage(UserAction.JUMP.description, withScale: 1)
+                CppBridge.setKey(RMX_KEY_SPACE, action: RMX_RELEASE, withMods: 0)
                 break
             default:
-                CppBridge.sendMessage(UserAction.MOVE_UP.description, withScale: Float(self.moveSpeed))
+//                CppBridge.sendMessage(UserAction.MOVE_UP.description, withScale: Float(self.moveSpeed))
                 break
             }
             

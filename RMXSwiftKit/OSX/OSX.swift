@@ -16,3 +16,4 @@ public typealias RMColor = NSColor
 public typealias RMDataView = NSTextView
 public typealias RMLabel = NSButton
 public typealias RMImage = NSImage
+public typealias RMEvent = NSEvent

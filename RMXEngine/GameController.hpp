@@ -31,7 +31,7 @@ namespace rmx {
 
         
         
-        static int keys[600];
+        int keys[600] = {0};
         
         bool cursorLocked = false;
     public:
@@ -40,7 +40,7 @@ namespace rmx {
         void lockCursor(bool lock);
         bool isCursorLocked();
         void run();
-        
+        int getKeyState(GLWindow * w, int key);
 //        bool * keys = new KeyStates[500];
         
         void repeatedKeys(GLWindow * window);

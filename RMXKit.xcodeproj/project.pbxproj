@@ -1857,6 +1857,7 @@
 				50E52CFC1BA17C1A002EDECD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -20,8 +20,8 @@ void AiCubo::initpov() {
     //    n->physicsBody()->setType(Dynamic);
     n->physicsBody()->setEffectedByGravity(false);
     n->physicsBody()->setMass(2);
-    //    cout << n->physicsBody() << endl;
-    n->physicsBody()->setFriction(0.01);
+
+//    n->physicsBody()->setFriction(0.01);
     n->addBehaviour(new SpriteBehaviour());
     //    n->setGeometry(Geometry::Cube());
     n->getTransform()->setScale(2.0f, 3.0f, 2.0f);
@@ -59,7 +59,7 @@ void AiCubo::setup() {
     
     eg.makeShapesAndAddToScene(scene, 5);
     
-    LinkedList<GameNode>::Iterator * i = scene->rootNode()->getChildren()->getIterator();
+    LinkedList<GameNode>::Iterator * i = scene->rootNode()->childNodeIterator();
     while(i->hasNext()) {
         GameNode * node = i->next();
         if (node->getTransform() == nullptr) {

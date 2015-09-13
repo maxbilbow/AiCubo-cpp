@@ -22,6 +22,7 @@ void SpriteBehaviour::jump(float force){
    this->getNode()->physicsBody()->applyForce(force, GLKVector3Make(0,1,0));
 }
 
+float speed = 0.5;
 void SpriteBehaviour::SendMessage(string message, void * args, SendMessageOptions options) {
 //    Behaviour::SendMessage(message, args, options);
     if (args == nullptr) {
@@ -32,17 +33,17 @@ void SpriteBehaviour::SendMessage(string message, void * args, SendMessageOption
         }
     } else {
         if (message == "forward")
-            this->getNode()->physicsBody()->applyForce(*((float*)args) * -1, getNode()->getTransform()->forward());
+            this->getNode()->physicsBody()->applyForce(*((float*)args) * -speed, getNode()->getTransform()->forward());
         else if (message == "left")
-            this->getNode()->physicsBody()->applyForce(*((float*)args) * -1, getNode()->getTransform()->left());
+            this->getNode()->physicsBody()->applyForce(*((float*)args) * -speed, getNode()->getTransform()->left());
         else if (message == "up")
-            this->getNode()->physicsBody()->applyForce(*((float*)args), getNode()->getTransform()->up());
+            this->getNode()->physicsBody()->applyForce(*((float*)args) *  speed, getNode()->getTransform()->up());
         else if (message == "pitch")
-            this->getNode()->physicsBody()->applyForce(*((float*)args), getNode()->getTransform()->left());
+            this->getNode()->physicsBody()->applyForce(*((float*)args) *  speed, getNode()->getTransform()->left());
         else if (message == "yaw")
-            this->getNode()->physicsBody()->applyForce(*((float*)args), getNode()->getTransform()->up());
+            this->getNode()->physicsBody()->applyForce(*((float*)args) *  speed, getNode()->getTransform()->up());
         else if (message == "roll")
-            this->getNode()->physicsBody()->applyForce(*((float*)args), getNode()->getTransform()->forward());
+            this->getNode()->physicsBody()->applyForce(*((float*)args) *  speed, getNode()->getTransform()->forward());
         else if (message == "jump")
             this->getNode()->physicsBody()->applyForce(*((float*)args), GLKVector3Make(0,1,0));
         else if (message == "onCollision") {

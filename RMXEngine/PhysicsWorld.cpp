@@ -42,7 +42,7 @@ void PhysicsWorld::setGravity(float x, float y, float z) {
 }
     
 void PhysicsWorld::updatePhysics(GameNode * rootNode) {
-    GameNodeList::Iterator * i = rootNode->getChildren()->getIterator();
+    GameNodeList::Iterator * i = rootNode->childNodeIterator();
     while (i->hasNext()) {
         GameNode * node = i->next();
         if (node->hasPhysicsBody()) {
@@ -60,7 +60,7 @@ float getCurrentFramerate() {
 void PhysicsWorld::applyGravityTo(GameNode * node) {
     if (node->physicsBody()->type() == Dynamic && node->physicsBody()->isEffectedByGravity()) {
         Transform * t = node->getTransform();
-        float ground = t->scale().y;
+//        float ground = t->scale().y;
         float mass = node->getTransform()->mass();
         float framerate = getCurrentFramerate();
        
@@ -77,7 +77,7 @@ void PhysicsWorld::buildCollisionList(GameNode * rootNode) {
     this->staticBodies = new LinkedList<CollisionBody>();
     this->dynamicBodies = new LinkedList<CollisionBody>();
     this->kinematicBodies = new LinkedList<CollisionBody>();
-    LinkedList<GameNode>::Iterator * i = rootNode->getChildren()->getIterator();
+    LinkedList<GameNode>::Iterator * i = rootNode->childNodeIterator();
     while (i->hasNext()){
         GameNode * node = i->next();
         if (node->hasPhysicsBody()) {

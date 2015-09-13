@@ -84,7 +84,9 @@ typedef rmx::Camera Camera;
 
 - (float*)modelMatrixRaw
 {
-    return self.modelMatrix.m;
+    float * M;
+    M = self.modelMatrix.m;
+    return M;
 }
 
 - (GLKMatrix4)modelScaleMatrix
@@ -103,12 +105,16 @@ typedef rmx::Camera Camera;
 
 - (float*)scaleVectorRaw
 {
-    return self.scaleVector.v;
+    float * V;
+    V = self.scaleVector.v;
+    return V;
 }
 
 - (float*)colorVectorRaw
 {
-    return self.color.v;
+    float * V;
+    V = self.color.v;
+    return V;
 }
 - (GLKVector4)color
 {
@@ -151,14 +157,15 @@ ShapeData * _cube, * _triangle;
 
 }
 //GameNodeIterator * list;
-Camera * camera;
-GameNode * node;
+//Camera * camera;
+//GameNode * node;
 
 
 - (id)init
 {
     self = [super init];
-    [self reset];
+    _shapeData = [NSMutableArray new];
+    [self updateGeometry];
     return self;
     
 }
@@ -169,21 +176,24 @@ void addGeometryData(NSMutableArray * list, GameNode * node) {
         [list addObject:[[ShapeData alloc]initWithGeometry:node->geometry()]];
         cout << g->color() << endl;
     }
-    GameNodeIterator * i = node->getChildren()->getIterator();
+    GameNodeIterator * i = node->childNodeIterator();
     while (i->hasNext()) {
         addGeometryData(list, i->next());
     }
 }
 
--(void)reset
+-(void)updateGeometry
 {
-    
-    self.shapeData = [NSMutableArray new];
+    [_shapeData removeAllObjects];
     addGeometryData(self.shapeData, Scene::getCurrent()->rootNode());
-
-    camera = Scene::getCurrent()->pointOfView()->getCamera();
-//    list = Scene::getCurrent()->rootNode()->getChildren()->getIterator();
 }
 
+-(NSMutableArray<ShapeData*>*)shapeData
+{
+    if (Scene::getCurrent()->geometryDidChange()) {
+        [self updateGeometry];
+    }
+    return _shapeData;
+}
 
 @end

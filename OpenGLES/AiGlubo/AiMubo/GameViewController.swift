@@ -125,11 +125,15 @@ let vertexColorData:[Float] =
 
 class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizerDelegate {
     
+    var metalLayer: CAMetalLayer!
     let device: MTLDevice = MTLCreateSystemDefaultDevice()!
     let startTime = Float(NSTimeIntervalSince1970)
     var commandQueue: MTLCommandQueue! = nil
     var pipelineState: MTLRenderPipelineState! = nil
     var depthStencilState: MTLDepthStencilState! = nil
+    var colorTex: MTLTexture!
+    var depthTex: MTLTexture!
+    var samplerState: MTLSamplerState!
     var vertexBuffer: MTLBuffer! = nil
     var vertexColorBuffer: MTLBuffer! = nil
     var vertexNormalBuffer: MTLBuffer! = nil
@@ -148,9 +152,8 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
 
     override func viewDidLoad() {
         GameViewController._instance = self
-        if mode == .Engine {
-            CppBridge.setupScene()
-        }
+        CppBridge.setupScene()
+
         super.viewDidLoad()
         
         // setup view properties
@@ -167,6 +170,8 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
 
 //    var sampler: MTLSamplerState! = nil
 //    var rendPassDesc: MTLRenderPassDescriptor!
+    
+    
     func loadAssets() {
         
         // load any resources required for rendering
@@ -186,7 +191,9 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
         pipelineStateDescriptor.colorAttachments[0].blendingEnabled = true
         pipelineStateDescriptor.sampleCount = view.sampleCount
-        
+//        pipelineStateDescriptor.colorAttachments[0].pixelFormat = MTLPixelFormat.BGRA8Unorm;
+        pipelineStateDescriptor.depthAttachmentPixelFormat = .Depth32Float
+
        
         
         do {
@@ -197,28 +204,63 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         
         
         
-       
-        
         let depthStencilStateDescriptor = MTLDepthStencilDescriptor()
-        depthStencilStateDescriptor.depthCompareFunction = MTLCompareFunction.Always
+        depthStencilStateDescriptor.depthCompareFunction = MTLCompareFunction.Less
         depthStencilStateDescriptor.depthWriteEnabled = true
-        depthStencilStateDescriptor.frontFaceStencil.stencilCompareFunction = .Less
-        depthStencilStateDescriptor.frontFaceStencil.stencilFailureOperation = .Invert
-        depthStencilStateDescriptor.frontFaceStencil.depthFailureOperation = .Invert
-        depthStencilStateDescriptor.frontFaceStencil.depthStencilPassOperation = .Keep
+        depthStencilStateDescriptor.frontFaceStencil.stencilCompareFunction = .Equal
+        depthStencilStateDescriptor.frontFaceStencil.stencilFailureOperation = .Keep
+        depthStencilStateDescriptor.frontFaceStencil.depthFailureOperation = .IncrementClamp
+        depthStencilStateDescriptor.frontFaceStencil.depthStencilPassOperation = .IncrementClamp
         depthStencilStateDescriptor.frontFaceStencil.readMask = 0x1
         depthStencilStateDescriptor.frontFaceStencil.writeMask = 0x1
         depthStencilStateDescriptor.backFaceStencil = nil
         depthStencilState = device.newDepthStencilStateWithDescriptor(depthStencilStateDescriptor)
         
-        /*
+        
+        
+        
+
+    
         let samplerDescriptor = MTLSamplerDescriptor()
-        samplerDescriptor.minFilter = MTLSamplerMinMagFilter.Nearest
-        samplerDescriptor.magFilter = MTLSamplerMinMagFilter.Linear;
-        samplerDescriptor.sAddressMode = MTLSamplerAddressMode.Repeat;
-        samplerDescriptor.tAddressMode = MTLSamplerAddressMode.Repeat;
-        sampler = device.newSamplerStateWithDescriptor(samplerDescriptor)
-        */
+        samplerDescriptor.minFilter = .Nearest;
+        samplerDescriptor.magFilter = .Linear;
+        samplerDescriptor.sAddressMode = .Repeat;
+        samplerDescriptor.tAddressMode = .Repeat;
+//        samplerDescriptor.rAddressMode = MTLSamplerAddressMode.ClampToEdge
+//        samplerDescriptor.normalizedCoordinates = true
+//        samplerDescriptor.lodMinClamp           = 0
+//        samplerDescriptor.lodMaxClamp           = FLT_MAX
+        samplerState = device.newSamplerStateWithDescriptor(samplerDescriptor)
+      
+        metalLayer = CAMetalLayer()
+        metalLayer.device = device
+        metalLayer.pixelFormat = .BGRA8Unorm
+        metalLayer.framebufferOnly = true
+        metalLayer.frame = view.layer!.frame
+        let scale:CGFloat = 1// window.screen.nativeScale
+        let layerSize = view.bounds.size
+        //2
+//        view.contentScaleFactor = scale
+        metalLayer.frame = CGRectMake(0, 0, layerSize.width, layerSize.height)
+        metalLayer.drawableSize = CGSizeMake(layerSize.width * scale, layerSize.height * scale)
+    
+        view.layer?.addSublayer(metalLayer)
+        viewDidLayout()
+        
+        let size = view.window!.screen!.frame.size
+        let colorTexDesc = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.RGBA8Unorm,
+            width: Int(size.width), height: Int(size.height), mipmapped: false)
+        colorTexDesc.resourceOptions = .StorageModePrivate
+        colorTex = device.newTextureWithDescriptor(colorTexDesc)
+//
+//
+//        print(size)
+        let depthTexDesc = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.Depth32Float,
+            width: Int(size.width), height: Int(size.height), mipmapped: false)
+        depthTexDesc.resourceOptions = .StorageModePrivate
+        depthTex = device.newTextureWithDescriptor(depthTexDesc)
+        
+        
         
         // generate a large enough buffer to allow streaming vertices for 3 semaphore controlled frames
         vertexBuffer = device.newBufferWithLength(cube.vertexDataSize * sizeofValue(cube.vertexData[0]), options: [])
@@ -248,41 +290,69 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         uniforms = Uniform(width: Float(view.bounds.width), height: Float(view.bounds.height),
             vars: ("time",1))
         
-        uniforms.setView(matrix: viewMatrix, invert: true)
+        uniforms.setView(matrix: CppBridge.viewMatrix(), invert: true)
 
-        print("Uniforms:")
-        print(uniforms.print)
+//        print("Uniforms:")
+//        print(uniforms.print)
         uniformBuffer = device.newBufferWithBytes(uniforms.bytes, length: uniforms.size, options: [])
-
+        
         let shapes = CppBridge.geometries().shapeData
         
         instances = Instances(count: shapes.count)
         var size:Int = 0
-        var x:Float = 0, y:Float = 0, z:Float = 0
         for var i = 0; i<instances.count; ++i {
-            if mode == .Test {
-                instances[i].setScale(scale: GLKVector3Make(1, 1, 1))
-                instances[i].setValue(forKey: "scale", vector3: GLKVector3Make(1, 1, 1))
-                instances[i].setValue(forKey: "modelMatrix", matrix4: GLKMatrix4Identity * GLKMatrix4MakeTranslation(x, y, z))
-                z = Float(random() % 30) - 15; y = Float(random() % 30) - 15; x = Float(random() % 30) - 15
-            }
             size += instances[i].size
-            let s = instances[i].getMatrix4("modelMatrix")!.print
-            print("\(i)\n\(s)")
-            
         }
-//        print("Size: \((size / sizeofValue(Float(0)))/19)")
         instanceBuffer = device.newBufferWithLength(size, options: [])
     }
     
+    //1
+//    override func viewDidLayout() {
+//        super.viewDidLayout()
+//        if let _ = view.window {
+//            let scale:CGFloat = 1// newScale//window.screen.nativeScale
+//            let layerSize = view.bounds.size
+//            //2
+////            (view as? MTKView)?.colorPixelFormat = scale
+//            metalLayer.frame = CGRectMake(0, 0, layerSize.width, layerSize.height)
+//            metalLayer.drawableSize = CGSizeMake(layerSize.width * scale, layerSize.height * scale)
+//        }
+//    }
+    
+    
+    func createRenderPass(ColorAttachmentTexture texture: MTLTexture?, view: MTKView)-> MTLRenderPassDescriptor? {
+
+        guard let renderPassDesc = view.currentRenderPassDescriptor else {
+            return nil
+        }
+        
+        renderPassDesc.colorAttachments[0].texture = texture;
+        renderPassDesc.colorAttachments[0].loadAction = MTLLoadAction.Clear
+        renderPassDesc.colorAttachments[0].storeAction = MTLStoreAction.MultisampleResolve
+        renderPassDesc.colorAttachments[0].clearColor = MTLClearColorMake(0.6,0.6,1.0,1.0)
+        
+        renderPassDesc.depthAttachment.texture = depthTex;
+        renderPassDesc.depthAttachment.loadAction = MTLLoadAction.Clear
+        renderPassDesc.depthAttachment.storeAction = MTLStoreAction.Store;
+        renderPassDesc.depthAttachment.clearDepth = 1.0
+        
+    
+        return renderPassDesc;
+    }
     
     func drawInMTKView(view: MTKView) {
+        //update logic and viewProjection
+        uniforms.setValue(forKey: "time", value: uniforms.getValue("time")! + 0.01)
+        CppBridge.updateSceneLogic()
+        uniforms.setView(matrix: CppBridge.viewMatrix(), invert: false)
+        
+        
         
         // use semaphore to encode 3 frames ahead
         dispatch_semaphore_wait(inflightSemaphore, DISPATCH_TIME_FOREVER)
         
        
-//        self.update()
+
         let pData = vertexBuffer.contents()
         memcpy(pData, cube.vertexData, cube.vertexDataSize * sizeofValue(cube.vertexData[0]))
         
@@ -290,69 +360,49 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         let commandBuffer = commandQueue.commandBuffer()
         commandBuffer.label = "Frame command buffer"
         
-        guard let renderPassDesc = view.currentRenderPassDescriptor else {
+        guard let renderPassDesc = createRenderPass(ColorAttachmentTexture: colorTex, view: view) else {
             return
         }
-
-
-        renderPassDesc.colorAttachments[0].loadAction = .Clear
-        renderPassDesc.colorAttachments[0].storeAction = .MultisampleResolve
-        renderPassDesc.colorAttachments[0].clearColor = MTLClearColorMake(0.0,1.0,0.0,1.0)
-        
-        renderPassDesc.depthAttachment.loadAction = .Clear
-        renderPassDesc.depthAttachment.storeAction = .MultisampleResolve
-        renderPassDesc.depthAttachment.clearDepth = 0.0
-        
-        uniforms.setValue(forKey: "time", value: uniforms.getValue("time")! + 0.01)
-        if mode == .Engine {
-            CppBridge.updateSceneLogic()
-            uniforms.setView(matrix: CppBridge.viewMatrix(), invert: false)
-        }
-        
         
         let renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDesc)
         renderEncoder.label = "render encoder"
-        renderEncoder.setCullMode(MTLCullMode.Front)
+        renderEncoder.pushDebugGroup("draw scene")
+        renderEncoder.setRenderPipelineState(pipelineState)
+        renderEncoder.setDepthStencilState(depthStencilState)
+        renderEncoder.setFragmentSamplerState(samplerState, atIndex: 0)
+        
+//        renderEncoder.setFragmentTexture(depthTex, atIndex: 0)
+//        renderEncoder.setFragmentTexture(colorTex, atIndex: 0)
+        renderEncoder.setStencilReferenceValue(0xFF)
+//        renderEncoder.setDepthClipMode(.Clamp)
+        
+        renderEncoder.setCullMode(MTLCullMode.Back)
+        renderEncoder.setFrontFacingWinding(MTLWinding.CounterClockwise)
+
+
        
+        
+
+        //instance uniforms
+        let iPointer = instanceBuffer.contents()
+        let shapes = CppBridge.geometries().shapeData
+        for var i = 0;i<instances.count; ++i{
+            instances[i].setModel(matrix: (shapes.objectAtIndex(i) as? ShapeData)!.modelMatrix)
+            instances[i].setScale(scale: (shapes.objectAtIndex(i) as? ShapeData)!.scaleVector)
+            instances[i].setColor(color: (shapes.objectAtIndex(i) as? ShapeData)!.color)
+            memcpy(iPointer + instances[i].size * i, instances[i].bytes, instances[i].size)
+        }
+        renderEncoder.setVertexBuffer(instanceBuffer, offset: 0, atIndex: 3)
+        
+        //shared uniforms
         let uPointer = uniformBuffer.contents()
         memcpy(uPointer, uniforms.bytes, uniforms.size)
         renderEncoder.setVertexBuffer(uniformBuffer, offset: 0, atIndex: 2)
-
         
-//        var bytes: [Float] = []
-//        for var i = 0;i<instances.count; ++i{
-//            bytes += instances[i].bytes
-//        }
-//        memcpy(iPointer, bytes, sizeofValue(bytes[0]) * bytes.count)
-        
-        let iPointer = instanceBuffer.contents()
-        if mode == .Test {
-            for var i = 0;i<instances.count; ++i{
-                memcpy(iPointer + instances[i].size * i, instances[i].bytes, instances[i].size)
-            }
-        } else if mode == .Engine {
-            let shapes = CppBridge.geometries().shapeData
-            for var i = 0;i<instances.count; ++i{
-                instances[i].setModel(matrix: (shapes.objectAtIndex(i) as? ShapeData)!.modelMatrix)
-                instances[i].setScale(scale: (shapes.objectAtIndex(i) as? ShapeData)!.scaleVector)
-                instances[i].setColor(color: (shapes.objectAtIndex(i) as? ShapeData)!.color)
-                memcpy(iPointer + instances[i].size * i, instances[i].bytes, instances[i].size)
-            }
-        }
-        
-        renderEncoder.setVertexBuffer(instanceBuffer, offset: 0, atIndex: 3)
-        
-        renderEncoder.pushDebugGroup("draw morphing triangle")
-        renderEncoder.setRenderPipelineState(pipelineState)
-        renderEncoder.setDepthStencilState(depthStencilState)
-        renderEncoder.setStencilReferenceValue(0xFF)
-//        renderEncoder.setVertexSamplerState(sampler, atIndex: 0)
+        //vertex data
         renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
 //        renderEncoder.setVertexBuffer(vertexColorBuffer, offset:0 , atIndex: 1)
         renderEncoder.setVertexBuffer(vertexNormalBuffer, offset:0 , atIndex: 1)
-        
-        
-//        renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 9, instanceCount: 1)
         renderEncoder.drawIndexedPrimitives(.Triangle,
             indexCount: cube.indexDataSize,
             indexType: MTLIndexType.UInt16,
@@ -380,168 +430,19 @@ class GameViewController: NSViewController, MTKViewDelegate, NSGestureRecognizer
         commandBuffer.commit()
     }
     
-    
+//    var viewMatrix = GLKMatrix4MakeTranslation(0, 0, -4)
+    var projection = GLKMatrix4Identity
     func mtkView(view: MTKView, drawableSizeWillChange size: CGSize) {
         projection = GLKMatrix4MakePerspective(45, Float(view.bounds.width/view.bounds.height), 0.01, 2000)
         uniforms.setProjection(matrix: projection)
     }
     
-    override func keyDown(event: NSEvent) {
-        print(event)
-        switch mode {
-        case .Test:
-            switch event.characters! {
-            case "w":
-                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0, 0, -0.1)
-                break
-            case "s":
-                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0, 0, 0.1)
-                break
-            case "a":
-                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, -0.1, 0, 0)
-                break
-            case "d":
-                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0.1, 0, 0)
-                break
-            case "e":
-                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0, 0.1, 0)
-                break
-            case "q":
-                self.viewMatrix = GLKMatrix4Translate(self.viewMatrix, 0, -0.1, 0)
-                break
-            default:
-                return
-            }
-//            self.viewMatrix *= translation
-            print("View Matrix:")
-            print(viewMatrix.print)
-            uniforms.setView(matrix: viewMatrix, invert: true)
-            return
-        case .Engine:
-         
-            return
-        }
-    }
-    override func keyUp(event: NSEvent) {
-        print(event)
-    }
-    
-    let models = 2
-    override func mouseDragged(event: NSEvent) {
-        switch mode {
-        case .Test:
-            let rx = GLKMatrix4MakeRotation(Float(event.deltaY) * PI_OVER_180f,
-                viewMatrix.m00, viewMatrix.m01, viewMatrix.m02)
-            let ry = GLKMatrix4MakeRotation(Float(event.deltaX) * PI_OVER_180f,
-                viewMatrix.m10, viewMatrix.m11, viewMatrix.m12)
-
-            
-            for var i = 0; i<instances.count; ++i {
-                if var m = instances[i].getMatrix4("modelMatrix") {
-//                    let r = viewMatrix * GLKMatrix4Transpose(m)
-                    let p = GLKVector3Make(m.m30,m.m31,m.m32)
-                    m *= rx
-                    m *= ry
-                    m = GLKMatrix4Make(
-                        m.m00, m.m01, m.m02, 0,
-                        m.m10, m.m11, m.m12, 0,
-                        m.m20, m.m21, m.m22, 0,
-                        p.x  , p.y  , p.z  , 1
-                    )
-
-//                    m = GLKMatrix4Rotate(m, Float(event.deltaY) * PI_OVER_180f,
-//                        r.m00, r.m01, r.m02)
-//                    m = GLKMatrix4Rotate(m, Float(event.deltaX) * PI_OVER_180f,
-//                        r.m10, r.m11, r.m12)
-                    if i < models {
-                        print(" R: \(i)\n\(m.print)")
-                    }
-                    instances[i].setModel(matrix: m)
-                }
-            }
-            return
-        case .Engine:
-            return
-        }
-        
-        
-    }
-    var viewMatrix = GLKMatrix4MakeTranslation(0, 0, -4)
-    var projection = GLKMatrix4Identity
-    override func magnifyWithEvent(event: NSEvent) {
-        switch mode {
-        case .Test:
-            var scale = instances[0].scale!
-            scale *= (1 + Float(event.magnification))
-            instances[0].setScale(scale: scale)
-            return
-        case .Engine:
-           
-            return
-        }
-
-    }
-    
-    override func rotateWithEvent(event: NSEvent) {
-        switch mode {
-        case .Test:
-            viewMatrix = GLKMatrix4RotateZ(viewMatrix,Float(event.rotation) * PI_OVER_180f)
-            
-            print("View Matrix:")
-            print(viewMatrix.print)
-            uniforms.setView(matrix: viewMatrix, invert: true)
-
-//            
-//            let rz = GLKMatrix4MakeRotation(event.rotation * PI_OVER_180f,
-//                viewMatrix.m20, viewMatrix.m21, viewMatrix.m22)
-//            for var i = 0; i<instances.count; ++i {
-//                if var m = instances[i].getMatrix4("modelMatrix") {
-//                    let p = GLKVector3Make(m.m30,m.m31,m.m32)
-//                    m *= rz
-//                    m = GLKMatrix4Make(
-//                        m.m00, m.m01, m.m02, 0,
-//                        m.m10, m.m11, m.m12, 0,
-//                        m.m20, m.m21, m.m22, 0,
-//                        p.x  , p.y  , p.z  , 1
-//                    )
-//                    if i < models {
-//                        print("RZ: \(i)\n\(m.print)")
-//                    }
-//
-//                    instances[i].setModel(matrix: m)
-//                }
-//            }
-            return
-        case .Engine:
-            CppBridge.turnAboutAxis("roll", withForce: event.rotation * PI_OVER_180f)
-            return
-        }
-    }
-    let mode = Mode.Engine
-    enum Mode {
-        case Test, Engine
-    }
     
     
-    override func scrollWheel(event: NSEvent) {
-        switch mode {
-        case .Test:
-           
-            viewMatrix = GLKMatrix4RotateX(viewMatrix,Float(event.deltaY) * -PI_OVER_180f)
-            viewMatrix = GLKMatrix4RotateY(viewMatrix,Float(event.deltaX) * -PI_OVER_180f)
-           
-            print("View Matrix:")
-            print(viewMatrix.print)
-            uniforms.setView(matrix: viewMatrix, invert: true)
-            return
-        case .Engine:
-            CppBridge.turnAboutAxis("pitch", withForce: -Float(event.deltaY))
-            CppBridge.turnAboutAxis("yaw", withForce: -Float(event.deltaX) * PI_OVER_180f)
-            return
-        }
-
-     
-    }
+    
+    
+    
+    
     
     
 }

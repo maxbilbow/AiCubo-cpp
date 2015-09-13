@@ -53,7 +53,8 @@ static GeometryIterator * geometries;
 {
     
     GLKMatrix4 m =[CppBridge projectionMatrixWithAspect:aspect];
-    return m.m;
+    float * M = m.m;
+    return M;
 }
 
 + (GLKMatrix4) projectionMatrixWithAspect:(float)aspect {
@@ -75,7 +76,10 @@ static GeometryIterator * geometries;
 
 
 + (void) updateSceneLogic{
+    GameController * gc = GameController::getInstance();
+    gc->updateBeforeScene(nullptr);
     Scene::getCurrent()->updateSceneLogic();
+    gc->updateAfterScene(nullptr);
     
 //    Scene::getCurrent()->renderScene(moodelMatrix);
 }
@@ -135,6 +139,22 @@ static GeometryIterator * geometries;
         player->BroadcastMessage([message UTF8String],&scale);
 //        NSLog(@"Unimplemented Massage received: %@:@%f",message,scale);
     }
+}
+
++ (void)setKey:(int)key action:(int)action withMods:(int)mods
+{
+    GameController::keyCallback(nullptr, key, 0, action, mods);
+}
+
+
++ (void)setCursor:(double)x y:(double)y
+{
+    GameController::cursorCallback(nullptr, x, y);
+}
+
++ (void)cursorDelta:(double)dx dy:(double)dy
+{
+    GameController::cursorCallback(nullptr, dx, dy);
 }
 
 + (void) sendMessage:(NSString* )message withVector:(GLKVector3)vector withScale:(float)scale {

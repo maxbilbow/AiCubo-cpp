@@ -32,81 +32,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 class Window : NSWindow {
     override func keyUp(event: NSEvent) {
-        switch GameViewController.instance.mode {
-        case .Test:
-            GameViewController.instance.keyDown(event)
-            return
-        case .Engine:
-            switch event.characters! {
-//            case "w":
-//                CppBridge.moveWithDirection("forward", withForce: -1.0)
-//                break
-//            case "s":
-//                CppBridge.moveWithDirection("forward", withForce: 1.0)
-//                break
-//            case "a":
-//                CppBridge.moveWithDirection("left", withForce: -1.0)
-//                break
-//            case "d":
-//                CppBridge.moveWithDirection("left", withForce: 1.0)
-//                break
-//            case "e":
-//                CppBridge.moveWithDirection("up", withForce: 1.0)
-//                break
-//            case "q":
-//                CppBridge.moveWithDirection("up", withForce: -1.0)
-//                break
-            case "g":
-                CppBridge.sendMessage("setEffectedByGravity", withBool: true)
-                break
-            case "G":
-                CppBridge.sendMessage("setEffectedByGravity", withBool: false)
-                break
-            case " ":
-                CppBridge.sendMessage("jump", withScale: 1.0)
-                break
-            default:
-                return
-//                super.keyDown(event)
-            }
-            return
+        if let key = event.rmxKey {
+            CppBridge.setKey(key.key, action: RMX_RELEASE, withMods: key.mod)
         }
     }
     
     override func keyDown(event: NSEvent) {
-        switch GameViewController.instance.mode {
-        case .Test:
-            GameViewController.instance.keyDown(event)
-            return
-        case .Engine:
-            switch event.characters! {
-            case "w":
-                 CppBridge.moveWithDirection("forward", withForce: -1.0)
-                break
-            case "s":
-                CppBridge.moveWithDirection("forward", withForce: 1.0)
-                break
-            case "a":
-                CppBridge.moveWithDirection("left", withForce: -1.0)
-                break
-            case "d":
-                CppBridge.moveWithDirection("left", withForce: 1.0)
-                break
-            case "e":
-                CppBridge.moveWithDirection("up", withForce: 1.0)
-                break
-            case "q":
-                CppBridge.moveWithDirection("up", withForce: -1.0)
-                break
-            case " ":
-                CppBridge.sendMessage("jump", withScale: 0)
-                break
-            default:
-                super.keyDown(event)
-            }
-            return
+        if let key = event.rmxKey {
+            CppBridge.setKey(key.key, action: RMX_PRESS, withMods: key.mod)
         }
-        
+    }
+    
+    override func rotateWithEvent(event: NSEvent) {
+        CppBridge.turnAboutAxis("roll", withForce: event.rotation * PI_OVER_180f)
+    }
+
+    override func scrollWheel(event: NSEvent) {
+        CppBridge.cursorDelta(Double(event.deltaX), dy: Double(event.deltaY))
+    }
+    
+    override func mouseDragged(event: NSEvent) {
+        NSLog(event.description)
+    }
+
+    override func magnifyWithEvent(event: NSEvent) {
+        NSLog("\(event.magnification)")
     }
     
     

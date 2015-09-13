@@ -12,6 +12,7 @@
 //#include <stdio.h>
 
 #import <GLKit/GLKMatrix4.h>
+#import "RMXKeyStates.h"
 #import "VertexData.h"
 #import <Foundation/NSArray.h>
 #import "GeometryIterator.h"
@@ -40,20 +41,25 @@ typedef struct _Uniform
 
 + (GeometryIterator*)geometries;
 
-+ (void) sendMessage:(NSString* )message;
 
-+ (void) sendMessage:(NSString* )message withScale:(float)scale;
++ (void) sendMessage:(NSString* )message DEPRECATED_ATTRIBUTE;
 
-+ (void) sendMessage:(NSString* )message withBool:(bool)on;
++ (void) sendMessage:(NSString* )message withScale:(float)scale DEPRECATED_ATTRIBUTE;
 
-+ (void) moveWithDirection:(NSString* )direction withForce:(float)force;
++ (void) sendMessage:(NSString* )message withBool:(bool)on DEPRECATED_ATTRIBUTE;
 
-+ (void) turnAboutAxis:(NSString* )axis withForce:(float)force;
++ (void) moveWithDirection:(NSString* )direction withForce:(float)force DEPRECATED_ATTRIBUTE;
 
-+ (void) sendMessage:(NSString* )message withVector:(GLKVector3)vetor withScale:(float)scale;
++ (void) turnAboutAxis:(NSString* )axis withForce:(float)force DEPRECATED_ATTRIBUTE;
+
++ (void) sendMessage:(NSString* )message withVector:(GLKVector3)vetor withScale:(float)scale DEPRECATED_ATTRIBUTE;
 
 + (NSString*)toStringMatrix4:(GLKMatrix4)m;
 
++ (void)setKey:(int)key action:(int)action withMods:(int)mods;
+
++ (void)setCursor:(double)x y:(double)y;
++ (void)cursorDelta:(double)dx dy:(double)dy;
 //+ (const float*)vertsForShape:(unsigned int)shape;
 //+ (long)sizeOf:(unsigned int)shape;
 

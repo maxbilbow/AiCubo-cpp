@@ -26,7 +26,7 @@ namespace rmx {
     private:
         bool hasBehaviour(Behaviour*);
         static GameNode * _current;
-        
+        bool _geometryDidChange;
         long _tick = 0;
         
         Transform * _transform = nullptr;
@@ -53,6 +53,7 @@ namespace rmx {
         GameNode();
         GameNode(std::string name);
         
+        GameNode * rootNode();
         long tick();
         CollisionBody * collisionBody();
         void setTransform(Transform * transform);
@@ -63,7 +64,7 @@ namespace rmx {
         
         static GameNode * getCurrent();
         
-        
+        bool geometryDidChange(bool reset = true);
         
     //    template <class T = NodeComponent>
         NodeComponent * setComponent(NodeComponent * component) __deprecated_enum_msg("Avoid using until safer key-value mapping implemented");
@@ -74,10 +75,11 @@ namespace rmx {
         
 
         
+        GameNodeList::Iterator * childNodeIterator();
         
-        GameNodeList * getChildren();
+        GameNodeList * getChildren() __deprecated_enum_msg("Used childNodeIterator instead");
         
-        virtual void addChild(GameNode * child);
+        void addChild(GameNode * child);
         bool removeChildNode(GameNode * node);
         
         GameNode * getChildWithName(std::string name);
@@ -110,12 +112,12 @@ namespace rmx {
         void draw(Matrix4 rootTransform);
         
         
-        GameNodeList::Iterator * childIterator();
+//        GameNodeList::Iterator * childIterator();
         
         
         GameNode * getParent();
         
-        void setParent(GameNode * parent);
+//        void setParent(GameNode * parent);
         
         static GameNode * makeCube(float s,PhysicsBody * body = nullptr);//, Behaviour * b);
         

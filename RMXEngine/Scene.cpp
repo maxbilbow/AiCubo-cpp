@@ -42,6 +42,10 @@ Scene * Scene::getCurrent() {
     return _current;
 }
 
+bool Scene::geometryDidChange() {
+    return _rootNode->geometryDidChange();
+}
+
 Scene * Scene::setCurrent(Scene * scene) {
     Scene * old = _current;
     _current = scene;
@@ -59,7 +63,7 @@ void Scene::renderScene(Matrix4 modelMatrix) {
 //    if (this->renderDelegate != null)
 //        this->renderDelegate.updateBeforeSceneRender(cam);
 
-    LinkedList<GameNode>::Iterator * i = _rootNode->getChildren()->getIterator();
+    LinkedList<GameNode>::Iterator * i = _rootNode->childNodeIterator();
     while (i->hasNext()) {
         i->next()->draw(modelMatrix);
     }
@@ -67,7 +71,7 @@ void Scene::renderScene(Matrix4 modelMatrix) {
 
 
 void Scene::updateSceneLogic() {
-    LinkedList<GameNode>::Iterator * i = _rootNode->getChildren()->getIterator();
+    LinkedList<GameNode>::Iterator * i = _rootNode->childNodeIterator();
     while (i->hasNext()) {
         i->next()->updateLogic();
     }

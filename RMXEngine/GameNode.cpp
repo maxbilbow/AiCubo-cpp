@@ -62,7 +62,7 @@ GameNode * GameNode::getCurrent() {
 NodeComponent * GameNode::setComponent(NodeComponent * component)  {
     string key = typeid(component).name();
 //    NodeComponent * result = this->components->getValueForKey(key);
-    cout << "Adding component: " << component << endl;
+    cout << "Adding component: " << component->uniqueName() << " to " << this->uniqueName() << endl;
     return this->components.setValueForKey(key,component);
 }
 
@@ -80,7 +80,9 @@ void GameNode::addBehaviour(Behaviour * behaviour) {
         this->behaviours->append(behaviour);
         behaviour->setNode(this);
     } else {
-        cout << "FAILED to add " << behaviour->uniqueName() << " to " << this->uniqueName() << endl;
+        string reason = behaviour == nullptr ? " NullPointerException" : "Behaviour has already been added";
+        cout << "!!! FAILED to add " << behaviour->uniqueName() << " to " << this->uniqueName() << endl;
+        cout << " -- REASON: " << reason << endl;
     }
 }
     
@@ -89,19 +91,31 @@ NodeComponent * GameNode::getComponent(string className) {
 }
 
 
+GameNodeList::Iterator * GameNode::childNodeIterator() {
+    return this->children.getIterator();
+}
+
 GameNodeList * GameNode::getChildren() {
     return &this->children;
 }
 
-GameNodeList::Iterator * GameNode::childIterator() {
-    return this->children.getIterator();
-}
 void GameNode::addChild(GameNode * child) {
     if (!this->children.contains(child)) {
-        cout << "Adding child: " << child->Name() << " to " << this->Name() << endl;
+//        cout << "Adding child: " << child->Name() << " to " << this->Name() << endl;
         this->children.append(child);
-        child->setParent(this);
+        if (child->parent != nullptr && this != child->parent) {
+            child->getParent()->removeChildNode(child);
+        }
+        child->parent = this;
+        if (child->geometryDidChange()) {
+            this->_geometryDidChange = true;
+        }
+        cout << "GameNode: Adding child: " << child->uniqueName() << " to " << this->uniqueName() << endl;
+    } else {
+        cout << "!!! WARNING: " << child->uniqueName() << " was NOT added to " << this->uniqueName() << endl;
+        cout << " --  REASON: child may already exist in children" << endl;
     }
+    
 }
     
 bool GameNode::removeChildNode(GameNode * node) {
@@ -163,8 +177,27 @@ void GameNode::setGeometry(Geometry * geometry) {
     this->_geometry = geometry;
     geometry->setNode(this);
     this->_hasGeometry = TRUE;
+    _geometryDidChange = true;
+    GameNode * root = this->rootNode();
+    root->_geometryDidChange = true;
+    if (root != Scene::getCurrent()->rootNode())
+        cout << "!!! WARNING: " << root->uniqueName() << " == Scene->rootNode" << endl;
 }
-    
+
+bool GameNode::geometryDidChange(bool reset) {
+    if (_geometryDidChange && reset) {
+        _geometryDidChange = false;
+        return true;
+    }
+    return _geometryDidChange;
+}
+
+GameNode * GameNode::rootNode() {
+    if (this->parent == nullptr)
+        cout << "CHILD: " << this << ", PARENT: " << this->parent << endl;
+    return this->parent == nullptr ? this : this->parent->rootNode();
+}
+
 PhysicsBody * GameNode::physicsBody(){
 //    PhysicsBody * body = (PhysicsBody*) this->getComponent(typeid(PhysicsBody).name());
 //    if (body ==   null)
@@ -239,16 +272,21 @@ void GameNode::draw(Matrix4 rootTransform) {
 GameNode * GameNode::getParent() {
     return this->parent;
 }
-    
-void GameNode::setParent(GameNode * parent) {
-    if (this->parent != nullptr && parent != this->parent) {
-        this->parent->removeChildNode(this);
-    }
-//    if (typeid(parent) == typeid(RootNode))
-//        this->parent = null;
-//    else
-     this->parent = parent;
-}
+
+
+//void GameNode::setParent(GameNode * parent) {
+//    if (parent == nullptr)
+//        throw invalid_argument("GameNode parent was NULL!");
+//    if (this->parent != nullptr && parent != this->parent) {
+//        this->parent->removeChildNode(this);
+//    }
+//    
+////    if (typeid(parent) == typeid(RootNode))
+////        this->parent = null;
+////    else
+//     this->parent = parent;
+//    cout << "Adding child: " << this->uniqueName() << " to " << this->parent->uniqueName() << endl;
+//}
 
 ///TODO
 void GameNode::SendMessage(std::string message, void * args, SendMessageOptions options) {

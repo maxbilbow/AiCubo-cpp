@@ -22,6 +22,7 @@
 #ifdef GLFW
 #import "glfw3.h"
 #endif
+#import "RMXKeyStates.h"
 #import "GameController.hpp"
 #import "EntityGenerator.hpp"
 #import "SpriteBehaviour.hpp"
@@ -35,6 +36,7 @@ GameController::GameController() {
         _singleton = this;
     this->view = new GameView();
     this->view->setDelegate(this);
+    this->lockCursor(true);
 //    this->setView(new GameView());
 }
 
@@ -76,62 +78,74 @@ void GameController::updateAfterScene(GLWindow * window) {
     
 }
 
-void GameController::repeatedKeys(GLWindow * window) {
-    
-    #ifdef GLFW
-    GameNode * player = GameNode::getCurrent();//GameNode::getCurrent();
 
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+
+int GameController::getKeyState(GLWindow * w, int key) {
+    #ifndef GLFW
+    return GameController::getInstance()->keys[key];
+#else
+    return getkeyState(w,key);
+    #endif
+    
+}
+
+
+void GameController::repeatedKeys(GLWindow * window) {
+    GameNode * player = GameNode::getCurrent();
+//    #ifdef GLFW
+    //GameNode::getCurrent();
+
+    if (getKeyState(window, RMX_KEY_W) == RMX_PRESS) {
         player->BroadcastMessage("forward", new float(1.0));
     }
     
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_S) == RMX_PRESS) {
         player->BroadcastMessage("forward", new float(-1.0));
     }
     
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_A) == RMX_PRESS) {
         player->BroadcastMessage("left", new float(1.0));
     }
     
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_D) == RMX_PRESS) {
         player->BroadcastMessage("left", new float(-1.0));
     }
     
-    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_E) == RMX_PRESS) {
         player->BroadcastMessage("up", new float(1.0));
     }
     
-    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_Q) == RMX_PRESS) {
         player->BroadcastMessage("up", new float(- 1.0));
     }
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-        player->BroadcastMessage("jump");
-    }
+//    if (getKeyState(window, RMX_KEY_SPACE) == RMX_PRESS) {
+//        player->BroadcastMessage("jump");
+//    }
     
-    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_RIGHT) == RMX_PRESS) {
         player->getTransform()->move(Yaw, 1.0f);
     }
     
-    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_LEFT) == RMX_PRESS) {
         player->getTransform()->move(Yaw,-1.0f);
     }
     
-    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_UP) == RMX_PRESS) {
         view->pointOfView()->getTransform()->move(Pitch,-1.0f);
     }
     
-    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_DOWN) == RMX_PRESS) {
         view->pointOfView()->getTransform()->move(Pitch, 1.0f);
     }
     
-    if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_X) == RMX_PRESS) {
         player->getTransform()->move(Roll, 1.0f);
     }
     
-    if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+    if (getKeyState(window, RMX_KEY_Z) == RMX_PRESS) {
         player->getTransform()->move(Roll,-1.0f);
     }
-#endif
+//#endif
 //    cout << player->getTransform()->localMatrix();
 //    cout << "             Euler: " << player->getTransform()->eulerAngles() << endl;
 //    cout << "       Local Euler: " << player->getTransform()->localEulerAngles() << endl;
@@ -146,51 +160,61 @@ void GameController::setView(GameView * view) {
 //    this->keys = new int[600];
 }
 
-int GameController::keys[600] = {0};
+//int GameController::keys[600] = {0};
 
 GameNode * player() {
     return GameNode::getCurrent();
 }
 
+
 void GameController::keyCallback(GLWindow *window, int key, int scancode, int action, int mods) {
-    #ifdef GLFW
-//    cout << "  KEYS: " << key << ", " << scancode << ", " << action << ", " << mods << endl;
-    GameController * gc = getInstance();
-    if (action == GLFW_PRESS) {
-        gc->keys[key] = action;
-        cout << "Key Down: " << (char) key << " " << scancode << " " << action << " " << mods << endl;
-    } else if (action == GLFW_RELEASE) {
-        gc->keys[key] = action;
-        cout << "  Key Up: " << (char) key << " " << scancode << " " << action << " " << mods << endl;
-    }
-    
-    if (action == GLFW_RELEASE)
+    GameController * gc = GameController::getInstance();
+    gc->keys[key] = action;
+    if (action == RMX_PRESS) {
         switch (key) {
-            case GLFW_KEY_ESCAPE:
-                glfwSetWindowShouldClose(window, GL_TRUE);
+            case RMX_KEY_SPACE:
+                GameNode::getCurrent()->BroadcastMessage("crouch");
                 break;
-            case GLFW_KEY_W:
+            default:
+                cout << key << " (down) not recognised" << endl;
+        }
+    } else if (action == RMX_RELEASE)
+        switch (key) {
+            case RMX_KEY_SPACE:
+                GameNode::getCurrent()->BroadcastMessage("jump");
+                break;
+            case RMX_KEY_ESCAPE:
+#ifdef GLFW
+                glfwSetWindowShouldClose(window, GL_TRUE);
+#endif
+                break;
+            case RMX_KEY_W:
                 //			 Node.getCurrent().transform.moveForward(1);
                 break;
-            case GLFW_KEY_M:
+            case RMX_KEY_M:
                 
                 if (gc->cursorLocked) {
-                    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+#ifdef GLFW
+                    glfwSetInputMode(window, RMX_CURSOR, RMX_CURSOR_NORMAL);
+#endif
                     gc->lockCursor(false);
                 } else {
-                    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+#ifdef GLFW
+                    glfwSetInputMode(window, RMX_CURSOR, RMX_CURSOR_DISABLED);
+#endif
                     gc->lockCursor(true);
                 }
                 break;
-            case GLFW_KEY_G:
-                if (mods == GLFW_MOD_SHIFT)
+            case RMX_KEY_G:
+                if (mods == RMX_MOD_SHIFT)
                     player()->physicsBody()->setEffectedByGravity(false);
                 else
                     player()->physicsBody()->setEffectedByGravity(true);
                 break;
         }
-#endif
+
 }
+
 
 void GameController::lockCursor(bool lock) {
     this->cursorLocked = lock;
@@ -215,11 +239,19 @@ void GameController::cursorCallback(GLWindow * w, double x, double y) {
         restart = false;
         return;
     } else {
+#ifdef GLFW
         double dx = x - xpos;
         double dy = y - ypos;
+
         dx *= 0.1; dy *= 0.1;
         xpos = x;
         ypos = y;
+        
+        #else
+        double dx = x * 0.4;
+        double dy = y * 0.4;
+//        cout << dx << ", " << dy << endl;
+#endif
 //        GameNode * pov =
         Transform * body = GameNode::getCurrent()->getTransform();
         Transform * head = gc->view->pointOfView()->getTransform();

@@ -34,8 +34,8 @@ class RMXMobileInput : RMXInterface {
     var menuAccessBar: UIView?
     var pauseMenu: UIView?
     var moveSpeed: Float = 0.4 //-0.01 //-0.4
-    var lookSpeed: Float = -0.005
-    var turnSpeed: Float = -0.0002
+    var lookSpeed: Float = 0.03
+    var turnSpeed: Float = 0.02//002
     
     override func viewDidLoad(){
         super.viewDidLoad()

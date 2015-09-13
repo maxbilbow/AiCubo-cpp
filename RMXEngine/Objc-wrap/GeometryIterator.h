@@ -40,9 +40,12 @@
 
 @interface GeometryIterator : NSObject
 
-@property NSMutableArray<ShapeData *>* shapeData;
+@property (nonatomic) NSMutableArray<ShapeData *>* shapeData;
 
 - (id)init;
+
+-(void)updateGeometry;
+
 //- (BOOL)hasNext;
 //- (void)reset;
 //- (GLKMatrix4)modelViewMatrix;

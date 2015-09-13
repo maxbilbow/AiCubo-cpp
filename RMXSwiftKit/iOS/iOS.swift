@@ -17,7 +17,7 @@ public typealias RMColor = UIColor
 public typealias RMDataView = UITextView
 public typealias RMLabel = UIButton
 public typealias RMImage = UIImage
-
+public typealias RMEvent = UIEvent
 public func * (lhs: SCNVector3, rhs: CGFloat) -> SCNVector3 {
     return lhs * Float(rhs)
 }

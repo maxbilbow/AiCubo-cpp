@@ -55,7 +55,7 @@ void Transform::setScale(float x, float y, float z) {
  */
 float Transform::mass() {
     float mass = this->getNode()->physicsBody() != nullptr ? this->getNode()->physicsBody()->getMass() : 0.0f;
-    GameNodeList::Iterator * i = this->getNode()->getChildren()->getIterator();
+    GameNodeList::Iterator * i = this->getNode()->childNodeIterator();
     while (i->hasNext())
         mass += i->next()->getTransform()->mass();
     return mass;

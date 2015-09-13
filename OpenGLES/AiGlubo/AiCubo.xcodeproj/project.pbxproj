@@ -26,6 +26,13 @@
 		502608EA1BA1786E00C572EE /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E51BA1786E00C572EE /* BoundingBox.cpp */; };
 		502608EB1BA1786E00C572EE /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E71BA1786E00C572EE /* BoundingSphere.cpp */; };
 		502608EC1BA1786E00C572EE /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E71BA1786E00C572EE /* BoundingSphere.cpp */; };
+		503D0E521BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */; };
+		503D0E531BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */; };
+		503D0E541BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */; };
+		503D0E551BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */; };
+		503D0E581BA5B55500871BF7 /* RMXKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */; };
+		503D0E591BA5B55500871BF7 /* RMXKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */; };
+		503D0E5A1BA5B55500871BF7 /* RMXKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */; };
 		5055B0731BA0B1E90037B8A1 /* Accelorometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0601BA0B1E90037B8A1 /* Accelorometer.swift */; };
 		5055B0741BA0B1E90037B8A1 /* Accelorometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0601BA0B1E90037B8A1 /* Accelorometer.swift */; };
 		5055B0751BA0B1E90037B8A1 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0611BA0B1E90037B8A1 /* Buttons.swift */; };
@@ -223,6 +230,9 @@
 		502608E61BA1786E00C572EE /* BoundingBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BoundingBox.hpp; path = ../../RMXEngine/BoundingBox.hpp; sourceTree = "<group>"; };
 		502608E71BA1786E00C572EE /* BoundingSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundingSphere.cpp; path = ../../RMXEngine/BoundingSphere.cpp; sourceTree = "<group>"; };
 		502608E81BA1786E00C572EE /* BoundingSphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BoundingSphere.hpp; path = ../../RMXEngine/BoundingSphere.hpp; sourceTree = "<group>"; };
+		503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = RMXKeyStates.c; path = ../../RMXEngine/RMXKeyStates.c; sourceTree = "<group>"; };
+		503D0E511BA5B0FE00871BF7 /* RMXKeyStates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMXKeyStates.h; path = ../../RMXEngine/RMXKeyStates.h; sourceTree = "<group>"; };
+		503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMXKeyMap.swift; path = ../RMXKeyMap.swift; sourceTree = "<group>"; };
 		5055B0601BA0B1E90037B8A1 /* Accelorometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accelorometer.swift; sourceTree = "<group>"; };
 		5055B0611BA0B1E90037B8A1 /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		5055B0621BA0B1E90037B8A1 /* iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
@@ -418,6 +428,7 @@
 		5055B0651BA0B1E90037B8A1 /* OSX */ = {
 			isa = PBXGroup;
 			children = (
+				503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */,
 				5055B0661BA0B1E90037B8A1 /* DesktopInput.swift */,
 				5055B0671BA0B1E90037B8A1 /* OSX.swift */,
 				5055B0681BA0B1E90037B8A1 /* RMKey.swift */,
@@ -476,7 +487,6 @@
 		50B2A3E11B91402D0041F112 = {
 			isa = PBXGroup;
 			children = (
-				508F77651B91668400BF7989 /* GLKit.framework */,
 				508F77631B91667A00BF7989 /* CoreVideo.framework */,
 				508F77611B91667400BF7989 /* IOKit.framework */,
 				508F775F1B91666600BF7989 /* Cocoa.framework */,
@@ -535,6 +545,8 @@
 				50CFDE701B936AE5003EA656 /* headers */,
 				50D6BD291B986B93002A06A3 /* VertexData.c */,
 				50D6BD2A1B986B93002A06A3 /* VertexData.h */,
+				503D0E511BA5B0FE00871BF7 /* RMXKeyStates.h */,
+				503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */,
 			);
 			name = RMXEngine;
 			sourceTree = "<group>";
@@ -614,6 +626,7 @@
 		50CFDE701B936AE5003EA656 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				508F77651B91668400BF7989 /* GLKit.framework */,
 				502608E61BA1786E00C572EE /* BoundingBox.hpp */,
 				502608E81BA1786E00C572EE /* BoundingSphere.hpp */,
 				50B2A47E1B9145840041F112 /* GameController.hpp */,
@@ -734,7 +747,7 @@
 		50B2A3E21B91402D0041F112 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Rattle Media Ltd";
 				TargetAttributes = {
@@ -846,6 +859,7 @@
 				506F11461B98A06300A4F10F /* GameController.cpp in Sources */,
 				506F11561B98A06E00A4F10F /* Dictionary.cpp in Sources */,
 				506F114D1B98A06300A4F10F /* EntityGenerator.cpp in Sources */,
+				503D0E5A1BA5B55500871BF7 /* RMXKeyMap.swift in Sources */,
 				506F11491B98A06300A4F10F /* Behaviour.cpp in Sources */,
 				506F11501B98A06300A4F10F /* PhysicsBody.cpp in Sources */,
 				506F11551B98A06300A4F10F /* Transform.cpp in Sources */,
@@ -854,6 +868,7 @@
 				506F11571B98A06E00A4F10F /* EventListener.cpp in Sources */,
 				506F114F1B98A06300A4F10F /* NodeComponent.cpp in Sources */,
 				506F114B1B98A06300A4F10F /* CollisionBody.cpp in Sources */,
+				503D0E551BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */,
 				506F11581B98A06E00A4F10F /* LinkedList.cpp in Sources */,
 				506F11481B98A06300A4F10F /* GameView.cpp in Sources */,
 			);
@@ -939,6 +954,7 @@
 				50B2A4961B9145840041F112 /* Camera.cpp in Sources */,
 				50B2A49E1B9145840041F112 /* NodeComponent.cpp in Sources */,
 				5055B0731BA0B1E90037B8A1 /* Accelorometer.swift in Sources */,
+				503D0E521BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */,
 				50B2A4C81B9148570041F112 /* GameController.cpp in Sources */,
 				50B2A3EE1B91402D0041F112 /* AppDelegate.swift in Sources */,
 				502608EB1BA1786E00C572EE /* BoundingSphere.cpp in Sources */,
@@ -963,6 +979,7 @@
 				50B2A4EE1B9163760041F112 /* Scene.cpp in Sources */,
 				50B2A4E31B9163760041F112 /* CollisionBody.cpp in Sources */,
 				50B2A4E61B9163760041F112 /* GameController.cpp in Sources */,
+				503D0E531BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */,
 				50B2A4DC1B9163480041F112 /* AiCubo.cpp in Sources */,
 				50B2A4E11B9163760041F112 /* Behaviour.cpp in Sources */,
 				50B2A4D41B91630A0041F112 /* main.cpp in Sources */,
@@ -980,6 +997,7 @@
 				50B2A4E91B9163760041F112 /* Geometry.cpp in Sources */,
 				50B2A4EC1B9163760041F112 /* PhysicsWorld.cpp in Sources */,
 				50B2A4EA1B9163760041F112 /* NodeComponent.cpp in Sources */,
+				503D0E581BA5B55500871BF7 /* RMXKeyMap.swift in Sources */,
 				50B2A4DD1B91634C0041F112 /* LinkedList.cpp in Sources */,
 				50B2A4DE1B91634C0041F112 /* NotificationCenter.cpp in Sources */,
 				50B2A4DF1B91634C0041F112 /* Object.cpp in Sources */,
@@ -1017,6 +1035,7 @@
 				50CFDE7C1B936B0A003EA656 /* PhysicsWorld.cpp in Sources */,
 				50CFDE791B936B0A003EA656 /* Geometry.cpp in Sources */,
 				50CFDE721B936B0A003EA656 /* GameNode.cpp in Sources */,
+				503D0E541BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */,
 				50CFDE851B936B15003EA656 /* EventListener.cpp in Sources */,
 				502608251BA170DA00C572EE /* RMXValue.swift in Sources */,
 				5026081B1BA170B000C572EE /* AppDelegate.swift in Sources */,
@@ -1028,6 +1047,7 @@
 				502608231BA170DA00C572EE /* RMXDebugger.swift in Sources */,
 				5026081F1BA170D500C572EE /* OSX.swift in Sources */,
 				502608221BA170DA00C572EE /* RMX.swift in Sources */,
+				503D0E591BA5B55500871BF7 /* RMXKeyMap.swift in Sources */,
 				502608EA1BA1786E00C572EE /* BoundingBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1267,12 +1287,14 @@
 		50B2A4D61B91630A0041F112 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					opt/local/include,
 					usr/local/include,
 					"$(SRCROOT)/gflw/include/",
 					"$(SRCROOT)/gflw/deps/",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					opt/local/lib,
 					usr/local/lib,
@@ -1280,18 +1302,21 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		50B2A4D71B91630A0041F112 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					opt/local/include,
 					usr/local/include,
 					"$(SRCROOT)/gflw/include/",
 					"$(SRCROOT)/gflw/deps/",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					opt/local/lib,
 					usr/local/lib,

@@ -41,7 +41,7 @@ namespace rmx {
         static Scene * _current;
         GameNode * _rootNode =   nullptr;
         PhysicsWorld * _physicsWorld = new PhysicsWorld();
-
+//        bool _geometryShouldUpdate = true;
     public:
         Scene();
         GameNode * rootNode();
@@ -49,7 +49,7 @@ namespace rmx {
         static Scene * setCurrent(Scene * scene);
         void updateSceneLogic();
         void renderScene(Matrix4);
-        
+        bool geometryDidChange();
         void setAsCurrent();
         
         GameNode * pointOfView();
