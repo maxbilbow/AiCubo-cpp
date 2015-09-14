@@ -41,6 +41,7 @@ namespace rmx {
         void render(GameNode * GameNode, Matrix4 root);
         Vector3 scale();
         Vector4 color();
+        void setColor(float,float,float,float=1.0);
         static Geometry * Cube();
         
 //        int * vertexData();

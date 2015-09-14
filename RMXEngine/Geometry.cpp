@@ -70,6 +70,13 @@ Vector4 Geometry::color() {
     return this->_color;
 }
 
+void Geometry::setColor(float r, float g, float b, float a) {
+    _color.r = r;
+    _color.g = g;
+    _color.b = b;
+    _color.a = a;
+}
+
 Vector3 Geometry::scale() {
     return this->getNode()->getTransform()->scale();
 }
