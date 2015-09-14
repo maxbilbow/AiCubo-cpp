@@ -12,6 +12,7 @@
 
 #endif /* Includes_h */
 #import <iostream>
+#import <set>
 #import <GLKit/GLKMatrix4.h>
 #import <GLKit/GLKVector3.h>
 #import <GLKit/GLKVector4.h>
@@ -68,8 +69,10 @@ namespace rmx {
     class BoundingBox;
     class BoundingSphere;
     typedef Dictionary<std::string, NodeComponent> GameNodeComponents;
-    typedef LinkedList<Behaviour> GameNodeBehaviours;
-    typedef LinkedList<GameNode> GameNodeList;
+//    typedef LinkedList<Behaviour> GameNodeBehaviours;
+//    typedef LinkedList<GameNode> GameNodeList;set<GameNode*>
+    typedef std::set<Behaviour*>  GameNodeBehaviours;
+    typedef std::set<GameNode*> GameNodeList;
 }
 
 enum RMXMessage {

@@ -42,14 +42,14 @@ void PhysicsWorld::setGravity(float x, float y, float z) {
 }
 
 void PhysicsWorld::updatePhysics(GameNode * rootNode) {
-    GameNodeList::Iterator * i = rootNode->childNodeIterator();
-    while (i->hasNext()) {
-        GameNode * node = i->next();
-        if (node->hasPhysicsBody()) {
-            this->applyGravityTo(node);
-            node->physicsBody()->updatePhysics(this);
+//    GameNodeList::Iterator * i = rootNode->childNodeIterator();
+//    while (i->hasNext()) {
+//        GameNode * node = i->next();
+    for (GameNodeList::iterator i = rootNode->getChildren()->begin(); i != rootNode->getChildren()->end(); ++i)
+        if ((*i)->hasPhysicsBody()) {
+            this->applyGravityTo(*i);
+            (*i)->physicsBody()->updatePhysics(this);
         }
-    }
 }
 
 const double spf = 0.0167;
@@ -88,9 +88,8 @@ void PhysicsWorld::buildCollisionList(GameNode * rootNode) {
     this->staticBodies = new LinkedList<CollisionBody>();
     this->dynamicBodies = new LinkedList<CollisionBody>();
     this->kinematicBodies = new LinkedList<CollisionBody>();
-    LinkedList<GameNode>::Iterator * i = rootNode->childNodeIterator();
-    while (i->hasNext()){
-        GameNode * node = i->next();
+    for (GameNodeList::iterator i = rootNode->getChildren()->begin(); i != rootNode->getChildren()->end(); ++i) {
+        GameNode * node = *i;
         if (node->hasPhysicsBody()) {
             if (node->collisionBody()->CollisionGroup() != NO_COLLISIONS)
                 switch (node->physicsBody()->type()) {

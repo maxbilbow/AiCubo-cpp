@@ -58,6 +58,7 @@ namespace rmx {
             
             bool hasNext () {
 //                std::cout << this->currentNode->value << ": " << this->i << "/" << this->linkedList->_count << std::endl;
+                
                 return //this->i < this->count() &&
                 this->currentNode != nullptr &&
                 this->currentNode->value != nullptr;
@@ -166,6 +167,7 @@ namespace rmx {
         
         Iterator * getIterator() {
             this->iterator->begin();
+//            Iterator i = *this->iterator();
             return this->iterator;
         }
         

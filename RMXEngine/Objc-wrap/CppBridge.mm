@@ -14,7 +14,7 @@
 #import <Foundation/NSArray.h>
 #include "GeometryIterator.h"
 #include "CppBridge.h"
-
+#include <thread>
 
 using namespace rmx;
 using namespace std;
@@ -72,17 +72,22 @@ static GeometryIterator * geometries;
 }
 
 
-
-
-
-+ (void) updateSceneLogic{
-    GameController * gc = GameController::getInstance();
+void update(GameController * gc) {
     gc->updateBeforeScene(nullptr);
     Scene::getCurrent()->updateSceneLogic();
     gc->updateAfterScene(nullptr);
-    
+}
+
+thread sceneThread;
+
++ (void) updateSceneLogic{
+    if (sceneThread.joinable())
+        sceneThread.join();
+    GameController * gc = GameController::getInstance();
+    sceneThread = thread(update,gc);
 //    Scene::getCurrent()->renderScene(moodelMatrix);
 }
+
 
 + (void) moveWithDirection:(NSString* )direction withForce:(float)force
 {

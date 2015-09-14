@@ -19,7 +19,7 @@
 using namespace rmx;
 using namespace std;
 
-typedef rmx::GameNodeList::Iterator GameNodeIterator;
+typedef GameNodeList::iterator GameNodeIterator;
 typedef rmx::Camera Camera;
 //typedef rmx::Geometry Geometry;
 
@@ -176,10 +176,8 @@ void addGeometryData(NSMutableArray * list, GameNode * node) {
         [list addObject:[[ShapeData alloc]initWithGeometry:node->geometry()]];
         cout << g->color() << endl;
     }
-    GameNodeIterator * i = node->childNodeIterator();
-    while (i->hasNext()) {
-        addGeometryData(list, i->next());
-    }
+    for (GameNodeList::iterator i = node->getChildren()->begin(); i != node->getChildren()->end(); ++i)
+        addGeometryData(list, *i);
 }
 
 -(void)updateGeometry

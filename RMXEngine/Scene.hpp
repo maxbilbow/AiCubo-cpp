@@ -51,7 +51,7 @@ namespace rmx {
         void renderScene(Matrix4);
         bool geometryDidChange();
         void setAsCurrent();
-        
+        PhysicsWorld * physicsWorld();
         GameNode * pointOfView();
     };
 

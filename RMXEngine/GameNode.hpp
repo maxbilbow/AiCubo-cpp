@@ -40,6 +40,7 @@ namespace rmx {
         bool _hasGeometry = FALSE;
         Geometry * _geometry = nullptr;
         
+//        std::set<GameNode> * c;
         GameNodeList children = GameNodeList();
         
         GameNodeComponents components __deprecated_enum_msg("Avoid using until safer key-value mapping implemented") = GameNodeComponents();
@@ -77,9 +78,9 @@ namespace rmx {
         
 
         
-        GameNodeList::Iterator * childNodeIterator();
+//        GameNodeList::Iterator * childNodeIterator();
         
-        GameNodeList * getChildren() __deprecated_enum_msg("Used childNodeIterator instead");
+        GameNodeList * getChildren();// __deprecated_enum_msg("Used childNodeIterator instead");
         
         void addChild(GameNode * child);
         bool removeChildNode(GameNode * node);

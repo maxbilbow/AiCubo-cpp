@@ -79,9 +79,9 @@ NodeComponent * GameNode::setComponent(NodeComponent * component)  {
 }
 
 bool GameNode::hasBehaviour(Behaviour * behaviour) {
-    LinkedList<Behaviour>::Iterator * i = this->behaviours->getIterator();
-    while (i->hasNext())
-        if (i->next()->ClassName() == behaviour->ClassName())
+//    GameNodeList * children = scene->rootNode()->getChildren();//->getIterator();
+    for (GameNodeList::iterator i = children.begin(); i != children.end(); ++i)
+        if ((*i)->ClassName() == behaviour->ClassName())
             return true;
     return false;
 }
@@ -89,7 +89,7 @@ bool GameNode::hasBehaviour(Behaviour * behaviour) {
 void GameNode::addBehaviour(Behaviour * behaviour) {
     if (behaviour != nullptr && !this->hasBehaviour(behaviour)) {
         cout << "BEHAVIOUR: Adding " << behaviour->uniqueName() << " to " << this->uniqueName() << endl;
-        this->behaviours->append(behaviour);
+        this->behaviours->insert(behaviour);
         behaviour->setNode(this);
     } else {
         string reason = behaviour == nullptr ? " NullPointerException" : "Behaviour has already been added";
@@ -103,18 +103,18 @@ NodeComponent * GameNode::getComponent(string className) {
 }
 
 
-GameNodeList::Iterator * GameNode::childNodeIterator() {
-    return this->children.getIterator();
-}
+//GameNodeList::Iterator * GameNode::childNodeIterator() {
+//    return this->children.getIterator();
+//}
 
 GameNodeList * GameNode::getChildren() {
     return &this->children;
 }
 
 void GameNode::addChild(GameNode * child) {
-    if (!this->children.contains(child)) {
-//        cout << "Adding child: " << child->Name() << " to " << this->Name() << endl;
-        this->children.append(child);
+//    if (!this->children.contains(child)) {
+
+        this->children.insert(child);
         if (child->parent != nullptr && this != child->parent) {
             child->getParent()->removeChildNode(child);
         }
@@ -123,26 +123,23 @@ void GameNode::addChild(GameNode * child) {
             this->_geometryDidChange = true;
         }
         cout << "GameNode: Adding child: " << child->uniqueName() << " to " << this->uniqueName() << endl;
-    } else {
-        cout << "!!! WARNING: " << child->uniqueName() << " was NOT added to " << this->uniqueName() << endl;
-        cout << " --  REASON: child may already exist in children" << endl;
-    }
+//    } else {
+//        cout << "!!! WARNING: " << child->uniqueName() << " was NOT added to " << this->uniqueName() << endl;
+//        cout << " --  REASON: child may already exist in children" << endl;
+//    }
     
 }
     
 bool GameNode::removeChildNode(GameNode * node) {
-    return this->children.removeValue(node);
+    return this->children.erase(node); //this->children.removeValue(node);
 }
 
 GameNode * GameNode::getChildWithName(string name) {
-    GameNodeList::Iterator * i = this->children.getIterator();
-    while (i->hasNext()) {
-        GameNode * n = i->next();
-//        cout << n->Name() << endl;
-        if (n->Name() == name)
-            return n;
-    }
-    return    nullptr;
+//    GameNodeList::Iterator * i = this->children.getIterator();
+    for (GameNodeList::iterator i = children.begin(); i != children.end(); ++i)
+        if ((*i)->Name() == name)
+            return *i;
+    return   nullptr;
 }
     
 
@@ -234,33 +231,27 @@ void GameNode::setPhysicsBody(PhysicsBody * body) {
     
 void GameNode::updateLogic() {
 //    bool isBEmpty = this->behaviours->isEmpty();
-    GameNodeBehaviours::Iterator * bi = this->behaviours->getIterator();
+//    GameNodeBehaviours::Iterator * bi = this->behaviours->getIterator();
 //    if (!isBEmpty)
-        while (bi->hasNext()) {
-            Behaviour * b = bi->next();
-            if (b->isEnabled())
-                b->update();
-        }
+//        while (bi->hasNext()) {
+//            Behaviour * b = bi->next();
+        for (GameNodeBehaviours::iterator i = this->behaviours->begin(); i != behaviours->end(); ++i)
+            if ((*i)->isEnabled())
+                (*i)->update();
+//        }
 //    if (!this->children.isEmpty()) {
-        GameNodeList::Iterator * ci = this->children.getIterator();
-        while (ci->hasNext()) {
-            GameNode * n = ci->next();
-            if (n != nullptr)
-                n->updateLogic();
-        }
+        for (GameNodeList::iterator i = children.begin(); i != children.end(); ++i)
+            (*i)->updateLogic();
+    
 //    }
 //    if (!isBEmpty) {
     
 }
 
 void GameNode::updateAfterPhysics() {
-    GameNodeBehaviours::Iterator * bi = this->behaviours->getIterator();
-    bi->begin();
-    while (bi->hasNext()) {
-        Behaviour * b = bi->next();
-        if (b->isEnabled())
-            b->lateUpdate();
-    }
+    for (GameNodeBehaviours::iterator i = this->behaviours->begin(); i != behaviours->end(); ++i)
+        if ((*i)->isEnabled())
+            (*i)->lateUpdate();
     
     
     //    }
@@ -270,10 +261,11 @@ void GameNode::updateAfterPhysics() {
 void GameNode::draw(Matrix4 rootTransform) {
     if (this->_hasGeometry) {
         this->_geometry->render(this, rootTransform);
-    }
-    GameNodeList::Iterator * i = this->children.getIterator();
-    while (i->hasNext()) {
-        i->next()->draw(rootTransform);
+    
+//    GameNodeList::Iterator * i = this->children.getIterator();
+        
+    for (GameNodeList::iterator i = children.begin(); i != children.end(); ++i)
+        (*i)->draw(rootTransform);
     }
 }
 
@@ -307,15 +299,13 @@ void GameNode::SendMessage(std::string message, void * args, SendMessageOptions 
 }
 
 void GameNode::BroadcastMessage(std::string message, void * args, SendMessageOptions options) {
-//    cout << "Message Broadcasted to " << this->uniqueName() << ": " << message << endl;
-//    cout << "Sending to " << this->behaviours->count() << " behaviours" << endl;
-//    Object::BroadcastMessage(message, args, options);
-    GameNodeBehaviours::Iterator * i = this->behaviours->getIterator();
-    while (i->hasNext()) {
-        Behaviour * b = i->next();
-        b->SendMessage(message,args,options);
+//    GameNodeBehaviours::Iterator * i = this->behaviours->getIterator();
+//    while (i->hasNext()) {
+//        Behaviour * b = i->next();
+    for (GameNodeBehaviours::iterator i = this->behaviours->begin(); i != behaviours->end(); ++i)
+        (*i)->SendMessage(message,args,options);
 //        cout << "Message sent to: " << b->uniqueName() << endl;
-    }
+    
 }
 
 GameNode * GameNode::makeCube(float s, PhysicsBody * body) {

@@ -63,28 +63,49 @@ void Scene::renderScene(Matrix4 modelMatrix) {
 //    if (this->renderDelegate != null)
 //        this->renderDelegate.updateBeforeSceneRender(cam);
 
-    LinkedList<GameNode>::Iterator * i = _rootNode->childNodeIterator();
-    while (i->hasNext()) {
-        i->next()->draw(modelMatrix);
-    }
+#ifdef GLFW
+    GameNodeList * children = _rootNode->getChildren();
+    for (GameNodeList::iterator i = children->begin(); i != children->end(); ++i)
+        (*i)->draw(modelMatrix);
+#endif
+}
+#import <thread>
+
+void updateLogic(GameNodeList * children) {
+    for (GameNodeList::iterator i = children->begin(); i != children->end(); ++i)
+        (*i)->updateLogic();
 }
 
+void updatePhysics(Scene * scene) {
+    scene->physicsWorld()->updatePhysics(scene->rootNode());
+}
+
+void updateCollisions(Scene * scene) {
+    scene->physicsWorld()->updateCollisionEvents(scene->rootNode());
+}
+
+PhysicsWorld * Scene::physicsWorld() {
+    return _physicsWorld;
+}
 
 void Scene::updateSceneLogic() {
-    LinkedList<GameNode>::Iterator * i = _rootNode->childNodeIterator();
-    while (i->hasNext()) {
-        i->next()->updateLogic();
-    }
-    this->_physicsWorld->updatePhysics(this->_rootNode);
-//    if (this->renderDelegate != null)
-//        this->renderDelegate->updateBeforeSceneLogic();
+    GameNodeList * children = _rootNode->getChildren();
+//    thread logic (updateLogic,children);
+     updateLogic(children);
+//    thread physics (updatePhysics,this);
+//    thread collisions(updateCollisions,this);
+    
+    
+    
+   
     _physicsWorld->updatePhysics(this->_rootNode);
     _physicsWorld->updateCollisionEvents(this->_rootNode);
-    i->begin();
-    while (i->hasNext()) {
-        i->next()->updateAfterPhysics();
-    }
-    
+
+//    logic.join();
+//    physics.join();
+//    collisions.join();
+    for (GameNodeList::iterator i = children->begin(); i != children->end(); ++i)
+        (*i)->updateAfterPhysics();
 }
 
 GameNode * Scene::rootNode() {

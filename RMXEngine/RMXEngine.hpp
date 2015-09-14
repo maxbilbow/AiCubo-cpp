@@ -12,8 +12,8 @@
 
 #endif /* RMXEngine_h */
 
-#define _GLFW_COCOA         1
-#define _GLFW_USE_OPENGL    1
+//#define _GLFW_COCOA         1
+//#define _GLFW_USE_OPENGL    1
 
 
 

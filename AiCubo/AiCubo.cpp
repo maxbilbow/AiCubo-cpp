@@ -57,14 +57,7 @@ void AiCubo::setup() {
     
     eg.makeShapesAndAddToScene(scene, 1);
     
-    LinkedList<GameNode>::Iterator * i = scene->rootNode()->getChildren()->getIterator();
-    while(i->hasNext()) {
-        GameNode * node = i->next();
-        if (node->getTransform() == nullptr) {
-//            cout << node << endl;
-            throw invalid_argument("AiCubo::Transform cannot be NULL!");
-        }
-    }
+    
     
 
     GameNode * box = GameNode::makeCube(5, PhysicsBody::newDynamicBody());

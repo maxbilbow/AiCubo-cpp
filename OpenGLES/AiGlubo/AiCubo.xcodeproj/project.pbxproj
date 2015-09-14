@@ -30,8 +30,6 @@
 		503D0E531BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */; };
 		503D0E541BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */; };
 		503D0E551BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E501BA5B0FE00871BF7 /* RMXKeyStates.c */; };
-		503D0E581BA5B55500871BF7 /* RMXKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */; };
-		503D0E591BA5B55500871BF7 /* RMXKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */; };
 		503D0E5A1BA5B55500871BF7 /* RMXKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */; };
 		5055B0731BA0B1E90037B8A1 /* Accelorometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0601BA0B1E90037B8A1 /* Accelorometer.swift */; };
 		5055B0741BA0B1E90037B8A1 /* Accelorometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055B0601BA0B1E90037B8A1 /* Accelorometer.swift */; };
@@ -179,6 +177,10 @@
 		50B2A4EE1B9163760041F112 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A48F1B9145840041F112 /* Scene.cpp */; };
 		50B2A4EF1B9163760041F112 /* SpriteBehaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4911B9145840041F112 /* SpriteBehaviour.cpp */; };
 		50B2A4F01B9163760041F112 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A4931B9145840041F112 /* Transform.cpp */; };
+		50CA82201BA740B400AC4839 /* RMXKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D0E561BA5B55500871BF7 /* RMXKeyMap.swift */; };
+		50CA82211BA740D200AC4839 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E51BA1786E00C572EE /* BoundingBox.cpp */; };
+		50CA82221BA740D900AC4839 /* BoundingSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502608E71BA1786E00C572EE /* BoundingSphere.cpp */; };
+		50CA82231BA740DD00AC4839 /* VertexData.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D6BD291B986B93002A06A3 /* VertexData.c */; };
 		50CFDE571B936843003EA656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CFDE561B936843003EA656 /* Assets.xcassets */; };
 		50CFDE5A1B936843003EA656 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50CFDE581B936843003EA656 /* MainMenu.xib */; };
 		50CFDE711B936B0A003EA656 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A47D1B9145840041F112 /* GameController.cpp */; };
@@ -980,7 +982,10 @@
 				50B2A4E31B9163760041F112 /* CollisionBody.cpp in Sources */,
 				50B2A4E61B9163760041F112 /* GameController.cpp in Sources */,
 				503D0E531BA5B0FE00871BF7 /* RMXKeyStates.c in Sources */,
+				50CA82231BA740DD00AC4839 /* VertexData.c in Sources */,
+				50CA82211BA740D200AC4839 /* BoundingBox.cpp in Sources */,
 				50B2A4DC1B9163480041F112 /* AiCubo.cpp in Sources */,
+				50CA82221BA740D900AC4839 /* BoundingSphere.cpp in Sources */,
 				50B2A4E11B9163760041F112 /* Behaviour.cpp in Sources */,
 				50B2A4D41B91630A0041F112 /* main.cpp in Sources */,
 				50B2A4F01B9163760041F112 /* Transform.cpp in Sources */,
@@ -997,7 +1002,6 @@
 				50B2A4E91B9163760041F112 /* Geometry.cpp in Sources */,
 				50B2A4EC1B9163760041F112 /* PhysicsWorld.cpp in Sources */,
 				50B2A4EA1B9163760041F112 /* NodeComponent.cpp in Sources */,
-				503D0E581BA5B55500871BF7 /* RMXKeyMap.swift in Sources */,
 				50B2A4DD1B91634C0041F112 /* LinkedList.cpp in Sources */,
 				50B2A4DE1B91634C0041F112 /* NotificationCenter.cpp in Sources */,
 				50B2A4DF1B91634C0041F112 /* Object.cpp in Sources */,
@@ -1047,7 +1051,7 @@
 				502608231BA170DA00C572EE /* RMXDebugger.swift in Sources */,
 				5026081F1BA170D500C572EE /* OSX.swift in Sources */,
 				502608221BA170DA00C572EE /* RMX.swift in Sources */,
-				503D0E591BA5B55500871BF7 /* RMXKeyMap.swift in Sources */,
+				50CA82201BA740B400AC4839 /* RMXKeyMap.swift in Sources */,
 				502608EA1BA1786E00C572EE /* BoundingBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1300,6 +1304,7 @@
 					usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1322,6 +1327,7 @@
 					usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
