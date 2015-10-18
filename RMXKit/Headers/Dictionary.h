@@ -14,10 +14,16 @@
 
 #import <iostream>
 #import "LinkedList.h"
-
+#import <map>
 
 namespace rmx {
     
+    template <typename Key, typename Value>
+    class Dict {
+    public:
+        std::map<Key, Value> map = map();
+        
+    };
     
     /*!
      *   @brief Holds the key that can be searched for when accessing the related value.
@@ -88,6 +94,6 @@ namespace rmx {
             return true;
         }
         
-    };
+    }__deprecated_enum_msg("possibly unessecary and dangerous");
     
 }

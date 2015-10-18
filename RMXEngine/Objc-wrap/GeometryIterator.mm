@@ -82,13 +82,6 @@ typedef rmx::Camera Camera;
     return [NSString stringWithFormat:@"%s", self->geometry->getNode()->uniqueName().c_str()];
 }
 
-- (float*)modelMatrixRaw
-{
-    float * M;
-    M = self.modelMatrix.m;
-    return M;
-}
-
 - (GLKMatrix4)modelScaleMatrix
 {
     return self.modelMatrix * self.scaleVector;
@@ -103,6 +96,16 @@ typedef rmx::Camera Camera;
     return self->geometry->scale();
 }
 
+
+#if false
+- (float*)modelMatrixRaw
+{
+    float * M;
+    M = self.modelMatrix.m;
+    return M;
+}
+
+
 - (float*)scaleVectorRaw
 {
     float * V;
@@ -116,6 +119,8 @@ typedef rmx::Camera Camera;
     V = self.color.v;
     return V;
 }
+#endif
+
 - (GLKVector4)color
 {
     return self->geometry->color();
@@ -174,7 +179,7 @@ void addGeometryData(NSMutableArray * list, GameNode * node) {
     if (node->hasGeometry()) {
         Geometry *g = node->geometry();
         [list addObject:[[ShapeData alloc]initWithGeometry:node->geometry()]];
-        cout << g->color() << endl;
+        rmx::logVector(g->color().v,4,"GeometryIterator", LOG_COLOR_INIT);
     }
     for (GameNodeList::iterator i = node->getChildren()->begin(); i != node->getChildren()->end(); ++i)
         addGeometryData(list, *i);

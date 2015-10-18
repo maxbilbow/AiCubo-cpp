@@ -8,6 +8,7 @@
 
 import UIKit
 
+typealias GameViewController = GlGameViewController
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

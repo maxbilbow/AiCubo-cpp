@@ -6,18 +6,6 @@
  *  Copyright © 2015 Rattle Media Ltd. All rights reserved.
  *
  */
-extern "C" {
-#include <CoreFoundation/CoreFoundation.h>
-
-
-#pragma GCC visibility push(default)
-
-/* External interface to the RMXKit, C-based */
-
-CFStringRef RMXKitUUID(void);
-
-#pragma GCC visibility pop
-}
 
 #define as_string(x) #x
 
@@ -26,11 +14,21 @@ CFStringRef RMXKitUUID(void);
 
 //#pragma message("WARNING: You need to implement DEPRECATED for this compiler")
 
-#import "LinkedList.h"
-#import "Dictionary.h"
+//#import "LinkedList.h"
+//#import "Dictionary.h"
+#import <list>
+#import <map>
+#import <set>
+#import <list>
+#import <iostream>
+#import "stacktrace.h"
 #import "NotificationCenter.h"
+
 #import "Object.h"
-#import "ASingleton.h"
+
+#import "Debug.hpp"
+
+//#import "ASingleton.h"
 namespace rmx {
     class Unfinised : public Printable{
     protected:

@@ -13,7 +13,12 @@ import SceneKit
 
 import UIKit
 
-extension RMXMobileInput {
+extension RMXInput {
+    func resetCamera(recogniser: UITapGestureRecognizer) {
+        //        RMX.ActionProcessor.current.action(.RESET_CAMERA, speed: 1)
+        CppBridge.sendMessage("resetCamera:1")
+    }
+    
     func resetTransform(recogniser: UITapGestureRecognizer) {
 //        self.activeSprite?.setAngle(roll: 0)
          CppBridge.sendMessage(UserAction.RESET.description)
@@ -30,11 +35,11 @@ extension RMXMobileInput {
         CppBridge.sendMessage("toggleAi")
     }
     
-    
+    #if iOS
     func zoom(recogniser: UIPinchGestureRecognizer) {        
         CppBridge.sendMessage("\(UserAction.ZoomInAnOut):\(RMFloat(recogniser.velocity))")
     }
-    
+    #endif
     
     func toggleGravity(recognizer: UITapGestureRecognizer) {
         CppBridge.sendMessage("setEffectedByGravity", withBool: grav)
@@ -48,17 +53,21 @@ extension RMXMobileInput {
     }
     
     
-    ///The event handling method
-    func handleOrientation(recognizer: UIPanGestureRecognizer) {
-        if recognizer.numberOfTouches() == 1 {
-            let point = recognizer.velocityInView(GameViewController.instance.view)
-            
-            CppBridge.cursorDelta(Double(self.lookSpeed) * Double(point.x), dy: Double(self.turnSpeed) * Double(point.y))
-//            CppBridge.turnAboutAxis(UserAction.MOVE_PITCH.description, withForce: self.lookSpeed * Float(point.y))
-//            CppBridge.turnAboutAxis(UserAction.MOVE_YAW.description, withForce: self.turnSpeed * Float(point.x))
-            
+    func jump(recogniser: UILongPressGestureRecognizer){
+        switch recogniser.state {
+        case .Began:
+            CppBridge.setKey(RMX_KEY_SPACE, action: RMX_PRESS, withMods: 0)
+            //                CppBridge.sendMessage(UserAction.JUMP.description, withScale: 0)
+            break
+        case .Ended:
+            //                CppBridge.sendMessage(UserAction.JUMP.description, withScale: 1)
+            CppBridge.setKey(RMX_KEY_SPACE, action: RMX_RELEASE, withMods: 0)
+            break
+        default:
+            //                CppBridge.sendMessage(UserAction.MOVE_UP.description, withScale: Float(self.moveSpeed))
+            break
         }
-//            _handleRelease(recognizer.state)
+        
     }
 
     

@@ -10,43 +10,21 @@
 #define Includes_h
 
 
-#endif /* Includes_h */
-#import <iostream>
-#import <set>
-#import <GLKit/GLKMatrix4.h>
-#import <GLKit/GLKVector3.h>
-#import <GLKit/GLKVector4.h>
-//
-typedef GLKMatrix4 Matrix4;
-typedef GLKVector3 Vector3;
-typedef GLKVector4 Vector4;
-typedef GLKQuaternion Quaternion;
-typedef Vector3 EulerAngles;
+
+
+
+
 //typedef int BOOL;
 #define TRUE 1
 #define FALSE 0
-//typedef nullptr null;
-//#define null nullptr
-#import "RMXKit.h"
-#import "RMXMath.hpp"
 
 
-//
-//#include <vector>
-//#include <list>
+#include "RMXKit.h"
+#include "RMXMath.h"
+#include "RMXKeyStates.h"
 
-
-//#define GLFW
-#ifdef GLFW
-//#import <CoreVideo/CoreVideo.h>
-//#import <IOKit/IOKitLib.h>
-//#import <Cocoa/Cocoa.h>
-#include "glfw3.h"
-typedef GLFWwindow GLWindow;
-#else
 
 typedef long GLWindow;
-#endif
 
 namespace rmx {
     class Transform;
@@ -68,7 +46,9 @@ namespace rmx {
     class CollisionEvent;
     class BoundingBox;
     class BoundingSphere;
-    typedef Dictionary<std::string, NodeComponent> GameNodeComponents;
+    class Bugger;
+//    typedef Dictionary<std::string, NodeComponent> GameNodeComponents;
+    typedef std::map<std::string, NodeComponent*> GameNodeComponents;
 //    typedef LinkedList<Behaviour> GameNodeBehaviours;
 //    typedef LinkedList<GameNode> GameNodeList;set<GameNode*>
     typedef std::set<Behaviour*>  GameNodeBehaviours;
@@ -80,3 +60,5 @@ enum RMXMessage {
     Pitch, Yaw, Roll,
     Jump
 };
+
+#endif /* Includes_h */

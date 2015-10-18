@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "50B2A4D01B91630A0041F112"
-               BuildableName = "AiCubo-cpp"
-               BlueprintName = "AiCubo-cpp"
+               BuildableName = "RMXEngine"
+               BlueprintName = "RMXEngine"
                ReferencedContainer = "container:AiCubo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "50B2A4D01B91630A0041F112"
-            BuildableName = "AiCubo-cpp"
-            BlueprintName = "AiCubo-cpp"
+            BuildableName = "RMXEngine"
+            BlueprintName = "RMXEngine"
             ReferencedContainer = "container:AiCubo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "50B2A4D01B91630A0041F112"
-            BuildableName = "AiCubo-cpp"
-            BlueprintName = "AiCubo-cpp"
+            BuildableName = "RMXEngine"
+            BlueprintName = "RMXEngine"
             ReferencedContainer = "container:AiCubo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "50B2A4D01B91630A0041F112"
-            BuildableName = "AiCubo-cpp"
-            BlueprintName = "AiCubo-cpp"
+            BuildableName = "RMXEngine"
+            BlueprintName = "RMXEngine"
             ReferencedContainer = "container:AiCubo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

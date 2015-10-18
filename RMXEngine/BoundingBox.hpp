@@ -36,6 +36,10 @@ namespace rmx {
         bool intersects(BoundingBox * other);
         
         Vector3 getCollisionNormal(BoundingBox * other);
+        
+        virtual std::string ClassName() override {
+            return "rmx::BoundingBox";
+        }
     };
     
 }

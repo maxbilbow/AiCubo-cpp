@@ -24,6 +24,10 @@
 using namespace rmx;
 using namespace std;
 
+CollisionEvent::~CollisionEvent() {
+//    free(nodeA);
+//    free(nodeB);
+}
 
 CollisionEvent::CollisionEvent(GameNode * nodeA, GameNode * nodeB, unsigned int key) {
     this->key = key;
@@ -111,11 +115,13 @@ void CollisionEvent::processMomentum(Transform * A, Transform * B)  {
     
     float lossA = 1 - A->physicsBody()->getRestitution();
     float lossB = 1 - B->physicsBody()->getRestitution();
+#if false
     float v1 = GLKVector3Length(Va);
     float v2 = GLKVector3Length(Vb);
     
     float mass = m1 + m2 + 0.01f;
     float diffMass = m1 - m2;
+#endif
     float forceOnA = -m2;// (diffMass * v1 + 2 * m2 * v2 ) / mass;
     
     float forceOnB = m1;//(2 * m1 * v1 - diffMass * v2 ) / mass;

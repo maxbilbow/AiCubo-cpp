@@ -11,39 +11,76 @@
 using namespace rmx;
 using namespace std;
 #include "AiCubo.hpp"
+#include "EntityGenerator.hpp"
 
+GameNode * EntityGenerator::makeEntity(){
+    GameNode * node = AiCubo::newAiCubo();
+    node->addBehaviour(new MoveForward());
+    node->addBehaviour(new ApplyTorque());
+    return node;
+}
+
+
+GameNode * AiCubo::newAiCubo()
+{
+    float size = 1;
+    GameNode * body = GameNode::makeCube(size, PhysicsBody::newDynamicBody());
+    body->addBehaviour(new SpriteBehaviour());
+    GameNode * head = GameNode::makeCube(size * 0.7);
+    head->setName("head");
+    GameNode * eyeLeft = GameNode::makeCube(size * 0.1);
+    eyeLeft->setName("leftEye");
+    GameNode * eyeRight = GameNode::makeCube(size * 0.1);
+    eyeRight->setName("eyeRight");
+    eyeLeft->geometry()->setColor(1.0,1.0,1.0);
+    eyeRight->geometry()->setColor(1.0,1.0,1.0);
+    head->addChild(eyeLeft);
+    head->addChild(eyeRight);
+    body->addChild(head);
+    head->getTransform()->setPosition(0.0f,2.0f,1.0f);
+    eyeLeft->getTransform()->setPosition(0.2, 0.0, size * 0.7);
+    eyeRight->getTransform()->setPosition(-0.2, 0.0, size * 0.7);
+    return body;
+}
 void AiCubo::initpov() {
     GameController::initpov();
-    GameNode * n = GameNode::getCurrent();
-    
-    n->setPhysicsBody(PhysicsBody::newDynamicBody());
-    //    n->physicsBody()->setType(Dynamic);
-    n->physicsBody()->setEffectedByGravity(false);
-    n->physicsBody()->setMass(2);
+    GameNode * player = AiCubo::newAiCubo();// GameNode::getCurrent();
+    player->setName("player");
+    player->setPhysicsBody(PhysicsBody::newDynamicBody());
+    player->physicsBody()->setMass(2);
 
-//    n->physicsBody()->setFriction(0.01);
-    n->addBehaviour(new SpriteBehaviour());
-    //    n->setGeometry(Geometry::Cube());
-    n->getTransform()->setScale(2.0f, 3.0f, 2.0f);
-    n->getTransform()->setPosition(10,100, -50);
-    n->addToCurrentScene();
-    n->addBehaviour(new SpriteBehaviour());
-    GameNode * head = new GameNode("Camera");//GameNode::newCameraNode();// new GameNode("Head");
+    
+    player->getTransform()->scaleNode(1.5f);//.0f, 3.0f, 2.0f);
+    player->getTransform()->setPosition(10,100, -50);
+    player->addToCurrentScene();
+
+    player->addBehaviour(new MoveForward()); //TODO: Remove when we have control
+        player->addBehaviour(new ApplyTorque(0.001));
+    if (this->passiveMode) {
+
+        player->addBehaviour(new ApplyTorque());
+    }
+    GameNode * head = player->getChildWithName("head");//new GameNode("Camera");//GameNode::newCameraNode();// new GameNode("Head");
     head->setCamera(new Camera());
-    n->addChild(head);
+    
+    player->setGeometry(nullptr);
+    head->setGeometry(nullptr);
+    head->getChildren()->clear();
+
     view->setPointOfView(head);
-    //    GameNode::setCurrent(n);
+    GameNode::setCurrent(player);
 }
 
 void AiCubo::setup() {
+//    this->passiveMode = true;
     GameController::setup();
     Scene * scene = Scene::getCurrent();
     
     
-    GameNode * cube = GameNode::makeCube(2.0f, PhysicsBody::newDynamicBody());
-    cube->addBehaviour( new BehaviourA());
-    cube->getTransform()->setPosition(0.0f,100.0f,5.0f);
-    
+//    GameNode * cube = GameNode::makeCube(2.0f, PhysicsBody::newDynamicBody());
+////    cube->addBehaviour( new BehaviourA());
+//    cube->getTransform()->setPosition(0.0f,100.0f,5.0f);
+//    
     
     
     
@@ -55,9 +92,9 @@ void AiCubo::setup() {
     floor->getTransform()->setPosition(0, -inf, 0);
     scene->rootNode()->addChild(floor);
     
-    EG eg = EG();
+    EntityGenerator eg = EntityGenerator();
     eg.yMin = 10;
-    eg.makeShapesAndAddToScene(scene, 500);
+    eg.makeShapesAndAddToScene(scene, 100);
     
 //    LinkedList<GameNode>::Iterator * i = scene->rootNode()->childNodeIterator();
 //    while(i->hasNext()) {
@@ -109,5 +146,7 @@ void AiCubo::setup() {
     GameNode * box9 = GameNode::makeCube(1, PhysicsBody::newStaticBody());
     box9->getTransform()->setPosition(10, 1, 0);
     box9->addToCurrentScene();
+    
+    Bugger::getInstance()->printToTerminalAfterStartUpInfoAndSwitchToDefault();
     
 }

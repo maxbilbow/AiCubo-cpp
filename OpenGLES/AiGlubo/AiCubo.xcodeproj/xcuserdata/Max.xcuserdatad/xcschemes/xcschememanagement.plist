@@ -6,18 +6,24 @@
 	<dict>
 		<key>AiCubo-M.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>35</integer>
+			<integer>3</integer>
 		</dict>
 		<key>AiCubo-cpp.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 		<key>AiGlubo-es.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>36</integer>
+			<integer>4</integer>
 		</dict>
 		<key>AiGlubo.xcscheme</key>
 		<dict>
@@ -27,11 +33,78 @@
 		<key>AiMubo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>34</integer>
+			<integer>2</integer>
+		</dict>
+		<key>dpad.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>rmxkit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>tvcubo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>tvmubo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>50209D951BD3DF4300342CCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50209DA71BD3DF4300342CCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50209DF01BD4162600342CCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50209DFE1BD4162600342CCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50209E091BD4162600342CCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>502B94401BD2491100C84C46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>502B94521BD2491100C84C46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>502B94971BD25A6A00C84C46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>502B94AD1BD25A6B00C84C46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>506F11271B989E2D00A4F10F</key>
 		<dict>
 			<key>primary</key>

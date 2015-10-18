@@ -57,7 +57,9 @@ public:
     
     void setDelegate(RenderDelegate * delegate);
     
-    
+    virtual std::string ClassName() override {
+        return "rmx::GameView";
+    }
     
     GLWindow * window();
     

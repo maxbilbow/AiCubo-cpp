@@ -75,6 +75,10 @@ namespace rmx {
         static PhysicsBody * newKinematicBody();
         
         static PhysicsBody * newTransientBody();
+        
+        virtual std::string ClassName() override {
+            return "rmx::PhysicsBody";
+        }
 
     };
 }

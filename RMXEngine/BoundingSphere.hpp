@@ -24,5 +24,8 @@ namespace rmx {
         Transform * transform();
         float radius();
         bool intersects(BoundingSphere*);
+        virtual std::string ClassName() override {
+            return "rmx::BoundingSphere";
+        }
     };
 }

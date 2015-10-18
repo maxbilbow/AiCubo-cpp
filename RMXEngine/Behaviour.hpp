@@ -16,7 +16,7 @@
 
 
 namespace rmx {
-    class Behaviour : public NodeComponent {
+    class Behaviour : public NodeComponent, Object {
     protected:
         bool enabled;
     public:
@@ -40,6 +40,17 @@ namespace rmx {
             Object::SendMessage("Message Received via Behaviour");
             }
         
+        virtual std::string ClassName() override {
+            return "rmx::Behaviour";
+        }
+        
+//        Transform * transform() {
+//            return getNode()->getTransform();
+//        }
+//        
+//        PhysicsBody * physicsBody() {
+//            return getNode()->physicsBody();
+//        }
         
     };
     

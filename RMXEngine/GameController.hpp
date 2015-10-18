@@ -30,6 +30,7 @@ namespace rmx {
         }
 
         
+        bool passiveMode = false;
         
         int keys[600] = {0};
         
@@ -54,6 +55,12 @@ namespace rmx {
         void updateAfterScene(GLWindow * window) override;
         GameView * getView();
         static void windowSizeCallback(GLWindow * window, int width, int height);
+        
+        virtual void initButtons();
+        
+        virtual std::string ClassName() override {
+            return "rmx::GameController";
+        }
     };
 
 }

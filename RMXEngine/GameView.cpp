@@ -153,7 +153,7 @@ void GameView::enterGameLoop() {
 
 
 bool GameView::setPointOfView(GameNode * pointOfView) {
-    cout << "Setting GameView::_pointOfView: " << pointOfView << endl;
+    log("Setting GameView::_pointOfView: " + pointOfView->Name(),this);
     if (!pointOfView->hasCamera()) 
         throw new invalid_argument("PointOfView musy have a camera != null");//pointOfView->setCamera(new Camera());//
     this->_pointOfView = pointOfView;

@@ -43,7 +43,7 @@ namespace rmx {
 //        std::set<GameNode> * c;
         GameNodeList children = GameNodeList();
         
-        GameNodeComponents components __deprecated_enum_msg("Avoid using until safer key-value mapping implemented") = GameNodeComponents();
+        GameNodeComponents components; //__deprecated_enum_msg("Avoid using until safer key-value mapping implemented") = GameNodeComponents();
         
         GameNodeBehaviours * behaviours = new GameNodeBehaviours();
 
@@ -70,11 +70,14 @@ namespace rmx {
         bool geometryDidChange(bool reset = true);
         
     //    template <class T = NodeComponent>
+    private:
         NodeComponent * setComponent(NodeComponent * component) __deprecated_enum_msg("Avoid using until safer key-value mapping implemented");
-        
+
+        NodeComponent * getComponent(std::string className)  __deprecated_enum_msg("Do not use until better keyvalue list implemented");
+
+    public:
         void addBehaviour(Behaviour * behaviour);
        
-        NodeComponent * getComponent(std::string className)  __deprecated_enum_msg("Do not use until better keyvalue list implemented");
         
 
         
@@ -130,6 +133,9 @@ namespace rmx {
         void BroadcastMessage(std::string message, void * args =   nullptr, SendMessageOptions options = DoesNotRequireReceiver) override;
         
         static void test();
+        virtual std::string ClassName() override {
+            return "rmx::GameNode";
+        }
     };
     
     

@@ -33,7 +33,7 @@ Camera::Camera() {
     this->nearZ = 0.1;
     this->farZ = 2000;
     this->aspect = 16.0/9.0f;
-    this->setName("Camera");
+//    this->setName("Camera");
     
 }
 
@@ -61,39 +61,6 @@ void Camera::setNearZ(float nearZ) {
     this->nearZ = nearZ;
 }
 
-
-void Camera::makePerspective(GameView * view) {
-#ifdef GLFW
-    aspect = view->width() / view->height();
-    double fW, fH;
-    
-    //fH = tan( (fovY / 2) / 180 * pi ) * zNear;
-    fH = tan( fovY / 360 * PI ) * nearZ;
-    fW = fH * aspect;
-    
-    glFrustum( -fW, fW, -fH, fH, nearZ, farZ );
-    
-    
-
-    
-    Matrix4 m = this->getNode()->getTransform()->worldMatrix();
-    
-   
-   
-    m.m30 = m.m31 = m.m32 = 0;
-
-    
-    bool isInvertable;
-    m = GLKMatrix4Invert(m, &isInvertable);
-    if (!isInvertable)
-        throw invalid_argument("Matrix couldnt be inverted");
-
-    glMultMatrixf(m.m);
-    
-#endif
-
-}
-
 Matrix4 Camera::baseModelViewMatrix() {
     Matrix4 m = GLKMatrix4Identity;
     return GLKMatrix4Invert(m, new bool());
@@ -111,14 +78,10 @@ Matrix4 Camera::baseModelViewMatrix() {
 Matrix4 Camera::viewMatrix() {
     
     Matrix4 m = this->getNode()->getTransform()->worldMatrix();
-   
-#ifdef GLFW
-    return RMXMatrix4Negate(m);
-#else
-    return GLKMatrix4Invert(m,nullptr);
-#endif
-    //    cout << GameNode::getCurrent()->Name() <<GameNode::getCurrent()->getTransform()->worldMatrix() << endl;
-//    m = //RMXMatrix4Negate(m);
+
+    m = GLKMatrix4RotateY(m, 180 * PI_OVER_180);
+    m = GLKMatrix4Invert(m,nullptr);
+    return m;
 }
 
 
@@ -127,8 +90,11 @@ Matrix4 Camera::projectionMatrix() {
 }
 
 Matrix4 Camera::projectionMatrix(float aspect) {
+
+    if (true)
+        return GLKMatrix4MakePerspective(fovX * PI_OVER_180, this->aspect = aspect, nearZ, farZ);
+
     Matrix4 m = this->getNode()->getTransform()->worldMatrix();
-    
     // Some calculus before the formula.
     float size = nearZ * tanf(fovX * PI_OVER_180 / 2.0);
     float left = -size, right = size, bottom = -size / aspect, top = size / aspect;

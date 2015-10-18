@@ -8,6 +8,8 @@
 
 import Cocoa
 
+typealias GameViewController = MTLGameViewController
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     

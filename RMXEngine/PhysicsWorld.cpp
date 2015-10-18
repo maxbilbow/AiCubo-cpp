@@ -21,7 +21,7 @@
 #import "Transform.hpp"
 #import "PhysicsWorld.hpp"
 
-
+#define List std::list<CollisionBody*>
 using namespace std;
 using namespace rmx;
 
@@ -85,22 +85,22 @@ void PhysicsWorld::applyGravityTo(GameNode * node) {
 
 void PhysicsWorld::buildCollisionList(GameNode * rootNode) {
     
-    this->staticBodies = new LinkedList<CollisionBody>();
-    this->dynamicBodies = new LinkedList<CollisionBody>();
-    this->kinematicBodies = new LinkedList<CollisionBody>();
+    this->staticBodies = new List();
+    this->dynamicBodies = new List();
+    this->kinematicBodies = new List();
     for (GameNodeList::iterator i = rootNode->getChildren()->begin(); i != rootNode->getChildren()->end(); ++i) {
         GameNode * node = *i;
         if (node->hasPhysicsBody()) {
             if (node->collisionBody()->CollisionGroup() != NO_COLLISIONS)
                 switch (node->physicsBody()->type()) {
                     case Dynamic:
-                        this->dynamicBodies->append(node->collisionBody());
+                        this->dynamicBodies->emplace_front(node->collisionBody());
                         break;
                     case Static:
-                        this->staticBodies->append(node->collisionBody());
+                        this->staticBodies->emplace_front(node->collisionBody());
                         break;
                     case Kinematic:
-                        this->kinematicBodies->append(node->collisionBody());
+                        this->kinematicBodies->emplace_front(node->collisionBody());
                         break;
                     default:
                         break;
@@ -115,27 +115,26 @@ void PhysicsWorld::updateCollisionEvents(GameNode * rootNode) {
     this->buildCollisionList(rootNode);
     
     
-    if (!dynamicBodies->isEmpty()) {
-        if (!staticBodies->isEmpty())
+    if (!dynamicBodies->empty()) {
+        if (!staticBodies->empty())
             checkForStaticCollisions(dynamicBodies, staticBodies);
         checkForDynamicCollisions(dynamicBodies);
         //        count = checks = 0;
         //			swapLists();
     }
-    free(this->staticBodies);//.clear();
-    free(this->dynamicBodies);
-    free(this->kinematicBodies);
+    
+    delete this->staticBodies;//.clear();
+    delete this->dynamicBodies;
+    delete this->kinematicBodies;
     
 }
 
 
-void PhysicsWorld::checkForStaticCollisions(LinkedList<CollisionBody> * dynamic, LinkedList<CollisionBody> * staticBodies) {
-    LinkedList<CollisionBody>::Iterator * si = staticBodies->getIterator();
-    while (si->hasNext()) {
-        CollisionBody * staticBody = si->next();
-        LinkedList<CollisionBody>::Iterator * di = dynamic->getIterator();
-        while (di->hasNext()) {
-            CollisionBody * dynamicBody = di->next();
+void PhysicsWorld::checkForStaticCollisions(List * dynamic, List * staticBodies) {
+    for (List::iterator si = staticBodies->begin(); si != staticBodies->end(); ++si) {
+        CollisionBody * staticBody = (*si);
+        for (List::iterator di = dynamic->begin(); di != dynamic->end(); ++di)  {
+            CollisionBody * dynamicBody = (*di);
             //            checks++;
             if (this->checkForCollision(staticBody,dynamicBody)) {
                 //                count++;
@@ -147,29 +146,29 @@ void PhysicsWorld::checkForStaticCollisions(LinkedList<CollisionBody> * dynamic,
 }
 
 //int count = 0; int checks = 0;
-void PhysicsWorld::checkForDynamicCollisions(LinkedList<CollisionBody> * dynamic) {
-    CollisionBody * A = dynamic->removeFirst();
-    LinkedList<CollisionBody>::Iterator * i = dynamic->getIterator();
-    while (i->hasNext()) {
-        CollisionBody * B = i->next();
+void PhysicsWorld::checkForDynamicCollisions(List * dynamic) {
+    CollisionBody * A = dynamic->front();// removeFirst();
+    dynamic->remove(A);
+    for (List::iterator di = dynamic->begin(); di != dynamic->end(); ++di) {
+        CollisionBody * B = (*di);
         //        checks++;
         if (this->checkForCollision(A,B)) {
             //            count++;
             //					if (unchecked.remove(A))
             //						System.err.println(A.uniqueName() + " removed twie");//checked.addLast(A);
             //            if (
-            dynamic->removeValue(B);
+            dynamic->remove(B);
             //                == null)
             //                cout << "WARNING: " << B->uniqueName() << " was not removed from unchecked" << endl;
             //            else
             //                cout << "SUCCESS: " << B->uniqueName() << " was removed from unchecked" << endl;
-            if (!dynamic->isEmpty()) {
+            if (!dynamic->empty()) {
                 this->checkForDynamicCollisions(dynamic);
                 return;
             }
         }
     }
-    if (!dynamic->isEmpty()) {
+    if (!dynamic->empty()) {
         this->checkForDynamicCollisions(dynamic);
     }
 }
@@ -195,6 +194,7 @@ bool PhysicsWorld::checkForCollision(CollisionBody * A, CollisionBody * B) {
         if (collisionDelegate != nullptr)
             collisionDelegate->handleCollision(A->getNode(), B->getNode(), e);
         e->processCollision(secureKey);
+        delete e;
     } 
     return isHit;			
     

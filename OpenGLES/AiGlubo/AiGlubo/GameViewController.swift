@@ -30,11 +30,11 @@ let UNIFORM_COLOR_VECTOR = 5
 //let VIEW_MATRIX = 2
 var uniforms = [GLint](count: 6, repeatedValue: 0)
 
-class GameViewController: GLKViewController {
+class GlGameViewController: GLKViewController {
    
     
-    private static var _instance: GameViewController!
-    static var instance: GameViewController {
+    private static var _instance: GlGameViewController!
+    static var instance: GlGameViewController {
         return _instance
     }
     
@@ -60,18 +60,18 @@ class GameViewController: GLKViewController {
     }
     
     override func viewDidLoad() {
-        GameViewController._instance = self
+        GlGameViewController._instance = self
         super.viewDidLoad()
         
         
         self.context = EAGLContext(API: .OpenGLES2)
         
         if !(self.context != nil) {
-            print("Failed to create ES context")
+            RMLog("Failed to create ES context")
         }
         
         let view = self.view as! GLKView
-        RMXMobileInput.instance
+        RMXInput.instance
         view.context = self.context!
         view.drawableDepthFormat = .Format24
         
@@ -152,7 +152,7 @@ class GameViewController: GLKViewController {
 
     override func glkView(view: GLKView, drawInRect rect: CGRect) {
         CppBridge.updateSceneLogic()
-        RMXMobileInput.instance.update();
+        RMXInput.instance.update();
         
     
         glClearColor(0.65, 0.65, 0.65, 1.0)
@@ -238,14 +238,14 @@ class GameViewController: GLKViewController {
         // Create and compile vertex shader.
         vertShaderPathname = NSBundle.mainBundle().pathForResource("Shader", ofType: "vsh")!
         if self.compileShader(&vertShader, type: GLenum(GL_VERTEX_SHADER), file: vertShaderPathname) == false {
-            print("Failed to compile vertex shader")
+            RMLog("Failed to compile vertex shader")
             return false
         }
         
         // Create and compile fragment shader.
         fragShaderPathname = NSBundle.mainBundle().pathForResource("Shader", ofType: "fsh")!
         if !self.compileShader(&fragShader, type: GLenum(GL_FRAGMENT_SHADER), file: fragShaderPathname) {
-            print("Failed to compile fragment shader");
+            RMLog("Failed to compile fragment shader");
             return false
         }
         
@@ -262,7 +262,7 @@ class GameViewController: GLKViewController {
         
         // Link program.
         if !self.linkProgram(program) {
-            print("Failed to link program: \(program)")
+            RMLog("Failed to link program: \(program)")
             
             if vertShader != 0 {
                 glDeleteShader(vertShader)
@@ -311,7 +311,7 @@ class GameViewController: GLKViewController {
         do {
             source = try NSString(contentsOfFile: file, encoding: NSUTF8StringEncoding).UTF8String
         } catch {
-            print("Failed to load vertex shader")
+            RMLog("Failed to load vertex shader")
             return false
         }
         var castSource = UnsafePointer<GLchar>(source)
@@ -371,7 +371,7 @@ class GameViewController: GLKViewController {
         if logLength > 0 {
             var log: [GLchar] = [GLchar](count: Int(logLength), repeatedValue: 0)
             glGetProgramInfoLog(prog, logLength, &logLength, &log)
-            print("Program validate log: \n\(log)")
+            RMLog("Program validate log: \n\(log)")
         }
         
         glGetProgramiv(prog, GLenum(GL_VALIDATE_STATUS), &status)

@@ -34,7 +34,7 @@ namespace rmx {
 //        void finishUp(CollisionBody * A,  CollisionBody * B);
     public:
         CollisionEvent(GameNode * nodeA, GameNode * nodeB, unsigned int key);
-        
+        ~CollisionEvent();
         float getPlaneDistance();
         
         float getDistance();
@@ -44,6 +44,10 @@ namespace rmx {
         bool isPrevented();
         
         void processCollision(unsigned int key);
+        
+        virtual std::string ClassName() override {
+            return "rmx::CollisionEvent";
+        }
         
     };
 }

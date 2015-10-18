@@ -29,6 +29,7 @@ GameNode * GameNode::_current;// = GameNode::newCameraNode();
 GameNode::GameNode() {
     this->setName("GameNode");
     this->onLoad();
+    this->components = GameNodeComponents();
 }
 
 GameNode::GameNode(string name) {
@@ -73,9 +74,8 @@ bool GameNode::didCollideThisTurn() {
 
 NodeComponent * GameNode::setComponent(NodeComponent * component)  {
     string key = typeid(component).name();
-//    NodeComponent * result = this->components->getValueForKey(key);
-    cout << "Adding component: " << component->uniqueName() << " to " << this->uniqueName() << endl;
-    return this->components.setValueForKey(key,component);
+    log("Adding component: " + component->ClassName() + " to " + this->uniqueName(), this, "setComponent()");
+    return component;
 }
 
 bool GameNode::hasBehaviour(Behaviour * behaviour) {
@@ -88,18 +88,17 @@ bool GameNode::hasBehaviour(Behaviour * behaviour) {
 
 void GameNode::addBehaviour(Behaviour * behaviour) {
     if (behaviour != nullptr && !this->hasBehaviour(behaviour)) {
-        cout << "BEHAVIOUR: Adding " << behaviour->uniqueName() << " to " << this->uniqueName() << endl;
+        log("Adding Behaviour: " + behaviour->ClassName() + " to " + this->uniqueName(), this, "addBehaviour()");
         this->behaviours->insert(behaviour);
         behaviour->setNode(this);
     } else {
-        string reason = behaviour == nullptr ? " NullPointerException" : "Behaviour has already been added";
-        cout << "!!! FAILED to add " << behaviour->uniqueName() << " to " << this->uniqueName() << endl;
-        cout << " -- REASON: " << reason << endl;
+        string message = "!!! FAILED to add " + behaviour->ClassName() + " to " + this->uniqueName();
+        message += "\n    -- REASON: " + (behaviour == nullptr ? " NullPointerException" : "Behaviour " + behaviour->ClassName() + " has already been added");
     }
 }
     
 NodeComponent * GameNode::getComponent(string className) {
-    return this->components.getValueForKey(className);
+    return this->components.at(className);//.getValueForKey(className);
 }
 
 
@@ -122,7 +121,7 @@ void GameNode::addChild(GameNode * child) {
         if (child->geometryDidChange()) {
             this->_geometryDidChange = true;
         }
-        cout << "GameNode: Adding child: " << child->uniqueName() << " to " << this->uniqueName() << endl;
+    log("GameNode: Adding child: " + child->uniqueName() + " to " + this->uniqueName(),this);
 //    } else {
 //        cout << "!!! WARNING: " << child->uniqueName() << " was NOT added to " << this->uniqueName() << endl;
 //        cout << " --  REASON: child may already exist in children" << endl;
@@ -184,13 +183,19 @@ bool GameNode::hasGeometry() {
 
 void GameNode::setGeometry(Geometry * geometry) {
     this->_geometry = geometry;
-    geometry->setNode(this);
-    this->_hasGeometry = TRUE;
+    
+    
     _geometryDidChange = true;
     GameNode * root = this->rootNode();
     root->_geometryDidChange = true;
+    if (geometry != nullptr) {
+        this->_hasGeometry = true;
+        geometry->setNode(this);
+    } else {
+        this->_hasGeometry = false;
+    }
     if (root != Scene::getCurrent()->rootNode())
-        cout << "!!! WARNING: " << root->uniqueName() << " == Scene->rootNode" << endl;
+        log("!!! WARNING: " + root->uniqueName() + " == Scene->rootNode", this);
 }
 
 bool GameNode::geometryDidChange(bool reset) {
@@ -258,6 +263,7 @@ void GameNode::updateAfterPhysics() {
     _transform->updateLastPosition();
     _tick++;
 }
+
 void GameNode::draw(Matrix4 rootTransform) {
     if (this->_hasGeometry) {
         this->_geometry->render(this, rootTransform);
@@ -295,7 +301,7 @@ GameNode * GameNode::getParent() {
 ///TODO
 void GameNode::SendMessage(std::string message, void * args, SendMessageOptions options) {
     //TODO
-    cout << "Message Received by " << this->uniqueName() << ": " << message << endl;
+    log("Message Received: " + message, this);
 }
 
 void GameNode::BroadcastMessage(std::string message, void * args, SendMessageOptions options) {
@@ -322,9 +328,9 @@ void GameNode::addToCurrentScene() {
 }
 
 void GameNode::setTransform(Transform *transform) {
-    if (this->_transform !=   nullptr)
+    if (this->_transform != nullptr)
 //        throw invalid_argument("Transform can only be set once! " + this->ToString());
-        cout << "WARNING: Transform can only be set once! " << this << endl;
+        log("WARNING: Transform can only be set once! ",this);
     else
         this->_transform = transform;
 }

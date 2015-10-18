@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 
-#endif /* PhysicsWorld_hpp */
 
+#define List std::list<CollisionBody*>
 namespace rmx {
     class CollisionDelegate {
     public:
@@ -21,9 +21,9 @@ namespace rmx {
     class PhysicsWorld : public Object , public Unfinised {
         Vector3 gravity = GLKVector3Make(0.0f,-9.8f,0.0f);
 //        Scene * scene;
-        LinkedList<CollisionBody> * staticBodies = new LinkedList<CollisionBody>();
-        LinkedList<CollisionBody> * dynamicBodies = new LinkedList<CollisionBody>();
-        LinkedList<CollisionBody> * kinematicBodies = new LinkedList<CollisionBody>();
+        List * staticBodies = new List();
+        List * dynamicBodies = new List ();
+        List * kinematicBodies = new List();
         void buildCollisionList(GameNode * rootNode);
         bool checkForCollision(CollisionBody * A, CollisionBody * B);
         CollisionDelegate * collisionDelegate;
@@ -41,15 +41,19 @@ namespace rmx {
         
         
         void updateCollisionEvents(GameNode * rootNode);
-        void checkForStaticCollisions(LinkedList<CollisionBody> * dynamic, LinkedList<CollisionBody> * staticBodies);
-        void checkForDynamicCollisions(LinkedList<CollisionBody> * dynamic);
+        void checkForStaticCollisions(List * dynamic, List * staticBodies);
+        void checkForDynamicCollisions(List * dynamic);
         
         CollisionDelegate * getCollisionDelegate();
         
         void setCollisionDelegate(CollisionDelegate * collisionDelegate);
-
+        virtual std::string ClassName() override {
+            return "rmx::PhysicsWorld";
+        }
         
         
     };
 
 }
+#undef List
+#endif /* PhysicsWorld_hpp */

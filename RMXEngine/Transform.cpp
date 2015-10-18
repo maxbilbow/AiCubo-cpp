@@ -12,7 +12,6 @@
 #import "CollisionBody.hpp"
 #import "Transform.hpp"
 
-#import <math.h>
 
 
 using namespace rmx;
@@ -34,9 +33,13 @@ Transform::Transform(GameNode * node) {
     _localMatrix = GLKMatrix4Identity;
     _scale = GLKVector3Make(1,1,1);
     _lastPosition = GLKVector3Make(0, 0, 0);
-    this->setName("Transform::"+node->Name());
+//    this->setName("Transform::"+node->Name());
 }
 
+string Transform::getName()
+{
+    return ClassName() + " -> " + getNode()->Name();
+}
 Vector3 Transform::scale() {
     return this->_scale;
 }
@@ -45,6 +48,13 @@ void Transform::setScale(float x, float y, float z) {
     _scale.x = x;
     _scale.y = y;
     _scale.z = z;
+}
+
+
+void Transform::scaleNode(float s) {
+    _scale.x *= s;
+    _scale.y *= s;
+    _scale.z *= s;
 }
 
 
@@ -299,7 +309,7 @@ Matrix4 Transform::localMatrix() {
 
 GameNode * Transform::setNode(GameNode * node) {
 //    if (this->getNode() != null)// && this->getNode() != node)
-        throw new invalid_argument("Transform can only be assigned once: " + this->Object::ToString());
+        throw new invalid_argument("Transform can only be assigned once: " + this->getName());
 //    node->setTransform(this);
 //    return   null;
 }

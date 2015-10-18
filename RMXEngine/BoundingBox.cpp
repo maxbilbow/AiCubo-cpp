@@ -83,10 +83,12 @@ bool BoundingBox::intersects(BoundingBox * other) {
 }
 
 Vector3 BoundingBox::getCollisionNormal(BoundingBox * other) {
+    Vector3 normal = GLKVector3Make(0,0,0);
+#if false
     Vector3 a = this->transform()->position();
     Vector3 b = other->transform()->position();
-    Vector3 normal = GLKVector3Make(0,0,0);
     
+
     float xMinA = this->xMin() + a.x;
     float xMaxA = this->xMax() + a.x;
     float yMinA = this->yMin() + a.y;
@@ -100,7 +102,7 @@ Vector3 BoundingBox::getCollisionNormal(BoundingBox * other) {
     float yMaxB = other->yMax() + b.y;
     float zMinB = other->zMin() + b.z;
     float zMaxB = other->zMax() + b.z;
-    
+#endif
     //find the x value
     //		if (xMinA < xMaxB && xMinA > xMinB)
     

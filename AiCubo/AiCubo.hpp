@@ -14,17 +14,33 @@
 #endif /* AiCubo_hpp */
 
 
+class AiCubo : public rmx::GameController {
+protected:
+    void setup() override;
+    void initpov() override;
+public:
+    static rmx::GameNode * newAiCubo();
+    
+};
+
+
 namespace rmx {
+    
    
-class BehaviourA : public Behaviour {
+class MoveForward : public Behaviour {
 public:
     void update() override {
-//        Transform * t = this->getNode()->getTransform();
-        //        t->physicsBody()->applyForce(0.01, t->forward());
+        Transform * t = this->getNode()->getTransform();
+        t->physicsBody()->applyForce(0.1, t->forward());
+    }
+    
+    
+    virtual std::string ClassName() override {
+        return "rmx::MoveForward";
     }
 };
 
-class BehaviourB : public Behaviour {
+class TurnBehaviour : public Behaviour {
 public:
     void update() override {
         //        Transform * t = this->getNode()->getTransform();
@@ -37,45 +53,38 @@ public:
 //        this->getNode()->getTransform()->move(Roll,  0.1);
     }
     
-};
-
-class BehaviourC : public Behaviour {
-public:
-    void update() override {
-        Transform * t = this->getNode()->getTransform();
-        PhysicsBody * b = t->physicsBody();
-        b->applyTorque(0.01, t->up());
-        b->applyForce(0.1, t->forward());
+    virtual std::string ClassName() override {
+        return "rmx::TurnBehaviour";
     }
     
 };
 
-class EG : public EntityGenerator {
+class ApplyTorque : public Behaviour {
 public:
-    GameNode * makeEntity() override {
-        float size = 1;
-        GameNode * body = GameNode::makeCube(size, PhysicsBody::newDynamicBody());
-        body->addBehaviour( new BehaviourC());
-        
-        GameNode * head = GameNode::makeCube(size * 0.7);
-        head->addBehaviour( new BehaviourB());
-        GameNode * eyeLeft = GameNode::makeCube(size * 0.1);
-        GameNode * eyeRight = GameNode::makeCube(size * 0.1);
-        eyeLeft->geometry()->setColor(1.0,1.0,1.0);
-        eyeRight->geometry()->setColor(1.0,1.0,1.0);
-        head->addChild(eyeLeft);
-        head->addChild(eyeRight);
-        body->addChild(head);
-        head->getTransform()->setPosition(0.0f,1.0f,1.0f);
-        eyeLeft->getTransform()->setPosition(0.2, 0.0, size * 0.7);
-        eyeRight->getTransform()->setPosition(-0.2, 0.0, size * 0.7);
-        return body;
+    float amount = 0.01;
+    
+    ApplyTorque(){}
+    ApplyTorque(float amount) {
+        this->amount = amount;
     }
+    void update() override {
+        Transform * t = this->getNode()->getTransform();
+        PhysicsBody * b = t->physicsBody();
+        b->applyTorque(amount, t->up());
+
+    }
+    
+    std::string ClassName() override {
+        return "rmx::ApplyTorque";
+    }
+    
 };
 }
+//class Eg : public EntityGenerator {
+//public:
+//    GameNode * makeEntity() override;
+//};
 
-class AiCubo : public rmx::GameController {
-protected:
-    void setup() override;
-    void initpov() override;
-};
+
+
+

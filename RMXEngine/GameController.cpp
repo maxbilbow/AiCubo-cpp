@@ -166,6 +166,10 @@ GameNode * player() {
     return GameNode::getCurrent();
 }
 
+void GameController::initButtons()
+{
+    
+}
 
 void GameController::keyCallback(GLWindow *window, int key, int scancode, int action, int mods) {
     GameController * gc = GameController::getInstance();
@@ -184,9 +188,7 @@ void GameController::keyCallback(GLWindow *window, int key, int scancode, int ac
                 GameNode::getCurrent()->BroadcastMessage("jump");
                 break;
             case RMX_KEY_ESCAPE:
-#ifdef GLFW
-                glfwSetWindowShouldClose(window, GL_TRUE);
-#endif
+                exit(0);
                 break;
             case RMX_KEY_W:
                 //			 Node.getCurrent().transform.moveForward(1);
@@ -239,25 +241,19 @@ void GameController::cursorCallback(GLWindow * w, double x, double y) {
         restart = false;
         return;
     } else {
-#ifdef GLFW
-        double dx = x - xpos;
-        double dy = y - ypos;
-        
-        dx *= 0.1; dy *= 0.1;
-        xpos = x;
-        ypos = y;
-        
-#else
+
         double dx = x * 0.4;
         double dy = y * 0.4;
-        //        cout << dx << ", " << dy << endl;
-#endif
-        //        GameNode * pov =
+        
         Transform * body = GameNode::getCurrent()->getTransform();
         Transform * head = gc->view->pointOfView()->getTransform();
-        head->rotate(Pitch, -dy);
-        body->rotate(Yaw,   dx);
         
+        if (gc->passiveMode)
+            head->rotate(Yaw,   dx);
+        else {
+            body->rotate(Yaw,   dx);
+            head->rotate(Pitch, dy);
+        }
     }
     
     

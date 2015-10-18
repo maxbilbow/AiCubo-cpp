@@ -18,12 +18,16 @@ using namespace std;
 
 
 NodeComponent::NodeComponent() {
-//    this->node = (GameNode*)malloc(sizeof(GameNode));
-    this->setName(typeid(this).name());
+//    this->setName(typeid(this).name());
 }
 
 bool NodeComponent::isEnabled() {
     return this->enabled;
+}
+
+string NodeComponent::getName()
+{
+    return ClassName() + " -> " + getNode()->Name();
 }
 
 inline void NodeComponent::setEnabled(bool enabled) {

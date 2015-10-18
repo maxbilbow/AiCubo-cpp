@@ -29,13 +29,18 @@ namespace rmx{
         ///Exists to thwart defauly constructor.
         Transform();
         
+        
     public:
+        
+        std::string getName();
+
         Transform(GameNode * node);
         typedef RMXMessage Move;
 //        Transform(Node * node);
         Transform * New(GameNode * node);
         
         void setScale(float x, float y, float z);
+        void scaleNode(float x);
         
         bool move(Move name, float scale = 1, std::string args = "");
         
@@ -99,6 +104,9 @@ namespace rmx{
         
         PhysicsBody * physicsBody();
         CollisionBody * collisionBody();
+        virtual std::string ClassName() override {
+            return "rmx::Transform";
+        }
     };
 
 }

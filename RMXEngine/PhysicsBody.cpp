@@ -36,7 +36,7 @@ void PhysicsBody::setType(PhysicsBodyType type) {
 PhysicsBody::PhysicsBody() {
     NodeComponent::NodeComponent();
     this->mass = 1;
-    this->setName("PhysicsBody");
+//    this->setName("PhysicsBody");
     this->forces = GLKVector3Make(0,0,0);
     this->velocity = GLKVector3Make(0,0,0);
     this->rotationalVelocity = GLKVector3Make(0,0,0);

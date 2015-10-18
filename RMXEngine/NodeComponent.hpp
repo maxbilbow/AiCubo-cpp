@@ -15,7 +15,7 @@
 
 namespace rmx {
     
-    class NodeComponent : public Object { //, public _NodeComponent {
+    class NodeComponent {//: public Object { //, public _NodeComponent {
     protected:
         GameNode * node;
        
@@ -26,6 +26,9 @@ namespace rmx {
     public:
         NodeComponent();
 //        NodeComponent(std::string name):Object(name){}
+        
+        std::string getName();
+        
         
         virtual GameNode * setNode(GameNode * node) {
             GameNode * oldNode = this->node;
@@ -40,6 +43,10 @@ namespace rmx {
         void setEnabled(bool);
         
         Transform * getTransform();
+        
+        virtual std::string ClassName() {
+            return "rmx::NodeComponent";
+        }
         
     };
 

@@ -50,12 +50,22 @@ namespace rmx {
         std::string description = "";
     public:
         virtual std::string ToString() {
-            return this->description.empty() ? "N/A" : this->description;
+            return this->ClassName() + ": \"" + this->description + "\"";
         }
         
         virtual void setDescription(std::string description) {
             this->description = description;
         }
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:21
+         *
+         *  @return the classname of the object as a string
+         *  @since 0.2
+         */
+        virtual std::string ClassName() {
+            return typeid(this).name();
+        };
+        
     };
 }
 
@@ -175,7 +185,7 @@ namespace rmx {
          *  Deconstructor: removes the object from the list of active objects.
          *  @since 0.1
          */
-        ~Object();
+        virtual ~Object();
         
         /*!
          *  @author Max Bilbow, 15-08-06 16:08:50
@@ -233,7 +243,7 @@ namespace rmx {
          *  @return the classname of the object as a string
          *  @since 0.2
          */
-        std::string ClassName() {
+        virtual std::string ClassName() override {
             return typeid(this).name();
         };
         
@@ -251,11 +261,8 @@ namespace rmx {
          *  @since 0.1
          *  @TODO: find a way of making this work...
          */
-        virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {
-#if RMX_DEBUG_OBJECT
-            std::cout << message << std::endl;
-#endif
-        }
+        virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver);
+        
         
         virtual void BroadcastMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {
             this->SendMessage(message, args, options);

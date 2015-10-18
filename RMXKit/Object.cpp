@@ -101,6 +101,10 @@ Object * Object::clone() {
     return o;
 }
 
+void Object::SendMessage(string message, void * args, SendMessageOptions options)
+{
+    
+}
 //void Object::SendMessage(std::string message, Any args, SendMessageOptions options) {
 //    Receiver receiver = nullptr; //*this->_receivers->getValueForKey(message);
 //    if (receiver != nullptr) {

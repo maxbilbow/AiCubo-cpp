@@ -45,5 +45,9 @@ namespace rmx {
         BoundingSphere * boundingSphere();
         
         GameNode * getNode();
+        
+        virtual std::string ClassName() override {
+            return "rmx::CollisionBody";
+        }
     };
 }

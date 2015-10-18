@@ -7,10 +7,11 @@
 //
 
 //#import "RMXEngine.hpp"
-//#import "RMXMath.hpp"
-//#import <GLKit/GLKVector3.h>
-#include "Includes.h"
-#include <math.h>
+
+#import <iostream>
+#import <math.h>
+#import "RMXTypes.h"
+#import "RMXMath.h"
 using namespace std;
 
 

@@ -11,7 +11,7 @@
 
 
 #endif /* GeometryIterator_h */
-
+#define LOG_COLOR_INIT "LOG_COLOR_INIT"
 
 
 @interface ShapeData : NSObject
@@ -20,10 +20,11 @@
 @property (nonatomic) long vertexDataSize;
 //@property long count;
 //@property (nonatomic) GLKMatrix4 modelViewMatrix;
-@property (nonatomic) float * modelMatrixRaw;
+
 @property (nonatomic) GLKMatrix4 modelMatrix;
 @property (nonatomic) GLKVector3 scaleVector;
 @property (nonatomic) GLKMatrix4 modelScaleMatrix;
+@property (nonatomic) float* modelMatrixRaw;
 @property (nonatomic) float* scaleVectorRaw;
 @property (nonatomic) float* colorVectorRaw;
 @property float* normalData;

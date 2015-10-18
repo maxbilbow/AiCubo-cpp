@@ -57,7 +57,7 @@ import SpriteKit
                 fatalError("Singleton")
             } else {
                 Interface._current = self
-                self.setUpViews()
+                self.setUpViews(withView: GameViewController.instance.view)
 //                self.newGame(Interface.DEFAULT_GAME)
                 self.viewDidLoad()
             }
@@ -98,7 +98,7 @@ import SpriteKit
             return bounds
         }
         
-        func setUpViews() {
+        func setUpViews(withView view: RMView) {
             let bounds = _scoreboardRect
             let skScene: SKScene = SKScene(size: bounds.size)
             //            bounds.height =
@@ -115,9 +115,22 @@ import SpriteKit
             
         }
         
+        func _limit(x: CGFloat, limit lim: CGFloat) -> CGFloat {
+            let limit: CGFloat = lim// ?? 2// CGFloat(RMXInterface.moveSpeed)
+            if x > limit {
+                return limit
+            } else if x < -limit {
+                return -limit
+            } else {
+                return x
+            }
+        }
         
         
-        func update() {}
+        
+        func update() {
+            RMXCpp.printLogToTerminal()
+        }
         
     //    func destroyWorld() -> RMXScene? {
     //        return nil //_world?.destroy()
@@ -153,7 +166,7 @@ import SpriteKit
         }
         
         func resetButton() {
-            print("ResetBotton")
+            RMLog("ResetBotton")
         }
         
         func processHit(point p: CGPoint, type: UserAction) -> Bool {
@@ -166,7 +179,7 @@ import SpriteKit
 //                }
 //            }
 //            return false
-            print("ProcessHit")
+            RMLog("ProcessHit")
 
 //        }
             return true

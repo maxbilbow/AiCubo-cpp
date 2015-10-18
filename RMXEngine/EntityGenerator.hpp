@@ -16,7 +16,7 @@
 namespace rmx {
 class EntityGenerator {
 public:
-    virtual GameNode * makeEntity(){ return nullptr;}
+    virtual GameNode * makeEntity();//{ return nullptr;}
     int
     xMin, yMin, zMin,
     xMax, yMax, zMax;
@@ -31,6 +31,10 @@ public:
             if (entity != nullptr)
                 scene->rootNode()->addChild(this->initPositionOf(entity));
         }
+    }
+    
+    virtual std::string ClassName() {
+        return "rmx::EntityGenerator";
     }
     
 private:

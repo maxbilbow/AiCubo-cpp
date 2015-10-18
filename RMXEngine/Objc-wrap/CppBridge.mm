@@ -24,11 +24,17 @@ AiCubo game = AiCubo();
 @implementation CppBridge
 
 static GeometryIterator * geometries;
+static CppButtons * buttons;
 + (void) setupScene
 {
 //    RMXLoadVertices();
     game.run();
     geometries = [GeometryIterator new];
+}
+
++ (CppButtons*)buttons
+{
+    return buttons;
 }
 
 + (GeometryIterator*)geometries
@@ -81,8 +87,9 @@ void update(GameController * gc) {
 thread sceneThread;
 
 + (void) updateSceneLogic{
-    if (sceneThread.joinable())
+    if (sceneThread.joinable()) {
         sceneThread.join();
+    }
     GameController * gc = GameController::getInstance();
     sceneThread = thread(update,gc);
 //    Scene::getCurrent()->renderScene(moodelMatrix);
@@ -177,4 +184,58 @@ thread sceneThread;
 
     }
     
+@end
+
+
+@implementation CppButtons {
+@private Buttons * buttons;
+}
+
+
+- (id)init
+{
+    self = [super init];
+    return self;
+}
+
+- (void)forwards:(float)percentage
+{
+    rmx::log("Not yet implemented", "Buttons::forwards:(float)percentage");
+}
+
+- (void)backwards:(float)percentage
+{
+    rmx::log("Not yet implemented", "Buttons::backwards:(float)percentage");
+}
+
+- (void)left:(float)percentage
+{
+     rmx::log("Not yet implemented", "Buttons::left:(float)percentage");
+}
+
+- (void)right:(float)percentage
+{
+    rmx::log("Not yet implemented", "Buttons::right:(float)percentage");
+}
+
+- (void)up:(float)percentage
+{
+    rmx::log("Not yet implemented", "Buttons::up:(float)percentage");
+}
+
+- (void)down:(float)percentage
+{
+    rmx::log("Not yet implemented", "Buttons::down:(float)percentage");
+}
+
+- (void)crouch:(float)percentage
+{
+    rmx::log("Not yet implemented", "Buttons::crouch:(float)percentage");
+}
+
+- (void)jump:(float)percentage
+{
+    rmx::log("Not yet implemented", "Buttons::jump:(float)percentage");
+}
+
 @end

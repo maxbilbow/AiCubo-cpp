@@ -20,9 +20,7 @@ namespace rmx {
         Matrix4 _projectionMatrix;
     public:
         Camera();
-//        Camera(std::string name):NodeComponent(name){}
-        void makePerspective(GameView * view);
-//        Matrix4 modelViewMatrix();
+        
         Matrix4 viewMatrix();
         Matrix4 baseModelViewMatrix();
         Matrix4 projectionMatrix();
@@ -34,7 +32,9 @@ namespace rmx {
         float getNearZ();
         void setNearZ(float nearZ);
         
-
+        virtual std::string ClassName() override {
+            return "rmx::Camera";
+        }
 
     };
     

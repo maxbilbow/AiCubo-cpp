@@ -53,6 +53,10 @@ namespace rmx {
         void setAsCurrent();
         PhysicsWorld * physicsWorld();
         GameNode * pointOfView();
+        
+        virtual std::string ClassName() override {
+            return "rmx::Scene";
+        }
     };
 
 }

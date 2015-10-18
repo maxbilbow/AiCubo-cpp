@@ -21,7 +21,7 @@ namespace rmx {
        
         float * _vertexData;
         long _vertexDataSize;
-        UInt16 * _indexData;
+        unsigned short * _indexData;
         long  _indexDataSize;
         void pushMatrix(GameNode *, Matrix4);
         void popMatrix();
@@ -53,7 +53,9 @@ namespace rmx {
         void addVertex(float x, float y, float z);
         void prepare();
         
-        
+        virtual std::string ClassName() override {
+            return "rmx::Geometry";
+        }
         Matrix4 modelMatrix();
     };
     
@@ -65,21 +67,11 @@ namespace rmx {
         void drawWithScale(float x, float y, float z) override;
     public:
         Floor():Geometry(nullptr,0,nullptr,0){}
-        
+        virtual std::string ClassName() override {
+            return "rmx::Floor(ext Geometry";
+        }
     };
     
-//    #ifdef GLFW
-//    class Cube : public Geometry {
-//       
-//    public:
-//         Cube(float* = nullptr,long = 0, int * indices = nullptr);
-//
-//    protected:
-//
-//        void drawWithScale(float X, float Y, float Z)override {
-//    
-//    };
-//    #endif
     
 
 }

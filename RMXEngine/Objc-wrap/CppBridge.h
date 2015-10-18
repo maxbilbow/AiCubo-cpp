@@ -11,10 +11,13 @@
 
 //#include <stdio.h>
 
+
 #import <GLKit/GLKMatrix4.h>
+#import <Foundation/NSArray.h>
+#import "RMXCpp.h"
+
 #import "RMXKeyStates.h"
 #import "VertexData.h"
-#import <Foundation/NSArray.h>
 #import "GeometryIterator.h"
 
 #endif /* CppBridge_hpp */
@@ -27,7 +30,28 @@ typedef struct _Uniform
     float * mvm;
 }Uniform;
 
+@interface CppButtons : NSObject
+
+- (void)forwards:(float)percentage;
+
+- (void)backwards:(float)percentage;
+
+- (void)left:(float)percentage;
+
+- (void)right:(float)percentage;
+
+- (void)up:(float)percentage;
+
+- (void)down:(float)percentage;
+
+- (void)crouch:(float)percentage;
+
+- (void)jump:(float)percentage;
+
+@end
+
 @interface CppBridge : NSObject
++ (CppButtons*)buttons;
 + (void) setupScene;
 + (GLKMatrix4) viewMatrix;
 + (GLKVector3) eulerAngles;

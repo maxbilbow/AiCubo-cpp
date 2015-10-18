@@ -14,10 +14,12 @@ import CoreMotion
 import UIKit
 import AVFoundation
 
-
 extension RMX {
     typealias DPadOrKeys = RMXMobileInput
+    
 }
+typealias RMXInput = RMXMobileInput
+
 class RMXMobileInput : RMXInterface {
     
      let _testing = false
@@ -33,7 +35,7 @@ class RMXMobileInput : RMXInterface {
     var topBar: UIView?
     var menuAccessBar: UIView?
     var pauseMenu: UIView?
-    var moveSpeed: Float = 0.4 //-0.01 //-0.4
+    var moveSpeed: Float = -0.4 //-0.01 //-0.4
     var lookSpeed: Float = 0.03
     var turnSpeed: Float = 0.02//002
     
@@ -55,6 +57,21 @@ class RMXMobileInput : RMXInterface {
     override func update() {
         super.update();
         self.accelerometer()
+        if var move = delta {
+            let rect = self.moveButtonCenter
+            
+            let limX = rect.size.width * 0.5 ; let limY = rect.size.height * 0.5
+            
+            move.x = _limit(move.x, limit: limX) /// limX //move.x > 0 ? x : -x
+            move.y = _limit(move.y, limit: limY) /// limY //move.y > 0 ? y : -y
+            
+            let percentage = CGPoint(x: move.x / limX, y: move.y / limY)
+            self.moveButtonPad!.center = rect.origin + rect.size * 0.5 + move * 1
+            //            self.moveButtonPad?.setNeedsDisplay()
+            CppBridge.moveWithDirection(UserAction.MOVE_FORWARD.description, withForce: Float(percentage.y) * self.moveSpeed)
+            CppBridge.moveWithDirection(UserAction.MOVE_LEFT.description, withForce: Float(percentage.x) * self.moveSpeed)
+
+        }
     }
 
     private var _count: Int = 0
@@ -178,8 +195,8 @@ class RMXMobileInput : RMXInterface {
 //        GameViewController.instance.view.addSubview(self.menuAccessBar!)
         
     }
-    override func setUpViews() {
-        super.setUpViews()
+    override func setUpViews(withView view: UIView) {
+        super.setUpViews(withView: view)
 
         self.makeTopBar()
         self.makePauseMenu()
@@ -278,10 +295,38 @@ class RMXMobileInput : RMXInterface {
 
     var boomTimer: RMFloat = 1
     
-    func resetCamera(recogniser: UITapGestureRecognizer) {
-//        RMX.ActionProcessor.current.action(.RESET_CAMERA, speed: 1)
-        CppBridge.sendMessage("resetCamera:1")
+    var delta: CGPoint?
+    
+    ///The event handling method
+    func handleOrientation(recognizer: UIPanGestureRecognizer) {
+        if recognizer.numberOfTouches() == 1 {
+            let point = recognizer.velocityInView(GameViewController.instance.view)
+            
+            CppBridge.cursorDelta(Double(self.lookSpeed) * Double(point.x), dy: Double(self.turnSpeed) * Double(point.y))
+            //            CppBridge.turnAboutAxis(UserAction.MOVE_PITCH.description, withForce: self.lookSpeed * Float(point.y))
+            //            CppBridge.turnAboutAxis(UserAction.MOVE_YAW.description, withForce: self.turnSpeed * Float(point.x))
+            
+        }
+        //            _handleRelease(recognizer.state)
     }
+    
+    func handleMovement(recogniser: UILongPressGestureRecognizer){
+        let point = recogniser.locationInView(GameViewController.instance.view)
+        if recogniser.state == .Began {
+            self.moveOrigin = point
+        } else if recogniser.state == .Ended {
+            self.moveButtonPad!.frame = self.moveButtonCenter
+            CppBridge.sendMessage("\(UserAction.STOP_MOVEMENT)")
+            delta = nil
+        } else {
+            delta = CGPoint(x: point.x - self.moveOrigin.x, y: point.y - self.moveOrigin.y)
+            
+            
+                    //            NSLog("FWD: \((x / limX).toData()), SIDE: \((y / limY).toData())),  TOTAL: \(1)")
+        }
+        
+    }
+
 
     func accelerometer() {
         func tilt(direction: UserAction, tilt: RMFloat){
@@ -340,13 +385,13 @@ class RMXMobileInput : RMXInterface {
             
             //            let d = deviceMotion.magneticField.accuracy.rawValue
             
-            print("           Gravity,\(x.toData()),\(y.toData()),\(z.toData())")
-            print("   Magnetic Field1,\(q.toData()),\(r.toData()),\(s.toData())")
-            print("   Magnetic Field2,\(h.toData()),\(i.toData()),\(j.toData())")
-            print("     Rotation Rate,\(t.toData()),\(u.toData()),\(v.toData())")
-            print("Gyro Rotation Rate,\(e.toData()),\(f.toData()),\(g.toData())")
-            print("          Attitude,\(a.toData()),\(b.toData()),\(c.toData())")
-            print("          userAcc1,\(k.toData()),\(l.toData()),\(m.toData())")
+            RMLog("           Gravity,\(x.toData()),\(y.toData()),\(z.toData())")
+            RMLog("   Magnetic Field1,\(q.toData()),\(r.toData()),\(s.toData())")
+            RMLog("   Magnetic Field2,\(h.toData()),\(i.toData()),\(j.toData())")
+            RMLog("     Rotation Rate,\(t.toData()),\(u.toData()),\(v.toData())")
+            RMLog("Gyro Rotation Rate,\(e.toData()),\(f.toData()),\(g.toData())")
+            RMLog("          Attitude,\(a.toData()),\(b.toData()),\(c.toData())")
+            RMLog("          userAcc1,\(k.toData()),\(l.toData()),\(m.toData())")
             
             
             if self.motionManager.accelerometerData != nil {
@@ -359,6 +404,8 @@ class RMXMobileInput : RMXInterface {
         }
         // println()
     }
+    
+    
 }
 
 

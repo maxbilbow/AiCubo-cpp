@@ -22,7 +22,7 @@ namespace rmx {
      *
      *   @since 0.1
      */
-    template <typename Value> class LinkedList {
+    template <typename Value> class LinkedList  { 
         typedef LinkedList<Value> List;
     public:
         class Node {
@@ -172,7 +172,7 @@ namespace rmx {
         }
         
         LinkedList<Value> * reverse();
-    };
+    } __deprecated_enum_msg("possibly unessecary and dangerous");
     
     template <typename Value>
     inline LinkedList<Value>::LinkedList() {

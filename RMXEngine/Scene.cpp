@@ -27,9 +27,10 @@ Scene * Scene::_current =   nullptr;
 
 Scene::Scene() {
     this->_rootNode = new GameNode("rootNode");
-    cout << "initializing scene" << endl;
+    log("initializing scene", this);
+//    cout << "initializing scene" << endl;
     if (_current == nullptr) {
-          cout << "Setting Scene::_current" << endl;
+        log("Setting Scene::_current", this);
         _current = this;
     }
 }

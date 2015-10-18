@@ -33,9 +33,9 @@ void SpriteBehaviour::SendMessage(string message, void * args, SendMessageOption
         }
     } else {
         if (message == "forward")
-            this->getNode()->physicsBody()->applyForce(*((float*)args) * -speed, getNode()->getTransform()->forward());
+            this->getNode()->physicsBody()->applyForce(*((float*)args) *  speed, getNode()->getTransform()->forward());
         else if (message == "left")
-            this->getNode()->physicsBody()->applyForce(*((float*)args) * -speed, getNode()->getTransform()->left());
+            this->getNode()->physicsBody()->applyForce(*((float*)args) *  speed, getNode()->getTransform()->left());
         else if (message == "up")
             this->getNode()->physicsBody()->applyForce(*((float*)args) *  speed, getNode()->getTransform()->up());
         else if (message == "pitch")
